@@ -2,6 +2,10 @@
 # 🍏 Mac App Store apps (and their IDs) can be searched via `mas search <search-term>`
 # 🚨 Prefer casks (🍺) over MAS apps (🍏) because cask installs work more reliably!
 
+# system management
+cask "applite" # GUI app Homebrew wrapper
+cask "omnidisksweeper" # simple free disk usage inspection (give it full disk access in System Settings > Privacy & Security)
+
 # communication
 cask "Telegram"
 cask "WhatsApp"
@@ -26,7 +30,6 @@ cask "fork"            # graphical git client
 cask "raycast"         # THE macOS swiss army knife for productivity
 cask "focus"           # limit distractions
 cask "font-fira-code"  # monospaced font with coding ligatures
-cask "omnidisksweeper" # simple free disk usage inspection (give it full disk access in System Settings > Privacy & Security)
 #cask "docker-desktop"  # "Docker Desktop" app plus `docker` CLI
 #cask "radio-silence"   # firewall & network monitor (currently outdated SHA-256)
 
