@@ -45,6 +45,9 @@
 
 ## Other Software
 
+- [SSH Config Editor](https://www.hejki.org/ssheditor/)
+- [Dash (documentation browser)](https://kapeli.com/dash)
+- [cleanshot.com (screen recording)](https://cleanshot.com/features#recording)
 - [Fizzy (Team Task Manager)](https://www.fizzy.do/)
 - [ladybird.org (independent browser)](https://ladybird.org)
 - [mise.jdx.dev (macOS environment manager)](https://mise.jdx.dev)
