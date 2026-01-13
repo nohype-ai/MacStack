@@ -66,8 +66,8 @@ for path in "${paths_to_delete[@]}"; do
     # Extract just the App Name without .app extension (e.g. "Visual Studio Code")
     app_name_only=$(basename "$path" .app)
     
-    # Check if a process with this name is running
-    if pgrep -f "$app_name_only" >/dev/null; then
+    # Check if a process with this name is running (looking for .app path to avoid false positives like system services)
+    if pgrep -f "${app_name_only}.app" >/dev/null; then
         running_apps+=("$app_name_only")
     fi
 done
