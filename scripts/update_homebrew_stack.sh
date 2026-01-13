@@ -35,4 +35,4 @@ assert_file_exists "$brewfile"
 
 echo "🍺 Cleaning up Homebrew cache, old package versions and cask installers ..."
 silent /opt/homebrew/bin/brew cleanup
-silent find /opt/homebrew/Caskroom -type d -name '.metadata' -prune -o -type f -delete
+silent find /opt/homebrew/Caskroom -type f \( -name "*.dmg" -o -name "*.pkg" -o -name "*.zip" \) -delete

@@ -24,5 +24,5 @@ echo "🧹 Uninstalling ..."
 brew bundle cleanup --force --zap --file "$BREWFILE_PATH" # (1)
 brew autoremove # (2)
 brew cleanup # (3)
-find /opt/homebrew/Caskroom -type d -name '.metadata' -prune -o -type f -delete # (4)
+find /opt/homebrew/Caskroom -type f \( -name "*.dmg" -o -name "*.pkg" -o -name "*.zip" \) -delete # (4)
 echo "✅ Did uninstall all brew packages that are not declared in the Brewfile"
