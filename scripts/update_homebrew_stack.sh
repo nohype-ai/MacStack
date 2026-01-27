@@ -20,9 +20,9 @@ else
 fi
 
 # Update pre-existing Homebrew packages (even outside Brewfile)
-
+# We use --greedy to force updates for casks with 'auto_updates true' (like Browsers, Cursor, Raycast) or 'version :latest' (like Apple Fonts). Without this flag, Homebrew ignores them. This ensures our stack actually stays up to date. While it triggers a small re-download for our 4 fonts every time, it's efficient for versioned apps as they only download when a numeric version increment is detected.
 echo "🍺 Updating installed Homebrew packages ..."
-/opt/homebrew/bin/brew upgrade
+/opt/homebrew/bin/brew upgrade --greedy
 
 # Install additional packages declared in Brewfile
 
