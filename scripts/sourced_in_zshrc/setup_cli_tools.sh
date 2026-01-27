@@ -15,3 +15,7 @@ export PATH="$PATH:$HOME/.local/bin"
 
 # Setup antigravity
 export PATH="$PATH:$HOME/.antigravity/antigravity/bin"
+
+# Setup Android SDK
+export ANDROID_HOME=/opt/homebrew/share/android-commandlinetools
+export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools

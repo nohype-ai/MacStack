@@ -61,12 +61,13 @@ brew "pyenv" # python version manager
 brew "pipx" # python application manager
 vscode "ms-python.python" # Central extension for python
 
-# Flutter development
+# Flutter development (iOS and Android)
 # core issue: fvm is broken: latest fvm could under some circumstances NOT be installed via brew at all, because it expected to be bundled with a dart version with which it is not bundled 🤡
 # alternative to explore: mise https://mise.jdx.dev/dev-tools/
 tap "leoafarias/fvm" # Required for installing fvm
 brew "fvm" # flutter version manager
 brew "cocoapods" # necessary for building iOS apps with Flutter
+cask "android-commandlinetools" # for Android development
 
 # Screen recording (for demos and lectures) and media
 mas "Hand Mirror", id: 1502839586 # video overlay in lecture recordings
