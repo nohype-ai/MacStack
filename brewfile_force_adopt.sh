@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 
 # This script forces apps into Homebrew management that were initially installed by other means and thereby were not properly and fully brought into Homebrew. It batch removes unmanaged binaries (preserving user data) and then force re-installs the apps.
 
