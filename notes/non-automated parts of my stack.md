@@ -17,4 +17,4 @@
 - [MWeb](https://www.mweb.im/onemarkdown-help)
   - iOS/macOS markdown app with iCloud Drive integration
   - in particular for viewing rendered markdown on iOS
-
+- [Canopy](https://canopy.us) (AI-based content filtering, family protection)
