@@ -15,9 +15,9 @@ cask "microsoft-teams"
 # writing, diagramming, office
 cask "typora"
 cask "texifier" # LaTeX editor
-mas "Pages", id: 409201541
-mas "Numbers", id: 409203825
-mas "Keynote", id: 409183694
+mas "Pages: Create Documents", id: 361309726
+mas "Numbers: Make Spreadsheets", id: 361304891
+mas "Keynote: Design Presentations", id: 361285480
 cask "omnigraffle"
 cask "miro"
 cask "brave-browser"
