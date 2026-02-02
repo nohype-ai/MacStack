@@ -11,10 +11,9 @@
 
 - [MagicMouseTap for "tap to click" on magic mouse](https://www.magicmousetap.com/)
   - (stored as "MagicMouseMenuApp.dmg" in iCloud (and not here) because it's not available via Brew and did cost a dollar ...)
-- [F-Secure (for VPN)](https://www.f-secure.com)
 - [Sound Control](https://staticz.com/soundcontrol/)
 - [loopback](https://rogueamoeba.com/loopback/)
 - [MWeb](https://www.mweb.im/onemarkdown-help)
   - iOS/macOS markdown app with iCloud Drive integration
   - in particular for viewing rendered markdown on iOS
-- [Canopy](https://canopy.us) (AI-based content filtering, family protection)
+

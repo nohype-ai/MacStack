@@ -45,6 +45,8 @@
 
 ## Other Software
 
+- [F-Secure (for VPN)](https://www.f-secure.com)
+  - but VPNs are generally incompatible with content safety filters
 - [SSH Config Editor](https://www.hejki.org/ssheditor/)
 - [Dash (documentation browser)](https://kapeli.com/dash)
 - [cleanshot.com (screen recording)](https://cleanshot.com/features#recording)

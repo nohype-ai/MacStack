@@ -23,12 +23,15 @@ cask "miro"
 cask "brave-browser"
 cask "eqmac" # equalizer because: 1) display speakers are boomy, 2) music
 
+# basic productivity tools
+cask "raycast"                           # THE macOS swiss army knife for productivity
+cask "focus"                             # limit distractions, heyfocus.com
+mas "CleanBrowsing DNS", id: 1500328783  # https://cleanbrowsing.org
+
 # basic developer tools
 brew "zsh"             # but use this script shebang: #!/usr/bin/env zsh
 brew "git"             # just so it gets updated frequently
 cask "fork"            # graphical git client
-cask "raycast"         # THE macOS swiss army knife for productivity
-cask "focus"           # limit distractions
 cask "font-fira-code"  # monospaced font with coding ligatures
 #cask "docker-desktop"  # "Docker Desktop" app plus `docker` CLI
 #cask "radio-silence"   # firewall & network monitor (currently outdated SHA-256)
