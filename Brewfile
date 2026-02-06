@@ -19,6 +19,7 @@ mas "Pages: Create Documents", id: 361309726
 mas "Numbers: Make Spreadsheets", id: 361304891
 mas "Keynote: Design Presentations", id: 361285480
 cask "omnigraffle"
+cask "inkscape" # vector graphics app and cli (also for eps to svg conversion)
 cask "miro"
 cask "brave-browser"
 cask "eqmac" # equalizer because: 1) display speakers are boomy, 2) music
@@ -86,6 +87,7 @@ brew "ghostscript" # pdf support for imagemagick (which does not install gs)
 brew "pandoc" # universal document converter (markdown, HTML, LaTeX, docx, PDF ...)
 brew "weasyprint" # specialized HTML/CSS to PDF converter, preserves styling
 brew "ffmpeg" # industry-standard CLI video/audio converter/compressor/processor
+brew "woff2" # font conversion (e.g. .otf/.ttf -> .woff2)
 
 # ⚠️ Required dependencies for Brewfile (do not remove)
 brew "mas" # for declaring mac app store apps
