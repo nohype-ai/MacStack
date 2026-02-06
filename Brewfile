@@ -51,6 +51,7 @@ vscode "mathematic.vscode-pdf" # fast maintained PDF viewer for Cursor
 brew "xcodes"
 cask "xcodes-app"
 cask "sf-symbols" # https://developer.apple.com/sf-symbols
+mas "TestFlight", id: 899247664
 mas "Developer", id: 640199958
 mas "Icon Generator", id: 1631880470 # for scaling macOS app icons
 
