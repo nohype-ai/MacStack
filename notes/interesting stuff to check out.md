@@ -9,6 +9,7 @@
 - [TRAE](https://www.trae.ai/)
 
 ### CLI Agents with VS Code Extensions
+- [claude-code](https://claude.com/product/claude-code)
 - [cline.bot](https://cline.bot)
 - [opencode.ai](https://opencode.ai)
 - [kilocode.ai](https://kilocode.ai)

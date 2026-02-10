@@ -42,8 +42,6 @@ cask "warp"                    # serves as terminal, coding agent and IDE
 cask "cursor"
 cask "antigravity"             # https://antigravity.google.com
 cask "windsurf"                # https://windsurf.com/
-cask "claude-code"             # CLI tool but comes as cask because it's a binary
-vscode "anthropic.claude-code"
 vscode "mathematic.vscode-pdf" # fast maintained PDF viewer for Cursor
 # For Antigravity: https://open-vsx.org/extension/mathematic/vscode-pdf
 
