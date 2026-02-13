@@ -34,9 +34,6 @@ brew "zsh"             # but use this script shebang: #!/usr/bin/env zsh
 brew "git"             # just so it gets updated frequently
 cask "fork"            # graphical git client
 cask "font-fira-code"  # monospaced font with coding ligatures
-brew "tailscale"       # business VPN: easy/secure/fast remote access (ZTNA)
-cask "tailscale-app"
-#cask "docker-desktop"  # "Docker Desktop" app plus `docker` CLI
 #cask "radio-silence"   # firewall & network monitor (currently outdated SHA-256)
 
 # IDEs and coding agents
@@ -46,6 +43,12 @@ cask "antigravity"             # https://antigravity.google.com
 cask "windsurf"                # https://windsurf.com/
 vscode "mathematic.vscode-pdf" # fast maintained PDF viewer for Cursor
 # For Antigravity: https://open-vsx.org/extension/mathematic/vscode-pdf
+
+# Cloud
+brew "tailscale"       # business VPN: easy/secure/fast remote access (ZTNA)
+cask "tailscale-app"
+cask "microsoft-azure-storage-explorer"
+#cask "docker-desktop"  # "Docker Desktop" app plus `docker` CLI
 
 # Apple development
 brew "xcodes"
