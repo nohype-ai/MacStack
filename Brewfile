@@ -34,6 +34,8 @@ brew "zsh"             # but use this script shebang: #!/usr/bin/env zsh
 brew "git"             # just so it gets updated frequently
 cask "fork"            # graphical git client
 cask "font-fira-code"  # monospaced font with coding ligatures
+brew "tailscale"       # business VPN: easy/secure/fast remote access (ZTNA)
+cask "tailscale-app"
 #cask "docker-desktop"  # "Docker Desktop" app plus `docker` CLI
 #cask "radio-silence"   # firewall & network monitor (currently outdated SHA-256)
 
