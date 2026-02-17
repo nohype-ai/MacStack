@@ -35,6 +35,7 @@ brew "git"             # just so it gets updated frequently
 cask "fork"            # graphical git client
 cask "font-fira-code"  # monospaced font with coding ligatures
 #cask "radio-silence"   # firewall & network monitor (currently outdated SHA-256)
+#cask "docker-desktop"  # "Docker Desktop" app plus `docker` CLI
 
 # IDEs and coding agents
 cask "warp"                    # serves as terminal, coding agent and IDE
@@ -43,12 +44,6 @@ cask "antigravity"             # https://antigravity.google.com
 cask "windsurf"                # https://windsurf.com/
 vscode "mathematic.vscode-pdf" # fast maintained PDF viewer for Cursor
 # For Antigravity: https://open-vsx.org/extension/mathematic/vscode-pdf
-
-# Cloud
-brew "tailscale"       # business VPN: easy/secure/fast remote access (ZTNA)
-cask "tailscale-app"
-cask "microsoft-azure-storage-explorer"
-#cask "docker-desktop"  # "Docker Desktop" app plus `docker` CLI
 
 # Apple development
 brew "xcodes"
@@ -92,6 +87,19 @@ brew "pandoc" # universal document converter (markdown, HTML, LaTeX, docx, PDF .
 brew "weasyprint" # specialized HTML/CSS to PDF converter, preserves styling
 brew "ffmpeg" # industry-standard CLI video/audio converter/compressor/processor
 brew "woff2" # font conversion (e.g. .otf/.ttf -> .woff2)
+
+# Current Job Project
+cask "microsoft-azure-storage-explorer"
+brew "tailscale"       # business VPN: easy/secure/fast remote access (ZTNA)
+cask "tailscale-app"
+brew "uv"              # python eco system manager
+brew "cmake"
+brew "pkg-config"
+brew "portaudio"
+brew "protobuf"
+brew "sentencepiece"
+brew "azure-cli"
+brew "ollama"
 
 # ⚠️ Required dependencies for Brewfile (do not remove)
 brew "mas" # for declaring mac app store apps
