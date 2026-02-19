@@ -34,7 +34,7 @@ brew "zsh"             # but use this script shebang: #!/usr/bin/env zsh
 brew "git"             # just so it gets updated frequently
 cask "fork"            # graphical git client
 cask "font-fira-code"  # monospaced font with coding ligatures
-#cask "radio-silence"   # firewall & network monitor (currently outdated SHA-256)
+cask "radio-silence"   # firewall & network monitor
 #cask "docker-desktop"  # "Docker Desktop" app plus `docker` CLI
 
 # IDEs and coding agents
