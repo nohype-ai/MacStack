@@ -5,14 +5,6 @@
 # Setup Homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-# Setup pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-eval "$(pyenv init --path)"
-eval "$(pyenv init -)"
-
-# Setup pipx
-export PATH="$PATH:$HOME/.local/bin"
-
 # Setup antigravity
 export PATH="$PATH:$HOME/.antigravity/antigravity/bin"
 

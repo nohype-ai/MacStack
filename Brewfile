@@ -28,8 +28,11 @@ cask "eqmac" # equalizer because: 1) display speakers are boomy, 2) music
 cask "raycast"                           # THE macOS swiss army knife for productivity
 cask "focus"                             # limit distractions, heyfocus.com
 mas "CleanBrowsing DNS", id: 1500328783  # https://cleanbrowsing.org
+
+# local AI agents
 brew "openclaw-cli"                      # https://openclaw.ai
-cask "openclaw"                       
+cask "openclaw"              
+brew "ollama"
 
 # basic developer tools
 brew "zsh"             # but use this script shebang: #!/usr/bin/env zsh
@@ -62,9 +65,7 @@ cask "font-sf-mono"
 cask "font-new-york"
 
 # Python development
-brew "xz" # Required for installing certain Python versions via pyenv
-brew "pyenv" # python version manager
-brew "pipx" # python application manager
+brew "uv" # python eco system manager, default now in ai, replaces pyenv/xz/pipx
 vscode "ms-python.python" # Central extension for python
 
 # Flutter development (iOS and Android)
@@ -94,14 +95,12 @@ brew "woff2" # font conversion (e.g. .otf/.ttf -> .woff2)
 cask "microsoft-azure-storage-explorer"
 brew "tailscale"       # business VPN: easy/secure/fast remote access (ZTNA)
 cask "tailscale-app"
-brew "uv"              # python eco system manager
 brew "cmake"
 brew "pkg-config"
 brew "portaudio"
 brew "protobuf"
 brew "sentencepiece"
 brew "azure-cli"
-brew "ollama"
 
 # ⚠️ Required dependencies for Brewfile (do not remove)
 brew "mas" # for declaring mac app store apps

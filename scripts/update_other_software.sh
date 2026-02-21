@@ -9,23 +9,21 @@ source "$MAC_STACK_ROOT/scripts/helpers.sh"
 source "$MAC_STACK_ROOT/scripts/sourced_in_zshrc/setup_cli_tools.sh"
 source "$MAC_STACK_ROOT/scripts/sourced_in_zshrc/customize_the_shell.sh"
 
-# Update python and its pip
+# Update Python
 
-latest_python_version="$(python-latest)"
-if ! pyenv versions | grep -q "$latest_python_version"; then
-    echo "🐍 Installing Python $latest_python_version ..."
-    silent pyenv install --skip-existing "$latest_python_version"
-fi
+echo "🐍 Updating Python ..."
+silent uv python install --default
+silent uv python upgrade
 
-echo "🐍 Updating pip for Python $latest_python_version ..."
-pyenv global "$latest_python_version"
-eval "$(pyenv init -)" # ensures python is immediately available
-silent python -m pip install --upgrade pip
+# Update LiteLLM
+
+echo "🤖 Updating LiteLLM (https://github.com/berriai/litellm) ..."
+silent uv tool install --upgrade 'litellm[proxy]'
 
 # Update markitdown
 
 echo "📝 Updating markitdown (https://github.com/microsoft/markitdown) ..."
-silent pipx upgrade --install markitdown
+silent uv tool install --upgrade markitdown
 
 # Update IDE settings and keybindings
 

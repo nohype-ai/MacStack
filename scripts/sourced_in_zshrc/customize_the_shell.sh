@@ -150,9 +150,6 @@ show-extensions() {
   done
 }
 
-# Get the latest Python version
-alias python-latest="pyenv install --list | grep -E '^\s*[0-9]+\.[0-9]+\.[0-9]+$' | tail -1 | xargs"
-
 # Install the latest Xcode version
 alias xcode-update="xcodes install --latest"
 
