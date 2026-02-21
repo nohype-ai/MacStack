@@ -28,6 +28,8 @@ cask "eqmac" # equalizer because: 1) display speakers are boomy, 2) music
 cask "raycast"                           # THE macOS swiss army knife for productivity
 cask "focus"                             # limit distractions, heyfocus.com
 mas "CleanBrowsing DNS", id: 1500328783  # https://cleanbrowsing.org
+brew "openclaw-cli"                      # https://openclaw.ai
+cask "openclaw"                       
 
 # basic developer tools
 brew "zsh"             # but use this script shebang: #!/usr/bin/env zsh

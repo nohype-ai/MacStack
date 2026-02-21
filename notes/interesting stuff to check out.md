@@ -18,6 +18,7 @@
 - [GPT Pilot](https://github.com/Pythagora-io/gpt-pilot) (Official Extension "Pythagora")
 
 ### Pure CLI Agents
+- [OpenClaw (Clawdbot)](https://openclaw.ai)
 - [Open Interpreter](https://openinterpreter.com) (System Automation)
 - [OpenHands](https://github.com/All-Hands-AI/OpenHands) (Autonomous Engineer Platform)
 - [Google Gemini CLI](https://github.com/google-gemini/gemini-cli) (Official CLI Agent)
