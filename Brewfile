@@ -65,7 +65,7 @@ cask "font-sf-mono"
 cask "font-new-york"
 
 # Python development
-brew "uv" # python eco system manager, default now in ai, replaces pyenv/xz/pipx
+brew "uv" # THE python eco system manager, https://github.com/astral-sh/uv
 vscode "ms-python.python" # Central extension for python
 
 # Flutter development (iOS and Android)

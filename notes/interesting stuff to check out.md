@@ -5,7 +5,6 @@
 ### IDEs with Integrated Agent UI
 - [Zed (not VS Code based, fast UI)](https://zed.dev)
 - [Kiro](https://kiro.dev)
-- [Windsurf](https://windsurf.com/)
 - [TRAE](https://www.trae.ai/)
 
 ### CLI Agents with VS Code Extensions
@@ -43,7 +42,6 @@
 - [gmktec.com (mini PC)](https://de.gmktec.com/products/gmktec-evo-x2-amd-ryzen™-ai-max-395-mini-pc-1)
 - [frame.work (laptops and mini PC)](https://frame.work)
 - [kuycon.us (apple like monitors)](https://kuycon.us)
-- [lofree.co (mechanical keyboard)](https://www.lofree.co/products/lofree-flow-the-smoothest-mechanical-keyboard)
 
 ## Other Software
 
@@ -58,7 +56,6 @@
 - [lazygit](https://github.com/jesseduffield/lazygit)
 - [omarchy.org (linux distribution)](https://omarchy.org)
 - [Basecamp (project management)](https://basecamp.com)
-- [uv (python eco system manager)](https://github.com/astral-sh/uv)
 - [Hey (email + calendar)](https://www.hey.com)
 - [DaisyDisk (disk usage inspection)](https://daisydiskapp.com/)
 - [Replicate (AI models)](https://replicate.com/)
