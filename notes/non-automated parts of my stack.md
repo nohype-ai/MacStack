@@ -5,7 +5,7 @@
 - [Grok](https://grok.com/)
 - [xAI Console](https://console.x.ai)
 - [Anthropic Console](https://console.anthropic.com)
-- [OpenAI Console](https://platform.openai.com)
+  - to do: delete account
 
 ## Niche Helpers
 
