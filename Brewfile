@@ -22,7 +22,6 @@ cask "omnigraffle"
 cask "inkscape" # vector graphics app and cli (also for eps to svg conversion)
 cask "miro"
 cask "brave-browser"
-cask "eqmac" # equalizer because: 1) display speakers are boomy, 2) music
 
 # basic productivity tools
 cask "raycast"                           # THE macOS swiss army knife for productivity
