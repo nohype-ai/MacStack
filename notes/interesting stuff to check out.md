@@ -1,6 +1,6 @@
 # Interesting
 
-## IDEs & AI Coding
+## IDEs & Coding
 
 ### IDEs with Integrated Agent UI
 - [Zed (not VS Code based, fast UI)](https://zed.dev)
@@ -27,13 +27,15 @@
 - [Wave](https://www.waveterm.dev/)
 
 ### Other
-- [Context7 (official documentations as context)](https://context7.com)
+- [Context7 (official documentations as AI context)](https://context7.com)
+- [Dash (documentation browser)](https://kapeli.com/dash)
 
 ## Building AI Applications
 
 - [apertus.ai (Swiss transparent AI)](https://apertus.ai)
 - [n8n.io (local agent builder)](https://n8n.io)
   - [n8n.io - Tutorial](https://www.youtube.com/watch?v=ONgECvZNI3o)
+- [Replicate (AI models)](https://replicate.com/)
 
 ## Linux/AI Hardware
 
@@ -45,21 +47,23 @@
 
 ## Other Software
 
+### System
+- [omarchy.org (linux distribution)](https://omarchy.org)
+- [OMAMAC](https://github.com/omacom-io/omamac)
+- [mise.jdx.dev (macOS environment manager)](https://mise.jdx.dev)
+- [DaisyDisk (disk usage inspection)](https://daisydiskapp.com/)
+- [cleanshot.com (screen recording)](https://cleanshot.com/features#recording)
+
+### Collaboration, Web
+- [Basecamp (project management)](https://basecamp.com)
+- [Fizzy (Team Task Manager)](https://www.fizzy.do/)
+- [Hey (email + calendar)](https://www.hey.com)
+- [ladybird.org (independent browser)](https://ladybird.org)
+- [lazygit](https://github.com/jesseduffield/lazygit)
+
+### Networking, Cloud
+- [tailscale](https://tailscale.com)
 - [F-Secure (for VPN)](https://www.f-secure.com)
   - but VPNs are generally incompatible with content safety filters
 - [SSH Config Editor](https://www.hejki.org/ssheditor/)
-- [Dash (documentation browser)](https://kapeli.com/dash)
-- [cleanshot.com (screen recording)](https://cleanshot.com/features#recording)
-- [Fizzy (Team Task Manager)](https://www.fizzy.do/)
-- [ladybird.org (independent browser)](https://ladybird.org)
-- [mise.jdx.dev (macOS environment manager)](https://mise.jdx.dev)
-- [lazygit](https://github.com/jesseduffield/lazygit)
-- [omarchy.org (linux distribution)](https://omarchy.org)
-- [Basecamp (project management)](https://basecamp.com)
-- [Hey (email + calendar)](https://www.hey.com)
-- [DaisyDisk (disk usage inspection)](https://daisydiskapp.com/)
-- [Replicate (AI models)](https://replicate.com/)
-- [DigitalOcean (hosting)](https://www.digitalocean.com/)
-  - [Cloud AI](https://www.digitalocean.com/products/ai-ml)
-  - [AI Agent Builder](https://www.digitalocean.com/products/gen-ai)
-  - [Website and Backend hosting](https://www.digitalocean.com/products/app-platform)
+- [DigitalOcean (hosting, cloud AI)](https://www.digitalocean.com/)

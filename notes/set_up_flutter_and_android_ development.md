@@ -12,5 +12,3 @@
   - Build the Flutter Android App:
     - dev flavour: `fvm flutter build apk --flavor dev -t lib/main_dev.dart`
     - prod flavour: `fvm flutter build apk --flavor prod -t lib/main_prod.dart`
-
-    
