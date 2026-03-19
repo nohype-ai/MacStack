@@ -28,18 +28,11 @@ cask "raycast"                           # THE macOS swiss army knife for produc
 cask "focus"                             # limit distractions, heyfocus.com
 mas "CleanBrowsing DNS", id: 1500328783  # https://cleanbrowsing.org
 
-# local AI agents
-#brew "openclaw-cli"                      # https://openclaw.ai
-#cask "openclaw"  install seems broken currently            
-brew "ollama"
-
 # basic developer tools
 brew "zsh"             # but use this script shebang: #!/usr/bin/env zsh
 brew "git"             # just so it gets updated frequently
 cask "fork"            # graphical git client
 cask "font-fira-code"  # monospaced font with coding ligatures
-cask "radio-silence"   # firewall & network monitor
-#cask "docker-desktop"  # "Docker Desktop" app plus `docker` CLI
 
 # IDEs and coding agents
 cask "warp"                    # serves as terminal, coding agent and IDE
@@ -68,13 +61,18 @@ cask "font-new-york"
 brew "uv" # THE python eco system manager, https://github.com/astral-sh/uv
 vscode "ms-python.python" # Central extension for python
 
+# local AI agents
+#brew "openclaw-cli"                      # https://openclaw.ai
+#cask "openclaw"  install seems broken currently            
+brew "ollama"
+
 # Flutter development (iOS and Android)
 # core issue: fvm is broken: latest fvm could under some circumstances NOT be installed via brew at all, because it expected to be bundled with a dart version with which it is not bundled 🤡
 # alternative to explore: mise https://mise.jdx.dev/dev-tools/
-tap "leoafarias/fvm" # Required for installing fvm
-brew "fvm" # flutter version manager
-brew "cocoapods" # necessary for building iOS apps with Flutter
-cask "android-commandlinetools" # for Android development
+#tap "leoafarias/fvm" # Required for installing fvm#
+#brew "fvm" # flutter version manager
+#brew "cocoapods" # necessary for building iOS apps with Flutter
+#cask "android-commandlinetools" # for Android development
 
 # Screen recording (for demos and lectures) and media
 mas "Hand Mirror", id: 1502839586 # video overlay in lecture recordings
@@ -91,16 +89,11 @@ brew "weasyprint" # specialized HTML/CSS to PDF converter, preserves styling
 brew "ffmpeg" # industry-standard CLI video/audio converter/compressor/processor
 brew "woff2" # font conversion (e.g. .otf/.ttf -> .woff2)
 
-# Current Job Project
-cask "microsoft-azure-storage-explorer"
-brew "tailscale"       # business VPN: easy/secure/fast remote access (ZTNA)
-cask "tailscale-app"
-brew "cmake"
-brew "pkg-config"
-brew "portaudio"
-brew "protobuf"
-brew "sentencepiece"
-brew "azure-cli"
+# Networking / Cloud / DevOps
+cask "radio-silence"   # firewall & network monitor
+#brew "tailscale"       # business VPN: easy/secure/fast remote access (ZTNA)
+#cask "tailscale-app"
+#cask "docker-desktop"  # "Docker Desktop" app plus `docker` CLI
 
 # ⚠️ Required dependencies for Brewfile (do not remove)
 brew "mas" # for declaring mac app store apps
