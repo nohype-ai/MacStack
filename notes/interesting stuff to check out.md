@@ -4,7 +4,6 @@
 
 ### IDEs with Integrated Agent UI
 - [Zed (not VS Code based, fast UI)](https://zed.dev)
-- [Kiro](https://kiro.dev)
 - [TRAE](https://www.trae.ai/)
 
 ### CLI Agents with VS Code Extensions

@@ -29,8 +29,8 @@ cask "focus"                             # limit distractions, heyfocus.com
 mas "CleanBrowsing DNS", id: 1500328783  # https://cleanbrowsing.org
 
 # local AI agents
-brew "openclaw-cli"                      # https://openclaw.ai
-cask "openclaw"              
+#brew "openclaw-cli"                      # https://openclaw.ai
+#cask "openclaw"  install seems broken currently            
 brew "ollama"
 
 # basic developer tools
@@ -43,9 +43,10 @@ cask "radio-silence"   # firewall & network monitor
 
 # IDEs and coding agents
 cask "warp"                    # serves as terminal, coding agent and IDE
-cask "cursor"
+cask "cursor"                  # https://cursor.com
 cask "antigravity"             # https://antigravity.google.com
 cask "windsurf"                # https://windsurf.com/
+cask "kiro"                    # https://kiro.dev
 vscode "mathematic.vscode-pdf" # fast maintained PDF viewer for Cursor
 # For Antigravity: https://open-vsx.org/extension/mathematic/vscode-pdf
 
