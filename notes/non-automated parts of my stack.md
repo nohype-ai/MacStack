@@ -16,3 +16,17 @@
   - iOS/macOS markdown app with iCloud Drive integration
   - in particular for viewing rendered markdown on iOS
 
+## Essential System Settings
+
+* Appearance / Icon & widget style: Dark, Auto
+* Appearance / Folder colour: Graphite
+* Desktop & Dock / Mission Control / "Automatically rearrange Spaces based on most recent use": Off
+* Displays / Automatically adjust brightness: Off
+* Displays / Night Shift / Schedule: Custom, 17:00 - 05:00, max warmth
+* Menu Bar / Automatically Hide and Show the Menu Bar: Never
+* Spotlight / Search Privacy...: Macintosh HD (saves main memory)
+* Keyboard / Keyboard Shortcuts... / App Shortcuts
+  - All Applications: Show Next Tab: ⌥⌘→
+  - All Applications: Show Previous Tab: ⌥⌘←
+* Trackpad / Point & Click / Tracking Speed: Fastest
+* Trackpad / Point & Click / Tap to Click: On
