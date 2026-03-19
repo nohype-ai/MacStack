@@ -34,6 +34,7 @@ It makes sense to build global navigation hot keys around the option key. The op
 | Hear | ⌥H | Podcasts |
 | Internet | ⌥I | Brave Browser |
 | Listen | ⌥L | Music |
+| Listen | ⌥⇧L | YouTube Music |
 | Messenger | ⌥M | WhatsApp |
 | News | ⌥N | X Pro |
 | Outlook | ⌥O | Microsoft Outlook |

@@ -58,12 +58,10 @@
 - [Basecamp (project management)](https://basecamp.com)
 - [Fizzy (Team Task Manager)](https://www.fizzy.do/)
 - [Hey (email + calendar)](https://www.hey.com)
-- [brave-browser](https://brave.com/) (uses much more RAM than safari)
 - [ladybird.org (independent browser)](https://ladybird.org)
 - [lazygit](https://github.com/jesseduffield/lazygit)
 
 ### Networking, Cloud
-- [tailscale](https://tailscale.com)
 - [F-Secure (for VPN)](https://www.f-secure.com)
   - but VPNs are generally incompatible with content safety filters
 - [SSH Config Editor](https://www.hejki.org/ssheditor/)
