@@ -8,7 +8,7 @@
     "workbench.colorTheme": "Default Dark Modern",
     "workbench.editor.editorActionsLocation": "hidden",
     "workbench.editor.showTabs": true,
-    "workbench.editor.enablePreview": false,
+    "workbench.editor.enablePreview": true,
     "workbench.editorAssociations": {},
     "workbench.layoutControl.enabled": false,
     "workbench.navigationControl.enabled": false,
