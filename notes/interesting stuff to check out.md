@@ -36,8 +36,9 @@
   - [n8n.io - Tutorial](https://www.youtube.com/watch?v=ONgECvZNI3o)
 - [Replicate (AI models)](https://replicate.com/)
 
-## Linux/AI Hardware
+## Hardware
 
+- [Melt Mouse](https://www.melt-interface.com/melt-mouse)
 - [AMD Ryzen AI Max+ 395 PCs](https://docs.google.com/spreadsheets/d/1QOvILBE7BZHICVWJ1ylmlO3jIMig1HYW6gIeZ1jhQXE/)
 - [bee-link.com (mini PC)](https://www.bee-link.com/products/beelink-gtr9-pro-amd-ryzen-ai-max-395)
 - [gmktec.com (mini PC)](https://de.gmktec.com/products/gmktec-evo-x2-amd-ryzen™-ai-max-395-mini-pc-1)
