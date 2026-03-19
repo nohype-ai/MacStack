@@ -68,5 +68,13 @@
             ]
         },
         "when": "filesExplorerFocus && !inputFocus"
+    },
+    {
+        "key": "alt+cmd+left",
+        "command": "workbench.action.previousEditor"
+    },
+    {
+        "key": "alt+cmd+right",
+        "command": "workbench.action.nextEditor"
     }
 ]
