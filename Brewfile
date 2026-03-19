@@ -20,7 +20,6 @@ mas "Numbers: Make Spreadsheets", id: 361304891
 mas "Keynote: Design Presentations", id: 361285480
 cask "omnigraffle"
 cask "inkscape" # vector graphics app and cli (also for eps to svg conversion)
-cask "miro"
 cask "brave-browser" # PWAs can block ads on YT music, but Brave wastes main memory
 mas "AdGuard for Safari", id: 1440147259 # block ads (just not in PWA on YT music)
 
