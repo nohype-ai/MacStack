@@ -58,6 +58,7 @@
 - [Basecamp (project management)](https://basecamp.com)
 - [Fizzy (Team Task Manager)](https://www.fizzy.do/)
 - [Hey (email + calendar)](https://www.hey.com)
+- [brave-browser](https://brave.com/) (uses much more RAM than safari)
 - [ladybird.org (independent browser)](https://ladybird.org)
 - [lazygit](https://github.com/jesseduffield/lazygit)
 

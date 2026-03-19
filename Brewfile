@@ -21,7 +21,7 @@ mas "Keynote: Design Presentations", id: 361285480
 cask "omnigraffle"
 cask "inkscape" # vector graphics app and cli (also for eps to svg conversion)
 cask "miro"
-cask "brave-browser"
+mas "AdGuard for Safari", id: 1440147259   # block ads on youtube (-music)
 
 # basic productivity tools
 cask "raycast"                           # THE macOS swiss army knife for productivity
