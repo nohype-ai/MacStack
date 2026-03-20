@@ -15,19 +15,19 @@ cask "microsoft-teams"
 # writing, diagramming, office
 cask "typora"
 cask "texifier" # LaTeX editor
-mas "Pages: Create Documents", id: 361309726
-mas "Numbers: Make Spreadsheets", id: 361304891
-mas "Keynote: Design Presentations", id: 361285480
+#mas "Pages: Create Documents", id: 361309726
+#mas "Numbers: Make Spreadsheets", id: 361304891
+#mas "Keynote: Design Presentations", id: 361285480
 cask "omnigraffle"
 cask "inkscape" # vector graphics app and cli (also for eps to svg conversion)
 cask "brave-browser" # PWAs can block ads on YT music, but Brave wastes main memory
 cask "adguard" # block ads (just not in PWA on YT music)
-mas "Noir – Dark Mode for Safari", id: 1592917505 # force dark mode on websites in Safari
+#mas "Noir – Dark Mode for Safari", id: 1592917505 # force dark mode on websites in Safari
 
 # basic productivity tools
 cask "raycast"                           # THE macOS swiss army knife for productivity
 cask "focus"                             # limit distractions, heyfocus.com
-mas "CleanBrowsing DNS", id: 1500328783  # https://cleanbrowsing.org
+#mas "CleanBrowsing DNS", id: 1500328783  # https://cleanbrowsing.org
 
 # basic developer tools
 brew "zsh"             # but use this script shebang: #!/usr/bin/env zsh
@@ -48,9 +48,9 @@ vscode "mathematic.vscode-pdf" # fast maintained PDF viewer for Cursor
 brew "xcodes"
 cask "xcodes-app"
 cask "sf-symbols" # https://developer.apple.com/sf-symbols
-mas "TestFlight", id: 899247664
-mas "Developer", id: 640199958
-mas "Icon Generator", id: 1631880470 # for scaling macOS app icons
+#mas "TestFlight", id: 899247664
+#mas "Developer", id: 640199958
+#mas "Icon Generator", id: 1631880470 # for scaling macOS app icons
 
 # Apple fonts: https://developer.apple.com/fonts
 cask "font-sf-pro" 
@@ -68,7 +68,7 @@ vscode "ms-python.python" # Central extension for python
 brew "ollama"
 
 # Screen recording (for demos and lectures) and media
-mas "Hand Mirror", id: 1502839586 # video overlay in lecture recordings
+#mas "Hand Mirror", id: 1502839586 # video overlay in lecture recordings
 cask "keycastr" # key strokes overlay in lecture recordings
 cask "obs" # screen recording that can capture system audio
 cask "handbrake-app" # video transcoder for compressing screen recordings
