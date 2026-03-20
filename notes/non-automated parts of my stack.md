@@ -18,8 +18,10 @@
 
 ## Essential System Settings
 
-* Appearance / Icon & widget style: Dark, Auto
-* Appearance / Folder colour: Graphite
+* Appearance / Theme / Icon & widget style: Dark, Auto
+* Appearance / Theme / Folder colour: Graphite
+* Appearance / Windows / Show scroll bars: Always
+* Appearance / Windows / Click in the scroll bar to: Jump to the spot that's clicked
 * Desktop & Dock / Mission Control / "Automatically rearrange Spaces based on most recent use": Off
 * Displays / Automatically adjust brightness: Off
 * Displays / Night Shift / Schedule: Custom, 17:00 - 05:00, max warmth
