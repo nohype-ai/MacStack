@@ -9,8 +9,6 @@ cask "omnidisksweeper" # simple free disk usage inspection (give it full disk ac
 # communication
 cask "Telegram"
 cask "WhatsApp"
-cask "microsoft-outlook"
-cask "microsoft-teams"
 
 # writing, diagramming, office
 cask "typora"
