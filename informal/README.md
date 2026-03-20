@@ -1,17 +1,17 @@
-# My Stack – Non-Automated Parts
+# Informal Stack ("Infrastructure as Documentation")
+
+The part of the stack that can not be declared as code is documented in this folder.
 
 ## Web Apps
 
 - [Grok](https://grok.com/)
 - [xAI Console](https://console.x.ai)
-- [Anthropic Console](https://console.anthropic.com)
-  - to do: delete account
 
 ## Niche Helpers
 
-- [MagicMouseTap for "tap to click" on magic mouse](https://www.magicmousetap.com/)
+- [MagicMouseTap](https://www.magicmousetap.com/) ("tap to click" on magic mouse)
   - (stored as "MagicMouseMenuApp.dmg" in iCloud (and not here) because it's not available via Brew and did cost a dollar ...)
-- [SoundSource (Volume Control for AES Device)](https://rogueamoeba.com/soundsource/)
+- [SoundSource](https://rogueamoeba.com/soundsource/) (Volume Control for AES Device)
 - [MWeb](https://www.mweb.im/onemarkdown-help)
   - iOS/macOS markdown app with iCloud Drive integration
   - in particular for viewing rendered markdown on iOS

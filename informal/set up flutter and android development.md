@@ -1,7 +1,7 @@
 # Set Up Flutter and Android Development
 
-Flutter/Android is currently not in the stack because I neither need nor like them. Also, Flutter requires Cocoapods, which is ridiculous.
-|
+Flutter/Android are currently not in the stack because I neither need nor like them. Also, Flutter requires Cocoapods, which is ridiculous.
+
 To add them back into the stack in a minimal working way, follow the steps below.
 
 ## 1. Brewfile
