@@ -5,6 +5,6 @@
 * downloads: https://www.dropbox.com/scl/fo/gfzjhsawxjxqys27rxawd/AObvtrBR_LB3Z8VlhFjQzcw
 * customize: https://usevia.app
 
-## Mychron M6 8k
+## Keychron M6 8k
 
 * customize: https://launcher.keychron.com
