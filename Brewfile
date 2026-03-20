@@ -22,6 +22,7 @@ cask "omnigraffle"
 cask "inkscape" # vector graphics app and cli (also for eps to svg conversion)
 cask "brave-browser" # PWAs can block ads on YT music, but Brave wastes main memory
 cask "adguard" # block ads (just not in PWA on YT music)
+mas "Noir – Dark Mode for Safari", id: 1592917505 # force dark mode on websites in Safari
 
 # basic productivity tools
 cask "raycast"                           # THE macOS swiss army knife for productivity
