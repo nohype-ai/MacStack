@@ -1,0 +1,6 @@
+youtube.com###related
+youtube.com###contents > grid-shelf-view-model
+youtube.com###contents > ytd-rich-section-renderer
+youtube.com###items > ytd-mini-guide-entry-renderer.style-scope.ytd-mini-guide-renderer:nth-child(2)
+youtube.com###items > ytd-mini-guide-entry-renderer.style-scope.ytd-mini-guide-renderer:first-child
+youtube.com###sections > ytd-guide-section-renderer.style-scope.ytd-guide-renderer:first-child
