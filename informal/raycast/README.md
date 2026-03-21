@@ -25,17 +25,17 @@ It makes sense to build global navigation hot keys around the option key. The op
 
 | Destination (Intent) | Shortcut | App / Website / Raycast Action |
 |--------|---------|-----|
-| AI Assistant | ⌥A | Grok |
+| AI Assistant | ⌥A | Grok (Safari App) |
 | Calendar | ⌥C | Calendar |
 | Develop | ⌥D | Antigravity |
 | Email | ⌥E | Mail |
 | Find(er) | ⌥F | Finder |
 | Git Client | ⌥G | Fork |
 | Hear | ⌥H | Podcasts |
-| Internet | ⌥I | Brave Browser |
+| Internet | ⌥I | Safari |
 | Listen | ⌥L | Music |
-| Listen | ⌥⇧L | YouTube Music |
-| Messenger | ⌥M | WhatsApp |
+| Listen | ⌥⇧L | YouTube Music URL |
+| Messenger | ⌥M | Telegram (Safari App) |
 | News | ⌥N | X Pro |
 | Outlook | ⌥O | Microsoft Outlook |
 | Passwords | ⌥P | Passwords |
@@ -44,7 +44,7 @@ It makes sense to build global navigation hot keys around the option key. The op
 | Teams | ⌥T | Microsoft Teams |
 | Write | ⌥W | Typora |
 | Xcodes | ⌥X | Xcodes App |  
-| YouTube | ⌥Y | YouTube Subscriptions |
+| YouTube | ⌥Y | YouTube Subscriptions (Safari App) |
 | Terminal | ⌥⏎ | Warp |
 | Trash | ⌥⌫ | Open Trash |
 
@@ -65,5 +65,7 @@ It makes sense to build global navigation hot keys around the option key. The op
 
 | Intent | Shortcut | Raycast Action |
 |--------|---------|-----|
+| Control Audio | ⌃A | Toggle SoundSource app (not via Raycast) |
 | Switch Dark/Day Mode | ⌃D | Toggle System Appearance |
+| Put System to Sleep | ⌃S | System -> Sleep |
 | Empty the Trash | ⌃⌫ | Empty Trash |
