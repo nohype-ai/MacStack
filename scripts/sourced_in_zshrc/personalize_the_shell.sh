@@ -6,7 +6,7 @@
 export cloud="$HOME/Library/Mobile Documents/com~apple~CloudDocs/iCloud"
 alias cdc="cd '$cloud'"
 
-export repos="$HOME/Desktop/GitHub Repos"
+export repos="$HOME/Desktop/Repos"
 alias cdr="cd '$repos'"
 
 # backup and restore Flowlist (http://www.flowlistapp.com)

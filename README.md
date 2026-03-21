@@ -89,7 +89,6 @@ Without customizing anything, the resulting setup will be as follows.
 ## To Do
 
 * [Setup default SSH key](notes/feature_plans/ssh/) (for GitHub, GitLab etc.)
-* Automate ensuring that all needed repos are checked out (first very simply: hardcoded list of repo names, hardcoded repos path -> if repo folder does not exist create it and checkout the repo)
 * review how the commands/functions in `customize_the_shell.sh` are integrated ... what would be best practice? should we rather have separate .sh files or unix executables and add our own path to `$PATH`?
 * Review whether we should rather use mise for managing dev tools that require further version management and benefit from mise features. Apparently mise also offers some declarative capabilities for global tool managament (~/.config/mise/mise.toml ...)
 * The script for force adopting apps into Homebrew is essentially a PoC fix of our regular update procedure which apparently does not bring many casks properly into Homebrew if that software (mostly GUI apps) was already installed on the system outside of Homebrew. We should bring those checks into the regular update procedure.
