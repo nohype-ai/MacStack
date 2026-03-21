@@ -7,7 +7,6 @@ cask "applite" # GUI app Homebrew wrapper
 cask "omnidisksweeper" # simple free disk usage inspection (give it full disk access in System Settings > Privacy & Security)
 
 # communication
-cask "Telegram"
 cask "WhatsApp"
 
 # writing, diagramming, office
