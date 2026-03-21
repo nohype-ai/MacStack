@@ -88,7 +88,6 @@ Without customizing anything, the resulting setup will be as follows.
 
 ## To Do
 
-* generate symlinks to dotfiles dynamically during update, gitignore the symlinks (ignore everything in dotfiles folder that starts with a dot), symlinks cannot reference home folder via `~`
 * [Setup default SSH key](notes/feature_plans/ssh/) (for GitHub, GitLab etc.)
 * Automate ensuring that all needed repos are checked out (first very simply: hardcoded list of repo names, hardcoded repos path -> if repo folder does not exist create it and checkout the repo)
 * review how the commands/functions in `customize_the_shell.sh` are integrated ... what would be best practice? should we rather have separate .sh files or unix executables and add our own path to `$PATH`?
