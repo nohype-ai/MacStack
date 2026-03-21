@@ -26,7 +26,10 @@ The part of the stack that can not be declared as code is documented in this fol
 * Displays / Automatically adjust brightness: Off
 * Displays / Night Shift / Schedule: Custom, 17:00 - 05:00, max warmth
 * Menu Bar / Automatically Hide and Show the Menu Bar: Never
-* Spotlight / Search Privacy...: Macintosh HD (saves main memory)
+* Spotlight / Search Privacy...: (this saves main memory, but do not list /Applications here so `mas` keeps working and Spotlight can find and launch apps)
+  - Library
+  - System
+  - Users
 * Keyboard / Keyboard Shortcuts... / App Shortcuts
   - All Applications: Show Next Tab: ⌥⌘→
   - All Applications: Show Previous Tab: ⌥⌘←
