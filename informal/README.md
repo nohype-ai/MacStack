@@ -30,6 +30,11 @@ The part of the stack that can not be declared as code is documented in this fol
   - Library
   - System
   - Users
+* Keyboard / Keyboard Shortcuts... / Windows / Arrange
+  - Arrange Left and Right: ⌃⌘→
+  - Arrange Right and Left: ⌃⌘←
+  - Arrange Top and Bottom: ⌃⌘↑
+  - Arrange Bottom and Top: ⌃⌘↓
 * Keyboard / Keyboard Shortcuts... / App Shortcuts
   - All Applications: Show Next Tab: ⌥⌘→
   - All Applications: Show Previous Tab: ⌥⌘←
