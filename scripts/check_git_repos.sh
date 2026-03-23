@@ -42,7 +42,7 @@ SUBFOLDERS_REPOS=(
     "websites;codeface-io.github.io"
     "websites;flowlistapp-com.github.io"
     "websites;FlowtoolzWebsiteOLD"
-    "websites;github"
+    "websites;.github"
     "websites;nohype-ai.github.io"
     "websites;sebastian-cv"
 )
@@ -58,6 +58,7 @@ for SUBFOLDER_REPO in "${SUBFOLDERS_REPOS[@]}"; do
     # If the repo is not cloned yet
     if [[ ! -d "$REPO_FOLDER/.git" ]]; then
         # Clone the repo
+        echo "⬇️ Cloning $REPO ..."
         REPO_URL="git@github.com:nohype-ai/$REPO.git"
         git clone "$REPO_URL" "$REPO_FOLDER"
     fi
