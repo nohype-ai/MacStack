@@ -58,7 +58,7 @@ for SUBFOLDER_REPO in "${SUBFOLDERS_REPOS[@]}"; do
     # If the repo is not cloned yet
     if [[ ! -d "$REPO_FOLDER/.git" ]]; then
         # Clone the repo
-        REPO_URL="https://github.com/nohype-ai/$REPO.git"
+        REPO_URL="git@github.com:nohype-ai/$REPO.git"
         git clone "$REPO_URL" "$REPO_FOLDER"
     fi
 done
