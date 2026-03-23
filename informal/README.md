@@ -30,6 +30,7 @@ The part of the stack that can not be declared as code is documented in this fol
 * Spotlight / Results from System: Activate only Apps and Menu Items
 * Spotlight / Search Privacy...:
   - Users (this saves main memory, but do not list /Applications or /System here so `mas` and Spotlight can find all apps)
+* Keyboard / Adjust keyboard brightness in low light: Off
 * Keyboard / Keyboard navigation: On
 * Keyboard / Keyboard Shortcuts... / Windows / Arrange
   - Arrange Left and Right: ⌃⌘→
@@ -41,3 +42,11 @@ The part of the stack that can not be declared as code is documented in this fol
   - All Applications: Show Previous Tab: ⌥⌘←
 * Trackpad / Point & Click / Tracking Speed: Fastest
 * Trackpad / Point & Click / Tap to Click: On
+
+* deactivate screen saver
+* dock on the left
+* low power mode: only on battery
+* general / software update / automatic updates: no automatic downloads or installation, only security updates
+* lock screen / turn display off on battery when inactive: Never
+* lock screen / turn display off on power adapter when inactive: Never
+* lock screen / Require password after screen saver begins or display turns off: After 15 minutes
