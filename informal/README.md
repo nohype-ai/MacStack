@@ -22,6 +22,9 @@ The part of the stack that can not be declared as code is documented in this fol
 * Appearance / Theme / Folder colour: Graphite
 * Appearance / Windows / Show scroll bars: Always
 * Appearance / Windows / Click in the scroll bar to: Jump to the spot that's clicked
+* Desktop & Dock / Dock position on screen: Left
+* Desktop & Dock / Show indicators for open applications: Off
+* Desktop & Dock / Show suggested and ./recent apps in Dock: Off
 * Desktop & Dock / Mission Control / "Automatically rearrange Spaces based on most recent use": Off
 * Displays / Automatically adjust brightness: Off
 * Displays / Night Shift / Schedule: Custom, 17:00 - 05:00, max warmth
@@ -44,7 +47,6 @@ The part of the stack that can not be declared as code is documented in this fol
 * Trackpad / Point & Click / Tap to Click: On
 
 * deactivate screen saver
-* dock on the left
 * low power mode: only on battery
 * general / software update / automatic updates: no automatic downloads or installation, only security updates
 * lock screen / turn display off on battery when inactive: Never
