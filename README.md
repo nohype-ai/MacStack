@@ -88,6 +88,7 @@ Without customizing anything, the resulting setup will be as follows.
 
 ## To Do
 
+* apparently none of the dotfiles are present on a fresh macOS machine, so our scripts must take that into account
 * [Setup default SSH key](notes/feature_plans/ssh/) (for GitHub, GitLab etc.)
 * review how the commands/functions in `customize_the_shell.sh` are integrated ... what would be best practice? should we rather have separate .sh files or unix executables and add our own path to `$PATH`?
 * Review whether we should rather use mise for managing dev tools that require further version management and benefit from mise features. Apparently mise also offers some declarative capabilities for global tool managament (~/.config/mise/mise.toml ...)
