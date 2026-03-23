@@ -24,7 +24,6 @@ cask "inkscape" # vector graphics app and cli (also for eps to svg conversion)
 # basic productivity tools
 cask "raycast"                           # THE macOS swiss army knife for productivity
 cask "focus"                             # limit distractions, heyfocus.com
-mas "CleanBrowsing DNS", id: 1500328783  # https://cleanbrowsing.org
 
 # basic developer tools
 brew "zsh"             # but use this script shebang: #!/usr/bin/env zsh
