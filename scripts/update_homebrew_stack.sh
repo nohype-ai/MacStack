@@ -11,7 +11,7 @@ source "$MAC_STACK_ROOT/scripts/helpers.sh" # Load helpers
 
 if ! command -v brew >/dev/null 2>&1; then
     echo "🍺 Installing Homebrew ..."
-    silent /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 else
     # side stepping the install script avoids entering password and other interactive hand holding
     # that means when brew is already installed, the whole script can run unattended 
