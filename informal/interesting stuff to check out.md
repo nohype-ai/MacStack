@@ -25,6 +25,7 @@
 - [Wave](https://www.waveterm.dev/)
 
 ### Other
+- [AnythingLLM (local general agent)](https://anythingllm.com)
 - [Context7 (official documentations as AI context)](https://context7.com)
 - [Dash (documentation browser)](https://kapeli.com/dash)
 
