@@ -2,12 +2,13 @@
 
 ## Why BYOK (over Subscriptions)?
 
-* Use in products (not just personal use)
-* Use in all software (not just software of subscription provider)
+* Use in products (not just for personal use)
+* Use/test all apps (not just app of subscription provider)
 * No rate limits
-* Using personal agents
+* Flexible cost management, no costs when no usage occurs
+* Using personal agents (like OpenClaw)
 * Valuable learnings for client work and building products:
-  - Manage token costs
+  - Manage token costs (what usage is valuable?)
   - One step closer to on-device/on-premise setups
 
 ## Methodology
