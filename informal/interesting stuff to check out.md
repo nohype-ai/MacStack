@@ -7,7 +7,6 @@
 ## IDEs & Coding
 
 ### IDEs with Integrated Agent UI
-- ❗[opencode.ai](https://opencode.ai) (no.1 open-source cli agent, now with lean desktop app)
 - [Zed (not VS Code based, fast UI)](https://zed.dev)
 - [TRAE](https://www.trae.ai/)
 

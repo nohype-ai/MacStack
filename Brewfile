@@ -23,28 +23,33 @@ cask "omnigraffle"
 cask "inkscape" # vector graphics app and cli (also for eps to svg conversion)
 
 # basic productivity tools
-cask "raycast"                           # THE macOS swiss army knife for productivity
-cask "focus"                             # limit distractions, heyfocus.com
+cask "raycast"                 # THE macOS swiss army knife for productivity
+cask "focus"                   # limit distractions, heyfocus.com
 
 # basic developer tools
-brew "zsh"             # but use this script shebang: #!/usr/bin/env zsh
-brew "git"             # just so it gets updated frequently
-cask "fork"            # graphical git client
-cask "font-fira-code"  # monospaced font with coding ligatures
+brew "zsh"                     # but use this script shebang: #!/usr/bin/env zssh
+brew "git"                     # just so it gets updated frequently
+cask "fork"                    # graphical git client
+cask "font-fira-code"          # monospaced font with coding ligatures
 
-# IDEs and coding agents
+# IDEs and (coding-) agents
+brew "opencode"                # https://opencode.ai
+cask "opencode-desktop"
 cask "cursor"                  # https://cursor.com
 cask "antigravity"             # https://antigravity.google.com
 cask "windsurf"                # https://windsurf.com/
 cask "kiro"                    # https://kiro.dev
 vscode "mathematic.vscode-pdf" # fast maintained PDF viewer for Cursor
 # For Antigravity: https://open-vsx.org/extension/mathematic/vscode-pdf
+#brew "openclaw-cli"           # https://openclaw.ai
+#cask "openclaw"  install seems broken currently            
+brew "ollama"
 
 # Apple development
 brew "xcodes"
 cask "xcodes-app"
 cask "sf-symbols" # https://developer.apple.com/sf-symbols
-#mas "TestFlight", id: 899247664 # mas install fails: would require sudo since it copies the recipt file in a second step
+#mas "TestFlight", id: 899247664 # mas install fails: would require sudo since it copies the receipt file in a second step
 mas "Developer", id: 640199958
 mas "Icon Generator", id: 1631880470 # for scaling macOS app icons
 
@@ -57,11 +62,6 @@ cask "font-new-york"
 # Python development
 brew "uv" # THE python eco system manager, https://github.com/astral-sh/uv
 vscode "ms-python.python" # Central extension for python
-
-# local AI agents
-#brew "openclaw-cli"                      # https://openclaw.ai
-#cask "openclaw"  install seems broken currently            
-brew "ollama"
 
 # Screen recording (for demos and lectures) and media
 mas "Hand Mirror", id: 1502839586 # video overlay in lecture recordings
