@@ -1,9 +1,5 @@
 # Interesting
 
-## Agents
-
-- ❗[OpenClaw (Clawdbot)](https://openclaw.ai)
-
 ## IDEs & Coding
 
 ### IDEs with Integrated Agent UI
