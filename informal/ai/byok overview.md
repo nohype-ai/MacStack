@@ -49,7 +49,7 @@ You don’t run them locally (unless you choose true local via Ollama/etc.). Ins
 
 ### Intelligence per Dollar (The Leaders)
 
-Note that open model costs depend more on model architecture and less on the inference provider. That is why it makes sense to compare models here.
+Note that the costs of open weights models depend more on model architecture and less on the inference provider. That is why it makes sense to compare models here.
 
 *   **DeepSeek V3 / V3.2**
     *   **Cost:** ~$0.14 - $0.28 per 1M Input | ~$0.28 - $0.40 per 1M Output
