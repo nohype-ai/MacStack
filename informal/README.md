@@ -29,10 +29,16 @@ The part of the stack that can not be declared as code is documented in this fol
 * Displays / Automatically adjust brightness: Off
 * Displays / Night Shift / Schedule: Custom, 17:00 - 05:00, max warmth
 * Menu Bar / Automatically Hide and Show the Menu Bar: Never
+* Spotlight / Show Related Content: Off
 * Spotlight / Results from Apps: Enable only essential apps like Mail
-* Spotlight / Results from System: Activate only Apps and Menu Items
-* Spotlight / Search Privacy...:
-  - Users (this saves main memory, but do not list /Applications or /System here so `mas` and Spotlight can find all apps)
+* Spotlight / Results from System: Activate only Apps, iPhone Apps and Menu Items
+* Spotlight / Search Privacy...: (this saves main memory, but do not list /Applications or /System here so `mas` and Spotlight can find all apps)
+  - iCloud Drive
+  - Desktop
+  - Movies
+  - Music
+  - Pictures
+* Privacy & Security / Full Disk Access: Enable Terminal, Antigravity, Cursor etc.
 * Keyboard / Adjust keyboard brightness in low light: Off
 * Keyboard / Keyboard navigation: On
 * Keyboard / Keyboard Shortcuts... / Windows / Arrange
