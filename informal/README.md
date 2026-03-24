@@ -18,6 +18,9 @@ The part of the stack that can not be declared as code is documented in this fol
 
 ## Essential System Settings
 
+* Battery / Charging / Charge Limit: 80%
+  - (protects battery life when laptop is plugged in most of the time)
+* Accessibility / Zoom / Use scroll gesture with modifier keys to zoom: On
 * Appearance / Theme / Icon & widget style: Dark, Auto
 * Appearance / Theme / Folder colour: Graphite
 * Appearance / Windows / Show scroll bars: Always
@@ -49,6 +52,9 @@ The part of the stack that can not be declared as code is documented in this fol
 * Keyboard / Keyboard Shortcuts... / App Shortcuts
   - All Applications: Show Next Tab: ⌥⌘→
   - All Applications: Show Previous Tab: ⌥⌘←
+* Keyboard / Dictation: On
+* Keyboard / Languages: English (US), German (Germany)
+* Keyboard / Shortcut: Press Either Command Key Twice
 * Trackpad / Point & Click / Tracking Speed: Fastest
 * Trackpad / Point & Click / Tap to Click: On
 
