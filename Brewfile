@@ -32,7 +32,6 @@ cask "fork"            # graphical git client
 cask "font-fira-code"  # monospaced font with coding ligatures
 
 # IDEs and coding agents
-cask "warp"                    # serves as terminal, coding agent and IDE
 cask "cursor"                  # https://cursor.com
 cask "antigravity"             # https://antigravity.google.com
 cask "windsurf"                # https://windsurf.com/

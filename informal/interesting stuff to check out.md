@@ -22,7 +22,6 @@
 - [Google Gemini CLI](https://github.com/google-gemini/gemini-cli) (Official CLI Agent)
 
 ### Terminal-Agent Integrations
-- [Warp (have not properly tested it)](https://warp.dev/)
 - [Wave](https://www.waveterm.dev/)
 
 ### Other

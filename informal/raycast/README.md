@@ -45,7 +45,7 @@ It makes sense to build global navigation hot keys around the option key. The op
 | Write | ⌥W | Typora |
 | Xcodes | ⌥X | Xcodes App |  
 | YouTube | ⌥Y | YouTube Subscriptions (Safari App) |
-| Terminal | ⌥⏎ | Warp |
+| Terminal | ⌥⏎ | Terminal |
 | Trash | ⌥⌫ | Open Trash |
 
 #### In Active Finder Folder
@@ -57,7 +57,7 @@ It makes sense to build global navigation hot keys around the option key. The op
 | Develop in folder | ⌥⇧D | Open folder in Antigravity |
 | Create new file in folder | ⌥⇧F | Create new file in folder |
 | Write in folder | ⌥⇧W | Open folder in Typora |
-| Terminal in folder | ⌥⇧⏎ | Open folder in Warp |
+| Terminal in folder | ⌥⇧⏎ | Open folder in Terminal |
 
 #### Control Settings and States
 
