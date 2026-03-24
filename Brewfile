@@ -9,7 +9,7 @@ cask "omnidisksweeper" # simple free disk usage inspection (give it full disk ac
 # communication, browser
 cask "WhatsApp"
 cask "brave-browser" # PWAs can block ads on YT music, but Brave wastes main memory
-cask "adguard" # block ads (just not in PWA on YT music)
+mas "AdGuard Mini: Safari Adblock", id: 1440147259 # block ads in Safari (not YT Music in PWA)
 mas "Noir – Dark Mode for Safari", id: 1592917505 # force dark mode on websites in Safari
 
 # writing, diagramming, office
