@@ -1,5 +1,15 @@
 # BYOK AI Costs
 
+## Why BYOK (over Subscriptions)?
+
+* Use in products (not just personal use)
+* Use in all software (not just software of subscription provider)
+* No rate limits
+* Using personal agents
+* Valuable learnings for client work and building products:
+  - Manage token costs
+  - One step closer to on-device/on-premise setups
+
 ## Methodology
 
 * This report is composed of output from Gemini 3.1 Pro and Grok 4.20. Both gave the same recommendations and the same ranking.
@@ -81,13 +91,6 @@ Google's models are accessible via Google AI Studio (which has generous free tie
     *   **Intelligence:** Elite class. Gemini Pro routinely pushes the boundaries on hardest-tier prompts and code reasoning. 
     *   **Value:** Moderate. Among the smartest models in the world, but you pay a premium for its capabilities.
 
-## OpenCode
-
-OpenCode is THE open-source AI coding frontend/client (terminal/desktop/IDE). Their offerings break down as follows:
-*   **OpenCode Core (Standard BYOK):** The core OpenCode software naturally lets you inject an API key from any provioder (e.g., an OpenRouter key, an xAI API key, or a Google AI Studio key). **Your cost is $0 to OpenCode.** You rely 100% on the inference pricing defined by your external model provider. OpenCode supports **75+ model providers** directly via the AI SDK + Models.dev.
-*   **OpenCode Zen:** This is their pay-as-you-go proxy service. Zen allows you to access a curated list of open models hosted by OpenCode themselves (billed per tokens). Alternatively, you can inject third-party keys directly into Zen; when you do this, billing is handed off directly to your third-party provider, not OpenCode.
-*   **OpenCode Go:** A $10/month flat-rate subscription that gives access to set models without worrying about usage tokens. 
-
 ## Aggregators
 
 To avoid lock-in while using **OpenCode** (or other code editors), you can just take an API key generated from an aggregator provider (like OpenRouter), or directly from xAI, or Google AI Studio.
@@ -103,6 +106,22 @@ The term "Router" comes in here because an aggregator is fundamentally a "router
 The beauty of an aggregator is:
   1) The user really only has one account to manage and fund while getting access to all models. The user needs no accounts at xAI, Google, Groq etc.
   2) Dynamic routing can automatically balance cost and quality on a per-request basis. Of course, this can be customized. OpenRouter, for example, offers powerful tools to customize the intelligence routing AND the provider routing.
+
+## OpenCode
+
+OpenCode is THE open-source AI coding frontend/client (terminal/desktop/IDE).
+
+**Why OpenCode? (over Cursor, Antigravity etc.):**
+* Open-Source, yet highly established (130k GitHub stars)
+* Built from the ground up to work with all models
+* Built from the ground up to work with local models
+* Offers pure CLI agent as well as Desktop app
+* Desktop app much leaner than a full IDE (memory footprint, etc.)
+
+**Offerings:**
+*   **OpenCode Core (Standard BYOK):** The core OpenCode software naturally lets you inject an API key from any provioder (e.g., an OpenRouter key, an xAI API key, or a Google AI Studio key). **Your cost is $0 to OpenCode.** You rely 100% on the inference pricing defined by your external model provider. OpenCode supports **75+ model providers** directly via the AI SDK + Models.dev.
+*   **OpenCode Zen:** This is their pay-as-you-go proxy service. Zen allows you to access a curated list of open models hosted by OpenCode themselves (billed per tokens). Alternatively, you can inject third-party keys directly into Zen; when you do this, billing is handed off directly to your third-party provider, not OpenCode.
+*   **OpenCode Go:** A $10/month flat-rate subscription that gives access to set models without worrying about usage tokens. 
 
 ## Final Verdict: The "Intelligence per Dollar" Winners
 
