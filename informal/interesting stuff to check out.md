@@ -1,31 +1,30 @@
 # Interesting
 
+## Agents
+
+- ❗[OpenClaw (Clawdbot)](https://openclaw.ai)
+
 ## IDEs & Coding
 
 ### IDEs with Integrated Agent UI
+- ❗[opencode.ai](https://opencode.ai) (no.1 open-source cli agent, now with lean desktop app)
 - [Zed (not VS Code based, fast UI)](https://zed.dev)
 - [TRAE](https://www.trae.ai/)
 
 ### CLI Agents with VS Code Extensions
 - [claude-code](https://claude.com/product/claude-code)
 - [cline.bot](https://cline.bot)
-- [opencode.ai](https://opencode.ai)
 - [kilocode.ai](https://kilocode.ai)
 - [Aider](https://aider.chat) (Community Extensions)
 - [Mentat](https://github.com/mentat-ai/mentat) (Official Extension)
 - [GPT Pilot](https://github.com/Pythagora-io/gpt-pilot) (Official Extension "Pythagora")
 
 ### Pure CLI Agents
-- [OpenClaw (Clawdbot)](https://openclaw.ai)
 - [Open Interpreter](https://openinterpreter.com) (System Automation)
 - [OpenHands](https://github.com/All-Hands-AI/OpenHands) (Autonomous Engineer Platform)
 - [Google Gemini CLI](https://github.com/google-gemini/gemini-cli) (Official CLI Agent)
 
-### Terminal-Agent Integrations
-- [Wave](https://www.waveterm.dev/)
-
 ### Other
-- [AnythingLLM (local general agent)](https://anythingllm.com)
 - [Context7 (official documentations as AI context)](https://context7.com)
 - [Dash (documentation browser)](https://kapeli.com/dash)
 
