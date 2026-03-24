@@ -5,6 +5,7 @@
 # system management
 cask "applite" # GUI app Homebrew wrapper
 cask "omnidisksweeper" # simple free disk usage inspection (give it full disk access in System Settings > Privacy & Security)
+cask "stats" # system health monitor, including chip temperature
 
 # communication, browser
 cask "WhatsApp"
