@@ -110,14 +110,16 @@ The beauty of an aggregator is:
 
 ## OpenCode
 
-OpenCode is THE open-source AI coding frontend/client (terminal/desktop/IDE).
+OpenCode is THE open-source AI coding agent.
 
-**Why OpenCode? (over Cursor, Antigravity etc.):**
-* Open-Source, yet highly established (130k GitHub stars)
-* Built from the ground up to work with all models
-* Built from the ground up to work with local models
-* Offers pure CLI agent as well as Desktop app
-* Desktop app much leaner than a full IDE (memory footprint, etc.)
+**Why OpenCode? (over Cursor, Antigravity, etc.)**
+- Open-source and highly established (130k GitHub stars)
+- Built from the ground up to work with any model/vendor
+- Native support for local models
+- Pure CLI agent (with ACP) as well as desktop app
+- Desktop app is much leaner than VSCode-IDEs (memory footprint)
+- Pay-as-you-go pricing (OpenCode Zen) charges no markup
+- No lock-in into subscriptions, models or APIs
 
 **Offerings:**
 *   **OpenCode Core (Standard BYOK):** The core OpenCode software naturally lets you inject an API key from any provioder (e.g., an OpenRouter key, an xAI API key, or a Google AI Studio key). **Your cost is $0 to OpenCode.** You rely 100% on the inference pricing defined by your external model provider. OpenCode supports **75+ model providers** directly via the AI SDK + Models.dev.
