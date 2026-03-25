@@ -77,12 +77,9 @@ Without customizing anything, the resulting setup will be as follows.
    - necessary parameters plus some basic best-practice ones
    - other pre-existing parameters are preserved
    - default `~/.gitignore_global` created if none existed yet
-8. `python`
-   - installed via `pyenv` and set as global Python
-   - updating global Python is fine because local Python projects should pin their required Python version anyways – either via `pyenv local` or by their virtual environment or both
-9. `pip` for global Python
-10. `markitdown`
-    - installed via `pipx`
+8. `python` installed via `uv`
+9. `litellm` installed via `uv`
+10. `markitdown` installed via `uv`
     - required by [`unveil`](scripts/sourced_in_zshrc/customize_the_shell.sh) function
 11. IDE settings restored (overwritten) from backup if `VSCODE_SETTINGS_RESTORE` is set `true` in [`.env`](.env) file.
 
