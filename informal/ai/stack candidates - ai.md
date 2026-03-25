@@ -24,6 +24,7 @@ This file does **not** document the current stack but interesting things to chec
 - [Google Gemini CLI](https://github.com/google-gemini/gemini-cli) (Official CLI Agent)
 
 ## AI Coding Helpers
+- [LeanCTX (Context compression for efficient token use)](https://leanctx.com)
 - [Context7 (official documentations as AI context)](https://context7.com)
 
 ## AI Engineering (Building AI Features)
