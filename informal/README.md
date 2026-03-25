@@ -35,6 +35,7 @@ The part of the stack that can not be declared as code is documented in this fol
 |  | Results from System | Only Apps, iPhone Apps and Menu Items | |
 |  | Search Privacy... | iCloud Drive, Desktop, Movies, Music, Pictures | Saves main memory, but do not list /Applications or /System here so `mas` and Spotlight can find all apps |
 | Wallpaper | Screen Saver... → Start Screen Saver... | Never | |
+| Screen Time | Share across devices | Off | iPhone and Mac have different needs for restriction |
 | Lock Screen | Turn display off on battery when inactive | Never | |
 |  | Turn display off on power adapter when inactive | Never | |
 |  | Require password after screen saver begins or display is turned off | After 15 minutes | |
