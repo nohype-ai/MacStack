@@ -34,8 +34,8 @@ cask "font-fira-code"          # monospaced font with coding ligatures
 
 # (Coding-) Agents and Lean IDEs
 #brew "openclaw-cli"           # https://openclaw.ai
-#cask "openclaw"  install seems broken currently            
-brew "opencode"                # https://opencode.ai 
+#cask "openclaw"  install seems broken currently
+brew "opencode"                # https://opencode.ai
 cask "opencode-desktop"        # https://opencode.ai
 cask "zed"                     # https://zed.dev
 
@@ -59,8 +59,8 @@ mas "Developer", id: 640199958
 mas "Icon Generator", id: 1631880470 # for scaling macOS app icons
 
 # Apple fonts: https://developer.apple.com/fonts
-cask "font-sf-pro" 
-cask "font-sf-compact"  
+cask "font-sf-pro"
+cask "font-sf-compact"
 cask "font-sf-mono"
 cask "font-new-york"
 
