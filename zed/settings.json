@@ -1,0 +1,66 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "agent_servers": {
+    "OpenCode": {
+      "type": "custom",
+      "command": "/opt/homebrew/bin/opencode",
+      "args": ["acp"],
+    },
+  },
+  "auto_install_extensions": {
+    "ruby": true,
+  },
+  "telemetry": {
+    "diagnostics": true,
+    "metrics": false,
+  },
+  "session": {
+    "trust_all_worktrees": true,
+  },
+  "icon_theme": {
+    "mode": "system",
+    "light": "Colored Zed Icons Theme Light",
+    "dark": "Colored Zed Icons Theme Dark",
+  },
+  "preview_tabs": {
+    "enabled": true,
+  },
+  "status_bar": {
+    "experimental.show": false,
+  },
+  "tab_bar": {
+    "show_tab_bar_buttons": false,
+  },
+  "sticky_scroll": {
+    "enabled": false,
+  },
+  "gutter": {
+    "line_numbers": false,
+  },
+  "minimap": {
+    "show": "never",
+  },
+  "autosave": "on_focus_change",
+  "buffer_font_fallbacks": ["Menlo", "Monaco", "Courier New", "monospace"],
+  "buffer_font_family": "Fira Code",
+  "show_whitespaces": "none",
+  "indent_guides": {
+    "enabled": false,
+  },
+  "soft_wrap": "editor_width",
+  "base_keymap": "VSCode",
+  "ui_font_size": 16,
+  "buffer_font_size": 15,
+  "theme": {
+    "mode": "system",
+    "light": "Ayu Light",
+    "dark": "Ayu Dark",
+  },
+}
