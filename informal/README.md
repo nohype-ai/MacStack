@@ -26,6 +26,7 @@ The part of the stack that can not be declared as code is documented in this fol
 |  | Show indicators for open applications | Off | I only let open apps remain in Dock |
 |  | Show suggested and ./recent apps in Dock | Off | |
 |  | Mission Control → Automatically rearrange Spaces based on most recent use | Off | |
+|  | Hot Corners... | Disable all | |
 | Displays | Automatically adjust brightness | Off | |
 |  | Night Shift → Schedule | Custom, 17:00 - 05:00, max warmth | |
 | Menu Bar | Automatically Hide and Show the Menu Bar | Never | Quickest interaction |
