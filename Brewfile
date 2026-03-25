@@ -37,7 +37,7 @@ cask "font-fira-code"          # monospaced font with coding ligatures
 #cask "openclaw"  install seems broken currently
 brew "opencode"                # https://opencode.ai
 cask "opencode-desktop"        # https://opencode.ai
-cask "zed"                     # https://zed.dev
+cask "zed"                     # https://zed.dev, lean and fast
 
 # Bloated VSCode-Based IDEs
 cask "cursor"                  # https://cursor.com

@@ -2,7 +2,7 @@
 
 # Required parameters:
 # @raycast.schemaVersion 1
-# @raycast.title Open Finder Folder in Antigravity
+# @raycast.title Open Finder Folder in Zed
 # @raycast.mode silent
 
 # Optional parameters:
@@ -12,5 +12,4 @@
 # @raycast.author nohype.ai
 # @raycast.authorURL nohype.ai
 
-osascript ~/.config/raycast/scripts/open-finder-folder-in-given-app.applescript antigravity
-
+osascript ~/.config/raycast/scripts/open-finder-folder-in-given-app.applescript zed

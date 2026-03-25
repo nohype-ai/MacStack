@@ -7,7 +7,6 @@ This file does **not** document the current stack but interesting things to chec
   - [n8n.io - Tutorial](https://www.youtube.com/watch?v=ONgECvZNI3o)
 
 ## IDEs with Integrated Agent UI
-- [Zed (not VS Code based, fast UI)](https://zed.dev)
 - [TRAE](https://www.trae.ai/)
 
 ## CLI Coding Agents with VS Code Extensions
