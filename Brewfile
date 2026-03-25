@@ -32,17 +32,22 @@ brew "git"                     # just so it gets updated frequently
 cask "fork"                    # graphical git client
 cask "font-fira-code"          # monospaced font with coding ligatures
 
-# IDEs and (coding-) agents
-brew "opencode"                # https://opencode.ai
-cask "opencode-desktop"
+# (Coding-) Agents and Lean IDEs
+#brew "openclaw-cli"           # https://openclaw.ai
+#cask "openclaw"  install seems broken currently            
+brew "opencode"                # https://opencode.ai 
+cask "opencode-desktop"        # https://opencode.ai
+cask "zed"                     # https://zed.dev
+
+# Bloated VSCode-Based IDEs
 cask "cursor"                  # https://cursor.com
 cask "antigravity"             # https://antigravity.google.com
 cask "windsurf"                # https://windsurf.com/
 cask "kiro"                    # https://kiro.dev
 vscode "mathematic.vscode-pdf" # fast maintained PDF viewer for Cursor
 # For Antigravity: https://open-vsx.org/extension/mathematic/vscode-pdf
-#brew "openclaw-cli"           # https://openclaw.ai
-#cask "openclaw"  install seems broken currently            
+
+# Run Local Models
 brew "ollama"
 
 # Apple development
