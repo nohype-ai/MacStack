@@ -2,6 +2,24 @@
 
 The part of the stack that can not be declared as code is documented in this folder.
 
+## Accounts
+
+* IDE: [dashboard.zed.dev](https://dashboard.zed.dev) (via GitHub)
+  - login unlocks tab completion
+* Provider: [opencode.ai/zen](https://opencode.ai/zen) (via GitHub)
+  - model variety without markup
+  - can be used in any tool/agent, not just in OpenCode
+  - not quite as cheap as DeepInfra
+* Provider: [deepinfra.com](https://deepinfra.com)
+  - cheap and fast inference provider for open models
+* Provider: [console.x.ai](https://console.x.ai) (via X)
+  - no free models
+  - good mix of cheap (Grok 4 Fast) and frontier (Grok 4.20)
+* Provider: [openrouter.ai](https://openrouter.ai/workspaces/default) (via GitHub)
+  - does absolutely not work reliably with OpenCode in Zed, only outside Zed (Terminal)
+  - usable rate limits on free models when funded with 10$
+  - 5.5% markup on paid models
+
 ## Helper Apps
 
 - [MagicMouseTap](https://www.magicmousetap.com/): "tap to click" on magic mouse

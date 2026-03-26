@@ -45,7 +45,25 @@ You don’t run them locally (unless you choose true local via Ollama/etc.). Ins
 - **Fireworks.ai** → very fast + strong structured output
 - **OpenRouter:** A proxy that aggregates models from dozens of providers and automatically routes your request to the cheapest/fastest host. This is highly recommended for BYOK.
 
-> Note: Pure inference providers (Groq, Together, DeepInfra) only host open-weights models, whereas aggregators like OpenRouter give access to both, open-weights AND proprietary closed-source models. So why use a pure inference provider at all? Answer: For individual developers and startups, aggregators are the best choice by far (flexibility and single-billing convenience). Enterprises deploying apps at scale will eventually "graduate" from OpenRouter and sign direct contracts with Groq, Together, or Google for speed, uptime, privacy, compliance, advanced features and dedicated rate limits.
+> Note: Pure inference providers (Groq, Together, DeepInfra) only host open-weights models, whereas aggregators like OpenRouter give access to both, open-weights AND proprietary closed-source models. So why use a pure inference provider at all? Answer: For individual developers and startups, aggregators are the better choice if they value model variety with single-billing convenience. BUT: aggregators like OpenRouter take a platform fee (markup). Also, enterprises deploying at scale will sign direct contracts with Groq, Together, or Google for further reasons: speed, uptime, privacy, compliance, advanced features and dedicated rate limits.
+
+### Best Inference Providers for Open-Source Models
+
+These are the non-chinese ones, assuming we don't want to send business- or user data to china:
+
+| Provider          | HQ + Inference Location | Blended price example (70B-class open model, input/output per 1M tokens) | OpenAI-compatible? | Key advantage for you                  | Drawback                          |
+|-------------------|-------------------------|--------------------------------------------------------------------------|--------------------|----------------------------------------|-----------------------------------|
+| **DeepInfra**     | Palo Alto, CA (US)     | **~$0.29–0.46**                                                         | Yes               | Cheapest overall among Western providers | Slightly slower than Groq        |
+| **Together.ai**   | San Francisco, CA (US) | ~$0.60–0.88                                                             | Yes               | Huge model catalog + fine-tuning       | Higher prices than DeepInfra            |
+| **Fireworks AI**  | US                     | ~$0.60–0.90                                                             | Yes               | Very fast inference + strong tool use  | Not the absolute cheapest        |
+| **Groq**          | US                     | ~$0.59–0.79 (Llama etc.)                                                | Yes               | Insanely fast (LPU hardware)           | More expensive + smaller catalog |
+
+### Best choice right now: **DeepInfra**
+- It is the clear winner on price among Western providers.
+- Zero markup beyond their own efficient bare-metal infrastructure.
+- Pure pay-as-you-go (add credits any amount, no monthly fee).
+- Full OpenAI-compatible API → you just `/connect` in OpenCode or OpenClaw
+- Excellent uptime and support for many models
 
 ### Intelligence per Dollar (The Leaders)
 
@@ -107,6 +125,8 @@ The term "Router" comes in here because an aggregator is fundamentally a "router
 The beauty of an aggregator is:
   1) The user really only has one account to manage and fund while getting access to all models. The user needs no accounts at xAI, Google, Groq etc.
   2) Dynamic routing can automatically balance cost and quality on a per-request basis. Of course, this can be customized. OpenRouter, for example, offers powerful tools to customize the intelligence routing AND the provider routing.
+  
+The downside of an aggregator is: It charges a markup. OpenRouter for example charges 5.5%. So high volume applications that do not often switch models run cheaper if they connect directly to their favorite vendor. For example it makes sense to connect OpenClaw directly to DeepInfra, xAI or Google AI.
 
 ## OpenCode
 
@@ -118,8 +138,8 @@ OpenCode is THE open-source AI coding agent.
 - Native support for local models
 - Pure CLI agent (with ACP) as well as desktop app
 - Desktop app is much leaner than VSCode-IDEs (memory footprint)
-- Pay-as-you-go pricing (OpenCode Zen) charges no markup
-- No lock-in into subscriptions, models or APIs
+- Pay-as-you-go pricing (OpenCode Zen) charges no markup (and yet gives model variety)
+- No lock-in into subscriptions, models, APIs or even agent (zen can be used in any agent via API key)
 
 **Offerings:**
 *   **OpenCode Core (Standard BYOK):** The core OpenCode software naturally lets you inject an API key from any provioder (e.g., an OpenRouter key, an xAI API key, or a Google AI Studio key). **Your cost is $0 to OpenCode.** You rely 100% on the inference pricing defined by your external model provider. OpenCode supports **75+ model providers** directly via the AI SDK + Models.dev.
