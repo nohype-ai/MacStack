@@ -28,7 +28,7 @@ Background on specific aspects is documented in this folder:
 - [DeepInfra](https://deepinfra.com) (via GitHub)
   - cheap and fast inference provider for open models
 - [OpenCode Zen](https://opencode.ai/zen) (via GitHub)
-  - borderline fraudulent marketing of "zero markups". their "small payment processing fee of $1.23 per $20 balance top-up" amounts to a 6.15% fee, because you only can spend in 20$ increments.
+  - borderline fraudulent marketing of "zero markups". their "small payment processing fee of 1.23 USD per 20 USD balance top-up" amounts to a 6.15% fee, because you only can spend in 20 USD increments.
   - can be used in any tool/agent, not just in OpenCode
   - by far not as cheap as DeepInfra
   - but performs well in OpenCode, even via ACP (in Zed)
