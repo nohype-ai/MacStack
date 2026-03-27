@@ -13,6 +13,7 @@ The part of the stack that can not be declared as code is documented in this fol
 
 | Category | Option | Value(s) | Comment |
 | :--- | :--- | :--- | :--- |
+| Network | Firewall → Firewall  | On | Is this off by default? It was off at some point ... |
 | Battery | Low Power Mode | Only on Battery | |
 |  | Charging → Charge Limit | 80% | protects battery life when laptop is plugged in most of the time |
 | General | Software Update → Automatic Updates → Download new updates when available | Off | |
