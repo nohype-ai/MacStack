@@ -26,6 +26,8 @@ Background on specific aspects is documented in this folder:
   - 5.5% markup on paid models
 
 ### Providers
+- [Cursor](https://cursor.com/dashboard) (regular login, GitHub would be possible or as second account)
+  - free "Hobby" tier with generous rate limits
 - [DeepInfra](https://deepinfra.com) (via GitHub)
   - cheap and fast inference provider for open models
 - [OpenCode Zen](https://opencode.ai/zen) (via GitHub)
@@ -41,10 +43,10 @@ Background on specific aspects is documented in this folder:
 
 ### Essential Combinations
 
-| Agent | Provider/Router | free/paid | Works in Zed? | Works in Terminal? |
+| Agent | Provider/Router | free/paid | In Zed via ACP | In Terminal |
 | --- | --- | --- | --- | --- |
 | OpenCode | OpenRouter | free models | 🛑 (1, 2) | ✅ |
-| Cursor CLI | Cursor | free tier |  |  |
+| Cursor CLI | Cursor | free tier | 🛑 (4) | ✅ |
 | Gemini CLI | Google AI | free + paid |  |  |
 | OpenCode | DeepInfra | paid | ⚠️ (3) | ⚠️ (3) |
 | OpenCode | xAI | paid |  |  |
@@ -54,9 +56,12 @@ Background on specific aspects is documented in this folder:
 
 ### Issues
 
+> 🚨 To set up any agent via ACP in Zed, install it normally (via Homebrew) and ALSO install the agent's corresponding ACP wrapper from the ACP registry (from inside Zed). Do NOT add the regular (Homebrew-) installation of the agent as a custom agent to the Zed settings. ACP support in Zed is apparently still immature and flaky enough anyway.
+
 1. 🛑 OpenCode + OpenRouter: does currently not work in Zed at all, whether with free or paid models.
 2. ⚠️ OpenCode + OpenRouter: Zed offers no way to edit the agent's thread history -> delete threads by deleting `~/.local/share/opencode/opencode.db*` This may be an issue for all external agents in Zed and independent of provider (has to be tested).
 3. ⚠️ OpenCode + DeepInfra: list of available models does not match available models, some unavailable models are listed, some available models are not listed (Nemotron 3 Super)
+4. 🛑 Cursor CLI + Cursor free tier: It just does not work. I got ONE response from the agent and never a second one again even after hours of fiddling around.
 
 ### Choice of Combinations
 The basic category here is coding (not general purpose), cloud inference (not local inference), and availability of ACP. Further criteria for combo selection were:
