@@ -17,6 +17,7 @@ Background on specific aspects is documented in this folder:
 
 ### Agents
 - [OpenCode](https://opencode.ai) (no login)
+- [Cursor CLI](https://cursor.com/cli) (no login)
 - [OpenClaw](https://openclaw.ai) (🛑 not successfully set up yet)
 
 ### Routers
@@ -43,7 +44,7 @@ Background on specific aspects is documented in this folder:
 | Agent | Provider/Router | free/paid | Works in Zed? | Works in Terminal? |
 | --- | --- | --- | --- | --- |
 | OpenCode | OpenRouter | free models | 🛑 (1, 2) | ✅ |
-| Cursor Agent | Cursor | free tier |  |  |
+| Cursor CLI | Cursor | free tier |  |  |
 | Gemini CLI | Google AI | free + paid |  |  |
 | OpenCode | DeepInfra | paid | ⚠️ (3) | ⚠️ (3) |
 | OpenCode | xAI | paid |  |  |

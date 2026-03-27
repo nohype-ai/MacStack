@@ -25,18 +25,23 @@ silent uv tool install --upgrade 'litellm[proxy]'
 echo "📝 Updating markitdown (https://github.com/microsoft/markitdown) ..."
 silent uv tool install --upgrade markitdown
 
+# Fix Cursor CLI Issue
+
+echo "🩹 Fixing Cursor CLI issue ..."
+xattr -rd com.apple.quarantine /opt/homebrew/Caskroom/cursor-cli
+
 # Update IDE settings and keybindings
 
 if [[ "$VSCODE_SETTINGS_RESTORE" == "true" ]]; then
     settings="$MAC_STACK_ROOT/vscode/settings.json"
     assert_file_exists "$settings"
-    
+
     keybindings="$MAC_STACK_ROOT/vscode/keybindings.json"
     assert_file_exists "$keybindings"
 
     app_names=("Visual Studio Code" "Cursor" "Antigravity" "Kiro" "Windsurf" "VSCodium")
     app_support_folders=("Code" "Cursor" "Antigravity" "Kiro" "Windsurf" "VSCodium")
-    
+
     number_of_apps=${#app_names[@]}
 
     for ((i=1; i<=number_of_apps; i++)); do

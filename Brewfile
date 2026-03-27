@@ -33,11 +33,12 @@ cask "fork"                    # graphical git client
 cask "font-fira-code"          # monospaced font with coding ligatures
 
 # (Coding-) Agents and Lean IDEs
+cask "zed"                     # https://zed.dev, lean and fast IDE
+brew "opencode"                # https://opencode.ai
+cask "opencode-desktop"        # https://opencode.ai/download
+cask "cursor-cli"              # https://cursor.com/cli
 #brew "openclaw-cli"           # https://openclaw.ai
 #cask "openclaw"  install seems broken currently
-brew "opencode"                # https://opencode.ai
-cask "opencode-desktop"        # https://opencode.ai
-cask "zed"                     # https://zed.dev, lean and fast
 
 # Bloated VSCode-Based IDEs
 cask "cursor"                  # https://cursor.com

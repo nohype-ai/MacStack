@@ -7,10 +7,52 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "agent": {
+    "default_profile": "minimal",
+    "default_model": {
+      "provider": "openrouter",
+      "model": "openai/gpt-5-nano",
+      "enable_thinking": true,
+    },
+    "favorite_models": [
+      {
+        "provider": "openrouter",
+        "model": "nvidia/nemotron-3-super-120b-a12b:free",
+        "enable_thinking": false,
+      },
+      {
+        "provider": "openrouter",
+        "model": "openai/gpt-5-nano",
+        "enable_thinking": false,
+      },
+    ],
+    "model_parameters": [],
+  },
+  "use_system_window_tabs": false,
+  "tabs": {
+    "file_icons": false,
+    "git_status": false,
+  },
+  "title_bar": {
+    "show_menus": false,
+    "show_onboarding_banner": true,
+    "show_sign_in": true,
+    "show_user_menu": true,
+    "show_branch_icon": false,
+  },
   "agent_servers": {
     "OpenCode": {
       "type": "custom",
-      "command": "/opt/homebrew/bin/opencode",
+      "command": "opencode",
+      "args": ["acp"],
+      "favorite_models": [
+        "deepinfra/moonshotai/Kimi-K2-Instruct",
+        "deepinfra/meta-llama/Llama-3.3-70B-Instruct-Turbo",
+      ],
+    },
+    "Cursor CLI": {
+      "type": "custom",
+      "command": "cursor-agent",
       "args": ["acp"],
     },
   },
