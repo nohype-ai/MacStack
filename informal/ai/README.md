@@ -28,7 +28,7 @@ Background on specific aspects is documented in this folder:
 - [DeepInfra](https://deepinfra.com) (via GitHub)
   - cheap and fast inference provider for open models
 - [OpenCode Zen](https://opencode.ai/zen) (via GitHub)
-  - borderline fraudulent marketing of “zero markups”. their "small payment processing fee of $1.23 per $20 balance top-up" amounts to a 6.15% fee, because you only can spend in 20$ increments.
+  - borderline fraudulent marketing of "zero markups". their "small payment processing fee of $1.23 per $20 balance top-up" amounts to a 6.15% fee, because you only can spend in 20$ increments.
   - can be used in any tool/agent, not just in OpenCode
   - by far not as cheap as DeepInfra
   - but performs well in OpenCode, even via ACP (in Zed)
@@ -45,15 +45,15 @@ Background on specific aspects is documented in this folder:
 | OpenCode | OpenRouter | free models | 🛑 (1, 2) | ✅ |
 | Cursor Agent | Cursor | free tier |  |  |
 | Gemini CLI | Google AI | free + paid |  |  |
-| OpenCode | xAI | paid |  |  |
 | OpenCode | DeepInfra | paid | ⚠️ (3) | ⚠️ (3) |
+| OpenCode | xAI | paid |  |  |
 | Claude Code | Anthropic | paid |  | ✅ |
 | OpenCode | OpenRouter | paid models (+5.5% fee) | 🛑 (1, 2) | ✅ |
 | OpenCode | OpenCode Zen | paid models (+6.15% fee) | ✅ | ✅ |
 
 ### Issues
 
-1. 🛑 OpenCode + OpenRouter: does currently not work in Zed at all, works in Terminal
+1. 🛑 OpenCode + OpenRouter: does currently not work in Zed at all, whether with free or paid models.
 2. ⚠️ OpenCode + OpenRouter: Zed offers no way to edit the agent's thread history -> delete threads by deleting `~/.local/share/opencode/opencode.db*` This may be an issue for all external agents in Zed and independent of provider (has to be tested).
 3. ⚠️ OpenCode + DeepInfra: list of available models does not match available models, some unavailable models are listed, some available models are not listed (Nemotron 3 Super)
 
