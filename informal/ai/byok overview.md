@@ -128,24 +128,6 @@ The beauty of an aggregator is:
   
 The downside of an aggregator is: It charges a markup. OpenRouter for example charges 5.5%. So high volume applications that do not often switch models run cheaper if they connect directly to their favorite vendor. For example it makes sense to connect OpenClaw directly to DeepInfra, xAI or Google AI.
 
-## OpenCode
-
-OpenCode is THE open-source AI coding agent.
-
-**Why OpenCode? (over Cursor, Antigravity, etc.)**
-- Open-source and highly established (130k GitHub stars)
-- Built from the ground up to work with any model/vendor
-- Native support for local models
-- Pure CLI agent (with ACP) as well as desktop app
-- Desktop app is much leaner than VSCode-IDEs (memory footprint)
-- Pay-as-you-go pricing (OpenCode Zen) charges no markup (and yet gives model variety)
-- No lock-in into subscriptions, models, APIs or even agent (zen can be used in any agent via API key)
-
-**Offerings:**
-*   **OpenCode Core (Standard BYOK):** The core OpenCode software naturally lets you inject an API key from any provioder (e.g., an OpenRouter key, an xAI API key, or a Google AI Studio key). **Your cost is $0 to OpenCode.** You rely 100% on the inference pricing defined by your external model provider. OpenCode supports **75+ model providers** directly via the AI SDK + Models.dev.
-*   **OpenCode Zen:** This is their pay-as-you-go proxy service. Zen allows you to access a curated list of open models hosted by OpenCode themselves (billed per tokens). Alternatively, you can inject third-party keys directly into Zen; when you do this, billing is handed off directly to your third-party provider, not OpenCode.
-*   **OpenCode Go:** A $10/month flat-rate subscription that gives access to set models without worrying about usage tokens. 
-
 ## Final Verdict: The "Intelligence per Dollar" Winners
 
 If you want to maximize the sheer reasoning power you receive for every dollar spent dynamically via API in 2026:
@@ -154,4 +136,4 @@ If you want to maximize the sheer reasoning power you receive for every dollar s
 2.  **Grok 4.1 Fast (via xAI API):** The proprietary disruptor. Offers elite-tier intelligence for just $0.20 per 1M input tokens with a 2-million context window. **Runner-up** → xAI Grok 4.1 Fast (insanely cheap + 2M context + excellent agentic performance). **xAI's Grok 4.1 Fast** model is extremely competitive, aggressively undercutting traditional proprietary costs to win over developers.
 3.  **Llama 3.3 70B (via OpenRouter/Together):** The highly reliable open-source workhorse for ~$0.10 per 1M input.
 4.  **Gemini 3 Flash (via Google AI Studio):** Unbeatable if your specific need is massive 1M+ context lengths or visual context. **Google's Gemini models** are slightly more expensive but shine particularly if you require ultra-long context windows (up to 2M tokens). **Convenient cheap volume** → Gemini 3.1 Flash-Lite (Google key).
-5.  **OpenCode Zen** (optional, not pure BYOK): Some of the same open models (e.g. MiniMax M2.5) at similar or slightly higher transparent rates with zero setup.
+5.  **OpenCode Zen**: Some of the same open models (e.g. MiniMax M2.5) at similar or slightly higher transparent rates with zero setup.
