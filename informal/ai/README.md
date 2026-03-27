@@ -28,9 +28,10 @@ Background on specific aspects is documented in this folder:
 - [DeepInfra](https://deepinfra.com) (via GitHub)
   - cheap and fast inference provider for open models
 - [OpenCode Zen](https://opencode.ai/zen) (via GitHub)
-  - model variety without markup
+  - borderline fraudulent marketing of “zero markups”. their "small payment processing fee of $1.23 per $20 balance top-up" amounts to a 6.15% fee, because you only can spend in 20$ increments.
   - can be used in any tool/agent, not just in OpenCode
-  - not quite as cheap as DeepInfra
+  - by far not as cheap as DeepInfra
+  - but performs well in OpenCode, even via ACP (in Zed)
 - [xAI](https://console.x.ai) (regular login)
   - no free models
   - good mix of cheap (Grok 4 Fast) and frontier (Grok 4.20)
@@ -44,10 +45,11 @@ Background on specific aspects is documented in this folder:
 | OpenCode | OpenRouter | free models | 🛑 (1, 2) | ✅ |
 | Cursor Agent | Cursor | free tier |  |  |
 | Gemini CLI | Google AI | free + paid |  |  |
-| OpenCode | OpenCode Zen | paid | ✅ | ✅ |
 | OpenCode | xAI | paid |  |  |
 | OpenCode | DeepInfra | paid | ⚠️ (3) | ⚠️ (3) |
 | Claude Code | Anthropic | paid |  | ✅ |
+| OpenCode | OpenRouter | paid models (+5.5% fee) | 🛑 (1, 2) | ✅ |
+| OpenCode | OpenCode Zen | paid models (+6.15% fee) | ✅ | ✅ |
 
 ### Issues
 
@@ -62,7 +64,6 @@ The basic category here is coding (not general purpose), cloud inference (not lo
 * Avoid paid subscriptions (avoid recurring costs that are unrelated to usage)
 * Avoid low performing agents
 * Avoid free variants with impractically tight rate limits (OpenCode Zen free models)
-* Avoid avoidable markup charges (OpenRouter paid models)
 * Use a given provider/router only with the best agent available for it (why use Anthropic account with any other agent than Claude Code)
 * Cover range of cheap/fast- versus intelligent models as well as open weights- versus proprietary models
 
