@@ -59,7 +59,7 @@ Background on specific aspects is documented in this folder:
 
 ### Choice of Combinations
 The basic category here is coding (not general purpose), cloud inference (not local inference), and availability of ACP. Further criteria for combo selection were:
-* Avoid inference in China
+* Avoid inference outside US/Europe
 * Avoid OpenAI
 * Avoid paid subscriptions (avoid recurring costs that are unrelated to usage)
 * Avoid low performing agents

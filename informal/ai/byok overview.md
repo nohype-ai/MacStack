@@ -58,6 +58,20 @@ These are the non-chinese ones, assuming we don't want to send business- or user
 | **Fireworks AI**  | US                     | ~$0.60–0.90                                                             | Yes               | Very fast inference + strong tool use  | Not the absolute cheapest        |
 | **Groq**          | US                     | ~$0.59–0.79 (Llama etc.)                                                | Yes               | Insanely fast (LPU hardware)           | More expensive + smaller catalog |
 
+**DeepInfra versus OpenCode Zen:**
+
+Raw per-token prices vary between providers, so we must compare **actual prices on overlapping open-weight models** + Zen’s fixed $1.23 per $20 top-up (6.15 % effective fee):
+
+| Model                              | OpenCode Zen (input/output per 1M) | DeepInfra (input/output per 1M) | Winner & savings |
+|------------------------------------|------------------------------------|---------------------------------|------------------|
+| **MiniMax M2.5**                  | $0.30 / $1.20                     | $0.27 / $0.95                  | **DeepInfra** (~10–20 % cheaper) |
+| **Qwen3-Coder 480B** (Turbo)      | $0.45 / $1.50                     | $0.22 / $1.00                  | **DeepInfra** (~50 % cheaper) |
+| **Qwen3-Coder 480B** (standard)   | $0.45 / $1.50                     | $0.40 / $1.60                  | **DeepInfra** (slightly cheaper) |
+| **Kimi K2.5**                     | $0.60 / $3.00                     | $0.45 / $2.25                  | **DeepInfra** (~25 % cheaper) |
+| **GLM-5 / GLM-4.7**               | $1.00 / $3.20                     | $0.80–$0.90 / $2.56–$2.90     | **DeepInfra** (~15–20 % cheaper) |
+
+Even without Zen’s 6.15 % processing fee, **DeepInfra is cheaper** on every overlapping open-weight model (often 10–50 % cheaper). DeepInfra also offers many additional very cheap open models (Llama-3.3-70B-Turbo at $0.10/$0.32, etc.) that Zen simply does not have.
+
 ### Best choice right now: **DeepInfra**
 - It is the clear winner on price among Western providers.
 - Zero markup beyond their own efficient bare-metal infrastructure.
@@ -67,7 +81,7 @@ These are the non-chinese ones, assuming we don't want to send business- or user
 
 ### Intelligence per Dollar (The Leaders)
 
-Note that the costs of open weights models depend more on model architecture and less on the inference provider. That is why it makes sense to compare models here.
+Note that the costs of open weights models depends heavily on model architecture and not just on the inference provider. That is why it makes sense to compare models:
 
 *   **DeepSeek V3 / V3.2**
     *   **Cost:** ~$0.14 - $0.28 per 1M Input | ~$0.28 - $0.40 per 1M Output
