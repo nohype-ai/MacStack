@@ -24,8 +24,8 @@ Background on specific aspects is documented in this folder:
 - [OpenCode](https://opencode.ai) (no login)
 - [Cursor CLI](https://cursor.com/cli) (no login)
 - [Gemini CLI](https://geminicli.com) (no login)
-- [OpenClaw](https://openclaw.ai) (🛑 not successfully set up yet)
 - [Claude Code](https://claude.com/product/claude-code)
+- [OpenClaw](https://openclaw.ai) (🛑 not successfully set up yet)
 
 ### Routers
 - [OpenRouter](https://openrouter.ai/workspaces/default) (via GitHub account)
@@ -58,7 +58,7 @@ Background on specific aspects is documented in this folder:
 
 * 🚨 To set up an agent via ACP in Zed, install it within Zed from the ACP registry (Shift + Cmd + P -> "zed: acp registry"). Do **not** add a regular (Homebrew-) installation of the same agent as a custom agent to settings.json, since that will likely not work, as ACP support (from Zed and from agents) is generally still immature anyway. The installs offered via the registry are optimized and tested for ACP and Zed.
 * However, at least the registry install of an agent is exclusively managed and used by Zed and will never conflict with a regular system-wide install of the same agent.
-* In theory, ACP registry installs all support authentication via ACP, but that does not work with all registry-installed agents. The reliable route is to have a regular system-wide (Homebrew-) install of the same agent and use that one for initial authentication (connecting the agent to a/its provider).
+* In theory, ACP registry installs all support authentication via ACP, but that does not work with all registry-installed agents. The reliable route is to also have a regular system-wide (Homebrew-) install of the same agent and use that one for initial authentication (connecting the agent to a/its provider).
 
 ### Essential Combinations
 
@@ -73,21 +73,25 @@ The basic category here is coding (not general purpose), cloud inference (not lo
 
 | Agent | Provider/Router | free/paid | In Zed via ACP | In Terminal |
 | --- | --- | --- | --- | --- |
-| OpenCode | DeepInfra | paid | ✅ (3) | ✅ (3) |
+| OpenCode | DeepInfra | paid | ✅ (2) | ✅ (2) |
 | OpenCode | xAI | paid | ✅ | ✅ |
 | Gemini CLI | Google AI | free + paid | ✅ | ✅ |
 | Claude Code | Anthropic | paid | ✅ | ✅ |
 | OpenCode | OpenCode Zen | paid models (+6.15% fee) | ✅ | ✅ |
-| Cursor CLI | Cursor | free tier | 🛑 (4) | ✅ |
-| OpenCode | OpenRouter | free models | 🛑 (1, 2) | ✅ |
-| OpenCode | OpenRouter | paid models (+5.5% fee) | 🛑 (1, 2) | ✅ |
+| Cursor CLI | Cursor | paid subscription | ⚠️ (4) | ✅ |
+| Cursor CLI | Cursor | free tier | 🛑 (3) | ✅ |
+| OpenCode | OpenRouter | free models | 🛑 (1) | ✅ |
+| OpenCode | OpenRouter | paid models (+5.5% fee) | 🛑 (1) | ✅ |
 
 ### Issues
 
-1. 🛑 OpenCode + OpenRouter: does currently not work in Zed at all, whether with free or paid models.
-2. ⚠️ OpenCode + OpenRouter: Zed offers no way to edit the agent's thread history -> delete threads by deleting `~/.local/share/opencode/opencode.db*` This may be an issue for all external agents in Zed and independent of provider (has to be tested).
-3. ℹ️ OpenCode + DeepInfra: The model list is outdated because DeepInfra updates its available models rapidly, while OpenCode relies on models.dev. Solution: add a opencode.json file in ~/.config/opencode/ and define some desired but missing models in there. Prefix their names with "di-custom: " or so to make them discoverable. Backup/example: [opencode.json](../../config/opencode/opencode.json). (Related [GitHub Issue](https://github.com/anomalyco/opencode/issues/6231))
-4. 🛑 Cursor CLI + Cursor free tier: It just does not work. I got ONE response from the agent and never a second one again even after hours of fiddling around. It's worth trying again since Cursor offers a native registry install and it did give a response once.
+1. 🛑 OpenCode + OpenRouter: does currently not work in Zed at all, whether with free or paid models. Seems to be a known issue with OpenRouter, which does not even work in the Zed agent (without ACP).
+2. ℹ️ OpenCode + DeepInfra: The model list is outdated because DeepInfra updates its available models rapidly, while OpenCode relies on models.dev. Solution: add a opencode.json file in ~/.config/opencode/ and define some desired but missing models in there. Prefix their names with "di-custom: " or so to make them discoverable. Backup/example: [opencode.json](../../config/opencode/opencode.json). (Related [GitHub Issue](https://github.com/anomalyco/opencode/issues/6231))
+3. 🛑 Cursor CLI + Cursor free tier: ACP is [explicitly not offered on the free tier](https://cursor.com/blog/jetbrains-acp).
+4. ⚠️ Cursor CLI + Cursor paid subscription: Presumably this works. But of course it's bound to a subscription.
+
+**Every ACP Agent:**
+* ⚠️ Basic thread management functions like "resuming threads from history" do not even work with "the reference ACP implementation" (Gemini CLI). This also means Zed offers no way to edit the agent's thread history (if it is even created) -> delete OpenCode threads by deleting `~/.local/share/opencode/opencode.db*`. Apply an equivalent solution with other agents.
 
 ## General Purpose agents
 
