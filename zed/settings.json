@@ -7,27 +7,6 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-  "agent": {
-    "default_profile": "minimal",
-    "default_model": {
-      "provider": "openrouter",
-      "model": "meta-llama/llama-4-scout",
-      "enable_thinking": false,
-    },
-    "favorite_models": [
-      {
-        "provider": "openrouter",
-        "model": "nvidia/nemotron-3-super-120b-a12b:free",
-        "enable_thinking": false,
-      },
-      {
-        "provider": "openrouter",
-        "model": "openai/gpt-5-nano",
-        "enable_thinking": false,
-      },
-    ],
-    "model_parameters": [],
-  },
   "use_system_window_tabs": false,
   "tabs": {
     "file_icons": false,
@@ -42,19 +21,12 @@
   },
   "agent_servers": {
     "gemini": {
-      "type": "registry"
+      "type": "registry",
     },
     "cursor": {
-      "type": "registry"
+      "type": "registry",
     },
     "opencode": {
-      "favorite_models": [
-        "openrouter/stepfun/step-3.5-flash:free",
-        "openrouter/nvidia/nemotron-nano-9b-v2:free",
-        "openrouter/nvidia/nemotron-nano-12b-v2-vl:free",
-        "openrouter/nvidia/nemotron-3-super-120b-a12b-free",
-        "openrouter/google/gemini-3-flash-preview"
-      ],
       "type": "registry",
     },
   },
