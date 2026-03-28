@@ -37,6 +37,7 @@ cask "zed"                     # https://zed.dev, lean and fast IDE
 brew "opencode"                # https://opencode.ai
 cask "opencode-desktop"        # https://opencode.ai/download
 cask "cursor-cli"              # https://cursor.com/cli
+brew "gemini-cli"              # https://geminicli.com
 #brew "openclaw-cli"           # https://openclaw.ai
 #cask "openclaw"  install seems broken currently
 

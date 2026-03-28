@@ -11,8 +11,8 @@
     "default_profile": "minimal",
     "default_model": {
       "provider": "openrouter",
-      "model": "openai/gpt-5-nano",
-      "enable_thinking": true,
+      "model": "meta-llama/llama-4-scout",
+      "enable_thinking": false,
     },
     "favorite_models": [
       {
@@ -41,19 +41,21 @@
     "show_branch_icon": false,
   },
   "agent_servers": {
-    "OpenCode": {
-      "type": "custom",
-      "command": "opencode",
-      "args": ["acp"],
-      "favorite_models": [
-        "deepinfra/moonshotai/Kimi-K2-Instruct",
-        "deepinfra/meta-llama/Llama-3.3-70B-Instruct-Turbo",
-      ],
+    "gemini": {
+      "type": "registry"
     },
-    "Cursor CLI": {
-      "type": "custom",
-      "command": "cursor-agent",
-      "args": ["acp"],
+    "cursor": {
+      "type": "registry"
+    },
+    "opencode": {
+      "favorite_models": [
+        "openrouter/stepfun/step-3.5-flash:free",
+        "openrouter/nvidia/nemotron-nano-9b-v2:free",
+        "openrouter/nvidia/nemotron-nano-12b-v2-vl:free",
+        "openrouter/nvidia/nemotron-3-super-120b-a12b-free",
+        "openrouter/google/gemini-3-flash-preview"
+      ],
+      "type": "registry",
     },
   },
   "auto_install_extensions": {

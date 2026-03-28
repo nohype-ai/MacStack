@@ -10,7 +10,7 @@ Background on specific aspects is documented in this folder:
 ## Layers
 
 ### IDEs/Clients
-- [Zed](https://dashboard.zed.dev) (via GitHub)
+- [Zed](https://dashboard.zed.dev) (via GitHub account)
   - login unlocks tab completion
 - [OpenCode Desktop app](https://opencode.ai/download) (no login)
   - `brew install --cask opencode-desktop`
@@ -18,24 +18,27 @@ Background on specific aspects is documented in this folder:
 ### Agents
 - [OpenCode](https://opencode.ai) (no login)
 - [Cursor CLI](https://cursor.com/cli) (no login)
+- [Gemini CLI](https://geminicli.com) (no login)
 - [OpenClaw](https://openclaw.ai) (🛑 not successfully set up yet)
 
 ### Routers
-- [OpenRouter](https://openrouter.ai/workspaces/default) (via GitHub)
+- [OpenRouter](https://openrouter.ai/workspaces/default) (via GitHub account)
   - usable rate limits on free models when funded with 10$
   - 5.5% markup on paid models
 
 ### Providers
-- [Cursor](https://cursor.com/dashboard) (regular login, GitHub would be possible or as second account)
+- [Google AI](https://aistudio.google.com/projects) (via Google Account)
+- [Cursor](https://cursor.com/dashboard) (normal login)
   - free "Hobby" tier with generous rate limits
-- [DeepInfra](https://deepinfra.com) (via GitHub)
+  - login via GitHub would be possible (as second account or to simplify)
+- [DeepInfra](https://deepinfra.com) (via GitHub account)
   - cheap and fast inference provider for open models
-- [OpenCode Zen](https://opencode.ai/zen) (via GitHub)
+- [OpenCode Zen](https://opencode.ai/zen) (via GitHub account)
   - borderline fraudulent marketing of "zero markups". their "small payment processing fee of 1.23 USD per 20 USD balance top-up" amounts to a 6.15% fee, because you only can spend in 20 USD increments.
   - can be used in any tool/agent, not just in OpenCode
   - by far not as cheap as DeepInfra
   - but performs well in OpenCode, even via ACP (in Zed)
-- [xAI](https://console.x.ai) (regular login)
+- [xAI](https://console.x.ai) (normal login)
   - no free models
   - good mix of cheap (Grok 4 Fast) and frontier (Grok 4.20)
 
@@ -47,7 +50,7 @@ Background on specific aspects is documented in this folder:
 | --- | --- | --- | --- | --- |
 | OpenCode | OpenRouter | free models | 🛑 (1, 2) | ✅ |
 | Cursor CLI | Cursor | free tier | 🛑 (4) | ✅ |
-| Gemini CLI | Google AI | free + paid |  |  |
+| Gemini CLI | Google AI | free + paid | ✅ | ✅ |
 | OpenCode | DeepInfra | paid | ⚠️ (3) | ⚠️ (3) |
 | OpenCode | xAI | paid |  |  |
 | Claude Code | Anthropic | paid |  | ✅ |
@@ -73,7 +76,7 @@ The basic category here is coding (not general purpose), cloud inference (not lo
 * Use a given provider/router only with the best agent available for it (why use Anthropic account with any other agent than Claude Code)
 * Cover range of cheap/fast- versus intelligent models as well as open weights- versus proprietary models
 
-> Note: If Claude Code + Anthropic does not work in Zed, it might be worth adding/testing OpenCode + Anthropic. Same for Gemini CLI: If Gemini CLI + Google AI does not work in Zed, it might be worth adding/testing OpenCode + Google AI. Just for the Zed integration ...
+> Note: If Claude Code + Anthropic does not work in Zed, it might be worth adding/testing OpenCode + Anthropic. Just for the Zed integration ...
 
 ## General Purpose agents
 
