@@ -73,20 +73,20 @@ The basic category here is coding (not general purpose), cloud inference (not lo
 
 | Agent | Provider/Router | free/paid | In Zed via ACP | In Terminal |
 | --- | --- | --- | --- | --- |
-| OpenCode | OpenRouter | free models | 🛑 (1, 2) | ✅ |
-| Cursor CLI | Cursor | free tier | 🛑 (4) | ✅ |
-| Gemini CLI | Google AI | free + paid | ✅ | ✅ |
-| OpenCode | DeepInfra | paid | ⚠️ (3) | ⚠️ (3) |
+| OpenCode | DeepInfra | paid | ✅ (3) | ✅ (3) |
 | OpenCode | xAI | paid | ✅ | ✅ |
+| Gemini CLI | Google AI | free + paid | ✅ | ✅ |
 | Claude Code | Anthropic | paid | ✅ | ✅ |
-| OpenCode | OpenRouter | paid models (+5.5% fee) | 🛑 (1, 2) | ✅ |
 | OpenCode | OpenCode Zen | paid models (+6.15% fee) | ✅ | ✅ |
+| Cursor CLI | Cursor | free tier | 🛑 (4) | ✅ |
+| OpenCode | OpenRouter | free models | 🛑 (1, 2) | ✅ |
+| OpenCode | OpenRouter | paid models (+5.5% fee) | 🛑 (1, 2) | ✅ |
 
 ### Issues
 
 1. 🛑 OpenCode + OpenRouter: does currently not work in Zed at all, whether with free or paid models.
 2. ⚠️ OpenCode + OpenRouter: Zed offers no way to edit the agent's thread history -> delete threads by deleting `~/.local/share/opencode/opencode.db*` This may be an issue for all external agents in Zed and independent of provider (has to be tested).
-3. ⚠️ OpenCode + DeepInfra: list of available models does not match available models, some unavailable models are listed, some available models are not listed (Nemotron 3 Super)
+3. ℹ️ OpenCode + DeepInfra: The model list is outdated because DeepInfra updates its available models rapidly, while OpenCode relies on models.dev. Solution: add a opencode.json file in ~/.config/opencode/ and define some desired but missing models in there. Prefix their names with "di-custom: " or so to make them discoverable. Backup/example: [opencode.json](../../config/opencode/opencode.json). (Related [GitHub Issue](https://github.com/anomalyco/opencode/issues/6231))
 4. 🛑 Cursor CLI + Cursor free tier: It just does not work. I got ONE response from the agent and never a second one again even after hours of fiddling around. It's worth trying again since Cursor offers a native registry install and it did give a response once.
 
 ## General Purpose agents
