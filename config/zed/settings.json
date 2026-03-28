@@ -33,6 +33,13 @@
       "favorite_models": [
         "xai/grok-4-1-fast-non-reasoning",
         "xai/grok-4-1-fast",
+        "deepinfra/deepseek-ai/DeepSeek-V3.2",
+        "deepinfra/stepfun-ai/Step-3.5-Flash",
+        "deepinfra/nvidia/Nemotron-3-Nano-30B-A3B",
+        "deepinfra/nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+        "xai/grok-4.20-multi-agent-0309",
+        "xai/grok-4.20-0309-reasoning",
+        "xai/grok-4.20-0309-non-reasoning",
       ],
       "type": "registry",
     },
