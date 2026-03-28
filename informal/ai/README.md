@@ -67,7 +67,7 @@ The basic category here is coding (not general purpose), cloud inference (not lo
 | Cursor CLI | Cursor | free tier | 🛑 (4) | ✅ |
 | Gemini CLI | Google AI | free + paid | ✅ | ✅ |
 | OpenCode | DeepInfra | paid | ⚠️ (3) | ⚠️ (3) |
-| OpenCode | xAI | paid |  |  |
+| OpenCode | xAI | paid | ✅ | ✅ |
 | Claude Code | Anthropic | paid |  | ✅ |
 | OpenCode | OpenRouter | paid models (+5.5% fee) | 🛑 (1, 2) | ✅ |
 | OpenCode | OpenCode Zen | paid models (+6.15% fee) | ✅ | ✅ |

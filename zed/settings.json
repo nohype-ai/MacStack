@@ -27,6 +27,10 @@
       "type": "registry",
     },
     "opencode": {
+      "favorite_models": [
+        "xai/grok-4-1-fast-non-reasoning",
+        "xai/grok-4-1-fast"
+      ],
       "type": "registry",
     },
   },
