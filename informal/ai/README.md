@@ -11,7 +11,8 @@ Background on specific aspects is documented in this folder:
 
 ### IDEs/Clients
 - [Zed](https://dashboard.zed.dev) (via GitHub account)
-  - login unlocks tab completion
+  - login unlocks tab completions ("edit predictions")
+  - Zed Pro is only for the mediocre internal Zed agent
 - [OpenCode Desktop app](https://opencode.ai/download) (no login)
   - `brew install --cask opencode-desktop`
 
@@ -28,6 +29,7 @@ Background on specific aspects is documented in this folder:
 
 ### Providers
 - [Google AI](https://aistudio.google.com/projects) (via Google Account)
+  - [Model Prices](https://ai.google.dev/gemini-api/docs/pricing)
 - [Cursor](https://cursor.com/dashboard) (normal login)
   - free "Hobby" tier with generous rate limits
   - login via GitHub would be possible (as second account or to simplify)
@@ -44,7 +46,20 @@ Background on specific aspects is documented in this folder:
 
 ## ACP Coding Agent + Provider/Router
 
+> 🚨 To set up an agent via ACP in Zed, install it within Zed from the ACP registry (Shift + Cmd + P -> "zed: acp registry"). Do **not** add a regular (Homebrew-) installation of the same agent as a custom agent to settings.json, since that will likely not work, as ACP support (from Zed and from agents) is generally still immature anyway. The agent installs offered via the registry are optimized and tested for ACP and Zed.
+> 
+> However, at least the Zed-internal install of an agent is exclusively managed and used by Zed and will never conflict with a regular system-wide install of the same agent.
+
 ### Essential Combinations
+
+The basic category here is coding (not general purpose), cloud inference (not local inference), and availability of ACP. Further criteria for combo selection were:
+* Avoid inference outside US/Europe
+* Avoid OpenAI
+* Avoid paid subscriptions (avoid recurring costs that are unrelated to usage)
+* Avoid low performing agents
+* Avoid free variants with impractically tight rate limits (OpenCode Zen free models)
+* Use a given provider/router only with the best agent available for it (why use Anthropic account with any other agent than Claude Code)
+* Cover range of cheap/fast- versus intelligent models as well as open weights- versus proprietary models
 
 | Agent | Provider/Router | free/paid | In Zed via ACP | In Terminal |
 | --- | --- | --- | --- | --- |
@@ -59,22 +74,10 @@ Background on specific aspects is documented in this folder:
 
 ### Issues
 
-> 🚨 To set up any agent via ACP in Zed, install it normally (via Homebrew) and ALSO install the agent's corresponding ACP wrapper from the ACP registry (from inside Zed). Do NOT add the regular (Homebrew-) installation of the agent as a custom agent to the Zed settings. ACP support in Zed is apparently still immature and flaky enough anyway.
-
 1. 🛑 OpenCode + OpenRouter: does currently not work in Zed at all, whether with free or paid models.
 2. ⚠️ OpenCode + OpenRouter: Zed offers no way to edit the agent's thread history -> delete threads by deleting `~/.local/share/opencode/opencode.db*` This may be an issue for all external agents in Zed and independent of provider (has to be tested).
 3. ⚠️ OpenCode + DeepInfra: list of available models does not match available models, some unavailable models are listed, some available models are not listed (Nemotron 3 Super)
-4. 🛑 Cursor CLI + Cursor free tier: It just does not work. I got ONE response from the agent and never a second one again even after hours of fiddling around.
-
-### Choice of Combinations
-The basic category here is coding (not general purpose), cloud inference (not local inference), and availability of ACP. Further criteria for combo selection were:
-* Avoid inference outside US/Europe
-* Avoid OpenAI
-* Avoid paid subscriptions (avoid recurring costs that are unrelated to usage)
-* Avoid low performing agents
-* Avoid free variants with impractically tight rate limits (OpenCode Zen free models)
-* Use a given provider/router only with the best agent available for it (why use Anthropic account with any other agent than Claude Code)
-* Cover range of cheap/fast- versus intelligent models as well as open weights- versus proprietary models
+4. 🛑 Cursor CLI + Cursor free tier: It just does not work. I got ONE response from the agent and never a second one again even after hours of fiddling around. It's worth trying again since Cursor offers a native registry install and it did give a response once.
 
 > Note: If Claude Code + Anthropic does not work in Zed, it might be worth adding/testing OpenCode + Anthropic. Just for the Zed integration ...
 
