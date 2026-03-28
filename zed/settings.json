@@ -20,6 +20,9 @@
     "show_branch_icon": false,
   },
   "agent_servers": {
+    "claude-acp": {
+      "type": "registry",
+    },
     "gemini": {
       "type": "registry",
     },
@@ -29,7 +32,7 @@
     "opencode": {
       "favorite_models": [
         "xai/grok-4-1-fast-non-reasoning",
-        "xai/grok-4-1-fast"
+        "xai/grok-4-1-fast",
       ],
       "type": "registry",
     },

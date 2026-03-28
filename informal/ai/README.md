@@ -13,14 +13,19 @@ Background on specific aspects is documented in this folder:
 - [Zed](https://dashboard.zed.dev) (via GitHub account)
   - login unlocks tab completions ("edit predictions")
   - Zed Pro is only for the mediocre internal Zed agent
-- [OpenCode Desktop app](https://opencode.ai/download) (no login)
+- [OpenCode desktop app](https://opencode.ai/download) (no login)
   - `brew install --cask opencode-desktop`
+- [Claude desktop app](https://code.claude.com/docs/en/desktop-quickstart)
+  - with free tier: only chat
+  - with subscripton: Code and CoWork
+  - no way to use API key as in Claude Code CLI
 
 ### Agents
 - [OpenCode](https://opencode.ai) (no login)
 - [Cursor CLI](https://cursor.com/cli) (no login)
 - [Gemini CLI](https://geminicli.com) (no login)
 - [OpenClaw](https://openclaw.ai) (🛑 not successfully set up yet)
+- [Claude Code](https://claude.com/product/claude-code)
 
 ### Routers
 - [OpenRouter](https://openrouter.ai/workspaces/default) (via GitHub account)
@@ -44,14 +49,16 @@ Background on specific aspects is documented in this folder:
   - can be used in any tool/agent, not just in OpenCode
   - by far not as cheap as DeepInfra
   - but performs well in OpenCode, even via ACP (in Zed)
-- Anthropic
-  - [Model Prices](https://platform.claude.com/docs/en/about-claude/pricing)
+- [Anthropic](https://platform.claude.com) (via email)
+  - [Model Prices](https://claude.com/pricing#api)
 
 ## ACP Coding Agent + Provider/Router
 
-> 🚨 To set up an agent via ACP in Zed, install it within Zed from the ACP registry (Shift + Cmd + P -> "zed: acp registry"). Do **not** add a regular (Homebrew-) installation of the same agent as a custom agent to settings.json, since that will likely not work, as ACP support (from Zed and from agents) is generally still immature anyway. The agent installs offered via the registry are optimized and tested for ACP and Zed.
-> 
-> However, at least the Zed-internal install of an agent is exclusively managed and used by Zed and will never conflict with a regular system-wide install of the same agent.
+### Installing an ACP Agent
+
+* 🚨 To set up an agent via ACP in Zed, install it within Zed from the ACP registry (Shift + Cmd + P -> "zed: acp registry"). Do **not** add a regular (Homebrew-) installation of the same agent as a custom agent to settings.json, since that will likely not work, as ACP support (from Zed and from agents) is generally still immature anyway. The installs offered via the registry are optimized and tested for ACP and Zed.
+* However, at least the registry install of an agent is exclusively managed and used by Zed and will never conflict with a regular system-wide install of the same agent.
+* In theory, ACP registry installs all support authentication via ACP, but that does not work with all registry-installed agents. The reliable route is to have a regular system-wide (Homebrew-) install of the same agent and use that one for initial authentication (connecting the agent to a/its provider).
 
 ### Essential Combinations
 
@@ -71,7 +78,7 @@ The basic category here is coding (not general purpose), cloud inference (not lo
 | Gemini CLI | Google AI | free + paid | ✅ | ✅ |
 | OpenCode | DeepInfra | paid | ⚠️ (3) | ⚠️ (3) |
 | OpenCode | xAI | paid | ✅ | ✅ |
-| Claude Code | Anthropic | paid |  | ✅ |
+| Claude Code | Anthropic | paid | ✅ | ✅ |
 | OpenCode | OpenRouter | paid models (+5.5% fee) | 🛑 (1, 2) | ✅ |
 | OpenCode | OpenCode Zen | paid models (+6.15% fee) | ✅ | ✅ |
 
@@ -81,8 +88,6 @@ The basic category here is coding (not general purpose), cloud inference (not lo
 2. ⚠️ OpenCode + OpenRouter: Zed offers no way to edit the agent's thread history -> delete threads by deleting `~/.local/share/opencode/opencode.db*` This may be an issue for all external agents in Zed and independent of provider (has to be tested).
 3. ⚠️ OpenCode + DeepInfra: list of available models does not match available models, some unavailable models are listed, some available models are not listed (Nemotron 3 Super)
 4. 🛑 Cursor CLI + Cursor free tier: It just does not work. I got ONE response from the agent and never a second one again even after hours of fiddling around. It's worth trying again since Cursor offers a native registry install and it did give a response once.
-
-> Note: If Claude Code + Anthropic does not work in Zed, it might be worth adding/testing OpenCode + Anthropic. Just for the Zed integration ...
 
 ## General Purpose agents
 

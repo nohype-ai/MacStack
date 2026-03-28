@@ -34,12 +34,14 @@ cask "font-fira-code"          # monospaced font with coding ligatures
 
 # (Coding-) Agents and Lean IDEs
 cask "zed"                     # https://zed.dev, lean and fast IDE
-brew "opencode"                # https://opencode.ai
 cask "opencode-desktop"        # https://opencode.ai/download
+brew "opencode"                # https://opencode.ai
+cask "claude"                  # https://code.claude.com/docs/en/desktop-quickstart
+cask "claude-code"             # https://claude.com/product/claude-code
 cask "cursor-cli"              # https://cursor.com/cli
 brew "gemini-cli"              # https://geminicli.com
-#brew "openclaw-cli"           # https://openclaw.ai
 #cask "openclaw"  install seems broken currently
+#brew "openclaw-cli"           # https://openclaw.ai
 
 # Bloated VSCode-Based IDEs
 cask "cursor"                  # https://cursor.com
