@@ -28,21 +28,24 @@ Background on specific aspects is documented in this folder:
   - 5.5% markup on paid models
 
 ### Providers
-- [Google AI](https://aistudio.google.com/projects) (via Google Account)
-  - [Model Prices](https://ai.google.dev/gemini-api/docs/pricing)
 - [Cursor](https://cursor.com/dashboard) (normal login)
   - free "Hobby" tier with generous rate limits
   - login via GitHub would be possible (as second account or to simplify)
 - [DeepInfra](https://deepinfra.com) (via GitHub account)
   - cheap and fast inference provider for open models
+- [xAI](https://console.x.ai) (normal login)
+  - no free models
+  - good mix of cheap (Grok 4 Fast) and frontier (Grok 4.20)
+  - [Model Prices](https://docs.x.ai/developers/models#model-pricing)
+- [Google AI](https://aistudio.google.com/projects) (via Google Account)
+  - [Model Prices](https://ai.google.dev/gemini-api/docs/pricing)
 - [OpenCode Zen](https://opencode.ai/zen) (via GitHub account)
   - borderline fraudulent marketing of "zero markups". their "small payment processing fee of 1.23 USD per 20 USD balance top-up" amounts to a 6.15% fee, because you only can spend in 20 USD increments.
   - can be used in any tool/agent, not just in OpenCode
   - by far not as cheap as DeepInfra
   - but performs well in OpenCode, even via ACP (in Zed)
-- [xAI](https://console.x.ai) (normal login)
-  - no free models
-  - good mix of cheap (Grok 4 Fast) and frontier (Grok 4.20)
+- Anthropic
+  - [Model Prices](https://platform.claude.com/docs/en/about-claude/pricing)
 
 ## ACP Coding Agent + Provider/Router
 
