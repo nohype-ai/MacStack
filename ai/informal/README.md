@@ -38,6 +38,7 @@ Background on specific aspects is documented in this folder:
   - login via GitHub would be possible (as second account or to simplify)
 - [DeepInfra](https://deepinfra.com) (via GitHub account)
   - cheap and fast inference provider for open models
+  - [Model Prices](https://deepinfra.com/models/text-generation)
 - [xAI](https://console.x.ai) (normal login)
   - no free models
   - good mix of cheap (Grok 4 Fast) and frontier (Grok 4.20)
@@ -71,12 +72,18 @@ The basic category here is coding (not general purpose), cloud inference (not lo
 * Use a given provider/router only with the best agent available for it (why use Anthropic account with any other agent than Claude Code)
 * Cover range of cheap/fast- versus intelligent models as well as open weights- versus proprietary models
 
+**Viable:**
 | Agent | Provider/Router | free/paid | In Zed via ACP | In Terminal |
 | --- | --- | --- | --- | --- |
+| Gemini CLI | Google AI | free tier (login) | ✅ (5?) | ✅ (5) |
 | OpenCode | DeepInfra | paid | ✅ (2) | ✅ (2) |
 | OpenCode | xAI | paid | ✅ | ✅ |
-| Gemini CLI | Google AI | free + paid | ✅ | ✅ |
+| Gemini CLI | Google AI | paid (API key) | ✅ (5?) | ✅ (5) |
 | Claude Code | Anthropic | paid | ✅ | ✅ |
+
+**Ruled Out:**
+| Agent | Provider/Router | free/paid | In Zed via ACP | In Terminal |
+| --- | --- | --- | --- | --- |
 | OpenCode | OpenCode Zen | paid models (+6.15% fee) | ✅ | ✅ |
 | Cursor CLI | Cursor | paid subscription | ⚠️ (4) | ✅ |
 | Cursor CLI | Cursor | free tier | 🛑 (3) | ✅ |
@@ -86,12 +93,53 @@ The basic category here is coding (not general purpose), cloud inference (not lo
 ### Issues
 
 1. 🛑 OpenCode + OpenRouter: does currently not work in Zed at all, whether with free or paid models. Seems to be a known issue with OpenRouter, which does not even work in the Zed agent (without ACP).
-2. ℹ️ OpenCode + DeepInfra: The model list is outdated because DeepInfra updates its available models rapidly, while OpenCode relies on models.dev. Solution: add a opencode.json file in ~/.config/opencode/ and define some desired but missing models in there. Prefix their names with "di-custom: " or so to make them discoverable. Backup/example: [opencode.json](../../config/opencode/opencode.json). (Related [GitHub Issue](https://github.com/anomalyco/opencode/issues/6231))
+2. ℹ️ OpenCode + DeepInfra: The model list is outdated because DeepInfra updates its available models rapidly, while OpenCode relies on models.dev. Solution: add a opencode.json file in ~/.config/opencode/ and define some desired but missing models in there. Prefix their names with "di-custom: " or so to make them discoverable. Backup/example: [opencode.json](../config/opencode/opencode.json). (Related [GitHub Issue](https://github.com/anomalyco/opencode/issues/6231))
 3. 🛑 Cursor CLI + Cursor free tier: ACP is [explicitly not offered on the free tier](https://cursor.com/blog/jetbrains-acp).
 4. ⚠️ Cursor CLI + Cursor paid subscription: Presumably this works. But of course it's bound to a subscription.
+5. ℹ️ Gemini CLI: Tuning model params (temperature etc.) has big impact on agentic performance. See [gemini/README.md](../gemini/README.md). I could not fully verify that the custom config is also loaded in Zed via ACP, but it seems highly likely.
 
 **Every ACP Agent:**
 * ⚠️ Basic thread management functions like "resuming threads from history" do not even work with "the reference ACP implementation" (Gemini CLI). This also means Zed offers no way to edit the agent's thread history (if it is even created) -> delete OpenCode threads by deleting `~/.local/share/opencode/opencode.db*`. Apply an equivalent solution with other agents.
+
+### Models Overview
+
+Models are grouped by provider and sorted by cost per token.
+
+#### DeepInfra: Open Weights Models
+
+| Model | Tokens In | Tokens Out | SWE Bench verified | Arena.ai Coding | Experience |
+|---|---|---|---|---|---|
+| Nemotron-3-Nano-30B-A3B | 0.05 | 0.20 | 38.8% | — | 🛑 bad tool calling, did not finish simple edit |
+| Step-3.5-Flash | 0.10 | 0.30 | 74.4% | — | ✅ did broad research plus simple edit quite fast |
+| NVIDIA-Nemotron-3-Super-120B-A12B | 0.10 | 0.50 | 60.5% | — | ❓ took long for simple edit, overthinking |
+| DeepSeek-V3.2 | 0.26 | 0.38 | 73.1% | 1325 | 🛑 read unrelated files, hallucinated URLs, took too long (DNF) |
+| MiniMax-M2.5 | 0.27 | 0.95 | 80.2% | 1403 | ✅ web requests and simple edits blazingly fast, efficient reasoniong |
+| Qwen 3.5 122B | 0.29 | 2.90 | 70.4% | 1364 |  |
+| Kimi K2.5 | 0.45 | 2.25 | 76.8% | 1447 |  |
+| GLM-5 | 0.80 | 2.56 | 77.8% | 1445 |  |
+| Mimo v2 Pro | 1.00 | 3.00 | 78.0% | 1437 | |
+
+#### xAI
+
+| Model | Tokens In | Tokens Out | SWE Bench verified | Arena.ai Coding | Experience |
+|---|---|---|---|---|---|
+| Grok 4.1 Fast (reasoning) | 0.20 | 0.50 | 70.8% | 1233 | ✅ fast, to the point, pragmatic, asks user instead of endless retries |
+| Grok 4.20 (reasoning) | 2.00 | 6.00 | 76% | 1378 | ❓ Extremely fast and to the point, bordering on denial of work |
+
+#### Google AI
+
+| Model | Tokens In | Tokens Out | SWE Bench verified | Arena.ai Coding | Experience |
+|---|---|---|---|---|---|
+| Gemini 3.1 Flash Lite Preview | 0.25 | 1.50 | 58% | 1242 | |
+| Gemini 3 Flash Preview (low thinking) | 0.50 | 3.00 |  | 1392 | ✅ works wonderfully |
+| Gemini 3.1 Pro Preview | 2.00 | 12.00 | 80.6% | 1455 |  |
+
+#### Anthropic
+
+| Model | Tokens In | Tokens Out | SWE Bench verified | Arena.ai Coding | Experience |
+|---|---|---|---|---|---|
+| Claude Sonnet 4.6 | 3.00 | 15.00 | 77.4% | 1523 |  |
+| Claude Opus 4.6 | 5.00 | 25.00 | 78.2% | 1549 |  |
 
 ## General Purpose agents
 

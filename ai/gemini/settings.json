@@ -1,0 +1,28 @@
+{
+  "security": {
+    "auth": {
+      "selectedType": "oauth-personal"
+    }
+  },
+  "model": {
+    "name": "custom"
+  },
+  "modelConfigs": {
+    "customAliases": {
+      "custom": {
+        "extends": "chat-base-3",
+        "modelConfig": {
+          "model": "gemini-3-flash-preview",
+          "generateContentConfig": {
+            "temperature": 0.6,
+            "topP": 0.95,
+            "topK": 40,
+            "thinkingConfig": {
+              "thinkingLevel": "LOW"
+            }
+          }
+        }
+      }
+    }
+  }
+}

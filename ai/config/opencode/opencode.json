@@ -23,6 +23,10 @@
         // $0.26 in, $0.38 out
         "deepseek-ai/DeepSeek-V3.2": {
           "name": "di-custom: DeepSeek-V3.2"
+        },
+        // $0.27 in, $0.95 out
+        "MiniMaxAI/MiniMax-M2.5": {
+          "name": "di-custom: MiniMax-M2.5"
         }
       }
     }
