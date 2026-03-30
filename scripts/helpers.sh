@@ -5,9 +5,14 @@ ensure_zshrc_content() {
     local content="$1"
     local zshrc_file="$HOME/.zshrc"
 
+    # Create .zshrc if it does not exist yet
+    if [[ ! -f "$zshrc_file" ]]; then
+        touch "$zshrc_file"
+    fi
+
     # Check if the content already exists in .zshrc (exact character match)
     local file_content="$(cat "$zshrc_file" 2>/dev/null || echo "")"
-    
+
     if [[ "$file_content" == *"$content"* ]]; then
         return 0
     fi
@@ -22,7 +27,7 @@ ensure_zshrc_content() {
 # Check that a required file exists
 assert_file_exists() {
     local file_path="$1"
-    
+
     if [[ ! -f "$file_path" ]]; then
         echo "❌ Required file not found: $file_path"
         exit 1
@@ -34,13 +39,13 @@ app_exists() {
     local app_name="$1"
     # Automatically append .app if not already present
     [[ "$app_name" != *.app ]] && app_name="${app_name}.app"
-    
+
     # First, check common installation directories (fast, no indexing needed)
     # This handles fresh Homebrew installs before Spotlight has indexed them
     [[ -d "/Applications/$app_name" ]] && return 0
     [[ -d "$HOME/Applications/$app_name" ]] && return 0
     [[ -d "/System/Applications/$app_name" ]] && return 0
-    
+
     # Fall back to Spotlight search for apps in non-standard locations
     mdfind "kMDItemKind == 'Application' && kMDItemFSName == '$app_name'" 2>/dev/null | grep -q .
 }
@@ -51,7 +56,7 @@ restore_ide_settings() {
     local app_support_folder="$2"
     local settings_file="$3"
     local keybindings_file="$4"
-    
+
     if app_exists "$app_name"; then
         echo "⚙️  Restoring settings and keybindings for $app_name ..."
         local user_settings_dir="$HOME/Library/Application Support/$app_support_folder/User"
@@ -64,7 +69,7 @@ restore_ide_settings() {
 # Run a command quietly, only showing output if it fails
 silent() {
     local output_file=$(mktemp)
-    
+
     # Run the command (passed as arguments), redirecting both stdout and stderr
     if "$@" > "$output_file" 2>&1; then
         rm "$output_file"
