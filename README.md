@@ -20,7 +20,7 @@ The Mac's automated configuration is determined by these components:
 * Software stack: mostly declared in [`Brewfile`](Brewfile)
 * Shell customizations: scripts in [`sourced_in_zshrc/`](scripts/sourced_in_zshrc) folder
 * Further software setup: [`update_other_software.sh`](scripts/update_other_software.sh)
-* IDE settings: [vscode/settings.json](vscode/settings.json), activation in [`.env`](.env.example), see [`vscode/README.md`](vscode/README.md)
+* VSCode IDE settings: [stack/vscode/settings.json](stack/vscode/settings.json), activation in [`.env`](.env.example), see [`stack/vscode/README.md`](stack/vscode/README.md)
 
 ## How?
 
@@ -46,7 +46,7 @@ On a fresh system that may not even have GitHub authentication configured:
 
 There may be some remaining manual steps to complete your setup:
 
-* If Raycast is part of your setup, [import Raycast settings](informal/raycast/README.md#setup) from your `.rayconfig` file.
+* If Raycast is part of your setup, [import Raycast settings](stack/raycast/README.md#setup) from your `.rayconfig` file.
 
 ### 🧼 Subsequent System Updates
 
@@ -86,7 +86,7 @@ Without customizing anything, the resulting setup will be as follows.
 ## To Do
 
 * apparently none of the dotfiles are present on a fresh macOS machine, so our scripts must take that into account
-* [Setup default SSH key](notes/feature_plans/ssh/) (for GitHub, GitLab etc.)
+* [Setup default SSH key](documentation/feature_plans/ssh/) (for GitHub, GitLab etc.)
 * review how the commands/functions in `customize_the_shell.sh` are integrated ... what would be best practice? should we rather have separate .sh files or unix executables and add our own path to `$PATH`?
 * Review whether we should rather use mise for managing dev tools that require further version management and benefit from mise features. Apparently mise also offers some declarative capabilities for global tool managament (~/.config/mise/mise.toml ...)
 * The script for force adopting apps into Homebrew is essentially a PoC fix of our regular update procedure which apparently does not bring many casks properly into Homebrew if that software (mostly GUI apps) was already installed on the system outside of Homebrew. We should bring those checks into the regular update procedure.

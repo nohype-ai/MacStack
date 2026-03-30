@@ -1,11 +1,11 @@
 # AI Stack
 
-This README (and folder) documents my current state of finding a working AI stack, now focused on BYOK.
+This README (and folder) documents my current state of finding a working AI stack.
 
 Background on specific aspects is documented in this folder:
-* [BYOK](./byok%20overview.md)
-* [Coding Agents](./coding%20agents%20overview.md)
-* [Free Tiers of VSCode based IDEs](./VSCode%20based%20IDE%20free%20tiers.md)
+* [BYOK](byok%20overview.md)
+* [Coding Agents](coding%20agents%20overview.md)
+* [Free Tiers of VSCode based IDEs](VSCode%20based%20IDE%20free%20tiers.md)
 
 ## Layers
 
@@ -93,10 +93,10 @@ The basic category here is coding (not general purpose), cloud inference (not lo
 ### Issues
 
 1. 🛑 OpenCode + OpenRouter: does currently not work in Zed at all, whether with free or paid models. Seems to be a known issue with OpenRouter, which does not even work in the Zed agent (without ACP).
-2. ℹ️ OpenCode + DeepInfra: The model list is outdated because DeepInfra updates its available models rapidly, while OpenCode relies on models.dev. Solution: add a opencode.json file in ~/.config/opencode/ and define some desired but missing models in there. Prefix their names with "di-custom: " or so to make them discoverable. Backup/example: [opencode.json](../config/opencode/opencode.json). (Related [GitHub Issue](https://github.com/anomalyco/opencode/issues/6231))
+2. ℹ️ OpenCode + DeepInfra: The model list is outdated because DeepInfra updates its available models rapidly, while OpenCode relies on models.dev. Solution: add a opencode.json file in ~/.config/opencode/ and define some desired but missing models in there. Prefix their names with "di-custom: " or so to make them discoverable. Backup/example: [opencode.json](opencode/opencode.json). (Related GitHub issue: [#6231](https://github.com/anomalyco/opencode/issues/6231))
 3. 🛑 Cursor CLI + Cursor free tier: ACP is [explicitly not offered on the free tier](https://cursor.com/blog/jetbrains-acp).
 4. ⚠️ Cursor CLI + Cursor paid subscription: Presumably this works. But of course it's bound to a subscription.
-5. ℹ️ Gemini CLI: Tuning model params (temperature etc.) has big impact on agentic performance. See [gemini/README.md](../gemini/README.md). I could not fully verify that the custom config is also loaded in Zed via ACP, but it seems highly likely.
+5. ℹ️ Gemini CLI: Tuning model params (temperature etc.) has big impact on agentic performance. See [gemini/README.md](gemini/README.md). I could not fully verify that the custom config is also loaded in Zed via ACP, but it seems highly likely.
 
 **Every ACP Agent:**
 * ⚠️ Basic thread management functions like "resuming threads from history" do not even work with "the reference ACP implementation" (Gemini CLI). This also means Zed offers no way to edit the agent's thread history (if it is even created) -> delete OpenCode threads by deleting `~/.local/share/opencode/opencode.db*`. Apply an equivalent solution with other agents.

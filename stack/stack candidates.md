@@ -1,6 +1,6 @@
 # Stack Candidates
 
-This file does **not** document the current stack but interesting things to check out that might join the stack in the future.
+This file documents interesting things to check out which might join the stack in the future, it does **not** document the current stack.
 
 ## System
 - [omarchy.org (linux distribution)](https://omarchy.org)

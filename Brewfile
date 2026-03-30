@@ -9,8 +9,8 @@ cask "stats" # system health monitor, including chip temperature
 
 # communication, browser
 cask "WhatsApp"
-cask "brave-browser" # PWAs can block ads on YT music, but Brave wastes main memory
-mas "AdGuard Mini: Safari Adblock", id: 1440147259 # block ads in Safari (not YT Music in PWA)
+cask "brave-browser" # PWAs can block ads on YT (-Music), but Brave wastes main memory
+mas "AdGuard Mini: Safari Adblock", id: 1440147259 # block ads in Safari, not on YT (-Music)
 mas "Noir – Dark Mode for Safari", id: 1592917505 # force dark mode on websites in Safari
 
 # writing, diagramming, office

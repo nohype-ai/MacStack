@@ -33,10 +33,10 @@ xattr -rd com.apple.quarantine /opt/homebrew/Caskroom/cursor-cli
 # Update IDE settings and keybindings
 
 if [[ "$VSCODE_SETTINGS_RESTORE" == "true" ]]; then
-    settings="$MAC_STACK_ROOT/vscode/settings.json"
+    settings="$MAC_STACK_ROOT/stack/vscode/settings.json"
     assert_file_exists "$settings"
 
-    keybindings="$MAC_STACK_ROOT/vscode/keybindings.json"
+    keybindings="$MAC_STACK_ROOT/stack/vscode/keybindings.json"
     assert_file_exists "$keybindings"
 
     app_names=("Visual Studio Code" "Cursor" "Antigravity" "Kiro" "Windsurf" "VSCodium")

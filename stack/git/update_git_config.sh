@@ -17,11 +17,11 @@ git config --global pull.ff only
 git config --global push.default simple
 # only for HTTPS connections
 git config --global http.postBuffer 157286400
-git config --global credential.helper osxkeychain 
+git config --global credential.helper osxkeychain
 
 gitignore_global="$HOME/.gitignore_global"
 
 if [[ ! -f "$gitignore_global" ]]; then
     echo "🐙 Creating ~/.gitignore_global since it doesn't exist ..."
-    cp "$MAC_STACK_ROOT/git/.gitignore_global" "$gitignore_global"
+    cp "$MAC_STACK_ROOT/stack/git/.gitignore_global" "$gitignore_global"
 fi
