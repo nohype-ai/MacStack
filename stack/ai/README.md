@@ -123,8 +123,8 @@ Models are grouped by provider and sorted by cost per token.
 
 | Model | Tokens In | Tokens Out | SWE Bench verified | Arena.ai Coding | Experience |
 |---|---|---|---|---|---|
-| Grok 4.1 Fast (reasoning) | 0.20 | 0.50 | 70.8% | 1233 | ✅ fast, to the point, pragmatic, asks user instead of endless retries |
-| Grok 4.20 (reasoning) | 2.00 | 6.00 | 76% | 1378 | ❓ Extremely fast and to the point, bordering on denial of work |
+| Grok 4.1 Fast (reasoning) | 0.20 | 0.50 | 70.8% | 1233 | ❓ fast, to the point, pragmatic, asks user instead of endless retries, has trouble editing files |
+| Grok 4.20 (reasoning) | 2.00 | 6.00 | 76% | 1378 | ✅ Extremely fast and to the point, sometimes reluctant to edit files directly |
 
 #### Google AI
 
