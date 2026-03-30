@@ -36,25 +36,25 @@
   {
     "context": "Editor && mode == full",
     "bindings": {
-      "cmd-\\": "agent::AddSelectionToThread",
+      "cmd-|": "agent::AddSelectionToThread",
     },
   },
   {
     "context": "Workspace",
     "bindings": {
-      "cmd-|": "agent::ToggleFocus",
+      "cmd-\\": "agent::ToggleFocus",
     },
   },
   {
     "context": "AgentPanel",
     "bindings": {
-      "cmd-\\": "agent::AddSelectionToThread",
+      "cmd-|": "agent::AddSelectionToThread",
     },
   },
   {
     "context": "Terminal",
     "bindings": {
-      "cmd-\\": "agent::AddSelectionToThread",
+      "cmd-|": "agent::AddSelectionToThread",
     },
   },
   {
