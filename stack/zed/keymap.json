@@ -241,4 +241,64 @@
       "cmd-k down": "pane::SplitDown",
     },
   },
+  {
+    "context": "Pane",
+    "bindings": {
+      "ctrl-cmd-left": "pane::GoBack"
+    }
+  },
+  {
+    "context": "Pane",
+    "unbind": {
+      "ctrl--": "pane::GoBack"
+    }
+  },
+  {
+    "context": "ThreadHistory",
+    "bindings": {
+      "ctrl-cmd-left": "pane::GoBack"
+    }
+  },
+  {
+    "context": "ThreadHistory",
+    "unbind": {
+      "ctrl--": "pane::GoBack"
+    }
+  },
+  {
+    "context": "AcpThread",
+    "bindings": {
+      "ctrl-cmd-left": "pane::GoBack"
+    }
+  },
+  {
+    "context": "AcpThread",
+    "unbind": {
+      "ctrl--": "pane::GoBack"
+    }
+  },
+  {
+    "context": "AgentConfiguration",
+    "bindings": {
+      "ctrl-cmd-left": "pane::GoBack"
+    }
+  },
+  {
+    "context": "AgentConfiguration",
+    "unbind": {
+      "ctrl--": "pane::GoBack"
+    }
+  },
+  {
+    "context": "Pane",
+    "bindings": {
+      "ctrl-cmd-right": "pane::GoForward"
+    }
+  },
+  {
+    "context": "Pane",
+    "unbind": {
+      "ctrl-_": "pane::GoForward"
+    }
+  }
 ]
