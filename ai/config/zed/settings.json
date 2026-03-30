@@ -7,17 +7,17 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-  "use_system_window_tabs": false,
+  "use_system_window_tabs": true,
   "tabs": {
-    "file_icons": false,
-    "git_status": false,
+    "file_icons": true,
+    "git_status": true,
   },
   "title_bar": {
-    "show_menus": false,
-    "show_onboarding_banner": true,
+    "show_menus": true,
+    "show_onboarding_banner": false,
     "show_sign_in": true,
     "show_user_menu": true,
-    "show_branch_icon": false,
+    "show_branch_icon": true,
   },
   "agent_servers": {
     "claude-acp": {
@@ -54,11 +54,6 @@
   "session": {
     "trust_all_worktrees": true,
   },
-  "icon_theme": {
-    "mode": "system",
-    "light": "Zed (Default)",
-    "dark": "Zed (Default)",
-  },
   "preview_tabs": {
     "enabled": true,
   },
@@ -68,7 +63,7 @@
   "tab_bar": {
     "show_nav_history_buttons": true,
     "show": true,
-    "show_tab_bar_buttons": true,
+    "show_tab_bar_buttons": false,
   },
   "sticky_scroll": {
     "enabled": false,
@@ -87,7 +82,6 @@
     "enabled": false,
   },
   "soft_wrap": "editor_width",
-  "base_keymap": "VSCode",
   "ui_font_size": 16,
   "buffer_font_size": 15,
   "theme": {

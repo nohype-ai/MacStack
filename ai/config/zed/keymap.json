@@ -1,11 +1,244 @@
 [
   {
+    "context": "Editor && extension == md",
+    "bindings": {
+      "cmd-p": "markdown::OpenPreview",
+    },
+  },
+  {
+    "context": "Editor && extension == md",
+    "bindings": {
+      "alt-cmd-p": "markdown::OpenPreviewToTheSide",
+    },
+  },
+  {
+    "context": "Editor && extension == svg",
+    "bindings": {
+      "cmd-p": "svg::OpenPreview",
+    },
+  },
+  {
+    "context": "Editor && extension == svg",
+    "bindings": {
+      "alt-cmd-p": "svg::OpenPreviewToTheSide",
+    },
+  },
+  {
+    "bindings": {
+      "cmd-p": "csv::OpenPreview",
+    },
+  },
+  {
+    "bindings": {
+      "alt-cmd-p": "csv::OpenPreviewToTheSide",
+    },
+  },
+  {
+    "context": "Editor && mode == full",
+    "bindings": {
+      "cmd-\\": "agent::AddSelectionToThread",
+    },
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "cmd-|": "agent::ToggleFocus",
+    },
+  },
+  {
+    "context": "AgentPanel",
+    "bindings": {
+      "cmd-\\": "agent::AddSelectionToThread",
+    },
+  },
+  {
     "context": "Terminal",
     "bindings": {
-      "shift-enter": [
-        "terminal::SendText",
-        "\u001b\r"
-      ]
-    }
-  }
+      "cmd-\\": "agent::AddSelectionToThread",
+    },
+  },
+  {
+    "bindings": {
+      "alt-cmd-right": "pane::ActivateNextItem",
+    },
+  },
+  {
+    "bindings": {
+      "alt-cmd-left": "pane::ActivatePreviousItem",
+    },
+  },
+  {
+    "context": "Workspace",
+    "unbind": {
+      "cmd-?": "agent::ToggleFocus",
+    },
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "cmd-?": "workspace::ToggleBottomDock",
+    },
+  },
+  {
+    "context": "Workspace",
+    "unbind": {
+      "cmd-j": "workspace::ToggleBottomDock",
+    },
+  },
+  {
+    "context": "Editor",
+    "unbind": {
+      "cmd-|": "editor::MoveToEnclosingBracket",
+    },
+  },
+  {
+    "context": "Editor && mode == full",
+    "unbind": {
+      "cmd->": "agent::AddSelectionToThread",
+    },
+  },
+  {
+    "context": "AgentPanel",
+    "unbind": {
+      "cmd->": "agent::AddSelectionToThread",
+    },
+  },
+  {
+    "context": "Terminal",
+    "unbind": {
+      "cmd->": "agent::AddSelectionToThread",
+    },
+  },
+  {
+    "context": "ContextEditor > Editor",
+    "unbind": {
+      "cmd-<": "assistant::InsertIntoEditor",
+    },
+  },
+  {
+    "context": "Editor && mode == full",
+    "unbind": {
+      "cmd-<": "assistant::InsertIntoEditor",
+    },
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "cmd-<": "workspace::ToggleLeftDock",
+    },
+  },
+  {
+    "context": "Workspace",
+    "unbind": {
+      "cmd-b": "workspace::ToggleLeftDock",
+    },
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "cmd->": "workspace::ToggleRightDock",
+    },
+  },
+  {
+    "context": "Workspace",
+    "unbind": {
+      "alt-cmd-b": "workspace::ToggleRightDock",
+    },
+  },
+  {
+    "context": "Workspace",
+    "unbind": {
+      "cmd-p": "file_finder::Toggle",
+    },
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "alt-cmd-.": "pane::SplitRight",
+    },
+  },
+  {
+    "context": "Editor",
+    "unbind": {
+      "cmd-\\": "pane::SplitRight",
+    },
+  },
+  {
+    "context": "Pane",
+    "bindings": {
+      "alt-cmd-.": "pane::SplitRight",
+    },
+  },
+  {
+    "context": "Pane",
+    "unbind": {
+      "cmd-k right": "pane::SplitRight",
+    },
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "alt-cmd-.": "pane::SplitRight",
+    },
+  },
+  {
+    "context": "Terminal",
+    "unbind": {
+      "ctrl-alt-right": "pane::SplitRight",
+    },
+  },
+  {
+    "context": "Terminal",
+    "unbind": {
+      "cmd-d": "pane::SplitRight",
+    },
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "alt-cmd-,": "pane::SplitLeft",
+    },
+  },
+  {
+    "context": "Terminal",
+    "unbind": {
+      "ctrl-alt-left": "pane::SplitLeft",
+    },
+  },
+  {
+    "context": "Pane",
+    "bindings": {
+      "alt-cmd-,": "pane::SplitLeft",
+    },
+  },
+  {
+    "context": "Pane",
+    "unbind": {
+      "cmd-k left": "pane::SplitLeft",
+    },
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "alt-cmd-/": "pane::SplitDown",
+    },
+  },
+  {
+    "context": "Terminal",
+    "unbind": {
+      "ctrl-alt-down": "pane::SplitDown",
+    },
+  },
+  {
+    "context": "Pane",
+    "bindings": {
+      "alt-cmd-/": "pane::SplitDown",
+    },
+  },
+  {
+    "context": "Pane",
+    "unbind": {
+      "cmd-k down": "pane::SplitDown",
+    },
+  },
 ]
