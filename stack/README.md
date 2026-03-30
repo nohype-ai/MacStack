@@ -1,6 +1,6 @@
-# Informal Stack ("Infrastructure as Documentation")
+# The Stack
 
-The part of the stack that can not be declared as code is documented in this folder.
+This README and folder documents elements of the stack in formal and informal ways. Formal meaning actual code files of some sort (like scripts and JSON), and informal meaning "infrastructure as documentation" where declaring it as code is impractical.
 
 ## Helper Apps
 
