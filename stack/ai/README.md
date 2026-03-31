@@ -6,17 +6,21 @@ Research is documented in [research/README.md](research/README.md)
 
 ## Agent Clients
 
+macOS apps that offer GUI frontends to agents – natively or via ACP.
+
 - [Zed](https://dashboard.zed.dev) (via GitHub account)
   - login unlocks tab completions ("edit predictions")
   - Zed Pro is only for the mediocre internal Zed agent
 - [OpenCode desktop app](https://opencode.ai/download) (no login)
   - `brew install --cask opencode-desktop`
-- [Claude desktop app](https://code.claude.com/docs/en/desktop-quickstart)
+- [Claude desktop app](https://code.claude.com/docs/en/desktop-quickstart) (via Claude/Anthropic account)
   - with free tier: only chat
   - with subscripton: Code and CoWork
   - no way to use API key as in Claude Code CLI
 
 ## Agents
+
+CLI agents that can be used via ACP, TUI, or headless.
 
 ### Coding
 - [OpenCode](https://opencode.ai) (no login)
@@ -28,6 +32,8 @@ Research is documented in [research/README.md](research/README.md)
 - [OpenClaw](https://openclaw.ai) (🛑 not successfully set up yet)
 
 ## Providers
+
+Cloud services that offer access to model inference.
 
 ### Routers (Aggregators)
 - [OpenRouter](https://openrouter.ai/workspaces/default) (via GitHub account)
@@ -61,9 +67,9 @@ Research is documented in [research/README.md](research/README.md)
 
 ## Models
 
-Models are grouped by provider and sorted by cost per token.
+Models are grouped by [agent+provider combination](research/coding%20agents.md) and are sorted by cost per token.
 
-### DeepInfra: Open Weights Models
+### OpenCode + DeepInfra (Open Weights Models)
 
 | Model | Tokens In | Tokens Out | SWE Bench verified | Arena.ai Coding | ACP in Zed |
 |---|---|---|---|---|---|
@@ -77,14 +83,14 @@ Models are grouped by provider and sorted by cost per token.
 | GLM-5 | 0.80 | 2.56 | 77.8% | 1445 |  |
 | Mimo v2 Pro | 1.00 | 3.00 | 78.0% | 1437 | |
 
-### xAI
+### OpenCode + xAI (Grok models)
 
 | Model | Tokens In | Tokens Out | SWE Bench verified | Arena.ai Coding | ACP in Zed |
 |---|---|---|---|---|---|
 | Grok 4.1 Fast (reasoning) | 0.20 | 0.50 | 70.8% | 1233 | ❓ fast, to the point, pragmatic, asks user instead of endless retries, has trouble editing files |
 | Grok 4.20 (reasoning) | 2.00 | 6.00 | 76% | 1378 | ✅ Extremely fast and to the point, sometimes reluctant to edit files directly |
 
-### Google AI
+### Gemini CLI + Google AI (Gemini models)
 
 | Model | Tokens In | Tokens Out | SWE Bench verified | Arena.ai Coding | ACP in Zed |
 |---|---|---|---|---|---|
@@ -92,7 +98,7 @@ Models are grouped by provider and sorted by cost per token.
 | Gemini 3 Flash Preview (low thinking) | 0.50 | 3.00 |  | 1392 | ✅ works wonderfully |
 | Gemini 3.1 Pro Preview | 2.00 | 12.00 | 80.6% | 1455 |  |
 
-### Anthropic
+### Claude Code + Anthropic (Claude models)
 
 | Model | Tokens In | Tokens Out | SWE Bench verified | Arena.ai Coding | ACP in Zed |
 |---|---|---|---|---|---|
