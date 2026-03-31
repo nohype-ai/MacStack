@@ -15,19 +15,19 @@ It currently covers:
   
 ### System Configuration
 
-The Mac's automated configuration is determined by these components:
+The Mac's configuration is defined in the [stack/](stack/) folder. Some of the components there are part of the automated process:
 * General variables: [`.env`](stack/.env) file as examplified by [`.env.example`](stack/.env.example)
 * Software stack: mostly declared in [`Brewfile`](stack/Brewfile)
-* Shell customizations: scripts in [`sourced_in_zshrc/`](scripts/sourced_in_zshrc) folder
-* Further software setup: [`update_other_software.sh`](scripts/update_other_software.sh)
-* VSCode IDE settings: [stack/vscode/settings.json](stack/vscode/settings.json), activation in [`.env`](stack/.env), see [`stack/vscode/README.md`](stack/vscode/README.md)
+* Shell customization: [`custom_zshrc_content.sh`](stack/custom_zshrc_content.sh)
+* Further updates: [`custom_mack_update.sh`](stack/custom_mack_update.sh)
+* VSCode IDE settings: [settings.json](stack/vscode/settings.json), activation in [`.env`](stack/.env), see [`README.md`](stack/vscode/README.md)
 
 ## How?
 
 ### 🎯 TLDR
 
    1. Define your system configuration once by adapting [these components](#system-configuration)
-   2. Apply that configuration (repeatedly) by running [`bin/mack`](bin/mack) (directly or via global `mack` command)
+   2. Apply that configuration (repeatedly) by running `bin/mack update` or global `mack update` or `update` command
    
 It's irrelevant whether you've just installed macOS and need to set up this new machine or whether you want to repeatedly update your established machine. The update script is idempotent and works for both cases.
 
@@ -38,11 +38,9 @@ On a fresh system that may not even have GitHub authentication configured:
 1. Make sure your [iCloud account is set up](https://support.apple.com/en-us/102314), so that Mac App Store apps can be installed automatically
 2. [Download this repository](https://github.com/nohype-ai/MacStack/archive/refs/heads/master.zip)
 3. Copy [`stack/.env.example`](stack/.env.example), name the copy `.env`, customize [`stack/.env`](stack/.env)
-   - "dot files" like `.env.example` are hidden by default
-   - show/hide them by pressing `Command + Shift + .`
-4. _Technically Optional_: Customize any of the other [components listed above](#system-configuration)
-   - you probably want to at least adapt or simply delete [`personalize_the_shell.sh`](scripts/sourced_in_zshrc/personalize_the_shell.sh)
-5. Run `mack update` in the [bin/](bin/) folder
+   - "dotfiles" like `.env.example` are hidden by default. Show/hide them by pressing `Command + Shift + .`
+4. Customize any of the other [components listed above](#system-configuration).
+5. Run `bin/mack update`.
 
 There may be some remaining manual steps to complete your setup:
 
@@ -52,7 +50,7 @@ There may be some remaining manual steps to complete your setup:
 
 After you have successfully set up the system once:
 
-1. Call this command from anywhere: `mack update` (or per alias: `update`)
+1. Call this command from anywhere: `mack update` (or just `update`)
 
 ## Exact Default Setup
 
@@ -66,10 +64,8 @@ Without customizing anything, the resulting setup will be as follows.
    - 🎯 this is the central and largest part of the software stack
 4. `brew` system cleaned up
    - deleted old package versions and cache
-5. `~/.zshrc` loads (sources) various shell customizations from three files:
-   - [`setup_cli_tools.sh`](scripts/sourced_in_zshrc/setup_cli_tools.sh): Necessary setup for CLI tools like `brew` and `pyenv`
-   - [`customize_the_shell.sh`](scripts/sourced_in_zshrc/customize_the_shell.sh): General setup including prompt, aliases, functions
-   - [`personalize_the_shell.sh`](scripts/sourced_in_zshrc/personalize_the_shell.sh): Highly individual setup, should be adapted or deleted
+5. `~/.zshrc` loads (sources) various shell customizations.
+   - [`custom_zshrc_content.sh`](stack/custom_zshrc_content.sh): Your indiviual part of the shell customization
 6. `mack` is available system-wide
    - `mack update` (or just `update`): trigger this whole update process
    - `mack brew-clip` uninstalls all Homebrew packages that are **not** (yet) in [`Brewfile`](stack/Brewfile) as well as orphaned dependencies, caches, old package versions and cask installers.
@@ -78,17 +74,12 @@ Without customizing anything, the resulting setup will be as follows.
    - necessary parameters plus some basic best-practice ones
    - other pre-existing parameters are preserved
    - default `~/.gitignore_global` created if none existed yet
-8. `python` installed via `uv`
-9. `litellm` installed via `uv`
-10. `markitdown` installed via `uv`
-    - required by [`unveil`](scripts/sourced_in_zshrc/customize_the_shell.sh) function
-11. IDE settings restored (overwritten) from backup if `VSCODE_SETTINGS_RESTORE` is set `true` in [`stack/.env`](stack/.env) file.
+8. Further installations specific to your stack in [`custom_mack_update.sh`](stack/custom_mack_update.sh)
+9. IDE settings restored (overwritten) from backup if `VSCODE_SETTINGS_RESTORE` is set `true` in [`.env`](stack/.env) file.
 
 ## To Do
 
 * [Setup default SSH key](documentation/feature_plans/ssh/) (for GitHub, GitLab etc.)
-* functions in `customize_the_shell.sh` should be separate executables scripts in [bin/](bin/)
-* Decompose the [scripts/](scripts/) folder: everything one may want to customize and which defines the stack should go into [stack/](stack/)
 * Decompose the [stack/](stack/) folder: everything that is part of the Mack Stack process and does not get customized by an individual user should go into [scripts/](scripts/)
 * Review whether we should rather use mise for managing dev tools that require further version management and benefit from mise features. Apparently mise also offers some declarative capabilities for global tool managament (~/.config/mise/mise.toml ...)
 * The script for force adopting apps into Homebrew is essentially a PoC fix of our regular update procedure which apparently does not bring many casks properly into Homebrew if that software (mostly GUI apps) was already installed on the system outside of Homebrew. We should bring those checks into the regular update procedure.

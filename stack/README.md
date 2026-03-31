@@ -1,6 +1,6 @@
 # The Stack
 
-This README and folder documents elements of the stack in formal and informal ways. Formal meaning actual code files of some sort (like scripts and JSON), and informal meaning "infrastructure as documentation" where declaring it as code is impractical.
+This folder defines your actual stack. It holds everything you may want to customize. This includes formal and informal elements, informal meaning "infrastructure as documentation" where declaring it as code is impractical, and formal meaning actual code files of some sort (like scripts and JSON) – some of which are inputs to the automated update/setup process.
 
 ## Helper Apps
 
