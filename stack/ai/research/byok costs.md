@@ -1,6 +1,8 @@
-# BYOK AI Costs
+# BYOK Costs
 
 ## Why BYOK (over Subscriptions)?
+
+To avoid lock-in while using **OpenCode** (or other code editors, agents or LLM clients), you can just take an API key generated from any provider, like OpenRouter, xAI, or Google AI.
 
 * Use in products (not just for personal use)
 * Use/test all apps (not just app of subscription provider)
@@ -123,24 +125,6 @@ Google's models are accessible via Google AI Studio (which has generous free tie
     *   **Cost:** ~$1.25 - $2.00 per 1M Input | ~$10.00 - $12.00 per 1M Output *(Note: Input/Output cost doubles for requests exceeding a 200,000 token context window)*
     *   **Intelligence:** Elite class. Gemini Pro routinely pushes the boundaries on hardest-tier prompts and code reasoning. 
     *   **Value:** Moderate. Among the smartest models in the world, but you pay a premium for its capabilities.
-
-## Aggregators
-
-To avoid lock-in while using **OpenCode** (or other code editors), you can just take an API key generated from an aggregator provider (like OpenRouter), or directly from xAI, or Google AI Studio.
-
-An **"aggregator provider"** (sometimes called "open router service") bundles together dozens of different AI models from various physical hosts (like DeepInfra, Groq, Together, and even Google/xAI directly) and puts them behind one single API endpoint and billing account.
-
-It works entirely through a single API key, and you make the model selection **directly inside your IDE/client tool**, not on the aggregator's website. You just tell your IDE which model you want to use. This is possible because the OpenAI API standard includes parameters for model selection.
-
-The term "Router" comes in here because an aggregator is fundamentally a "router" of API traffic:
-  1) There are two different layers of model selection: fixed (user-selected) vs. dynamic routing (intelligently matches model to task).
-  2) Even when the model is fixed, aggregators may route requests to different providers of that same model for price- & latency optimization.
-
-The beauty of an aggregator is:
-  1) The user really only has one account to manage and fund while getting access to all models. The user needs no accounts at xAI, Google, Groq etc.
-  2) Dynamic routing can automatically balance cost and quality on a per-request basis. Of course, this can be customized. OpenRouter, for example, offers powerful tools to customize the intelligence routing AND the provider routing.
-  
-The downside of an aggregator is: It charges a markup. OpenRouter for example charges 5.5%. So high volume applications that do not often switch models run cheaper if they connect directly to their favorite vendor. For example it makes sense to connect OpenClaw directly to DeepInfra, xAI or Google AI.
 
 ## Final Verdict: The "Intelligence per Dollar" Winners
 
