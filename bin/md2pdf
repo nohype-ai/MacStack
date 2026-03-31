@@ -1,0 +1,57 @@
+#!/usr/bin/env zsh
+
+# md2pdf: Converts Markdown to PDF using Pandoc and WeasyPrint.
+#
+# USAGE:
+# `md2pdf <markdown_file>`
+#
+# This function converts a specified Markdown file into a PDF document.
+# It leverages Pandoc for the conversion and WeasyPrint as the PDF engine,
+# allowing for high-quality PDF generation with custom styling.
+#
+# It automatically applies a CSS file (`pdf_style.css`) located in the same
+# directory as this script to style the generated PDF, ensuring a consistent
+# and professional appearance.
+#
+# WHY IT'S USEFUL:
+# Ideal for creating shareable, print-ready documents from Markdown sources.
+# It streamlines the process of generating reports, documentation, or any
+# text-based content that benefits from a polished PDF format, making it
+# easy to transform plain text into a beautifully formatted document.
+
+if [ -z "$1" ]; then
+    echo "Usage: md2pdf <markdown_file>"
+    return 1
+fi
+
+local input_file="$1"
+
+if [ ! -f "$input_file" ]; then
+    echo "Error: File '$input_file' not found."
+    return 1
+fi
+
+local output_file="${input_file%.*}.pdf"
+# Use the CSS file located in the same directory as this script
+local css_file="${0:A:h}/md2pdf.css"
+
+if [ ! -f "$css_file" ]; then
+    echo "Error: CSS file not found at '$css_file'"
+    return 1
+fi
+
+echo "Converting '$input_file' to PDF..."
+# We use grep to filter out harmless warnings from WeasyPrint about unsupported CSS properties
+# that Pandoc injects by default (gap with min(), overflow-x).
+pandoc "$input_file" \
+    -o "$output_file" \
+    --pdf-engine=weasyprint \
+    --css="$css_file" \
+    2> >(grep -v -E "Ignored .*(gap|overflow-x)" >&2)
+
+if [ $? -eq 0 ]; then
+    echo "✅ PDF created at: $output_file"
+else
+    echo "🛑 Conversion failed."
+    return 1
+fi

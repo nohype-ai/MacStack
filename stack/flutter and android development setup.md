@@ -17,9 +17,9 @@ brew "cocoapods" # necessary for building iOS apps with Flutter
 cask "android-commandlinetools" # for Android development
 ```
 
-## 2. setup_cli_tools.sh
+## 2. .zshrc
 
-Put this back into the setup_cli_tools.sh:
+Put this back into the mack_update_custom.sh so it gets sourced in .zshrc:
 ```bash
 # Setup Android SDK
 export ANDROID_HOME=/opt/homebrew/share/android-commandlinetools
