@@ -8,7 +8,7 @@ chmod 700 "$MAC_STACK_ROOT" # Only owner can access project
 # Set safe permissions for .env file and load it
 echo "🔒 Setting safe permissions for .env file and loading it ..."
 
-env_file="$MAC_STACK_ROOT/.env"
+env_file="$MAC_STACK_ROOT/stack/.env"
 
 if [[ -f "$env_file" ]]; then
     chmod 600 "$env_file" # Only owner can read/write .env file

@@ -16,11 +16,11 @@ It currently covers:
 ### System Configuration
 
 The Mac's automated configuration is determined by these components:
-* General variables: [`.env`](.env) file as examplified by [`.env.example`](.env.example)
+* General variables: [`.env`](stack/.env) file as examplified by [`.env.example`](stack/.env.example)
 * Software stack: mostly declared in [`Brewfile`](stack/homebrew/Brewfile)
 * Shell customizations: scripts in [`sourced_in_zshrc/`](scripts/sourced_in_zshrc) folder
 * Further software setup: [`update_other_software.sh`](scripts/update_other_software.sh)
-* VSCode IDE settings: [stack/vscode/settings.json](stack/vscode/settings.json), activation in [`.env`](.env.example), see [`stack/vscode/README.md`](stack/vscode/README.md)
+* VSCode IDE settings: [stack/vscode/settings.json](stack/vscode/settings.json), activation in [`.env`](stack/.env), see [`stack/vscode/README.md`](stack/vscode/README.md)
 
 ## How?
 
@@ -37,7 +37,7 @@ On a fresh system that may not even have GitHub authentication configured:
 
 1. Make sure your [iCloud account is set up](https://support.apple.com/en-us/102314), so that Mac App Store apps can be installed automatically
 2. [Download this repository](https://github.com/codeface-io/mac-stack/archive/refs/heads/master.zip)
-3. Copy [`.env.example`](.env.example), name the copy `.env`, customize [`.env`](.env)
+3. Copy [`stack/.env.example`](stack/.env.example), name the copy `.env`, customize [`stack/.env`](stack/.env)
    - "dot files" like `.env.example` are hidden by default
    - show/hide them by pressing `Command + Shift + .`
 4. _Technically Optional_: Customize any of the other [components listed above](#system-configuration)
@@ -82,7 +82,7 @@ Without customizing anything, the resulting setup will be as follows.
 9. `litellm` installed via `uv`
 10. `markitdown` installed via `uv`
     - required by [`unveil`](scripts/sourced_in_zshrc/customize_the_shell.sh) function
-11. IDE settings restored (overwritten) from backup if `VSCODE_SETTINGS_RESTORE` is set `true` in [`.env`](.env) file.
+11. IDE settings restored (overwritten) from backup if `VSCODE_SETTINGS_RESTORE` is set `true` in [`stack/.env`](stack/.env) file.
 
 ## To Do
 
