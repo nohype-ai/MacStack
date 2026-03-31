@@ -42,3 +42,6 @@ delete-flowlist-duplicates() {
     flowlistItemsFolder="$HOME/Library/Containers/com.flowtoolz.flowlist/Data/Documents/Flowlist-Beta/Items"
     find $flowlistItemsFolder -name "* *.json" -delete
 }
+
+# Setup antigravity
+export PATH="$PATH:$HOME/.antigravity/antigravity/bin"
