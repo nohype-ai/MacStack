@@ -19,8 +19,10 @@ This README and folder documents elements of the stack in formal and informal wa
 | General | Software Update → Automatic Updates → Download new updates when available | Off | |
 |  | Software Update → Automatic Updates → Install macOS updates | Off | |
 | Accessibility | Zoom → Use scroll gesture with modifier keys to zoom | On | |
+| | Modifier key for scroll gesture | ⌘ Command | |
 | Appearance | Theme → Icon & widget style | Dark, Auto | |
 |  | Theme → Folder colour | Graphite | |
+|  | Windows → Sidebar icon size | Large | |
 |  | Windows → Show scroll bars | Always | because mouse scrolling is not so smooth |
 |  | Windows → Click in the scroll bar to | Jump to the spot that's clicked | |
 | Desktop & Dock | Dock position on screen | Left | |
@@ -54,3 +56,11 @@ This README and folder documents elements of the stack in formal and informal wa
 |  | Shortcut | Press Either Command Key Twice | |
 | Trackpad | Point & Click → Tracking Speed | Fastest | |
 |  | Point & Click → Tap to Click | On | |
+
+## Essential Finder Settings
+
+* Show View Options (⌘J):
+  - Text size: 16
+  - Always open in column view: On
+  - Resize columns to fit filenames: On
+  - Show Library Folder: On
