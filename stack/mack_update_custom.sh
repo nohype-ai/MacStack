@@ -4,7 +4,6 @@ set -e  # Exit on any error
 set -u  # Treat unset variables as error
 
 # Ensure we have the latest environment customizations
-source "$MAC_STACK_ROOT/scripts/helpers.sh"
 source "$MAC_STACK_ROOT/scripts/sourced_in_zshrc/setup_cli_tools.sh"
 source "$MAC_STACK_ROOT/scripts/sourced_in_zshrc/customize_the_shell.sh"
 

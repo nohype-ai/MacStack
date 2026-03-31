@@ -5,7 +5,6 @@
 
 set -e  # Exit on any error
 set -u  # Treat unset variables as error
-source "$MAC_STACK_ROOT/scripts/helpers.sh" # Load helpers
 
 # Install/update Homebrew
 

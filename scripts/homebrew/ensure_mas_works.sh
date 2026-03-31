@@ -3,9 +3,6 @@
 set -e  # Exit on any error
 set -u  # Treat unset variables as error
 
-# Bring in shared helpers (e.g. `silent`) used below.
-source "$MAC_STACK_ROOT/scripts/helpers.sh"
-
 # Pre-flight: ensure `mas` works before installing MAS apps from Brewfile.
 # On fresh macOS installs, the Apple ID session used by `mas` is sometimes
 # not fully provisioned until the App Store app has been opened once.
