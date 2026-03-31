@@ -9,7 +9,7 @@ source "$MAC_STACK_ROOT/scripts/helpers.sh" # Load helpers
 # Ensure the .zshrc customization is sourced in ~/.zshrc
 echo "🐚 Ensuring the .zshrc customization is loaded in ~/.zshrc ..."
 zshrc_setup_script="$MAC_STACK_ROOT/scripts/sourced_in_zshrc/sourced_in_zshrc.sh"
-assert_file_exists "$zshrc_setup_script"
+assert-file "$zshrc_setup_script"
 script_call="# Mac Stack .zshrc customization
 source \"$zshrc_setup_script\""
 ensure_zshrc_content "$script_call"

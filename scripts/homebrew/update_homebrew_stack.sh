@@ -33,7 +33,7 @@ fi
 
 echo "🍺 Installing missing Homebrew packages listed in Brewfile ..."
 brewfile="$MAC_STACK_ROOT/stack/Brewfile"
-assert_file_exists "$brewfile"
+assert-file "$brewfile"
 /opt/homebrew/bin/brew bundle install --no-upgrade --file "$brewfile"
 
 # Clean up Homebrew: cache, old package versions, cask installers

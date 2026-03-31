@@ -3,9 +3,10 @@
 # This script updates (sets up) this Mac
 
 # Prepare
-set -e  # Exit on any error
-set -u  # Treat unset variables as error
-export MAC_STACK_ROOT="$(realpath "$(dirname "$0")/../")"
+set -e                                          # Exit on any error
+set -u                                          # Treat unset variables as error
+typeset -x MAC_STACK_ROOT=${0:A:h:h}            # Get repo root as reference point
+path=("${MAC_STACK_ROOT}"/{bin,scripts} $path)  # Make scripts available as commands
 
 # Function for printing help
 print_help() {
