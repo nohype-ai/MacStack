@@ -17,7 +17,7 @@ It currently covers:
 
 The Mac's automated configuration is determined by these components:
 * General variables: [`.env`](stack/.env) file as examplified by [`.env.example`](stack/.env.example)
-* Software stack: mostly declared in [`Brewfile`](stack/homebrew/Brewfile)
+* Software stack: mostly declared in [`Brewfile`](stack/Brewfile)
 * Shell customizations: scripts in [`sourced_in_zshrc/`](scripts/sourced_in_zshrc) folder
 * Further software setup: [`update_other_software.sh`](scripts/update_other_software.sh)
 * VSCode IDE settings: [stack/vscode/settings.json](stack/vscode/settings.json), activation in [`.env`](stack/.env), see [`stack/vscode/README.md`](stack/vscode/README.md)
@@ -27,7 +27,7 @@ The Mac's automated configuration is determined by these components:
 ### 🎯 TLDR
 
    1. Define your system configuration once by adapting [these components](#system-configuration)
-   2. Apply that configuration (repeatedly) by running [`bin/update`](bin/update) (directly or via global `update` command)
+   2. Apply that configuration (repeatedly) by running [`bin/mack`](bin/mack) (directly or via global `mack` command)
    
 It's irrelevant whether you've just installed macOS and need to set up this new machine or whether you want to repeatedly update your established machine. The update script is idempotent and works for both cases.
 
@@ -36,13 +36,13 @@ It's irrelevant whether you've just installed macOS and need to set up this new 
 On a fresh system that may not even have GitHub authentication configured:
 
 1. Make sure your [iCloud account is set up](https://support.apple.com/en-us/102314), so that Mac App Store apps can be installed automatically
-2. [Download this repository](https://github.com/codeface-io/mac-stack/archive/refs/heads/master.zip)
+2. [Download this repository](https://github.com/nohype-ai/MacStack/archive/refs/heads/master.zip)
 3. Copy [`stack/.env.example`](stack/.env.example), name the copy `.env`, customize [`stack/.env`](stack/.env)
    - "dot files" like `.env.example` are hidden by default
    - show/hide them by pressing `Command + Shift + .`
 4. _Technically Optional_: Customize any of the other [components listed above](#system-configuration)
    - you probably want to at least adapt or simply delete [`personalize_the_shell.sh`](scripts/sourced_in_zshrc/personalize_the_shell.sh)
-5. Run [`./update.sh`](update.sh)
+5. Run `mack update` in the [bin/](bin/) folder
 
 There may be some remaining manual steps to complete your setup:
 
@@ -52,7 +52,7 @@ There may be some remaining manual steps to complete your setup:
 
 After you have successfully set up the system once:
 
-1. Call this command from anywhere: `update`
+1. Call this command from anywhere: `mack update` (or per alias: `update`)
 
 ## Exact Default Setup
 
@@ -62,7 +62,7 @@ Without customizing anything, the resulting setup will be as follows.
 
 1. `brew` (Homebrew itself)
 2. `brew` packages that were already installed
-3. [`Brewfile`](Brewfile) contents (all software it declares)
+3. [`Brewfile`](stack/Brewfile) contents (all software it declares)
    - 🎯 this is the central and largest part of the software stack
 4. `brew` system cleaned up
    - deleted old package versions and cache
@@ -70,10 +70,10 @@ Without customizing anything, the resulting setup will be as follows.
    - [`setup_cli_tools.sh`](scripts/sourced_in_zshrc/setup_cli_tools.sh): Necessary setup for CLI tools like `brew` and `pyenv`
    - [`customize_the_shell.sh`](scripts/sourced_in_zshrc/customize_the_shell.sh): General setup including prompt, aliases, functions
    - [`personalize_the_shell.sh`](scripts/sourced_in_zshrc/personalize_the_shell.sh): Highly individual setup, should be adapted or deleted
-6. `update`, `brewfile-clip` and `brewfile-force-adopt` commands are available system-wide
-   - `update` triggers this whole update process
-   - `brewfile-clip` uninstalls all Homebrew packages that are **not** (yet) in [`Brewfile`](Brewfile) as well as orphaned dependencies, caches, old package versions and cask installers.
-   - `brewfile-force-adopt` forces apps to be managed by Homebrew if they currently are not
+6. `mack` is available system-wide
+   - `mack update` (or just `update`): trigger this whole update process
+   - `mack brew-clip` uninstalls all Homebrew packages that are **not** (yet) in [`Brewfile`](stack/Brewfile) as well as orphaned dependencies, caches, old package versions and cask installers.
+   - `mack brew-force` forces apps to be managed by Homebrew if they currently are not
 7. `~/.gitconfig` (global git config)
    - necessary parameters plus some basic best-practice ones
    - other pre-existing parameters are preserved

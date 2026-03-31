@@ -12,8 +12,8 @@ zshrc_setup_script="$MAC_STACK_ROOT/scripts/sourced_in_zshrc/sourced_in_zshrc.sh
 assert_file_exists "$zshrc_setup_script"
 script_call="# Mac Stack .zshrc customization
 source \"$zshrc_setup_script\""
-
 ensure_zshrc_content "$script_call"
+
 # Ensure the Mac Stack binary path is in PATH
 echo "🐚 Ensuring the Mac Stack binary path is in PATH ..."
 path_export="# Mac Stack binary path

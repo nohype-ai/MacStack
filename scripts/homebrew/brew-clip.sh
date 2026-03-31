@@ -9,8 +9,7 @@
 # 4) Cask installers. This disables offline reinstalls (virtually never needed) but frees up a lot of disk space.
 
 # Prepare
-set -e  # Exit on any error
-BREWFILE_PATH="$(realpath "$(dirname "$0")")/../stack/homebrew/Brewfile"
+BREWFILE_PATH="$MAC_STACK_ROOT/stack/Brewfile"
 
 # Ask for confirmation
 echo "⚠️  This will uninstall all brew packages that are not declared in this Brewfile:\n   file://${BREWFILE_PATH// /%20}"

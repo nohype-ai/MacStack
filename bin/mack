@@ -1,0 +1,44 @@
+#!/usr/bin/env zsh
+
+# This script updates (sets up) this Mac
+
+# Prepare
+set -e  # Exit on any error
+set -u  # Treat unset variables as error
+export MAC_STACK_ROOT="$(realpath "$(dirname "$0")/../")"
+
+# Function for printing help
+print_help() {
+    echo "Valid calls are:"
+    echo "  mack update      → update (set up) this machine"
+    echo "  mack brew-clip   → delete Homebrew packages that are not in your Mack Stack Brewfile, and cleans up other stuff"
+    echo "  mack brew-force  → [normally not needed] force apps in /Applications into Homebrew management if they are in your Mack Stack Brewfile"
+}
+
+# Switch by sub command
+case "${1:-}" in
+    "" | "help" | "--help" | "-h")
+        print_help
+        ;;
+    "update")
+        source "$MAC_STACK_ROOT/scripts/set_permissions_and_load_env.sh"
+        "$MAC_STACK_ROOT/symlinks to dotfiles/generate.sh"
+        "$MAC_STACK_ROOT/scripts/update_zshrc_file.sh"
+        "$MAC_STACK_ROOT/scripts/homebrew/update_homebrew_stack.sh"
+        "$MAC_STACK_ROOT/scripts/git/update_git_config.sh"
+        "$MAC_STACK_ROOT/scripts/update_other_software.sh"
+        echo "✅ Did update (set up) this Mac"
+        ;;
+
+    "brew-clip")
+        "$MAC_STACK_ROOT/scripts/homebrew/brew-clip.sh"
+        ;;
+    "brew-force")
+        "$MAC_STACK_ROOT/scripts/homebrew/brew-force"
+        ;;
+    *)
+        echo "🛑 Unknown command: <$subcommand>"
+        print_help
+        exit 1
+        ;;
+esac

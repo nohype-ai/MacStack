@@ -8,5 +8,8 @@ export PATH="$HOME/.local/bin:$PATH"
 # Setup Homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
+# Alias for Mack Stack update process
+alias update="mack update"
+
 # Setup antigravity
 export PATH="$PATH:$HOME/.antigravity/antigravity/bin"
