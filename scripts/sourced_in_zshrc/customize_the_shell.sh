@@ -11,7 +11,7 @@ HISTSIZE=10000  # allow in-memory history for current session
 SAVEHIST=0      # don't save any commands to ~/.zsh_history
 unset HISTFILE  # remove history file variable entirely
 
-# list folder content with useful options 
+# list folder content with useful options
 alias l="ls -Fahl"
 
 # print the paths in the $PATH variable as a readable list
@@ -71,7 +71,7 @@ gitty () {
         if [ -z "$1" ]; then
             # Generate commit message since none was provided
             file_count=$(echo "$changes" | wc -l)
-            
+
             if [ "$file_count" -eq 1 ]; then
                 filepath=$(echo "$changes" | sed 's/^...//')
                 filename=$(basename "$filepath")
@@ -83,7 +83,7 @@ gitty () {
             # Use provided commit message
             commit_msg="$1"
         fi
-        
+
         # Stage, commit and push changes
         add .
         commit -m "$commit_msg"
@@ -111,7 +111,7 @@ unveil() {
         echo "Or visit: https://github.com/microsoft/markitdown"
         return 1
     fi
-    
+
     for pdf in *.pdf; do
         base="${pdf%.pdf}"
         PYTHONWARNINGS=ignore markitdown "$pdf" -o "$base.md" > /dev/null
@@ -125,7 +125,7 @@ d() {
     local target_dir="${1:-$(pwd)}"
 
     if [[ -d "$target_dir" ]]; then
-        agy "$target_dir"
+        zed "$target_dir"
     else
         echo "🛑 Directory '$target_dir' does not exist"
         return 1
@@ -178,7 +178,7 @@ md2pdf() {
     fi
 
     local input_file="$1"
-    
+
     if [ ! -f "$input_file" ]; then
         echo "Error: File '$input_file' not found."
         return 1
