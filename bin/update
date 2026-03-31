@@ -5,7 +5,7 @@
 # Prepare
 set -e  # Exit on any error
 set -u  # Treat unset variables as error
-export MAC_STACK_ROOT="$(realpath "$(dirname "$0")")"
+export MAC_STACK_ROOT="$(realpath "$(dirname "$0")/../")"
 source "$MAC_STACK_ROOT/scripts/set_permissions_and_load_env.sh"
 
 # Run the scripts

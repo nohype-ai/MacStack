@@ -70,9 +70,10 @@ Without customizing anything, the resulting setup will be as follows.
    - [`setup_cli_tools.sh`](scripts/sourced_in_zshrc/setup_cli_tools.sh): Necessary setup for CLI tools like `brew` and `pyenv`
    - [`customize_the_shell.sh`](scripts/sourced_in_zshrc/customize_the_shell.sh): General setup including prompt, aliases, functions
    - [`personalize_the_shell.sh`](scripts/sourced_in_zshrc/personalize_the_shell.sh): Highly individual setup, should be adapted or deleted
-6. `update` and `brewfile-clip` aliases for use from any directory
+6. `update`, `brewfile-clip` and `brewfile-force-adopt` commands are available system-wide
    - `update` triggers this whole update process
-   - `brewfile-clip` uninstalls all packages that are **not** (yet) in [`Brewfile`](Brewfile) as well as orphaned dependencies, caches, old package versions and cask installers.
+   - `brewfile-clip` uninstalls all Homebrew packages that are **not** (yet) in [`Brewfile`](Brewfile) as well as orphaned dependencies, caches, old package versions and cask installers.
+   - `brewfile-force-adopt` forces apps to be managed by Homebrew if they currently are not
 7. `~/.gitconfig` (global git config)
    - necessary parameters plus some basic best-practice ones
    - other pre-existing parameters are preserved
