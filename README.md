@@ -17,7 +17,7 @@ It currently covers:
 
 The Mac's automated configuration is determined by these components:
 * General variables: [`.env`](.env) file as examplified by [`.env.example`](.env.example)
-* Software stack: mostly declared in [`Brewfile`](homebrew/Brewfile)
+* Software stack: mostly declared in [`Brewfile`](stack/homebrew/Brewfile)
 * Shell customizations: scripts in [`sourced_in_zshrc/`](scripts/sourced_in_zshrc) folder
 * Further software setup: [`update_other_software.sh`](scripts/update_other_software.sh)
 * VSCode IDE settings: [stack/vscode/settings.json](stack/vscode/settings.json), activation in [`.env`](.env.example), see [`stack/vscode/README.md`](stack/vscode/README.md)
