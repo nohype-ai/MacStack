@@ -17,7 +17,7 @@ It currently covers:
 
 The Mac's automated configuration is determined by these components:
 * General variables: [`.env`](.env) file as examplified by [`.env.example`](.env.example)
-* Software stack: mostly declared in [`Brewfile`](Brewfile)
+* Software stack: mostly declared in [`Brewfile`](homebrew/Brewfile)
 * Shell customizations: scripts in [`sourced_in_zshrc/`](scripts/sourced_in_zshrc) folder
 * Further software setup: [`update_other_software.sh`](scripts/update_other_software.sh)
 * VSCode IDE settings: [stack/vscode/settings.json](stack/vscode/settings.json), activation in [`.env`](.env.example), see [`stack/vscode/README.md`](stack/vscode/README.md)
@@ -27,7 +27,7 @@ The Mac's automated configuration is determined by these components:
 ### 🎯 TLDR
 
    1. Define your system configuration once by adapting [these components](#system-configuration)
-   2. Apply that configuration (repeatedly) by running [`./update.sh`](update.sh) (directly or via global `update` alias)
+   2. Apply that configuration (repeatedly) by running [`bin/update`](bin/update) (directly or via global `update` command)
    
 It's irrelevant whether you've just installed macOS and need to set up this new machine or whether you want to repeatedly update your established machine. The update script is idempotent and works for both cases.
 
@@ -52,7 +52,7 @@ There may be some remaining manual steps to complete your setup:
 
 After you have successfully set up the system once:
 
-1. Call the alias from anywhere: `update`
+1. Call this command from anywhere: `update`
 
 ## Exact Default Setup
 

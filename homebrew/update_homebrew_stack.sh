@@ -14,13 +14,13 @@ if ! command -v brew >/dev/null 2>&1; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 else
     # side stepping the install script avoids entering password and other interactive hand holding
-    # that means when brew is already installed, the whole script can run unattended 
+    # that means when brew is already installed, the whole script can run unattended
     echo "🍺 Updating Homebrew ..."
     silent brew update
 fi
 
 # Pre-flight `mas list` gate so Brewfile MAS installs don't fail mid-run.
-"$MAC_STACK_ROOT/scripts/ensure_mas_works.sh"
+"$MAC_STACK_ROOT/homebrew/ensure_mas_works.sh"
 
 # Update pre-existing Homebrew packages (even outside Brewfile)
 # We use --greedy to force updates for casks with 'auto_updates true' (like Browsers, Cursor, Raycast) or 'version :latest' (like Apple Fonts). Without this flag, Homebrew ignores them. This ensures our stack actually stays up to date. While it may periodically trigger re-installs for 'latest' casks, it is efficient for versioned apps as they only download when a new numeric version is detected.
@@ -32,7 +32,7 @@ fi
 # Install additional packages declared in Brewfile
 
 echo "🍺 Installing missing Homebrew packages listed in Brewfile ..."
-brewfile="$MAC_STACK_ROOT/Brewfile"
+brewfile="$MAC_STACK_ROOT/homebrew/Brewfile"
 assert_file_exists "$brewfile"
 /opt/homebrew/bin/brew bundle install --no-upgrade --file "$brewfile"
 

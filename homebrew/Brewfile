@@ -44,12 +44,11 @@ brew "gemini-cli"              # https://geminicli.com
 #brew "openclaw-cli"           # https://openclaw.ai
 
 # Bloated VSCode-Based IDEs
-cask "cursor"                  # https://cursor.com
-cask "antigravity"             # https://antigravity.google.com
-cask "windsurf"                # https://windsurf.com/
-cask "kiro"                    # https://kiro.dev
-vscode "mathematic.vscode-pdf" # fast maintained PDF viewer for Cursor
-# For Antigravity: https://open-vsx.org/extension/mathematic/vscode-pdf
+#cask "cursor"                  # https://cursor.com
+#cask "antigravity"             # https://antigravity.google.com
+#cask "windsurf"                # https://windsurf.com/
+#cask "kiro"                    # https://kiro.dev
+#vscode "mathematic.vscode-pdf" # fast maintained PDF viewer (for Antigravity use https://open-vsx.org/extension/mathematic/vscode-pdf)
 
 # Run Local Models
 brew "ollama"

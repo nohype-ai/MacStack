@@ -6,7 +6,7 @@
 
 # Prepare
 set -e  # Exit on any error
-BREWFILE="$(realpath "$(dirname "$0")")/Brewfile"
+BREWFILE="$(realpath "$(dirname "$0")")/../homebrew/Brewfile"
 
 # Check if Brewfile exists
 if [ ! -f "$BREWFILE" ]; then
@@ -29,12 +29,12 @@ while read -r cask_name; do
     if ! brew list --cask --versions "$cask_name" >/dev/null 2>&1; then
         # It is unmanaged
         unmanaged_casks+=("$cask_name")
-        
+
         # Use a heuristic via brew info to find the artifact name
         # We need to handle spaces in app names (e.g. "Visual Studio Code.app")
         # brew info output format: "Name.app (App)"
         app_name=$(brew info --cask "$cask_name" | grep "(App)" | head -n 1 | sed 's/ (App)//g' | xargs)
-        
+
         # Fallback if grep fails
         if [ -z "$app_name" ]; then
              # Try standard naming (most common fallback)
@@ -65,7 +65,7 @@ running_apps=()
 for path in "${paths_to_delete[@]}"; do
     # Extract just the App Name without .app extension (e.g. "Visual Studio Code")
     app_name_only=$(basename "$path" .app)
-    
+
     # Check if a process with this name is running (looking for .app path to avoid false positives like system services)
     if pgrep -f "${app_name_only}.app" >/dev/null; then
         running_apps+=("$app_name_only")
@@ -86,11 +86,11 @@ if [ ${#paths_to_delete[@]} -gt 0 ]; then
     printf "   - %s\n" "${paths_to_delete[@]}"
     echo "   (Your user data/preferences in ~/Library are PRESERVED)"
     echo "---------------------------------------------------"
-    
+
     echo "🔐 Asking for sudo permission once to remove these old bundles..."
     # We use "${paths_to_delete[@]}" to pass the array elements as separate arguments
     sudo rm -rf "${paths_to_delete[@]}"
-    
+
     if [ $? -eq 0 ]; then
         echo "✅ Cleanup complete."
     else
