@@ -15,7 +15,7 @@ unset HISTFILE  # remove history file variable entirely
 alias l="ls -Fahl"
 
 # print the paths in the $PATH variable as a readable list
-alias paths="echo $PATH | tr : '\n'"
+paths() { print -l $path }
 
 # aliases that allow omitting "git " with git commands
 alias status="git status"
