@@ -89,6 +89,7 @@ Without customizing anything, the resulting setup will be as follows.
 * [Setup default SSH key](documentation/feature_plans/ssh/) (for GitHub, GitLab etc.)
 * functions in `customize_the_shell.sh` should be separate executables scripts in [bin/](bin/)
 * Decompose the [scripts/](scripts/) folder: everything one may want to customize and which defines the stack should go into [stack/](stack/)
+* Decompose the [stack/](stack/) folder: everything that is part of the Mack Stack process and does not get customized by an individual user should go into [scripts/](scripts/)
 * Review whether we should rather use mise for managing dev tools that require further version management and benefit from mise features. Apparently mise also offers some declarative capabilities for global tool managament (~/.config/mise/mise.toml ...)
 * The script for force adopting apps into Homebrew is essentially a PoC fix of our regular update procedure which apparently does not bring many casks properly into Homebrew if that software (mostly GUI apps) was already installed on the system outside of Homebrew. We should bring those checks into the regular update procedure.
 * Flutter and Dart (via fvm or mise)
