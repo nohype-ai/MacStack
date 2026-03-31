@@ -1,4 +1,4 @@
-# BYOK Costs
+# BYOK Costs                
 
 ## Why BYOK (over Subscriptions)?
 
