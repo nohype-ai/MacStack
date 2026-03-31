@@ -7,6 +7,18 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "theme_overrides": {
+    "Gruvbox Dark Hard": {
+      "editor.background": "#000000FF",
+      "editor.foreground": "#FFFFFFFF",
+      "editor.active_line.background": "#FFFFFF16",
+    },
+    "Gruvbox Light Hard": {
+      "editor.background": "#FFFFFFFF",
+      "editor.foreground": "#000000FF",
+      "editor.active_line.background": "#00000010",
+    },
+  },
   "use_system_window_tabs": true,
   "tabs": {
     "file_icons": true,
@@ -70,12 +82,15 @@
   },
   "gutter": {
     "line_numbers": false,
+    "folds": false,
+    "breakpoints": false,
+    "runnables": false,
   },
   "minimap": {
     "show": "never",
   },
   "autosave": "on_focus_change",
-  "buffer_font_fallbacks": ["Menlo", "Monaco", "Courier New", "monospace"],
+  "buffer_font_fallbacks": ["Menlo", "Monaco", "Courier New"],
   "buffer_font_family": "Fira Code",
   "show_whitespaces": "none",
   "indent_guides": {
