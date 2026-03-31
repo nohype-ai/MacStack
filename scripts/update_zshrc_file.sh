@@ -29,11 +29,19 @@ ensure_zshrc_content() {
     echo "$content"
 }
 
-# Ensure the .zshrc customization is sourced in ~/.zshrc
-echo "🐚 Ensuring the .zshrc customization is loaded in ~/.zshrc ..."
-zshrc_setup_script="$MAC_STACK_ROOT/scripts/sourced_in_zshrc/sourced_in_zshrc.sh"
+# Ensure the Mack Stack .zshrc content is sourced in ~/.zshrc
+echo "🐚 Ensuring the Mack Stack .zshrc content is loaded in ~/.zshrc ..."
+zshrc_setup_script="$MAC_STACK_ROOT/scripts/source_in_zshrc.sh"
 assert-file "$zshrc_setup_script"
 script_call="# Mac Stack .zshrc customization
+source \"$zshrc_setup_script\""
+ensure_zshrc_content "$script_call"
+
+# Ensure the user's .zshrc content is sourced in ~/.zshrc
+echo "🐚 Ensuring the user's .zshrc content is loaded in ~/.zshrc ..."
+zshrc_setup_script="$MAC_STACK_ROOT/stack/custom_zshrc_content.sh"
+assert-file "$zshrc_setup_script"
+script_call="# User stack .zshrc customization
 source \"$zshrc_setup_script\""
 ensure_zshrc_content "$script_call"
 

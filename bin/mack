@@ -28,7 +28,7 @@ case "${1:-}" in
         "$MAC_STACK_ROOT/scripts/homebrew/update_homebrew_stack.sh"
         "$MAC_STACK_ROOT/scripts/git/update_git_config.sh"
         "$MAC_STACK_ROOT/scripts/update_ide_settings.sh"
-        "$MAC_STACK_ROOT/stack/mack_update_custom.sh"
+        "$MAC_STACK_ROOT/stack/custom_mack_update.sh"
         echo "✅ Did update (set up) this Mac"
         ;;
 

@@ -4,9 +4,6 @@
 set -e  # Exit on any error
 set -u  # Treat unset variables as error
 
-# Ensure we have the latest environment customizations
-source "$MAC_STACK_ROOT/scripts/sourced_in_zshrc/customize_the_shell.sh"
-
 # Check if an app of a given name exists
 app_exists() {
     local app_name="$1"
@@ -22,7 +19,6 @@ app_exists() {
     # Fall back to Spotlight search for apps in non-standard locations
     mdfind "kMDItemKind == 'Application' && kMDItemFSName == '$app_name'" 2>/dev/null | grep -q .
 }
-
 
 # Restore settings and keybindings of a VS Code type IDE
 restore_ide_settings() {

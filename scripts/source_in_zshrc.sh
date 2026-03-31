@@ -45,11 +45,23 @@ alias log="git log" # this masks /usr/bin/log
 alias config="git config"
 alias init="git init"
 
+# hide-extensions: Hide all file extensions in the current directory
+hide-extensions() {
+  for file in *; do
+    if [ -f "$file" ]; then
+      SetFile -a E "$file"
+    fi
+  done
+}
+
+# show-extensions: Show all file extensions in the current directory
+show-extensions() {
+  for file in *; do
+    if [ -f "$file" ]; then
+      SetFile -a e "$file"
+    fi
+  done
+}
+
 # Get script directory (in a way that works when sourced rather than executed)
 export SCRIPT_DIR="$(dirname "${(%):-%x}")"
-
-source "$SCRIPT_DIR/customize_the_shell.sh"
-
-if [[ -f "$SCRIPT_DIR/personalize_the_shell.sh" ]]; then
-    source "$SCRIPT_DIR/personalize_the_shell.sh"
-fi
