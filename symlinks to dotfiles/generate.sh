@@ -1,11 +1,7 @@
 #!/usr/bin/env zsh
 
-echo "👻 Generating symlinks to dotfiles ..."
+print "👻 Generating symlinks to dotfiles ..."
 
-CURRENT_FOLDER="$(dirname "$(realpath "$0")")"
-HOME_FOLDER="$(realpath ~)"
-
-for filepath in "$HOME_FOLDER"/.[^.]*(D); do
-  filename="${filepath:t}"
-  ln -sf "$filepath" "$CURRENT_FOLDER/$filename"
+for filepath in "$HOME"/.[^.]*(D); do
+  ln -sf -- "$filepath" "${0:A:h}/${filepath:t}"
 done
