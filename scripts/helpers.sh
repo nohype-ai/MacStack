@@ -65,20 +65,3 @@ restore_ide_settings() {
         cp "$keybindings_file" "$user_settings_dir/keybindings.json"
     fi
 }
-
-# Run a command quietly, only showing output if it fails
-silent() {
-    local output_file=$(mktemp)
-
-    # Run the command (passed as arguments), redirecting both stdout and stderr
-    if "$@" > "$output_file" 2>&1; then
-        rm "$output_file"
-        return 0
-    else
-        local exit_code=$?
-        echo "❌ Command failed: $*"
-        cat "$output_file"
-        rm "$output_file"
-        return $exit_code
-    fi
-}
