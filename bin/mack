@@ -3,10 +3,11 @@
 # This script updates (sets up) this Mac
 
 # Prepare
-set -e                                          # Exit on any error
-set -u                                          # Treat unset variables as error
-typeset -x MAC_STACK_ROOT=${0:A:h:h}            # Get repo root as reference point
-path=("${MAC_STACK_ROOT}"/{bin,scripts} $path)  # Make scripts available as commands
+set -e                                      # Exit on any error
+set -u                                      # Treat unset variables as error
+BINARY_PATH=${0:A:h}                        # Get binary (current-) path
+typeset -x MAC_STACK_ROOT=${BINARY_PATH:h}  # Get repo root path
+path=("$BINARY_PATH" $path)                 # Make commands in /bin available
 
 # Function for printing help
 print_help() {
@@ -14,6 +15,7 @@ print_help() {
     echo "  mack update      → update (set up) this machine"
     echo "  mack brew-clip   → delete Homebrew packages that are not in your Mac Stack Brewfile, and clean up other stuff"
     echo "  mack brew-force  → [normally not needed] force apps in /Applications into Homebrew management if they are in your Mac Stack Brewfile"
+    echo "  mack backup-zed  → copy Zed settings.json and keymap.json to MackStack/stack/zed"
 }
 
 # Switch by sub command
@@ -29,14 +31,18 @@ case "${1:-}" in
         "$MAC_STACK_ROOT/scripts/git/update_git_config.sh"
         "$MAC_STACK_ROOT/scripts/update_ide_settings.sh"
         "$MAC_STACK_ROOT/stack/custom_mack_update.sh"
-        echo "✅ Did update (set up) this Mac"
+        print "✅ Did update (set up) this Mac."
+        print "💡 To get the custom shell environment, relaunch your shell or run 'source ~/.zshrc'"
         ;;
 
     "brew-clip")
         "$MAC_STACK_ROOT/scripts/homebrew/brew-clip.sh"
         ;;
     "brew-force")
-        "$MAC_STACK_ROOT/scripts/homebrew/brew-force"
+        "$MAC_STACK_ROOT/scripts/homebrew/brew-force.sh"
+        ;;
+    "backup-zed")
+        backup_zed
         ;;
     *)
         echo "🛑 Unknown command: <$subcommand>"

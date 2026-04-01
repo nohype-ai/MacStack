@@ -1,0 +1,9 @@
+#!/usr/bin/env zsh
+# Assert that a required file exists
+
+file_path="$1"
+
+if [[ ! -f "$file_path" ]]; then
+    echo "🛑 Required file not found: $file_path"
+    exit 1
+fi
