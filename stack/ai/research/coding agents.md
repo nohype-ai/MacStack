@@ -68,13 +68,13 @@ The basic category here is coding (not general purpose), cloud inference (not lo
 | OpenCode | DeepInfra | paid | ✅ (2) | ✅ (2) |
 | OpenCode | xAI | paid | ✅ | ✅ |
 | Gemini CLI | Google AI | paid (API key) | ✅ (5?) | ✅ (5) |
-| Claude Code | Anthropic | paid | ✅ | ✅ |
+| Claude Code | Anthropic | paid | ❓ (6) | ✅ |
 
 **Ruled Out:**
 | Agent | Provider | free/paid | In Zed via ACP | In Terminal |
 | --- | --- | --- | --- | --- |
 | OpenCode | OpenCode Zen | paid models (+6.15% fee) | ✅ | ✅ |
-| Cursor CLI | Cursor | paid subscription | ⚠️ (4) | ✅ |
+| Cursor CLI | Cursor | paid subscription | ✅ (4) | ✅ |
 | Cursor CLI | Cursor | free tier | 🛑 (3) | ✅ |
 | OpenCode | OpenRouter | free models | 🛑 (1) | ✅ |
 | OpenCode | OpenRouter | paid models (+5.5% fee) | 🛑 (1) | ✅ |
@@ -84,8 +84,9 @@ The basic category here is coding (not general purpose), cloud inference (not lo
 1. 🛑 OpenCode + OpenRouter: does currently not work in Zed at all, whether with free or paid models. Seems to be a known issue with OpenRouter, which does not even work in the Zed agent (without ACP).
 2. ℹ️ OpenCode + DeepInfra: The model list is outdated because DeepInfra updates its available models rapidly, while OpenCode relies on models.dev. Solution: add a opencode.json file in ~/.config/opencode/ and define some desired but missing models in there. Prefix their names with "di-custom: " or so to make them discoverable. Backup/example: [opencode.json](../opencode/opencode.json). (Related GitHub issue: [#6231](https://github.com/anomalyco/opencode/issues/6231))
 3. 🛑 Cursor CLI + Cursor free tier: ACP is [explicitly not offered on the free tier](https://cursor.com/blog/jetbrains-acp).
-4. ⚠️ Cursor CLI + Cursor paid subscription: Presumably this works. But of course it's bound to a subscription.
+4. ℹ️ Cursor CLI + Cursor paid subscription: Works flawlessly. Excellent ACP integration (tested with Sonnet 4.5). But of course it's bound to a subscription.
 5. ℹ️ Gemini CLI: Tuning model params (temperature etc.) can impact agentic performance. My setup is documented [here](../gemini/README.md). I could not fully verify that the custom config is also loaded in Zed via ACP, but it is strongly indicated.
+6. ❓ I have not yet tested Claude Code via ACP in Zed, only stand-alone Claude Code.
 
 **Every ACP Agent:**
 * ⚠️ Basic thread management functions like "resuming threads from history" do not even work with "the reference ACP implementation" (Gemini CLI). This also means Zed offers no way to edit the agent's thread history (if it is even created) -> delete OpenCode threads by deleting `~/.local/share/opencode/opencode.db*`. Apply an equivalent solution with other agents.
