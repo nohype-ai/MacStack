@@ -7,6 +7,18 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "inlay_hints": {
+    "enabled": true,
+  },
+  "toolbar": {
+    "code_actions": true,
+  },
+  "scrollbar": {
+    "axes": {
+      "horizontal": false,
+    },
+  },
+  "diff_view_style": "unified",
   "project_panel": {
     "git_status_indicator": true,
   },
@@ -92,6 +104,7 @@
     "enabled": false,
   },
   "gutter": {
+    "min_line_number_digits": 3,
     "line_numbers": false,
     "folds": false,
     "breakpoints": false,
@@ -107,7 +120,6 @@
   "indent_guides": {
     "enabled": false,
   },
-  "soft_wrap": "editor_width",
   "ui_font_size": 28.0,
   "buffer_font_size": 24.0,
   "theme": {
