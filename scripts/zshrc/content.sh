@@ -1,5 +1,15 @@
 #!/usr/bin/env zsh
 
+# Add basic binary paths to PATH
+export PATH="$HOME/.local/bin:$PATH" # XDG path for user-installed CLIs
+export PATH="$ROOT/bin:$PATH" # Mac Stack binary path
+
+# Setup Homebrew
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# Alias for Mack Stack update process
+alias update="mack update"
+
 # visually separate prompt/input/output. Error indication via Emoji.
 export PROMPT='%(?.🍏.🍎) %F{#00ffff}%2~%f: '
 zle_highlight=(default:fg=#ffff00)
@@ -9,16 +19,7 @@ HISTSIZE=10000  # allow in-memory history for current session
 SAVEHIST=0      # don't save any commands to ~/.zsh_history
 unset HISTFILE  # remove history file variable entirely
 
-# XDG path for user-installed CLI tools
-export PATH="$HOME/.local/bin:$PATH"
-
-# Setup Homebrew
-eval "$(/opt/homebrew/bin/brew shellenv)"
-
-# Alias for Mack Stack update process
-alias update="mack update"
-
-# print the paths in the $PATH variable as a readable list
+# prints paths in $PATH variable as readable list
 paths() { print -l $path }
 
 # aliases that allow omitting "git " with git commands
@@ -45,7 +46,7 @@ alias log="git log" # this masks /usr/bin/log
 alias config="git config"
 alias init="git init"
 
-# hide-extensions: Hide all file extensions in the current directory
+# Hide all file extensions in the current directory
 hide-extensions() {
   for file in *; do
     if [ -f "$file" ]; then
@@ -54,7 +55,7 @@ hide-extensions() {
   done
 }
 
-# show-extensions: Show all file extensions in the current directory
+# Show all file extensions in the current directory
 show-extensions() {
   for file in *; do
     if [ -f "$file" ]; then
@@ -62,6 +63,3 @@ show-extensions() {
     fi
   done
 }
-
-# Get script directory (in a way that works when sourced rather than executed)
-export SCRIPT_DIR="$(dirname "${(%):-%x}")"
