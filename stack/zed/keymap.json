@@ -324,5 +324,17 @@
     "unbind": {
       "escape": "git_panel::ToggleFocus"
     }
+  },
+  {
+    "context": "Editor",
+    "unbind": {
+      "ctrl-cmd-right": "editor::SelectLargerSyntaxNode"
+    }
+  },
+  {
+    "context": "Editor",
+    "unbind": {
+      "ctrl-cmd-left": "editor::SelectSmallerSyntaxNode"
+    }
   }
 ]
