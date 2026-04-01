@@ -2,9 +2,7 @@
 
 ## What?
 
-Mac Stack allows to update/setup a developer Mac with one command.
-
-It currently covers:
+Mac Stack allows to update/setup a developer Mac with one command, based on a config as code:
   * 🐚 Shell customizations (prompt, functions, aliases, environment variables)
   * 🐙 Global git configuration
   * 📰 Fonts
@@ -13,44 +11,25 @@ It currently covers:
   * ⚙️ Settings and keybindings for most VS Code based IDEs
   * 🧩 Extensions for VS Code based IDEs
   
-### System Configuration
-
-The Mac's configuration is defined in the [stack/](stack/) folder. Some of the components there are part of the automated process:
-* General variables: [`.env`](stack/.env) file as examplified by [`.env.example`](stack/.env.example)
-* Software stack: mostly declared in [`Brewfile`](stack/Brewfile)
-* Shell customization: [`custom_zshrc_content.sh`](stack/custom_zshrc_content.sh)
-* Further updates: [`custom_mack_update.sh`](stack/custom_mack_update.sh)
-* VSCode IDE settings: [settings.json](stack/vscode/settings.json), activation in [`.env`](stack/.env), see [`README.md`](stack/vscode/README.md)
-
 ## How?
-
-### 🎯 TLDR
-
-   1. Define your system configuration once by adapting [these components](#system-configuration)
-   2. Apply that configuration (repeatedly) by running `bin/mack update` or global `mack update` or `update` command
-   
-It's irrelevant whether you've just installed macOS and need to set up this new machine or whether you want to repeatedly update your established machine. The update script is idempotent and works for both cases.
-
-### ✨ First Time System Setup
 
 On a fresh system that may not even have GitHub authentication configured:
 
 1. Make sure your [iCloud account is set up](https://support.apple.com/en-us/102314), so that Mac App Store apps can be installed automatically
 2. [Download this repository](https://github.com/nohype-ai/MacStack/archive/refs/heads/master.zip)
 3. Copy [`stack/.env.example`](stack/.env.example), name the copy `.env`, customize [`stack/.env`](stack/.env)
-   - "dotfiles" like `.env.example` are hidden by default. Show/hide them by pressing `Command + Shift + .`
-4. Customize any of the other [components listed above](#system-configuration).
-5. Run `bin/mack update`.
+   - ("dotfiles" like `.env.example` are hidden by default. Show/hide them by via `Command + Shift + .`)
+4. Customize any of these components in [stack/](stack/) (technically optional):
+   * Software stack as declared in [`Brewfile`](stack/Brewfile)
+   * Shell customization: [`custom_zshrc_content.sh`](stack/custom_zshrc_content.sh)
+   * Further update script: [`custom_mack_update.sh`](stack/custom_mack_update.sh)
+   * VSCode IDE settings: [settings.json](stack/vscode/settings.json)
+      * (activation in [`.env`](stack/.env), see [this `README.md`](stack/vscode/README.md))
+5. Apply your config by running `bin/mack update`.
 
-There may be some remaining manual steps to complete your setup:
-
-* If Raycast is part of your setup, [import Raycast settings](stack/raycast/README.md#setup) from your `.rayconfig` file.
-
-### 🧼 Subsequent System Updates
-
-After you have successfully set up the system once:
-
-1. Call this command from anywhere: `mack update` (or just `update`)
+After you've run `bin/mack update` once you can now trigger repeated updates via the global `mack update` command (or just `update`).
+   
+It's irrelevant whether you've just installed macOS and need to set up this new machine or whether you want to repeatedly update your established machine. The update script is idempotent and works for both cases. That means Mac Stack is safe to use and does not overwrite or delete things it does not define in its stack – not even any entries in pre-existing dot files.
 
 ## Exact Default Setup
 
