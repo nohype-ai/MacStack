@@ -58,6 +58,7 @@ Without customizing anything, the resulting setup will be as follows.
 
 ## To Do
 
+* Separate Mac Stack as a universal system from user-specific setup configuration. This will lead to separate repos. The .env file or an equivalent will not be gitignored in a user-specific stack repo but will be a regular config file starting point for the individual setup configuration. it will not store secrets anyway. it will store all paths to script inputs. 
 * [Setup default SSH key](documentation/feature_plans/ssh/) (for GitHub, GitLab etc.)
 * Review whether we should rather use mise for managing dev tools that require further version management and benefit from mise features. Apparently mise also offers some declarative capabilities for global tool managament (~/.config/mise/mise.toml ...)
 * The script for force adopting apps into Homebrew is essentially a PoC fix of our regular update procedure which apparently does not bring many casks properly into Homebrew if that software (mostly GUI apps) was already installed on the system outside of Homebrew. We should bring those checks into the regular update procedure.
@@ -66,4 +67,3 @@ Without customizing anything, the resulting setup will be as follows.
 * Feature requests:
    * mechanism for translating current setup as starting point to mac stack. for initial adoption and getting started (fresh baseline based on generated brewfile and ideally mostly clean scripts/zshrc as well)
    * integrate repo based password management
-* If Mac Stack is supposed to be truly open-source and easily usable for many people, we need to somehow separate Mac Stack as a universal system from user-specific setup configuration. This would probably also require separate repos ...
