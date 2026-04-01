@@ -135,7 +135,9 @@ for item in "$repos_folder_template"/**/*(N); do
 done
 
 # print any recorded issue messages
-print "\n❗ The following repos need manual attention:"
-for issue_message in "${issue_messages[@]}"; do
-    print "$issue_message"
-done
+if [[ ${#issue_messages[@]} -gt 0 ]]; then
+    print "\n❗ The following repos need manual attention:"
+    for issue_message in "${issue_messages[@]}"; do
+        print "$issue_message"
+    done
+fi
