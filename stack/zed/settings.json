@@ -7,6 +7,15 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "project_panel": {
+    "git_status_indicator": true,
+  },
+  "auto_update": false,
+  "terminal": {
+    "shell": {
+      "program": "/opt/homebrew/bin/zsh",
+    },
+  },
   "agent_buffer_font_size": 24.0,
   "current_line_highlight": "line",
   "theme_overrides": {
