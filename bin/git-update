@@ -13,11 +13,15 @@ fi
 repos_folder=${~GIT_REPOS_FOLDER}
 repos_folder_template="$root/stack/$GIT_REPOS_FOLDER_TEMPLATE"
 
-print "🐙 Updating git repos ..."
-print "  📁 Repos folder:"
-print "     $repos_folder"
-print "  📁 Repos folder template:"
-print "     $repos_folder_template"
+
+print "📁 Repos folder:"
+print "   $repos_folder"
+print "📁 Repos folder template:"
+print "   $repos_folder_template"
+print "\n🐙 Updating repos in repos folder based on template ..."
+
+# prepare list of issue messages
+issue_messages=()
 
 # Recursively iterate through all files and folders
 for item in "$repos_folder_template"/**/*(N); do
@@ -38,27 +42,41 @@ for item in "$repos_folder_template"/**/*(N); do
 
                 local repo_folder="$repos_folder/$relative_folder/$repo_name"
 
-                print "🎯 The template expects the following repo. Trying to update ..."
-                print "  🐙 URL: $repo_url"
-                print "  📁 Folder: $relative_folder/$repo_name"
+                print "📁 $relative_folder/$repo_name"
+                #print "  🐙 URL: $repo_url"
+
+                # prepare issue processing
+                issue_message="📁 $relative_folder/$repo_name\n  🐙 $repo_url"
+
+                function record_issue() {
+                    # print the issue
+                    issue="$1"
+                    print "  $issue"
+
+                    # append issue to issue message
+                    issue_message="$issue_message\n  $issue"
+
+                    # append issue message to list
+                    issue_messages+=("$issue_message")
+                }
 
                 # Check if folder exists and contains a valid git repo
                 if [[ -d "$repo_folder" ]]; then
                     if git -C "$repo_folder" rev-parse --git-dir &>/dev/null; then
-                        print "  ✅ Git repo already exists"
+                        #print "  ✅ Git repo already exists"
 
                         # Check for local changes
                         local status_output=$(git -C "$repo_folder" status --porcelain 2>/dev/null)
                         if [[ -n "$status_output" ]]; then
-                            print "  ⚠️ Has local changes"
+                            record_issue "⚠️ Has local changes"
                         else
-                            print "  ✅ Clean working tree"
+                            #print "  ✅ Clean working tree"
 
                             # Check sync status with remote
                             local upstream=$(git -C "$repo_folder" rev-parse --abbrev-ref --symbolic-full-name @{upstream} 2>/dev/null)
 
                             if [[ -z "$upstream" ]]; then
-                                print "  ⚠️ No remote tracking branch"
+                                record_issue "⚠️ No remote tracking branch"
                             else
                                 local rev_list_output=$(git -C "$repo_folder" rev-list --left-right --count HEAD...@{upstream} 2>/dev/null)
 
@@ -67,20 +85,20 @@ for item in "$repos_folder_template"/**/*(N); do
                                     local -i ahead=${counts[1]} behind=${counts[2]}
 
                                     if (( ahead > 0 && behind > 0 )); then
-                                        print "  ⚠️ Diverged: ↑$ahead ahead AND ↓$behind behind"
+                                        record_issue "⚠️ Diverged: ↑$ahead ahead AND ↓$behind behind"
                                     elif (( ahead > 0 )); then
-                                        print "  ⬆️ Ahead by $ahead commit(s). Pushing ..."
+                                        #print "  ⬆️ Ahead by $ahead commit(s). Pushing ..."
                                         if git -C "$repo_folder" push 2>&1; then
                                             print "  ✅ Pushed successfully"
                                         else
-                                            print "  🛑 Push failed"
+                                            record_issue "🛑 Push failed"
                                         fi
                                     elif (( behind > 0 )); then
-                                        print "  ⬇️ Behind by $behind commit(s). Pulling ..."
+                                        #print "  ⬇️ Behind by $behind commit(s). Pulling ..."
                                         if git -C "$repo_folder" pull 2>&1; then
                                             print "  ✅ Pulled successfully"
                                         else
-                                            print "  🛑 Pull failed"
+                                            record_issue "🛑 Pull failed"
                                         fi
                                     else
                                         print "  ✅ In sync with $upstream"
@@ -91,22 +109,22 @@ for item in "$repos_folder_template"/**/*(N); do
                     else
                         # Check if folder is empty
                         if [[ -z "$(ls -A "$repo_folder" 2>/dev/null)" ]]; then
-                            print "  ⬇️ Empty folder exists. Cloning ..."
+                            #print "  ⬇️ Empty folder exists. Cloning ..."
                             if git clone "$repo_url" "$repo_folder" 2>&1; then
                                 print "  ✅ Cloned successfully"
                             else
-                                print "  🛑 Clone failed"
+                                record_issue "🛑 Clone failed"
                             fi
                         else
-                            print "  ⚠️ Expected repo folder exists and contains items yet is not a git repo"
+                            record_issue "⚠️ Expected repo folder exists and contains items yet is not a git repo"
                         fi
                     fi
                 else
-                    print "  ⬇️ Creating repo folder and cloning repo..."
+                    # print "  ⬇️ Creating repo folder and cloning repo..."
                     if git clone "$repo_url" "$repo_folder" 2>&1; then
                         print "  ✅ Cloned successfully"
                     else
-                        print "  🛑 Clone failed"
+                        record_issue "🛑 Clone failed"
                     fi
                 fi
             done < "$item"
@@ -114,4 +132,10 @@ for item in "$repos_folder_template"/**/*(N); do
             print "📄 The template contains an unrelated file that will be ignored: $relative_path"
         fi
     fi
+done
+
+# print any recorded issue messages
+print "\n❗ The following repos need manual attention:"
+for issue_message in "${issue_messages[@]}"; do
+    print "$issue_message"
 done
