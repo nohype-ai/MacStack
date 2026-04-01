@@ -6,7 +6,7 @@ Research is documented in [research/README.md](research/README.md)
 
 ## Agent Clients
 
-macOS apps that offer GUI frontends to agents – natively or via ACP.
+Native macOS apps that offer GUI frontends to agents – natively or via ACP. And no bloated VSCode forks here.
 
 - [Zed](https://dashboard.zed.dev) (via GitHub account)
   - login unlocks tab completions ("edit predictions")
@@ -20,16 +20,16 @@ macOS apps that offer GUI frontends to agents – natively or via ACP.
 
 ## Agents
 
-CLI agents that can be used via ACP, TUI, or headless.
+CLI agents that can be used via TUI.
 
-### Coding
-- [OpenCode](https://opencode.ai) (no login)
-- [Cursor CLI](https://cursor.com/cli) (no login)
-- [Gemini CLI](https://geminicli.com) (no login)
+### Coding (with ACP support)
+- [OpenCode](https://opencode.ai)
+- [Cursor CLI](https://cursor.com/cli)
+- [Gemini CLI](https://geminicli.com)
 - [Claude Code](https://claude.com/product/claude-code)
 
 ### Personal
-- [OpenClaw](https://openclaw.ai) (🛑 not successfully set up yet)
+- [OpenClaw](https://openclaw.ai)
 
 ## Providers
 

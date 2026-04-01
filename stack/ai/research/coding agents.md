@@ -20,13 +20,13 @@ ACP allows using the agents in any IDE, most notably in Zed. It enables rotating
 **Note on Cursor agent**:
 * It offers virtually all models but provides them through its own plans with no true BYOK option.
 * It offers no pure per token pricing but ties everything to subscriptions.
-* It's free tier has generous enough rate limits but does not support ACP
+* Its free tier has generous enough rate limits but does not support ACP.
 
 ## OpenCode
 
 OpenCode is the best open-source- and the best BYOK coding agent.
 
-**Why OpenCode? (over Cursor, Antigravity, etc.)**
+**Why OpenCode?**
 - Open-source and highly established (130k GitHub stars)
 - Built from the ground up to work with any model/vendor
 - Native support for local models
@@ -53,7 +53,6 @@ OpenCode is the best open-source- and the best BYOK coding agent.
 The basic category here is coding (not general purpose), cloud inference (not local inference), and availability of ACP. Further criteria for combo selection were:
 * Avoid inference outside US/Europe
 * Avoid OpenAI
-* Avoid paid subscriptions (avoid recurring costs that are unrelated to usage)
 * Avoid low performing agents
 * Avoid free variants with impractically tight rate limits (OpenCode Zen free models)
 * Use a given provider/router only with the best agent available for it (why use Anthropic account with any other agent than Claude Code)
@@ -64,18 +63,18 @@ The basic category here is coding (not general purpose), cloud inference (not lo
 **Viable:**
 | Agent | Provider | free/paid | In Zed via ACP | In Terminal |
 | --- | --- | --- | --- | --- |
-| Gemini CLI | Google AI | free tier (login) | ✅ (5?) | ✅ (5) |
-| OpenCode | DeepInfra | paid | ✅ (2) | ✅ (2) |
-| OpenCode | xAI | paid | ✅ | ✅ |
-| Gemini CLI | Google AI | paid (API key) | ✅ (5?) | ✅ (5) |
-| Claude Code | Anthropic | paid | ❓ (6) | ✅ |
+| Gemini CLI | Google AI | free (login) | ✅ (5?) | ✅ (5) |
+| OpenCode | DeepInfra | API key | ✅ (2) | ✅ (2) |
+| OpenCode | xAI | API key | ✅ | ✅ |
+| Gemini CLI | Google AI | API key / subscription | ✅ (5?) | ✅ (5) |
+| Claude Code | Anthropic | API key / subscription | ❓ (6) | ✅ |
 
 **Ruled Out:**
 | Agent | Provider | free/paid | In Zed via ACP | In Terminal |
 | --- | --- | --- | --- | --- |
+| Cursor CLI | Cursor | subscription | ✅ (4) | ✅ |
 | OpenCode | OpenCode Zen | paid models (+6.15% fee) | ✅ | ✅ |
-| Cursor CLI | Cursor | paid subscription | ✅ (4) | ✅ |
-| Cursor CLI | Cursor | free tier | 🛑 (3) | ✅ |
+| Cursor CLI | Cursor | free tier | 🛑 (3) | ⚠️ (7) |
 | OpenCode | OpenRouter | free models | 🛑 (1) | ✅ |
 | OpenCode | OpenRouter | paid models (+5.5% fee) | 🛑 (1) | ✅ |
 
@@ -84,9 +83,10 @@ The basic category here is coding (not general purpose), cloud inference (not lo
 1. 🛑 OpenCode + OpenRouter: does currently not work in Zed at all, whether with free or paid models. Seems to be a known issue with OpenRouter, which does not even work in the Zed agent (without ACP).
 2. ℹ️ OpenCode + DeepInfra: The model list is outdated because DeepInfra updates its available models rapidly, while OpenCode relies on models.dev. Solution: add a opencode.json file in ~/.config/opencode/ and define some desired but missing models in there. Prefix their names with "di-custom: " or so to make them discoverable. Backup/example: [opencode.json](../opencode/opencode.json). (Related GitHub issue: [#6231](https://github.com/anomalyco/opencode/issues/6231))
 3. 🛑 Cursor CLI + Cursor free tier: ACP is [explicitly not offered on the free tier](https://cursor.com/blog/jetbrains-acp).
-4. ℹ️ Cursor CLI + Cursor paid subscription: Works flawlessly. Excellent ACP integration (tested with Sonnet 4.5). But of course it's bound to a subscription.
+4. ℹ️ Cursor CLI + Cursor paid subscription: Works flawlessly. Excellent ACP integration (tested with Sonnet 4.5 and 4.6). But of course it's bound to a subscription, pures usage based is no option. And can't compete with the whole package that Anthropic subscription would offer (agent, cowork, chatbot, native mac app ...).
 5. ℹ️ Gemini CLI: Tuning model params (temperature etc.) can impact agentic performance. My setup is documented [here](../gemini/README.md). I could not fully verify that the custom config is also loaded in Zed via ACP, but it is strongly indicated.
 6. ❓ I have not yet tested Claude Code via ACP in Zed, only stand-alone Claude Code.
+7. Cursor CLI + Cursor free tier (Terminal): Possible but rate limits are tight enough to possibly be annoying -> has to be used for small tasks only
 
 **Every ACP Agent:**
 * ⚠️ Basic thread management functions like "resuming threads from history" do not even work with "the reference ACP implementation" (Gemini CLI). This also means Zed offers no way to edit the agent's thread history (if it is even created) -> delete OpenCode threads by deleting `~/.local/share/opencode/opencode.db*`. Apply an equivalent solution with other agents.
