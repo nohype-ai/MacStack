@@ -45,10 +45,9 @@ Without customizing anything, the resulting setup will be as follows.
    - deleted old package versions and cache
 5. `~/.zshrc` loads (sources) various shell customizations.
    - [`custom_zshrc_content.sh`](stack/custom_zshrc_content.sh): Your indiviual part of the shell customization
-6. `mack` is available system-wide
+6. `mack` is available system-wide, offering several commands, including:
    - `mack update` (or just `update`): trigger this whole update process
-   - `mack brew-clip` uninstalls all Homebrew packages that are **not** (yet) in [`Brewfile`](stack/Brewfile) as well as orphaned dependencies, caches, old package versions and cask installers.
-   - `mack brew-force` forces apps to be managed by Homebrew if they currently are not
+   - `mack help` (or just `mack`): show all available `mack` commands 
 7. `~/.gitconfig` (global git config)
    - necessary parameters plus some basic best-practice ones
    - other pre-existing parameters are preserved
