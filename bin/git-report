@@ -1,0 +1,166 @@
+#!/usr/bin/env zsh
+#
+# git-report - Recursively scan and report status of all git repositories
+#
+# DESCRIPTION:
+#   Finds all git repositories within a directory tree and reports their status:
+#   - Working tree changes (modified, staged, untracked files)
+#   - Current branch name
+#   - Remote tracking branch
+#   - Sync status with remote (ahead/behind/diverged)
+#   - Summary statistics of repositories needing attention
+#
+# USAGE:
+#   git-report [root-folder]
+#
+# ARGUMENTS:
+#   root-folder    Directory to scan recursively (default: current directory)
+#
+# EXAMPLES:
+#   git-report                    # Scan current directory
+#   git-report ~/Desktop/Repos    # Scan specific directory
+#   git-report ~/projects         # Check all projects
+#
+# OUTPUT:
+#   For each repository found:
+#   - Path relative to scan root
+#   - Working tree status (clean or has changes)
+#   - Current branch and upstream
+#   - Commit counts (ahead/behind remote)
+#   - Sync recommendation (push/pull/sync needed)
+#
+#   Summary includes counts of:
+#   - Repositories with uncommitted changes
+#   - Repositories out of sync with remote
+#   - Repositories with issues (detached HEAD, no remote, etc.)
+#
+
+setopt null_glob extended_glob
+
+# Script-level counters
+local root="${1:-.}"
+local -i repo_count=0
+local -i local_changes_count=0
+local -i out_of_sync_count=0
+local -i issues_count=0
+
+# Validate git is available
+if ! command -v git &>/dev/null; then
+    print -u2 "Error: git not found"
+    exit 1
+fi
+
+# Validate root directory exists
+if [[ ! -d "$root" ]]; then
+    print -u2 "Error: Directory does not exist: $root"
+    exit 1
+fi
+
+# Resolve to absolute path for consistent path manipulation
+root="${root:A}"
+
+print "🔍 Scanning for git repositories in: $root\n"
+
+# Find and process all git repositories
+for gitdir in "$root"/**/.git(N/); do
+    local repo="${gitdir:h}"
+    (( repo_count++ ))
+
+    # Calculate relative path for cleaner display
+    local display_path="${repo#$root/}"
+    [[ "$display_path" == "$repo" ]] && display_path="."
+    
+    print "📁 $display_path"
+
+    # Validate git repository access
+    if ! git -C "$repo" rev-parse --git-dir &>/dev/null; then
+        print "   ❌ Error: Unable to access git repository"
+        (( issues_count++ ))
+        continue
+    fi
+
+    # Check working tree status
+    local status_output=$(git -C "$repo" status --porcelain 2>/dev/null)
+
+    if [[ -n "$status_output" ]]; then
+        print "   ⚠️  Has local changes"
+        (( local_changes_count++ ))
+    else
+        print "   ✅ Clean working tree"
+    fi
+
+    # Get current branch
+    local branch=$(git -C "$repo" branch --show-current 2>/dev/null)
+    
+    if [[ -z "$branch" ]]; then
+        print "   🔀 Detached HEAD"
+        (( issues_count++ ))
+        continue
+    fi
+    
+    print "   📍 Branch: $branch"
+    
+    # Check for remote tracking branch
+    local upstream=$(git -C "$repo" rev-parse --abbrev-ref --symbolic-full-name @{upstream} 2>/dev/null)
+    
+    if [[ -z "$upstream" ]]; then
+        print "   📍 No remote tracking branch"
+        (( issues_count++ ))
+        continue
+    fi
+    
+    print "   🔗 Upstream: $upstream"
+    
+    # Compare with remote
+    local rev_list_output=$(git -C "$repo" rev-list --left-right --count HEAD...@{upstream} 2>/dev/null)
+    
+    if [[ -z "$rev_list_output" ]]; then
+        print "   ⚠️  Unable to determine sync status"
+        (( issues_count++ ))
+        continue
+    fi
+    
+    # Parse ahead/behind counts (git outputs: "ahead\tbehind")
+    local -a counts=(${(s:	:)rev_list_output})
+    local -i ahead=${counts[1]} behind=${counts[2]}
+    
+    print "   📊 Commits: $ahead ahead, $behind behind"
+    
+    if (( ahead > 0 && behind > 0 )); then
+        print "   ⚠️  Diverged: ↑$ahead ahead, ↓$behind behind → needs sync"
+        (( out_of_sync_count++ ))
+    elif (( ahead > 0 )); then
+        print "   ↑  Ahead by $ahead commit(s) → needs push"
+        (( out_of_sync_count++ ))
+    elif (( behind > 0 )); then
+        print "   ↓  Behind by $behind commit(s) → needs pull"
+        (( out_of_sync_count++ ))
+    else
+        print "   ✅ Up to date with $upstream"
+    fi
+
+    print ""
+done
+
+# Print summary
+if (( repo_count == 0 )); then
+    print "No git repositories found."
+else
+    print "✅ Scan finished: $repo_count repositor$([[ $repo_count -eq 1 ]] && print y || print ies) checked."
+    
+    if (( local_changes_count > 0 )); then
+        print "   ⚠️  $local_changes_count with local changes"
+    fi
+    
+    if (( out_of_sync_count > 0 )); then
+        print "   ⚠️  $out_of_sync_count out of sync with remote"
+    fi
+    
+    if (( issues_count > 0 )); then
+        print "   ⚠️  $issues_count with issues (detached HEAD, no remote, or errors)"
+    fi
+    
+    if (( local_changes_count == 0 && out_of_sync_count == 0 && issues_count == 0 )); then
+        print "   🎉 All repositories are clean and up to date!"
+    fi
+fi
