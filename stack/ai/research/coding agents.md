@@ -20,7 +20,7 @@ ACP allows using the agents in any IDE, most notably in Zed. It enables rotating
 **Note on Cursor agent**:
 * It offers virtually all models but provides them through its own plans with no true BYOK option.
 * It offers no pure per token pricing but ties everything to subscriptions.
-* Its free tier has generous enough rate limits but does not support ACP.
+* Its free tier has maybe worthwile rate limits but does not support ACP.
 
 ## OpenCode
 
