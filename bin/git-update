@@ -1,0 +1,117 @@
+#!/usr/bin/env zsh
+
+root=${0:A:h:h}
+env_file="$root/stack/.env"
+
+if [[ -f "$env_file" ]]; then
+    source "$env_file"
+else
+    print "⚠️  No .env file found. Copy stack/.env.example to stack/.env and customize it."
+    exit 1
+fi
+
+repos_folder=${~GIT_REPOS_FOLDER}
+repos_folder_template="$root/stack/$GIT_REPOS_FOLDER_TEMPLATE"
+
+print "🐙 Updating git repos ..."
+print "  📁 Repos folder:"
+print "     $repos_folder"
+print "  📁 Repos folder template:"
+print "     $repos_folder_template"
+
+# Recursively iterate through all files and folders
+for item in "$repos_folder_template"/**/*(N); do
+    local relative_path="${item#$repos_folder_template/}"
+
+    if [[ -d "$item" ]]; then
+        #print "📁 $relative_path"
+    else
+        # If this is a git-repos.txt file, print each line
+        if [[ "${item:t}" == "git-repos.txt" ]]; then
+            # Extract the folder path (without the filename)
+            local relative_folder="${relative_path:h}"
+
+            while IFS= read -r repo_url; do
+                # Extract repo name from URL (last path component)
+                local repo_name="${repo_url##*/}"
+                repo_name="${repo_name%.git}"
+
+                local repo_folder="$repos_folder/$relative_folder/$repo_name"
+
+                print "🎯 The template expects the following repo. Trying to update ..."
+                print "  🐙 URL: $repo_url"
+                print "  📁 Folder: $relative_folder/$repo_name"
+
+                # Check if folder exists and contains a valid git repo
+                if [[ -d "$repo_folder" ]]; then
+                    if git -C "$repo_folder" rev-parse --git-dir &>/dev/null; then
+                        print "  ✅ Git repo already exists"
+
+                        # Check for local changes
+                        local status_output=$(git -C "$repo_folder" status --porcelain 2>/dev/null)
+                        if [[ -n "$status_output" ]]; then
+                            print "  ⚠️ Has local changes"
+                        else
+                            print "  ✅ Clean working tree"
+
+                            # Check sync status with remote
+                            local upstream=$(git -C "$repo_folder" rev-parse --abbrev-ref --symbolic-full-name @{upstream} 2>/dev/null)
+
+                            if [[ -z "$upstream" ]]; then
+                                print "  ⚠️ No remote tracking branch"
+                            else
+                                local rev_list_output=$(git -C "$repo_folder" rev-list --left-right --count HEAD...@{upstream} 2>/dev/null)
+
+                                if [[ -n "$rev_list_output" ]]; then
+                                    local -a counts=(${(s:	:)rev_list_output})
+                                    local -i ahead=${counts[1]} behind=${counts[2]}
+
+                                    if (( ahead > 0 && behind > 0 )); then
+                                        print "  ⚠️ Diverged: ↑$ahead ahead AND ↓$behind behind"
+                                    elif (( ahead > 0 )); then
+                                        print "  ⬆️ Ahead by $ahead commit(s). Pushing ..."
+                                        if git -C "$repo_folder" push 2>&1; then
+                                            print "  ✅ Pushed successfully"
+                                        else
+                                            print "  🛑 Push failed"
+                                        fi
+                                    elif (( behind > 0 )); then
+                                        print "  ⬇️ Behind by $behind commit(s). Pulling ..."
+                                        if git -C "$repo_folder" pull 2>&1; then
+                                            print "  ✅ Pulled successfully"
+                                        else
+                                            print "  🛑 Pull failed"
+                                        fi
+                                    else
+                                        print "  ✅ In sync with $upstream"
+                                    fi
+                                fi
+                            fi
+                        fi
+                    else
+                        # Check if folder is empty
+                        if [[ -z "$(ls -A "$repo_folder" 2>/dev/null)" ]]; then
+                            print "  ⬇️ Empty folder exists. Cloning ..."
+                            if git clone "$repo_url" "$repo_folder" 2>&1; then
+                                print "  ✅ Cloned successfully"
+                            else
+                                print "  🛑 Clone failed"
+                            fi
+                        else
+                            print "  ⚠️ Expected repo folder exists and contains items yet is not a git repo"
+                        fi
+                    fi
+                else
+                    print "  ⬇️ Creating repo folder and cloning repo..."
+                    if git clone "$repo_url" "$repo_folder" 2>&1; then
+                        print "  ✅ Cloned successfully"
+                    else
+                        print "  🛑 Clone failed"
+                    fi
+                fi
+            done < "$item"
+        else
+            print "📄 The template contains an unrelated file that will be ignored: $relative_path"
+        fi
+    fi
+done

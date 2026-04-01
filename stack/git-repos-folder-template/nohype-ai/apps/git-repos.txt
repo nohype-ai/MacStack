@@ -1,0 +1,9 @@
+git@github.com:nohype-ai/aiOS
+git@github.com:nohype-ai/Codeface
+git@github.com:nohype-ai/Flowlist
+git@github.com:nohype-ai/iMember
+git@github.com:nohype-ai/Moovees
+git@github.com:nohype-ai/Paretospeak
+git@github.com:nohype-ai/Portfolio
+git@github.com:nohype-ai/PortfolioOLD
+git@github.com:nohype-ai/xHale

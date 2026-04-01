@@ -1,0 +1,12 @@
+git@github.com:nohype-ai/CloudKid
+git@github.com:nohype-ai/FoundationToolz
+git@github.com:nohype-ai/GetLaid
+git@github.com:nohype-ai/LSPService
+git@github.com:nohype-ai/LSPServiceKit
+git@github.com:nohype-ai/SwiftAI
+git@github.com:nohype-ai/SwiftLSP
+git@github.com:nohype-ai/SwiftNodes
+git@github.com:nohype-ai/SwiftUINodes
+git@github.com:nohype-ai/SwiftUIToolz
+git@github.com:nohype-ai/SwiftUIToolzOLD
+git@github.com:nohype-ai/SwiftyToolz

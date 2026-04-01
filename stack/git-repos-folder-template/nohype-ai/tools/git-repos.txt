@@ -1,0 +1,2 @@
+git@github.com:nohype-ai/CheatSheets
+git@github.com:nohype-ai/MacStack
