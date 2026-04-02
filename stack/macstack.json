@@ -1,0 +1,15 @@
+{
+  "git": {
+    "user_name": "codeface-io",
+    "user_email": "sebastian@nohype.ai",
+    "core_editor": "zed --wait"
+  },
+  "repos": {
+    "folder": "~/Desktop/Repos",
+    "folder_template": "git/repos-folder-template"
+  },
+  "flags": {
+    "skip_brew_updates": false,
+    "vscode_settings_restore": true
+  }
+}

@@ -1,2 +1,5 @@
+# Keep for safety even though Mack Stack does not use an .env enymore
 .env
+
+# Ignore the symlinks that Mac Stack auto generates locally
 symlinks to dotfiles/.*

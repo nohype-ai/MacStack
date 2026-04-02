@@ -13,7 +13,7 @@ path=("$BINARY_PATH" $path)                 # Make commands in /bin available
 print_help() {
     echo "Valid calls are:"
     echo "  mack update        → update (set up) this machine"
-    echo "  mack update-repos  → clone/sync git repos as defined by your .env file and your stack/git/repos-folder-template"
+    echo "  mack update-repos  → clone/sync git repos as defined by your macstack.json file"
     echo "  mack brew-clip     → delete Homebrew packages that are not in your Mac Stack Brewfile, and clean up other stuff"
     echo "  mack brew-force    → [normally not needed] force apps in /Applications into Homebrew management if they are in your Mac Stack Brewfile"
     echo "  mack backup-zed    → copy Zed settings.json and keymap.json to stack/zed"
@@ -25,17 +25,25 @@ case "${1:-}" in
         print_help
         ;;
     "update")
-        source "$MAC_STACK_ROOT/scripts/set_permissions_and_load_env.sh"
+        # Set safe permissions for project directory
+        echo "🔒 Setting safe permissions for project directory ..."
+        chmod 700 "$MAC_STACK_ROOT" # Only owner can access project
+
+        # Mack Stack internal
         "$MAC_STACK_ROOT/symlinks to dotfiles/generate.sh"
         "$MAC_STACK_ROOT/scripts/zshrc/update.sh"
-        "$MAC_STACK_ROOT/scripts/homebrew/update_homebrew_stack.sh"
+        "$MAC_STACK_ROOT/scripts/homebrew/update_mac_stack.sh"
+
+        # Custom user stack
+        source "$MAC_STACK_ROOT/scripts/load_stack_config.sh"
+        "$MAC_STACK_ROOT/scripts/homebrew/update_user_stack.sh"
         "$MAC_STACK_ROOT/scripts/git/update_git_config.sh"
         "$MAC_STACK_ROOT/scripts/update_ide_settings.sh"
         "$MAC_STACK_ROOT/stack/custom_mack_update.sh"
         print "✅ Did update (set up) this Mac."
         print "💡 To get the new shell environment, relaunch your shell or run 'source ~/.zshrc'"
         ;;
-    "update-git")
+    "update-repos")
         update-repos
         ;;
     "brew-clip")
@@ -45,10 +53,10 @@ case "${1:-}" in
         "$MAC_STACK_ROOT/scripts/homebrew/brew-force.sh"
         ;;
     "backup-zed")
-        backup_zed
+        backup-zed
         ;;
     *)
-        echo "🛑 Unknown command: <$subcommand>"
+        echo "🛑 Unknown command: <$1>"
         print_help
         exit 1
         ;;
