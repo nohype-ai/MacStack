@@ -2,9 +2,11 @@
 
 This README (and folder) document my current state of finding a working AI stack.
 
-Research is documented in [research/README.md](research/README.md)
+Research is documented in [research/](research/)
 
-## Agent Clients
+## Layers of the Stack
+
+### Agent Clients
 
 Native macOS apps that offer GUI frontends to agents – natively or via ACP. And no bloated VSCode forks here.
 
@@ -18,24 +20,24 @@ Native macOS apps that offer GUI frontends to agents – natively or via ACP. An
   - with subscripton: Code and CoWork
   - no way to use API key as in Claude Code CLI
 
-## Agents
+### Agents
 
 CLI agents that can be used via TUI.
 
-### Coding (with ACP support)
+#### Coding Agents (with ACP support)
 - [OpenCode](https://opencode.ai)
 - [Cursor CLI](https://cursor.com/cli)
 - [Gemini CLI](https://geminicli.com)
 - [Claude Code](https://claude.com/product/claude-code)
 
-### Personal
+#### Personal Agents
 - [OpenClaw](https://openclaw.ai)
 
-## Providers
+### Providers
 
 Cloud services that offer access to model inference.
 
-### Routers (Aggregators)
+#### Routers (Aggregators)
 - [OpenRouter](https://openrouter.ai/workspaces/default) (via GitHub account)
   - usable rate limits on free models when funded with 10$
   - 5.5% markup on paid models
@@ -50,12 +52,12 @@ Cloud services that offer access to model inference.
   - free "Hobby" tier with generous rate limits but without ACP support
   - login via GitHub would be possible (as second account or to simplify)
 
-### Open Weights
+#### Open Weights
 - [DeepInfra](https://deepinfra.com) (via GitHub account)
   - cheap and fast inference provider for open models
   - [Model Prices](https://deepinfra.com/models/text-generation)
 
-### Proprietary
+#### Proprietary
 - [xAI](https://console.x.ai) (normal login)
   - no free models
   - good mix of cheap (Grok 4 Fast) and frontier (Grok 4.20)
@@ -65,7 +67,63 @@ Cloud services that offer access to model inference.
 - [Anthropic](https://platform.claude.com) (via email)
   - [Model Prices](https://claude.com/pricing#api)
 
+### Models
+
+- available models determined by Agent + Provider combination.
+- prices differ widely - more than performance
+- https://arena.ai/leaderboard/text/coding?viewBy=plot&rankBy=labs
+- https://arena.ai/leaderboard/code?viewBy=plot&rankBy=labs
+
+## Essential Combinations: ACP Agent + Provider
+
+### Selection Criteria
+
+The basic category here is coding (not general purpose), cloud inference (not local inference), and availability of ACP. Further criteria for combo selection were:
+* Avoid inference outside US/Europe
+* Avoid OpenAI
+* Avoid low performing agents
+* Avoid free variants with impractically tight rate limits (OpenCode Zen free models)
+* Use a given provider/router only with the best agent available for it (why use Anthropic account with any other agent than Claude Code)
+* Cover range of cheap/fast- versus intelligent models as well as open weights- versus proprietary models
+
+### Selection
+
+**Viable:**
+| Agent | Provider | free/paid | In Zed via ACP | In Terminal |
+| --- | --- | --- | --- | --- |
+| Gemini CLI | Google AI | free (login) | ✅ (5?) | ✅ (5) |
+| OpenCode | DeepInfra | API key | ✅ (2) | ✅ (2) |
+| OpenCode | xAI | API key | ✅ | ✅ |
+| Gemini CLI | Google AI | API key / subscription | ✅ (5?) | ✅ (5) |
+| Claude Code | Anthropic | API key / subscription | ❓ (6) | ✅ |
+
+**Ruled Out:**
+| Agent | Provider | free/paid | In Zed via ACP | In Terminal |
+| --- | --- | --- | --- | --- |
+| Cursor CLI | Cursor | subscription | ✅ (4) | ✅ |
+| OpenCode | OpenCode Zen | paid models (+6.15% fee) | ✅ | ✅ |
+| Cursor CLI | Cursor | free tier | 🛑 (3) | ⚠️ (7) |
+| OpenCode | OpenRouter | free models | 🛑 (1) | ✅ |
+| OpenCode | OpenRouter | paid models (+5.5% fee) | 🛑 (1) | ✅ |
+
+### Issues
+
+1. 🛑 OpenCode + OpenRouter: does currently not work in Zed at all, whether with free or paid models. Seems to be a known issue with OpenRouter, which does not even work in the Zed agent (without ACP).
+2. ℹ️ OpenCode + DeepInfra: The model list is outdated because DeepInfra updates its available models rapidly, while OpenCode relies on models.dev. Solution: add a opencode.json file in ~/.config/opencode/ and define some desired but missing models in there. Prefix their names with "di-custom: " or so to make them discoverable. Backup/example: [opencode.json](../opencode/opencode.json). (Related GitHub issue: [#6231](https://github.com/anomalyco/opencode/issues/6231))
+3. 🛑 Cursor CLI + Cursor free tier: ACP is [explicitly not offered on the free tier](https://cursor.com/blog/jetbrains-acp).
+4. ℹ️ Cursor CLI + Cursor paid subscription: Works flawlessly. Excellent ACP integration (tested with Sonnet 4.5 and 4.6). But of course it's bound to a subscription, pures usage based is no option. And can't compete with the whole package that Anthropic subscription would offer (agent, cowork, chatbot, native mac app ...).
+5. ℹ️ Gemini CLI: Tuning model params (temperature etc.) can impact agentic performance. My setup is documented [here](../gemini/README.md). I could not fully verify that the custom config is also loaded in Zed via ACP, but it is strongly indicated.
+6. ❓ I have not yet tested Claude Code via ACP in Zed, only stand-alone Claude Code.
+7. Cursor CLI + Cursor free tier (Terminal): Possible but rate limits are tight enough to possibly be annoying -> has to be used for small tasks only
+
+**Every ACP Agent:**
+* ⚠️ Basic thread management functions like "resuming threads from history" do not even work with "the reference ACP implementation" (Gemini CLI). This also means Zed offers no way to edit the agent's thread history (if it is even created) -> delete OpenCode threads by deleting `~/.local/share/opencode/opencode.db*`. Apply an equivalent solution with other agents.
+
 ## Models
+
+This sections focusses on:
+* Coding with ACP agents (most impactful baseline use case)
+* Usage based billing via API key (most universal cost comparison)
 
 Models are grouped by [agent+provider combination](research/coding%20agents.md) and are sorted by cost per token.
 
