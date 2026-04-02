@@ -336,5 +336,52 @@
     "unbind": {
       "ctrl-cmd-left": "editor::SelectSmallerSyntaxNode"
     }
+  },
+  {
+    "context": "!ContextEditor && !AcpThread > Editor && mode == full",
+    "unbind": {
+      "alt-cmd-enter": "editor::OpenExcerptsSplit"
+    }
+  },
+  {
+    "context": "OutlinePanel && not_editing",
+    "unbind": {
+      "alt-cmd-enter": "editor::OpenExcerptsSplit"
+    }
+  },
+  {
+    "context": "Picker > Editor",
+    "unbind": {
+      "alt-cmd-enter": [
+        "picker::ConfirmInput",
+        {
+          "secondary": true
+        }
+      ]
+    }
+  },
+  {
+    "context": "!ContextEditor && !AcpThread > Editor && mode == full",
+    "bindings": {
+      "alt-cmd-enter": "assistant::InlineAssist"
+    }
+  },
+  {
+    "context": "!ContextEditor && !AcpThread > Editor && mode == full",
+    "unbind": {
+      "ctrl-enter": "assistant::InlineAssist"
+    }
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "alt-cmd-enter": "assistant::InlineAssist"
+    }
+  },
+  {
+    "context": "Terminal",
+    "unbind": {
+      "ctrl-enter": "assistant::InlineAssist"
+    }
   }
 ]
