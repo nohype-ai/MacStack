@@ -35,7 +35,7 @@ case "${1:-}" in
         "$MAC_STACK_ROOT/scripts/homebrew/update_mac_stack.sh"
 
         # Custom user stack
-        source "$MAC_STACK_ROOT/scripts/stack config/load.sh"
+        source "$MAC_STACK_ROOT/scripts/stack_config/load.sh"
         "$MAC_STACK_ROOT/scripts/homebrew/update_user_stack.sh"
         "$MAC_STACK_ROOT/scripts/git/update_git_config.sh"
         "$MAC_STACK_ROOT/scripts/update_ide_settings.sh"

@@ -18,7 +18,7 @@ if ! silent $JQ empty "$CONFIG"; then
 fi
 
 CHECK_SCHEMA='/opt/homebrew/bin/check-jsonschema'
-SCHEMA="$MAC_STACK_ROOT/scripts/stack config/macstack.schema.json"
+SCHEMA="$MAC_STACK_ROOT/scripts/stack_config/macstack.schema.json"
 
 if ! silent $CHECK_SCHEMA --schemafile "$SCHEMA" "$CONFIG"; then
     echo "🛑 macstack.json does not match the expected schema. Run 'check-jsonschema --schemafile $SCHEMA $CONFIG' for details."
