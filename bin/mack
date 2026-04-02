@@ -12,8 +12,8 @@ path=("$BINARY_PATH" $path)                 # Make commands in /bin available
 # Function for printing help
 print_help() {
     echo "Valid calls are:"
-    echo "  mack update        → update (set up) this machine"
-    echo "  mack update-repos  → clone/sync git repos as defined by your macstack.json file and stack/git/repos_folder_template"
+    echo "  mack update        → update (set up) this machine, including git repos"
+    echo "  mack update-repos  → update only the git repos: clone/sync as defined by your macstack.json and stack/git/repos_folder_template"
     echo "  mack brew-clip     → delete Homebrew packages that are not in your Mac Stack Brewfile, and clean up other stuff"
     echo "  mack brew-force    → [normally not needed] force apps in /Applications into Homebrew management if they are in your Mac Stack Brewfile"
     echo "  mack backup-zed    → copy Zed settings.json and keymap.json to stack/zed"
