@@ -16,7 +16,7 @@ else
     silent brew update
 fi
 
-# Update `jq` and `check-jsonschema` for reading configuration files
-echo "🍺 Updating \`jq\` and \`check-jsonschema\` for reading configuration files ..."
+# Update `jq` and `check-jsonschema` for reading json files
+echo "🍺 Updating \`jq\` and \`check-jsonschema\` for reading json files ..."
 silent zsh -c '/opt/homebrew/bin/brew upgrade jq || /opt/homebrew/bin/brew install jq'
 silent zsh -c '/opt/homebrew/bin/brew upgrade check-jsonschema || /opt/homebrew/bin/brew install check-jsonschema'

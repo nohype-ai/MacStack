@@ -7,7 +7,7 @@ set -u  # Treat unset variables as error
 
 # Update pre-existing Homebrew packages (even outside Brewfile)
 # We use --greedy to force updates for casks with 'auto_updates true' (like Browsers, Cursor, Raycast) or 'version :latest' (like Apple Fonts). Without this flag, Homebrew ignores them. This ensures our stack actually stays up to date. While it may periodically trigger re-installs for 'latest' casks, it is efficient for versioned apps as they only download when a new numeric version is detected.
-if [[ "$SKIP_BREW_PACKAGE_UPDATES" == "false" ]]; then
+if [[ "${SKIP_BREW_PACKAGE_UPDATES:-false}" != "true" ]]; then
     echo "🍺 Updating installed Homebrew packages ..."
     /opt/homebrew/bin/brew upgrade --greedy
 fi

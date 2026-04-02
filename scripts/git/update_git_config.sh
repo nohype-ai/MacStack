@@ -8,9 +8,9 @@ set -u  # Treat unset variables as error
 
 echo "🐙 Configuring git ..."
 
-git config --global user.name "$GIT_USER_NAME"
-git config --global user.email "$GIT_USER_EMAIL"
-git config --global core.editor "$GIT_CORE_EDITOR"
+[[ -n "${GIT_USER_NAME:-}" ]] && git config --global user.name "$GIT_USER_NAME"
+[[ -n "${GIT_USER_EMAIL:-}" ]] && git config --global user.email "$GIT_USER_EMAIL"
+[[ -n "${GIT_CORE_EDITOR:-}" ]] && git config --global core.editor "$GIT_CORE_EDITOR"
 git config --global core.excludesfile "~/.gitignore_global"
 git config --global init.defaultBranch main
 git config --global pull.ff only

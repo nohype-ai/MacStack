@@ -51,7 +51,6 @@ Without customizing anything, the resulting setup will be as follows.
 
 ## To Do
 
-* Make all inputs to `mack update` optional. only the inputs that exist are used. nothing is required.
 * Include `update-repos` in `mack update`
 * Separate Mac Stack as a universal system from user-specific setup configuration. This will lead to separate repos.
 * [Setup default SSH key](documentation/feature_plans/ssh/) (for GitHub, GitLab etc.)
