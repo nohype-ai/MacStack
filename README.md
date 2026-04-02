@@ -17,14 +17,13 @@ On a fresh system that may not even have GitHub authentication configured:
 
 1. Make sure your [iCloud account is set up](https://support.apple.com/en-us/102314), so that Mac App Store apps can be installed automatically
 2. [Download this repository](https://github.com/nohype-ai/MacStack/archive/refs/heads/master.zip)
-3. Copy [`stack/.env.example`](stack/.env.example), name the copy `.env`, customize [`stack/.env`](stack/.env)
-   - ("dotfiles" like `.env.example` are hidden by default. Show/hide them by via `Command + Shift + .`)
+3. Customize [`stack/macstack.json`](stack/macstack.json)
 4. Customize any of these components in [stack/](stack/) (technically optional):
    * Software stack as declared in [`Brewfile`](stack/Brewfile)
    * Shell customization: [`custom_zshrc_content.sh`](stack/custom_zshrc_content.sh)
    * Further update script: [`custom_mack_update.sh`](stack/custom_mack_update.sh)
    * VSCode IDE settings: [settings.json](stack/vscode/settings.json)
-      * (activation in [`.env`](stack/.env), see [this `README.md`](stack/vscode/README.md))
+      * (activation in [`macstack.json`](stack/macstack.json), see [this `README.md`](stack/vscode/README.md))
 5. Apply your config by running `bin/mack update`.
 
 After you've run `bin/mack update` once you can now trigger repeated updates via the global `mack update` command (or just `update`).
@@ -53,7 +52,7 @@ Without customizing anything, the resulting setup will be as follows.
    - other pre-existing parameters are preserved
    - default `~/.gitignore_global` created if none existed yet
 8. Further installations specific to your stack in [`custom_mack_update.sh`](stack/custom_mack_update.sh)
-9. IDE settings restored (overwritten) from backup if `VSCODE_SETTINGS_RESTORE` is set `true` in [`.env`](stack/.env) file.
+9. IDE settings restored (overwritten) from backup if `vscode_settings_restore` is set `true` in [`macstack.json`](stack/macstack.json) file.
 
 ## To Do
 
