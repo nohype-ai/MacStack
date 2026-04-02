@@ -19,7 +19,7 @@ cask "android-commandlinetools" # for Android development
 
 ## 2. .zshrc
 
-Put this back into the [custom_zshrc_content.sh](../stack/custom_zshrc_content.sh) so it gets sourced in .zshrc:
+Put this back into the [zshrc.sh](../stack/zshrc.sh) so it gets sourced in .zshrc:
 ```bash
 # Setup Android SDK
 export ANDROID_HOME=/opt/homebrew/share/android-commandlinetools

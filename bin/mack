@@ -39,7 +39,7 @@ case "${1:-}" in
         "$MAC_STACK_ROOT/scripts/homebrew/update_user_stack.sh"
         "$MAC_STACK_ROOT/scripts/git/update_git_config.sh"
         "$MAC_STACK_ROOT/scripts/update_ide_settings.sh"
-        "$MAC_STACK_ROOT/stack/custom_mack_update.sh"
+        "$MAC_STACK_ROOT/stack/update.sh"
 
         print "✅ Did update (set up) this Mac."
         print "💡 To get the new shell environment, relaunch your shell or run 'source ~/.zshrc'"

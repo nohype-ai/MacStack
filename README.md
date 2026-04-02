@@ -20,8 +20,8 @@ On a fresh system that may not even have GitHub authentication configured:
 3. Customize [`stack/macstack.json`](stack/macstack.json)
 4. Customize any of these components in [stack/](stack/) (technically optional):
    * Software stack as declared in [`Brewfile`](stack/Brewfile)
-   * Shell customization: [`custom_zshrc_content.sh`](stack/custom_zshrc_content.sh)
-   * Further update script: [`custom_mack_update.sh`](stack/custom_mack_update.sh)
+   * Shell customization: [`zshrc.sh`](stack/zshrc.sh)
+   * Further update script: [`update.sh`](stack/update.sh)
    * IDE settings and keymaps: for [VSCode based IDEs](stack/vscode) and [Zed](stack/zed)
       * (enable `restore_ide_settings` in [`macstack.json`](stack/macstack.json))
 5. Apply your config by running `bin/mack update`.
@@ -43,7 +43,7 @@ Without customizing anything, the resulting setup will be as follows.
 4. `brew` system cleaned up
    - deleted old package versions and cache
 5. `~/.zshrc` loads (sources) various shell customizations.
-   - [`custom_zshrc_content.sh`](stack/custom_zshrc_content.sh): Your indiviual part of the shell customization
+   - [`zshrc.sh`](stack/zshrc.sh): Your indiviual part of the shell customization
 6. `mack` is available system-wide, offering several commands, including:
    - `mack update` (or just `update`): trigger this whole update process
    - `mack help` (or just `mack`): show all available `mack` commands 
@@ -51,7 +51,7 @@ Without customizing anything, the resulting setup will be as follows.
    - necessary parameters plus some basic best-practice ones
    - other pre-existing parameters are preserved
    - default `~/.gitignore_global` created if none existed yet
-8. Further installations specific to your stack in [`custom_mack_update.sh`](stack/custom_mack_update.sh)
+8. Further installations specific to your stack in [`update.sh`](stack/update.sh)
 9. IDE settings restored (overwritten) from backup if `restore_ide_settings` is set `true` in [`macstack.json`](stack/macstack.json) file.
 
 ## To Do

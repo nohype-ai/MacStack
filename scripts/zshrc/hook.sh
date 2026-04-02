@@ -11,4 +11,4 @@ ROOT="${DIR:h:h}"
 source "$ROOT/scripts/zshrc/content.sh"
 
 # Source the user's custom shell customization
-source "$ROOT/stack/custom_zshrc_content.sh"
+source "$ROOT/stack/zshrc.sh"

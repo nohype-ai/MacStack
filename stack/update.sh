@@ -1,5 +1,8 @@
 #!/usr/bin/env zsh
+# Mac Stack (`mack update`) runs this script
+# This script allow you to customize/extend the update process
 
+# Prepare
 set -e  # Exit on any error
 set -u  # Treat unset variables as error
 
