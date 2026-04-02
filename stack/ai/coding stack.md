@@ -1,13 +1,13 @@
 # The AI Coding Stack
 
-Coding is the most impactful use case and most indicative of agentic performance, so this stack may later inform other use cases beyond coding.
+Coding is the most impactful use case, applicable to any work on markdown files, and most indicative of agentic performance, so this stack is the baseline and may later inform other specialized use cases.
 
 ## Essential Combinations: Coding Agent + Provider
 
 ### Selection Criteria
 
 The basic category here is coding (not general purpose) and cloud inference (not local inference). Further criteria for combo selection were:
-* Avoid the bloated, memory-inefficient, slow forks of VSCode (Cursor IDE, Antigravity, Kiro, Windsurf) and instead use lean client apps like Zed (via ACP) or OpenCode Desktop
+* Avoid the bloated, memory-inefficient, slow forks of VSCode (Cursor IDE, Antigravity, Kiro, Windsurf) and instead use lean client apps like Zed (with ACP) or OpenCode Desktop
 * Avoid inference outside US/Europe
 * Avoid OpenAI
 * Avoid low performing agents (Zed's own internal Zed agent)
