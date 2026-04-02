@@ -1,4 +1,5 @@
 {
+  "$schema": "../macstack.schema.json",
   "git": {
     "user_name": "codeface-io",
     "user_email": "sebastian@nohype.ai",

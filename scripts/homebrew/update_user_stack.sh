@@ -2,7 +2,6 @@
 # This script installs/updates everything in the user's Brewfile
 
 # Prepare
-
 set -e  # Exit on any error
 set -u  # Treat unset variables as error
 
@@ -13,15 +12,16 @@ if [[ "$SKIP_BREW_PACKAGE_UPDATES" == "false" ]]; then
     /opt/homebrew/bin/brew upgrade --greedy
 fi
 
-# Install additional packages declared in Brewfile
+# Pre-flight `mas list` gate so Brewfile MAS installs don't fail mid-run.
+"$MAC_STACK_ROOT/scripts/homebrew/ensure_mas_works.sh"
 
+# Install additional packages declared in Brewfile
 echo "🍺 Installing missing Homebrew packages listed in Brewfile ..."
 brewfile="$MAC_STACK_ROOT/stack/Brewfile"
 assert-file "$brewfile"
 /opt/homebrew/bin/brew bundle install --no-upgrade --file "$brewfile"
 
 # Clean up Homebrew: cache, old package versions, cask installers
-
 echo "🍺 Cleaning up Homebrew cache, old package versions and cask installers ..."
 silent /opt/homebrew/bin/brew cleanup
 silent find /opt/homebrew/Caskroom -type f \( -name "*.dmg" -o -name "*.pkg" -o -name "*.zip" \) -delete

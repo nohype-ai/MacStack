@@ -29,7 +29,7 @@ case "${1:-}" in
         echo "🔒 Setting safe permissions for project directory ..."
         chmod 700 "$MAC_STACK_ROOT" # Only owner can access project
 
-        # Mack Stack internal
+        # General stack
         "$MAC_STACK_ROOT/symlinks to dotfiles/generate.sh"
         "$MAC_STACK_ROOT/scripts/zshrc/update.sh"
         "$MAC_STACK_ROOT/scripts/homebrew/update_mac_stack.sh"
@@ -40,6 +40,7 @@ case "${1:-}" in
         "$MAC_STACK_ROOT/scripts/git/update_git_config.sh"
         "$MAC_STACK_ROOT/scripts/update_ide_settings.sh"
         "$MAC_STACK_ROOT/stack/custom_mack_update.sh"
+
         print "✅ Did update (set up) this Mac."
         print "💡 To get the new shell environment, relaunch your shell or run 'source ~/.zshrc'"
         ;;
