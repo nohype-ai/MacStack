@@ -10,9 +10,8 @@
   "inline_code_actions": true,
   "agent": {
     "inline_assistant_model": {
-      "provider": "openrouter",
-      // https://openrouter.ai/models?fmt=cards&input_modalities=text&max_price=0&order=most-popular&output_modalities=text
-      "model": "openrouter/free",
+      "provider": "x_ai",
+      "model": "grok-4-1-fast-non-reasoning",
     },
   },
   "inlay_hints": {
