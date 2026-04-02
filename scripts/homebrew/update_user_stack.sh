@@ -18,8 +18,11 @@ fi
 # Install additional packages declared in Brewfile
 echo "🍺 Installing missing Homebrew packages listed in Brewfile ..."
 brewfile="$MAC_STACK_ROOT/stack/Brewfile"
-assert-file "$brewfile"
-/opt/homebrew/bin/brew bundle install --no-upgrade --file "$brewfile"
+if [[ -f "$brewfile" ]]; then
+    /opt/homebrew/bin/brew bundle install --no-upgrade --file "$brewfile"
+else
+    echo "⚠️  Warning: Skipping Brewfile installs since file does not exist in stack:\n$brewfile"
+fi
 
 # Clean up Homebrew: cache, old package versions, cask installers
 echo "🍺 Cleaning up Homebrew cache, old package versions and cask installers ..."
