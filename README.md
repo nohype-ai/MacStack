@@ -8,8 +8,8 @@ Mac Stack allows to update/setup a developer Mac with one command, based on a co
   * 📰 Fonts
   * ⌨️ Command line tools (like `brew`, `git`, `pyenv`, `python`, `claude-code`)
   * 🍏 Graphical apps (including Mac App Store apps)
-  * ⚙️ Settings and keybindings for most VS Code based IDEs
-  * 🧩 Extensions for VS Code based IDEs
+  * ⚙️ Settings and keybindings for Zed and most VSCode based IDEs
+  * 🧩 Extensions for VSCode based IDEs
   
 ## How?
 
@@ -22,8 +22,8 @@ On a fresh system that may not even have GitHub authentication configured:
    * Software stack as declared in [`Brewfile`](stack/Brewfile)
    * Shell customization: [`custom_zshrc_content.sh`](stack/custom_zshrc_content.sh)
    * Further update script: [`custom_mack_update.sh`](stack/custom_mack_update.sh)
-   * VSCode IDE settings: [settings.json](stack/vscode/settings.json)
-      * (activation in [`macstack.json`](stack/macstack.json), see [this `README.md`](stack/vscode/README.md))
+   * IDE settings and keymaps: for [VSCode based IDEs](stack/vscode) and [Zed](stack/zed)
+      * (enable `restore_ide_settings` in [`macstack.json`](stack/macstack.json))
 5. Apply your config by running `bin/mack update`.
 
 After you've run `bin/mack update` once you can now trigger repeated updates via the global `mack update` command (or just `update`).
@@ -52,7 +52,7 @@ Without customizing anything, the resulting setup will be as follows.
    - other pre-existing parameters are preserved
    - default `~/.gitignore_global` created if none existed yet
 8. Further installations specific to your stack in [`custom_mack_update.sh`](stack/custom_mack_update.sh)
-9. IDE settings restored (overwritten) from backup if `vscode_settings_restore` is set `true` in [`macstack.json`](stack/macstack.json) file.
+9. IDE settings restored (overwritten) from backup if `restore_ide_settings` is set `true` in [`macstack.json`](stack/macstack.json) file.
 
 ## To Do
 

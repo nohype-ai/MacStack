@@ -36,8 +36,11 @@ restore_ide_settings() {
     fi
 }
 
-# Update IDE settings and keybindings
-if [[ "$VSCODE_SETTINGS_RESTORE" == "true" ]]; then
+# Update IDE settings and keybindings (restoring by overwriting)
+if [[ "$RESTORE_IDE_SETTINGS" == "true" ]]; then
+
+    # 1️⃣ VSCode-based IDEs
+
     settings="$MAC_STACK_ROOT/stack/vscode/settings.json"
     assert-file "$settings"
 
@@ -56,4 +59,10 @@ if [[ "$VSCODE_SETTINGS_RESTORE" == "true" ]]; then
             "$settings" \
             "$keybindings"
     done
+
+    # 2️⃣ Zed
+
+    local zed_config_dir="$HOME/.config/zed"
+    mkdir -p "$zed_config_dir"
+    cp "$MAC_STACK_ROOT/stack/zed"/*.json "$zed_config_dir/"
 fi

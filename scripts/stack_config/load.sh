@@ -32,5 +32,5 @@ GIT_CORE_EDITOR=$($JQ -r '.git.core_editor' "$CONFIG")
 GIT_REPOS_FOLDER=$($JQ -r '.repos.folder' "$CONFIG")
 GIT_REPOS_FOLDER_TEMPLATE=$($JQ -r '.repos.folder_template' "$CONFIG")
 SKIP_BREW_PACKAGE_UPDATES=$($JQ -r '.flags.skip_brew_updates' "$CONFIG")
-VSCODE_SETTINGS_RESTORE=$($JQ -r '.flags.vscode_settings_restore' "$CONFIG")
+RESTORE_IDE_SETTINGS=$($JQ -r '.flags.restore_ide_settings' "$CONFIG")
 set +a # Turn off auto-export

@@ -26,11 +26,11 @@
     },
     "flags": {
       "type": "object",
-      "required": ["skip_brew_updates", "vscode_settings_restore"],
+      "required": ["skip_brew_updates", "restore_ide_settings"],
       "additionalProperties": false,
       "properties": {
         "skip_brew_updates": { "type": "boolean" },
-        "vscode_settings_restore": { "type": "boolean" }
+        "restore_ide_settings": { "type": "boolean" }
       }
     }
   }

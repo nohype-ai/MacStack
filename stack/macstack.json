@@ -11,6 +11,6 @@
   },
   "flags": {
     "skip_brew_updates": false,
-    "vscode_settings_restore": true
+    "restore_ide_settings": false
   }
 }
