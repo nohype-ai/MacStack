@@ -39,6 +39,7 @@ Cloud services that offer access to model inference.
 These poviders do not provide inference themselves but only act as gateways that aggregate- and route to other providers.
 - [OpenRouter](https://openrouter.ai/workspaces/default) (via GitHub account)
   - usable rate limits on free models when funded with 10$
+  - free models: https://openrouter.ai/models?fmt=cards&input_modalities=text&max_price=0&order=most-popular&output_modalities=text
   - 5.5% markup on paid models
 - [OpenCode Zen](https://opencode.ai/zen) (via GitHub account)
   - aggregates and routes to curated, benchmarked models hosted at other providers
