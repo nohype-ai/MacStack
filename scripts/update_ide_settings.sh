@@ -31,8 +31,18 @@ restore_ide_settings() {
         echo "⚙️  Restoring settings and keybindings for $app_name ..."
         local user_settings_dir="$HOME/Library/Application Support/$app_support_folder/User"
         mkdir -p "$user_settings_dir"
-        cp "$settings_file" "$user_settings_dir/settings.json"
-        cp "$keybindings_file" "$user_settings_dir/keybindings.json"
+
+        if [[ -f "$settings_file" ]]; then
+            cp "$settings_file" "$user_settings_dir/settings.json"
+        else
+            echo "⚠️  Warning: settings file is not in stack, so restoring it will be skipped:\n$settings_file"
+        fi
+
+        if [[ -f "$keybindings_file" ]]; then
+            cp "$keybindings_file" "$user_settings_dir/keybindings.json"
+        else
+            echo "⚠️  Warning: keybindings file is not in stack, so restoring it will be skipped:\n$keybindings_file"
+        fi
     fi
 }
 
@@ -42,10 +52,7 @@ if [[ "$RESTORE_IDE_SETTINGS" == "true" ]]; then
     # 1️⃣ VSCode-based IDEs
 
     settings="$MAC_STACK_ROOT/stack/vscode/settings.json"
-    assert-file "$settings"
-
     keybindings="$MAC_STACK_ROOT/stack/vscode/keybindings.json"
-    assert-file "$keybindings"
 
     app_names=("Visual Studio Code" "Cursor" "Antigravity" "Kiro" "Windsurf" "VSCodium")
     app_support_folders=("Code" "Cursor" "Antigravity" "Kiro" "Windsurf" "VSCodium")
@@ -61,8 +68,22 @@ if [[ "$RESTORE_IDE_SETTINGS" == "true" ]]; then
     done
 
     # 2️⃣ Zed
+    #
+    print "⚙️  Restoring settings and keymap for Zed ..."
 
     local zed_config_dir="$HOME/.config/zed"
-    mkdir -p "$zed_config_dir"
-    cp "$MAC_STACK_ROOT/stack/zed"/*.json "$zed_config_dir/"
+
+    if [[ -f "$MAC_STACK_ROOT/stack/zed/settings.json" ]]; then
+        mkdir -p "$zed_config_dir"
+        cp "$MAC_STACK_ROOT/stack/zed/settings.json" "$zed_config_dir/settings.json"
+    else
+        echo "⚠️  Warning: settings file is not in stack, so restoring it will be skipped:\n$MAC_STACK_ROOT/stack/zed/settings.json"
+    fi
+
+    if [[ -f "$MAC_STACK_ROOT/stack/zed/keymap.json" ]]; then
+        mkdir -p "$zed_config_dir"
+        cp "$MAC_STACK_ROOT/stack/zed/keymap.json" "$zed_config_dir/keymap.json"
+    else
+        echo "⚠️  Warning: keymap file is not in stack, so restoring it will be skipped:\n$MAC_STACK_ROOT/stack/zed/keymap.json"
+    fi
 fi
