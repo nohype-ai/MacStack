@@ -1,5 +1,5 @@
 {
-  "$schema": "../macstack.schema.json",
+  "$schema": "https://raw.githubusercontent.com/nohype-ai/MacStack/refs/heads/master/scripts/stack%20config/macstack.schema.json",
   "git": {
     "user_name": "codeface-io",
     "user_email": "sebastian@nohype.ai",
