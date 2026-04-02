@@ -18,12 +18,7 @@ On a fresh system that may not even have GitHub authentication configured:
 1. Make sure your [iCloud account is set up](https://support.apple.com/en-us/102314), so that Mac App Store apps can be installed automatically
 2. [Download this repository](https://github.com/nohype-ai/MacStack/archive/refs/heads/master.zip)
 3. Customize [`stack/macstack.json`](stack/macstack.json)
-4. Customize any of these components in [stack/](stack/) (technically optional):
-   * Software stack as declared in [`Brewfile`](stack/Brewfile)
-   * Shell customization: [`zshrc.sh`](stack/zshrc.sh)
-   * Further update script: [`update.sh`](stack/update.sh)
-   * IDE settings and keymaps: for [VSCode based IDEs](stack/vscode) and [Zed](stack/zed)
-      * (enable `restore_ide_settings` in [`macstack.json`](stack/macstack.json))
+4. Customize any of the components in of your [stack/](stack/)
 5. Apply your config by running `bin/mack update`.
 
 After you've run `bin/mack update` once you can now trigger repeated updates via the global `mack update` command (or just `update`).
