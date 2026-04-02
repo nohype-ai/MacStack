@@ -25,6 +25,6 @@ else
 fi
 
 # Clean up Homebrew: cache, old package versions, cask installers
-echo "🍺 Cleaning up Homebrew cache, old package versions and cask installers ..."
+echo "🍺 Cleaning up Homebrew cache, old package versions, installers ..."
 silent /opt/homebrew/bin/brew cleanup
 silent find /opt/homebrew/Caskroom -type f \( -name "*.dmg" -o -name "*.pkg" -o -name "*.zip" \) -delete

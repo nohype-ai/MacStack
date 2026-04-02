@@ -12,11 +12,11 @@ silent uv python install --default
 silent uv python upgrade
 
 # Update LiteLLM
-echo "🤖 Updating LiteLLM (https://github.com/berriai/litellm) ..."
+echo "🤖 Updating LiteLLM ..."
 silent uv tool install --upgrade 'litellm[proxy]'
 
 # Update markitdown
-echo "📝 Updating markitdown (https://github.com/microsoft/markitdown) ..."
+echo "📝 Updating markitdown ..."
 silent uv tool install --upgrade --force 'markitdown[all]'
 
 # Fix Cursor CLI Issue

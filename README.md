@@ -2,14 +2,15 @@
 
 ## What?
 
-Mac Stack allows to update/setup a developer Mac with one command, based on a config as code:
-  * 🐚 Shell customizations (prompt, functions, aliases, environment variables)
+Mac Stack allows to update/setup a developer Mac with one command, based on your config as code:
+  * 🐚 Shell customizations (prompt, paths, functions, aliases, environment)
   * 🐙 Global git configuration
   * 📰 Fonts
   * ⌨️ Command line tools (like `brew`, `git`, `pyenv`, `python`, `claude-code`)
   * 🍏 Graphical apps (including Mac App Store apps)
   * ⚙️ Settings and keybindings for Zed and most VSCode based IDEs
   * 🧩 Extensions for VSCode based IDEs
+  * 📂 All git repositories
   
 ## How?
 
@@ -51,7 +52,6 @@ Without customizing anything, the resulting setup will be as follows.
 
 ## To Do
 
-* Include `update-repos` in `mack update`
 * Separate Mac Stack as a universal system from user-specific setup configuration. This will lead to separate repos.
 * [Setup default SSH key](documentation/feature_plans/ssh/) (for GitHub, GitLab etc.)
 * Review whether we should rather use mise for managing dev tools that require further version management and benefit from mise features. Apparently mise also offers some declarative capabilities for global tool managament (~/.config/mise/mise.toml ...)

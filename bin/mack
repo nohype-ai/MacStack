@@ -46,11 +46,13 @@ case "${1:-}" in
             "$MAC_STACK_ROOT/stack/update.sh"
         fi
 
+        "$MAC_STACK_ROOT/scripts/update-repos.sh"
+
         print "✅ Did update (set up) this Mac."
-        print "💡 To get the new shell environment, relaunch your shell or run 'source ~/.zshrc'"
+        print "💡 Best relaunch your shell or run 'source ~/.zshrc'"
         ;;
     "update-repos")
-        update-repos
+        "$MAC_STACK_ROOT/scripts/update-repos.sh"
         ;;
     "brew-clip")
         "$MAC_STACK_ROOT/scripts/homebrew/brew-clip.sh"
