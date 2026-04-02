@@ -1,5 +1,7 @@
 #!/usr/bin/env zsh
 
+# 1️⃣ Load folders from environment file
+
 root=${0:A:h:h}
 env_file="$root/stack/.env"
 
@@ -17,12 +19,13 @@ print "📁 Repos folder:"
 print "   $repos_folder"
 print "📁 Repos folder template:"
 print "   $repos_folder_template"
+
+# 2️⃣ Recursively iterate through all files and folders in the template folder
+
 print "\n🐙 Updating repos in repos folder based on template ..."
 
-# prepare list of issue messages
-issue_messages=()
+issue_messages=() # prepare list of issue messages
 
-# Recursively iterate through all files and folders
 for item in "$repos_folder_template"/**/*(N); do
     local relative_path="${item#$repos_folder_template/}"
 
@@ -133,7 +136,8 @@ for item in "$repos_folder_template"/**/*(N); do
     fi
 done
 
-# print any recorded issue messages
+# 3️⃣ Alert user to all repos that need manual attention
+
 if [[ ${#issue_messages[@]} -gt 0 ]]; then
     print "\n❗ The following repos need manual attention:"
     for issue_message in "${issue_messages[@]}"; do
