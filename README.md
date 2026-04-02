@@ -51,6 +51,8 @@ Without customizing anything, the resulting setup will be as follows.
 
 ## To Do
 
+* Make all inputs to `mack update` optional. only the inputs that exist are used. nothing is required.
+* Include `update-repos` in `mack update`
 * Separate Mac Stack as a universal system from user-specific setup configuration. This will lead to separate repos.
 * [Setup default SSH key](documentation/feature_plans/ssh/) (for GitHub, GitLab etc.)
 * Review whether we should rather use mise for managing dev tools that require further version management and benefit from mise features. Apparently mise also offers some declarative capabilities for global tool managament (~/.config/mise/mise.toml ...)
