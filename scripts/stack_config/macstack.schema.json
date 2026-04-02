@@ -17,11 +17,10 @@
     },
     "repos": {
       "type": "object",
-      "required": ["folder", "folder_template"],
+      "required": ["folder"],
       "additionalProperties": false,
       "properties": {
-        "folder": { "type": "string", "minLength": 1 },
-        "folder_template": { "type": "string", "minLength": 1 }
+        "folder": { "type": "string", "minLength": 1 }
       }
     },
     "flags": {

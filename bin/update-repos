@@ -13,7 +13,7 @@ else
 fi
 
 repos_folder=${~GIT_REPOS_FOLDER}
-repos_folder_template="$root/stack/$GIT_REPOS_FOLDER_TEMPLATE"
+repos_folder_template="$root/stack/git/repos-folder-template"
 
 print "📁 Repos folder:"
 print "   $repos_folder"

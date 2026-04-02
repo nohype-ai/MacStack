@@ -6,8 +6,7 @@
     "core_editor": "zed --wait"
   },
   "repos": {
-    "folder": "~/Desktop/Repos",
-    "folder_template": "git/repos-folder-template"
+    "folder": "~/Desktop/Repos"
   },
   "flags": {
     "skip_brew_updates": false,
