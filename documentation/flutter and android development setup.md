@@ -1,12 +1,12 @@
 # Set Up Flutter and Android Development
 
-Flutter/Android are not anymore in the example stack (in [stack/](..stack/)) because I neither need nor like them. Also, Flutter requires Cocoapods, which is ridiculous.
+Flutter/Android are not anymore in the example stack (in [stack/](../stack/)) because I neither need nor like them. Also, Flutter requires Cocoapods, which is ridiculous.
 
 To add them back into the stack in a minimal working way, follow the steps below.
 
 ## 1. Brewfile
 
-Put this back into the Brewfile:
+Put something like this into your [Brewfile](../stack/Brewfile):
 ```ruby
 # Flutter development (iOS and Android)
 # core issue: fvm is broken: latest fvm could under some circumstances NOT be installed via brew at all, because it expected to be bundled with a dart version with which it is not bundled 🤡
@@ -19,7 +19,7 @@ cask "android-commandlinetools" # for Android development
 
 ## 2. .zshrc
 
-Put this back into the mack_update_custom.sh so it gets sourced in .zshrc:
+Put this back into the [custom_zshrc_content.sh](../stack/custom_zshrc_content.sh) so it gets sourced in .zshrc:
 ```bash
 # Setup Android SDK
 export ANDROID_HOME=/opt/homebrew/share/android-commandlinetools
