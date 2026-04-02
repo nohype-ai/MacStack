@@ -72,6 +72,13 @@
       "type": "registry",
     },
     "cursor": {
+      "favorite_config_option_values": {
+        "model": [
+          "gemini-3.1-pro[]",
+          "gpt-5.3-codex[reasoning=medium,fast=false]",
+          "claude-sonnet-4-6[thinking=true,context=200k,effort=medium]"
+        ]
+      },
       "type": "registry",
     },
     "opencode": {
