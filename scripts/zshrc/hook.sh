@@ -11,4 +11,8 @@ ROOT="${DIR:h:h}"
 source "$ROOT/scripts/zshrc/content.sh"
 
 # Source the user's custom shell customization
-source "$ROOT/stack/zshrc.sh"
+if [[ -f "$ROOT/stack/zshrc.sh" ]]; then
+  source "$ROOT/stack/zshrc.sh"
+else
+  echo "⚠️  Warning: Skipping stack-specific shell customization since script does not exist in stack:\n$ROOT/stack/zshrc.sh"
+fi
