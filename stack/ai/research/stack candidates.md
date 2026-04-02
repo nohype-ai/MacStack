@@ -1,4 +1,4 @@
-# Stack Candidates - AI
+# AI Stack Candidates
 
 This file does **not** document the current stack but interesting things to check out that might join the stack in the future.
 
