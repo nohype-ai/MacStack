@@ -25,6 +25,7 @@ The basic category here is coding (not general purpose) and cloud inference (not
 | Gemini CLI | Google AI | API key / subscription | ✅ (5?) | ✅ (5) | ✅ |
 | Claude Code | Anthropic | API key / subscription | ❓ (6) | ✅ | ✅ |
 | Cursor CLI | Cursor | subscription | ✅ (4) | ✅ | ✅ (8) |
+| Amp | Amp | usage based | 🛑 (10) | ❓ | ❓ |
 | OpenCode | OpenCode Zen | paid models (+6.15% fee) | ✅ | ✅ | 🛑 (9) |
 | Cursor CLI | Cursor | free tier | 🛑 (3) | ⚠️ (7) | 🛑 (7) |
 | OpenCode | OpenRouter | free models | 🛑 (1) | ✅ | 🛑 |
@@ -41,6 +42,7 @@ The basic category here is coding (not general purpose) and cloud inference (not
 7. ⚠️ Cursor CLI + Cursor free tier (Terminal): Possible but rate limits are tight enough to possibly be annoying -> has to be used for short tasks only. But only would work in terminal anyway.
 8. ℹ️ Cursor CLI + Cursor paid subscription: Bound to subscription, pure usage based is no option. Can't compete with the whole package that Anthropic subscription would offer (agent, cowork, chatbot, native mac app ...), but viable option as second subscription.
 9. 🛑 OpenCode + OpenCode Zen: technically possible but can't compete with DeepInfra on price while offering no performance advantage.
+10. Amp: ACP registry install does NOT provide full agent (in contrast to other registry installs). But native Amp in terminal can be set up to see current IDE context.
 
 **Every ACP Agent:**
 * ⚠️ Basic thread management functions like "resuming threads from history" do not even work with "the reference ACP implementation" (Gemini CLI). This also means Zed offers no way to edit the agent's thread history (if it is even created) -> delete OpenCode threads by deleting `~/.local/share/opencode/opencode.db*`. Apply an equivalent solution with other agents.

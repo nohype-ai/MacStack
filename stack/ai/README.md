@@ -26,6 +26,7 @@ Only CLIs with ACP support:
 - [Cursor CLI](https://cursor.com/cli)
 - [Gemini CLI](https://geminicli.com)
 - [Claude Code](https://claude.com/product/claude-code)
+- [Amp](https://ampcode.com) (ACP limited but has its own IDE awareness)
 
 ### Personal Agents
 - [OpenClaw](https://openclaw.ai)
@@ -51,6 +52,11 @@ These poviders do not provide inference themselves but only act as gateways that
   - acts as aggregator for its own IDE/agent subscriptions, as it bundles access to multiple other providers but mostly does not host models itself
   - free "Hobby" tier with generous rate limits but without ACP support
   - login via GitHub would be possible (as second account or to simplify)
+- [Amp](https://ampcode.com/settings) (normal login)
+  - routes to different LLMs as part of the agent's intelligence (best model for each task)
+  - frontier professional agentic performance
+  - no markup, but API prices plus heavy agentic work amount to high costs
+  - free tier will be available again in the future
 
 ### Open Weights Providers
 These providers only provide the inference, hosting a wide range of publically available models.
