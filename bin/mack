@@ -11,11 +11,11 @@ typeset -x MAC_STACK_ROOT=${BINARY_PATH:h}  # Get repo root path
 # Function for printing help
 print_help() {
     echo "Valid calls are:"
-    echo "  mack update        → update (set up) this machine, including git repos"
-    echo "  mack update-repos  → update only the git repos: clone/sync as defined by your macstack.json and stack/git/repos_folder_template"
-    echo "  mack brew-clip     → delete Homebrew packages that are not in your Mac Stack Brewfile, and clean up other stuff"
-    echo "  mack brew-force    → [normally not needed] force apps in /Applications into Homebrew management if they are in your Mac Stack Brewfile"
-    echo "  mack backup-zed    → copy Zed settings.json and keymap.json to stack/zed"
+    echo "mack update        → update (set up) this machine, including git repos as defined in your stack"
+    echo "mack update-repos  → update only the git repos: clone/sync as defined in your stack by macstack.json and git/repos_folder_template/"
+    echo "mack brew-clip     → delete Homebrew packages that are not in your stack's Brewfile, and clean up other stuff"
+    echo "mack brew-force    → [normally not needed] force apps in /Applications into Homebrew management if they are in your stack's Brewfile"
+    echo "mack backup-zed    → backup Zed settings.json and keymap.json to zed/ in your stack"
 }
 
 # Switch by sub command
