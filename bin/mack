@@ -7,7 +7,6 @@ set -e                                      # Exit on any error
 set -u                                      # Treat unset variables as error
 BINARY_PATH=${0:A:h}                        # Get binary (current-) path
 typeset -x MAC_STACK_ROOT=${BINARY_PATH:h}  # Get repo root path
-path=("$BINARY_PATH" $path)                 # Make commands in /bin available
 
 # Function for printing help
 print_help() {
@@ -61,7 +60,7 @@ case "${1:-}" in
         "$MAC_STACK_ROOT/scripts/homebrew/brew-force.sh"
         ;;
     "backup-zed")
-        backup-zed
+        "$MAC_STACK_ROOT/bin/backup-zed"
         ;;
     *)
         echo "🛑 Unknown command: <$1>"
