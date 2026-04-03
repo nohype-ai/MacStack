@@ -7,6 +7,7 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "soft_wrap": "editor_width",
   "inline_code_actions": true,
   "agent": {
     "inline_assistant_model": {
@@ -76,8 +77,8 @@
         "model": [
           "gemini-3.1-pro[]",
           "gpt-5.3-codex[reasoning=medium,fast=false]",
-          "claude-sonnet-4-6[thinking=true,context=200k,effort=medium]"
-        ]
+          "claude-sonnet-4-6[thinking=true,context=200k,effort=medium]",
+        ],
       },
       "type": "registry",
     },
