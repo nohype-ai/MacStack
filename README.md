@@ -18,9 +18,8 @@ On a fresh system that may not even have GitHub authentication configured:
 
 1. Make sure your [iCloud account is set up](https://support.apple.com/en-us/102314), so that Mac App Store apps can be installed automatically
 2. [Download this repository](https://github.com/nohype-ai/MacStack/archive/refs/heads/master.zip)
-3. Customize [`stack/macstack.json`](stack/macstack.json)
-4. Customize any of the components in of your [stack/](stack/)
-5. Apply your config by running `bin/mack update`.
+3. Customize any of the components in of your [stack/](stack/)
+4. Apply your config by running `bin/mack update`.
 
 After you've run `bin/mack update` once you can now trigger repeated updates via the global `mack update` command (or just `update`).
    

@@ -4,8 +4,8 @@
 
 ## Inputs
 
-🎯 Some of the files here are direct inputs to the Mac Stack update process that you run via `mack update` or `update`:
-  * [macstack.json](macstack.json): Entry point and basic configuration
+🎯 Some of the files here can be direct inputs to the Mac Stack update process that you run via `mack update` or `update`. But all of them are optional:
+  * [macstack.json](macstack.json): Basic configuration options
   * [zshrc.sh](zshrc.sh): `mack update` makes this sourced from `~./zshrc`
   * [Brewfile](Brewfile): `mack update` updates/installs listed packages
   * [update.sh](update.sh): `mack update` executes it 
