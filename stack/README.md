@@ -3,7 +3,7 @@
 📜 This folder defines your actual stack. It holds everything you may want to customize. This includes code (like scripts and JSON) as well as "infrastructure as documentation".
 
 ## Inputs
-🎯 Some of the files here can be direct inputs to the Mac Stack update process that you run via `mack update` or `update`. But all of them are optional:
+🎯 Some of the files here can be direct inputs to the MacStack update process that you run via `mack update` or `update`. But all of them are optional:
 
 | Input | Description |
 |------|-------------|

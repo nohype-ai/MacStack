@@ -1,4 +1,4 @@
-# Mac Stack (`mack update`) ensures this script is sourced in ~/.zshrc
+# MacStack (`mack update`) ensures this script is sourced in ~/.zshrc
 # This script allows you to further customize your shell environment
 
 # list folder content with useful options

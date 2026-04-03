@@ -29,10 +29,10 @@ ensure_zshrc_content() {
     echo "$content"
 }
 
-# Ensure the Mac Stack shell customization is sourced in ~/.zshrc
+# Ensure the MacStack shell customization is sourced in ~/.zshrc
 echo "🐚 Ensuring all shell customizations are sourced in ~/.zshrc ..."
 hook_script="$MAC_STACK_ROOT/scripts/zshrc/hook.sh"
 assert-file "$hook_script"
-hook="# Mac Stack shell customization
+hook="# MacStack shell customization
 source \"$hook_script\""
 ensure_zshrc_content "$hook"

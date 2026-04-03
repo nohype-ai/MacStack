@@ -1,6 +1,6 @@
-# Mac Stack – Documentation
+# MacStack – Documentation
 
-This folder holds the informal part of Mac Stack. It documents general topics around professional work on Mac, Mac Stack itself, and anything in between. Of course, the entry point to Mac Stack itself remains the main [README.md](../README.md).
+This folder holds the informal part of MacStack. It documents general topics around professional work on Mac, MacStack itself, and anything in between. Of course, the entry point to MacStack itself remains the main [README.md](../README.md).
 
 ## Development Basics
 

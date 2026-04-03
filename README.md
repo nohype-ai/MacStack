@@ -1,8 +1,8 @@
-# Mac Stack
+# MacStack
 
 ## What?
 
-Mac Stack allows to update/setup a developer Mac with one command, based on your config as code:
+MacStack allows to update/setup a developer Mac with one command, based on your config as code:
   * 🐚 Shell customizations (prompt, paths, functions, aliases, environment)
   * 🐙 Global git configuration
   * 📰 Fonts
@@ -23,7 +23,7 @@ On a fresh system that may not even have GitHub authentication configured:
 
 After you've run `bin/mack update` once you can now trigger repeated updates via the global `mack update` command (or just `update`).
    
-It's irrelevant whether you've just installed macOS and need to set up this new machine or whether you want to repeatedly update your established machine. The update script is idempotent and works for both cases. That means Mac Stack is safe to use and does not overwrite or delete things it does not define in its stack – not even any entries in pre-existing dot files.
+It's irrelevant whether you've just installed macOS and need to set up this new machine or whether you want to repeatedly update your established machine. The update script is idempotent and works for both cases. That means MacStack is safe to use and does not overwrite or delete things it does not define in its stack – not even any entries in pre-existing dot files.
 
 ## Exact Default Setup
 
@@ -51,12 +51,12 @@ Without customizing anything, the resulting setup will be as follows.
 
 ## To Do
 
-* Separate Mac Stack as a universal system from user-specific setup configuration. This will lead to separate repos.
+* Separate MacStack as a universal system from user-specific setup configuration. This will lead to separate repos.
 * [Setup default SSH key](documentation/feature_plans/ssh/) (for GitHub, GitLab etc.)
 * Review whether we should rather use mise for managing dev tools that require further version management and benefit from mise features. Apparently mise also offers some declarative capabilities for global tool managament (~/.config/mise/mise.toml ...)
 * The script for force adopting apps into Homebrew is essentially a PoC fix of our regular update procedure which apparently does not bring many casks properly into Homebrew if that software (mostly GUI apps) was already installed on the system outside of Homebrew. We should bring those checks into the regular update procedure.
 * Flutter and Dart (via fvm or mise)
 * System (and app-) settings (likely via Ansible?)
 * Feature requests:
-   * mechanism for translating current setup as starting point to mac stack. for initial adoption and getting started (fresh baseline based on generated brewfile and ideally mostly clean scripts/zshrc as well)
+   * mechanism for translating current setup as starting point to MacStack. for initial adoption and getting started (fresh baseline based on generated brewfile and ideally mostly clean scripts/zshrc as well)
    * integrate repo based password management

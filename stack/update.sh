@@ -1,5 +1,5 @@
 #!/usr/bin/env zsh
-# Mac Stack (`mack update`) runs this script
+# MacStack (`mack update`) runs this script
 # This script allow you to customize/extend the update process
 
 # Prepare

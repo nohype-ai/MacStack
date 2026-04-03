@@ -83,7 +83,7 @@
 
 ### Specific Customizations
 
-* The [Mac Stack repo](https://github.com/nohype-ai/MacStack) demonstrates how to pimp the Z Shell.
+* The [MacStack repo](https://github.com/nohype-ai/MacStack) demonstrates how to pimp the Z Shell.
 
 * Avoid error "Operation not permitted" (for example with command "find") by giving Terminal/iTerm2 full disk access:
 

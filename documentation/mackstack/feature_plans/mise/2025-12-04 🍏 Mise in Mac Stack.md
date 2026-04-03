@@ -1,4 +1,4 @@
-# 🍏 Mise in Mac Stack
+# 🍏 Mise in MacStack
 
 **Date:** 2025-12-04 12:25:17
 **ID:** 393856af-7527-406b-8a02-d6619e467849
@@ -330,4 +330,3 @@ Only if:
 In 99% of setups, full mise migration works seamlessly—uninstall Brew's Python (`brew uninstall python@3.x`), set global in `config.toml`, and `mise install`. Test with `python --version` and a Brew command post-setup. If issues arise, `path:` scopes let you shim Brew as a quick fix.
 
 ---
-

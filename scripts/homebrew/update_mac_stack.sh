@@ -1,5 +1,5 @@
 #!/usr/bin/env zsh
-# This script installs/updates Homebrew and what Mac Stack needs
+# This script installs/updates Homebrew and what MacStack needs
 
 # Prepare
 set -e  # Exit on any error

@@ -3,7 +3,7 @@
 **Date:** 2025-12-05 11:51:38
 **ID:** c156bd40-fd7d-4dcc-be51-70a577d1df05
 
-(preceding conversation was specifically about SSH keys and how to automate their setup in Mac Stack)
+(preceding conversation was specifically about SSH keys and how to automate their setup in MacStack)
 
 ---
 
@@ -425,4 +425,3 @@ Yes—spot on. The `.sh` extension is a dev-time crutch for easy editing/discove
 Virtually all PATH scripts (e.g., Homebrew formulas, npm globals) follow suit: It reduces visual noise in `ls` outputs and avoids editor defaults. Exception: Some teams enforce `.sh` for all via style guides, but it's rare in prod paths. If sharing, pick based on audience—`.sh` for coders, bare for end-users.
 
 ---
-

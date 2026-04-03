@@ -109,7 +109,7 @@ Some common GitHub workflows rely on features that are **not** part of git but o
 
 ## Setup
 
-Have a look at the shell customizations and other git setup codified in [Mac Stack](https://github.com/nohype-ai/MacStack).
+Have a look at the shell customizations and other git setup codified in [MacStack](https://github.com/nohype-ai/MacStack).
 
 * The scripts offer two major conveniences:
   1. A function to add, commit and push all unstaged changes like so: `gitty "Fix UI bug"`
