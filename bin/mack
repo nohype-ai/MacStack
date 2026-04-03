@@ -51,6 +51,7 @@ case "${1:-}" in
         print "💡 Best relaunch your shell or run 'source ~/.zshrc'"
         ;;
     "update-repos")
+        source "$MAC_STACK_ROOT/scripts/stack_config/load.sh"
         "$MAC_STACK_ROOT/scripts/update-repos.sh"
         ;;
     "brew-clip")
