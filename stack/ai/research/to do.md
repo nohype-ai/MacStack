@@ -4,7 +4,7 @@ Next research topics are ordered to scale up productivity quickly while respecti
 
 | # | Topic | Why Now | Unlocks |
 |---|-------|---------|---------|
-| 1 | [Agent Customization](agent%20customization.md) | Immediate ROI on existing tools | Everything |
+| 1 | [Coding agent customization](coding%20agent%20customization.md) | Immediate ROI on existing tools | Everything |
 | 2 | MCP Servers | Tools + context = capable agents | Background agents, evals, RAG |
 | 3 | Evals | Quality gate before scaling | Trustworthy autonomous output |
 | 4 | Background Coding Agents | Actual scale | Autonomous output |
