@@ -2,37 +2,31 @@
 
 ## Levels
 
-Custom instructions and rules can be injected into an agentic coding system at five levels, building a hierarchy customizations, where the lower and more specific levels (higher numbers) take precedence:
+Custom instructions, rules and configurations can be injected into an agentic coding system at five levels, building a hierarchy of customizations, where the lower and more specific levels (higher numbers) take precedence:
 
 1) Team Level:
    - default instructions or rules for all members of a team
-   - agent-specific format/location
-   - GitHub Copilot org custom instructions
-   - Norte: Cursor Team Rules can be used as soft team defaults (Level 1) or as unbreakable guardrails (Level 5)
+   - rare, agent and provider account must be tightly linked
+   - examples:
+     - GitHub Copilot org custom instructions
+     - Cursor Team Rules
+       - Note: Cursor Team Rules can be used as soft team defaults (Level 1) or as unbreakable guardrails (Level 5)
 2) User Level:
    - global on user machine, configs live in dotfiles/dotfoldfers in ~/ for persistence across projects
    - agent specific format/location
    - not version-controlled
-   - Claude Code: ~/.claude/ (settings.json, CLAUDE.md)
-   - Cursor: User Rules (Settings → Rules)
 3) Project Level:
    - Universal standard: AGENTS.md (or AGENT.md) in repo root — widely supported. Acts as "README for agents" with overview, commands, style, structure, boundaries.
-   - Tool-specific (auto-loaded):
-     - Often in hidden folders (.cursor/, .continue/, .claude/) for clean project root.
-     - Zed: .rules (preferred) or .cursorrules, CLAUDE.md, AGENTS.md, .github/copilot-instructions.md.
-     - Cursor: .cursor/rules/ (Markdown files, version-controlled) or legacy .cursorrules; .cursor/index.mdc (recommended "Always" rule).
-     - Claude Code: CLAUDE.md (or .claude/settings.json).
+   - Tool-specific stuff often in hidden folders (.cursor/, .continue/, .claude/) for clean project root
 4) Folder Level:
    - Ideal for domain-specific rules (e.g., /api/ vs. /ui/)
-   - Cursor: Rules in .cursor/rules/ with path/glob patterns (e.g., frontend-specific or backend-only); or subfolder .cursor/rules/.
-   - Claude Code: CLAUDE.md (or AGENTS.md) in any subdir — walks tree and stacks/adds context when accessing files there.
-   - Zed: Limited (single root .rules); use @-mentions or Rules Library for subdir targeting.
 5) Tool Level:
    - source of truth is inside the agent/tool itself (system prompt or enforced dashboard rules)
    - last-resort policy enforcement (final safeguard)
    - rare; only possible when the agent and its provider are tightly linked
    - Examples:
-     - Cursor Team Rules (can act as soft defaults or unbreakable guardrails)
+     - Cursor Team Rules
+       - Note: Cursor Team Rules can be used as soft team defaults (Level 1) or as unbreakable guardrails (Level 5)
      - Gemini CLI GEMINI_SYSTEM_MD (full system prompt override)
 
 ## Customization Locations
@@ -52,3 +46,5 @@ Custom instructions and rules can be injected into an agentic coding system at f
 * how do we handle symlinking to central prompts in a reproducible way when
   1. symlinks cannot hold relative paths
   2. the prompts are often integral part of a project in the sense they (even user-level prompts) must be versioned with the project and be reproducible
+* how different agents actually consider and combine the customizations on Level 4 makes a difference (tree walk up, bfs, replacing versus combining prompts etc.). how do we handle that? is there a good enough approach that works for all equally as expected?
+* how do custom prompts impact speed and cost versus quality? when is it too much customization?
