@@ -7,17 +7,18 @@ Coding is the most impactful use case, applicable to any work on markdown files,
 ### Selection Criteria
 
 The basic category here is coding (not general purpose) and cloud inference (not local inference). Further criteria for combo selection were:
-* Avoid the bloated, memory-inefficient, slow forks of VSCode (Cursor IDE, Antigravity, Kiro, Windsurf) and instead use lean client apps like Zed (with ACP) or OpenCode Desktop
+* Use lean client apps like Zed or OpenCode Desktop (instead of the many bloated, memory-inefficient, slow forks of VSCode)
+* Include the option to decouple client app from agent by leveraging ACP
+* Cover range of cheap/fast- versus intelligent models as well as open weights- versus proprietary models
+* Use a given provider only with the best agents available for it (for example, Anthropic API key in OpenCode makes no sense)
+* Avoid free variants with impractically tight rate limits (OpenCode Zen free models)
+* Avoid low performing agents (Zed's own internal Zed agent)
 * Avoid inference outside US/Europe
 * Avoid OpenAI
-* Avoid low performing agents (Zed's own internal Zed agent)
-* Avoid free variants with impractically tight rate limits (OpenCode Zen free models)
-* Use a given provider only with the best agent available for it (why use Anthropic account with any other agent than Claude Code)
-* Cover range of cheap/fast- versus intelligent models as well as open weights- versus proprietary models
 
-### ACP Agents in Zed and Terminal
+### Agents via ACP (in Zed) and via TUI
 
-| Agent | Provider | free/paid | Zed? | Terminal? | Viable? |
+| Agent | Provider | free/paid | ACP (Zed)? | TUI? | Viable? |
 | --- | --- | --- | --- | --- | --- |
 | Gemini CLI | Google AI | free (login) | ✅ (5?) | ✅ (5) | ✅ |
 | OpenCode | DeepInfra | API key | ✅ (2) | ✅ (2) | ✅ |
@@ -39,10 +40,10 @@ The basic category here is coding (not general purpose) and cloud inference (not
 4. ℹ️ Cursor CLI + Cursor paid subscription: Works flawlessly. Excellent ACP integration (tested with Sonnet 4.5 and 4.6).
 5. ℹ️ Gemini CLI: Tuning model params (temperature etc.) can impact agentic performance. My setup is documented [here](gemini/README.md). I could not fully verify that the custom config is also loaded in Zed via ACP, but it is strongly indicated.
 6. ❓ I have not yet tested Claude Code via ACP in Zed, only stand-alone Claude Code.
-7. ⚠️ Cursor CLI + Cursor free tier (Terminal): Possible but rate limits are tight enough to possibly be annoying -> has to be used for short tasks only. But only would work in terminal anyway.
+7. ⚠️ Cursor CLI + Cursor free tier (TUI): Possible but rate limits are tight enough to possibly be annoying -> has to be used for short tasks only. And only would works via TUI anyway.
 8. ℹ️ Cursor CLI + Cursor paid subscription: Bound to subscription, pure usage based is no option. Can't compete with the whole package that Anthropic subscription would offer (agent, cowork, chatbot, native mac app ...), but viable option as second subscription.
 9. 🛑 OpenCode + OpenCode Zen: technically possible but can't compete with DeepInfra on price while offering no performance advantage.
-10. Amp: ACP registry install does NOT provide full agent (in contrast to other registry installs). But native Amp in terminal can be set up to see current IDE context.
+10. Amp: ACP registry install does NOT provide full agent (in contrast to other registry installs). But native Amp in TUI can be set up to see current IDE context.
 
 **Every ACP Agent:**
 * ⚠️ Basic thread management functions like "resuming threads from history" do not even work with "the reference ACP implementation" (Gemini CLI). This also means Zed offers no way to edit the agent's thread history (if it is even created) -> delete OpenCode threads by deleting `~/.local/share/opencode/opencode.db*`. Apply an equivalent solution with other agents.
