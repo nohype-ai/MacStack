@@ -7,7 +7,7 @@ export PATH="$ROOT/bin:$PATH" # MacStack binary path
 # Setup Homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-# Alias for Mack Stack update process
+# Alias for MacStack update process
 alias update="mack update"
 
 # visually separate prompt/input/output. Error indication via Emoji.

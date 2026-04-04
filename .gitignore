@@ -1,4 +1,4 @@
-# Keep for safety even though Mack Stack does not use an .env enymore
+# Keep for safety even though MacStack does not use an .env enymore
 .env
 
 # Ignore the symlinks that MacStack auto generates locally
