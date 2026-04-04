@@ -2,7 +2,7 @@
 
 This README defines the general layers of an AI stack and selects specific tools at each layer. The coding-specific stack is defined in [coding stack.md](coding%20stack.md). Research and past decisions are documented in [research/](research/).
 
-This stack does not yet involve local inference but still focusses on scaling up productivity. Research on local inference for privacy and affordability at scale [will follow in time](research/to%20do.md).
+This stack does not yet involve local inference but still focusses on scaling up productivity. Research on local inference for privacy and cost-efficiency at scale [will follow in time](research/to%20do.md).
 
 ## Agent Clients
 
@@ -21,20 +21,21 @@ Native macOS apps that offer GUI frontends to agents – natively or via ACP. Bu
 ## Agents
 
 ### Coding Agents
-Only CLIs with ACP support:
+Selection is explained in [coding stack.md](coding%20stack.md).
 - [OpenCode](https://opencode.ai)
 - [Cursor CLI](https://cursor.com/cli)
 - [Gemini CLI](https://geminicli.com)
 - [Claude Code](https://claude.com/product/claude-code)
-- [Amp](https://ampcode.com) (ACP limited but has its own IDE awareness)
+- [Amp](https://ampcode.com)
 
 ### Personal Agents
+Not deeply explored yet.
 - [OpenClaw](https://openclaw.ai)
 - [Claude CoWork](https://claude.com/product/cowork)
 
 ## Providers
 
-Cloud services that offer access to model inference.
+Cloud services that offer access to model inference. Related research is in [byok costs.md](research/byok%20costs.md) and [routers.md](research/routers.md).
 
 ### Routers (Aggregators)
 These poviders do not provide inference themselves but only act as gateways that aggregate- and route to other providers.
