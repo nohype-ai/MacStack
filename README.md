@@ -2,7 +2,7 @@
 
 ## What?
 
-MacStack allows to update/setup a developer Mac with one command, based on your config as code:
+Setup and update the tech stack on a Mac with one command, based on config as code:
   * 🐚 Shell customizations (prompt, paths, functions, aliases, environment)
   * 🐙 Global git configuration
   * 📰 Fonts
@@ -10,7 +10,7 @@ MacStack allows to update/setup a developer Mac with one command, based on your 
   * 🍏 Graphical apps (including Mac App Store apps)
   * ⚙️ Settings and keybindings for Zed and most VSCode based IDEs
   * 🧩 Extensions for VSCode based IDEs
-  * 📂 All git repositories
+  * 📂 git repositories (clone, sync, list issues)
   
 ## How?
 
