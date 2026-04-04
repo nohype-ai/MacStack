@@ -48,3 +48,4 @@ Custom instructions, rules and configurations can be injected into an agentic co
   2. the prompts are often integral part of a project in the sense they (even user-level prompts) must be versioned with the project and be reproducible
 * how different agents actually consider and combine the customizations on Level 4 makes a difference (tree walk up, bfs, replacing versus combining prompts etc.). how do we handle that? is there a good enough approach that works for all equally as expected?
 * how do custom prompts impact speed and cost versus quality? when is it too much customization?
+* does any of this not work or work differently when the project is NOT a git repository?
