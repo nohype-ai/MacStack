@@ -5,6 +5,7 @@ This file does **not** document the current stack but interesting things to chec
 ## General Agents
 - [n8n.io (agent builder)](https://n8n.io)
   - [n8n.io - Tutorial](https://www.youtube.com/watch?v=ONgECvZNI3o)
+- [pinokio.co](https://pinokio.co) not sure hat exactly it is. kiraa.ai recommended this for getting into local inference ...
 
 ## IDEs with Integrated Agent UI
 - [TRAE](https://www.trae.ai/)
