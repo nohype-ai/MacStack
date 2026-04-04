@@ -1,4 +1,6 @@
-# Essential System Settings
+# Settings
+
+## System
 
 | Category | Option | Value(s) | Comment |
 | :--- | :--- | :--- | :--- |
@@ -46,7 +48,7 @@
 | Trackpad | Point & Click → Tracking Speed | Fastest | |
 |  | Point & Click → Tap to Click | On | |
 
-## Finder Settings
+## Finder
 
 * Show View Options (⌘J):
   - Text size: 16
