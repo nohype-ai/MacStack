@@ -4,7 +4,7 @@ Next research topics are ordered to scale up productivity quickly while respecti
 
 | # | Topic | Why Now | Unlocks |
 |---|-------|---------|---------|
-| 1 | Agent Customization | Immediate ROI on existing tools | Everything |
+| 1 | [Agent Customization](agent%20customization.md) | Immediate ROI on existing tools | Everything |
 | 2 | MCP Servers | Tools + context = capable agents | Background agents, evals, RAG |
 | 3 | Evals | Quality gate before scaling | Trustworthy autonomous output |
 | 4 | Background Coding Agents | Actual scale | Autonomous output |
@@ -16,10 +16,6 @@ Next research topics are ordered to scale up productivity quickly while respecti
 The key insight: **1 and 2 are prerequisites, not just nice-to-haves.** Skipping to background agents without them is the most common reason people don't actually get the scale gains they expect. **3 (evals) is the unglamorous answer to "quality and control at scale"** — without it, step 4 is just shipping bugs faster.
 
 1. agent customization
-   * agent level (system prompts)
-   * project level (AGENT.md etc.)
-   * feature level (spec driven ...)
-   * "rules"
 2. mcp servers
    * and generally how to inspect and control the environment of agents (tools/context)
    * LeanCTX, efficient token use
