@@ -2,7 +2,9 @@
 
 ## Levels
 
-Custom instructions, rules and configurations can be injected into an agentic coding system at five levels, building a hierarchy of customizations, where the lower and more specific levels (higher numbers) take precedence:
+Custom instructions, rules and configurations can be injected into an agentic coding system at five levels, building a hierarchy of customizations, where the lower and more specific levels (higher numbers) take precedence.
+
+❗ These levels are supposed to help in practice so they mirror actual practical precedence order. Who is able or permitted to edit each customization is an entirely different dimension.
 
 1) Team Level:
    - default instructions or rules for all members of a team
@@ -16,28 +18,31 @@ Custom instructions, rules and configurations can be injected into an agentic co
    - agent specific format/location
    - not version-controlled
 3) Project Level:
-   - Universal standard: AGENTS.md (or AGENT.md) in repo root — widely supported. Acts as "README for agents" with overview, commands, style, structure, boundaries.
+   - Universal standard: AGENTS.md (or AGENT.md) in repo root as "README for agents"
    - Tool-specific stuff often in hidden folders (.cursor/, .continue/, .claude/) for clean project root
 4) Folder Level:
    - Ideal for domain-specific rules (e.g., /api/ vs. /ui/)
 5) Tool Level:
    - source of truth is inside the agent/tool itself (system prompt or enforced dashboard rules)
    - last-resort policy enforcement (final safeguard)
-   - rare; only possible when the agent and its provider are tightly linked
    - Examples:
      - Cursor Team Rules
        - Note: Cursor Team Rules can be used as soft team defaults (Level 1) or as unbreakable guardrails (Level 5)
      - Gemini CLI GEMINI_SYSTEM_MD (full system prompt override)
+       - though any user can override this while Cursor Team Rules may be gated by specific roles in the team. But the important thing here is that this system prompt has the power to overrule even folder-level prompts.
+     - `~/.gemini/policies/*.toml` can restrict shell commands no matter any customizations on levels 1 - 4
 
-## Customization Locations
+## Locations
 
-| Level              | Cursor CLI                                      | Gemini CLI                                      | Claude Code                                      | OpenCode                                              |
-|--------------------|-------------------------------------------------|-------------------------------------------------|--------------------------------------------------|-------------------------------------------------------|
-| **Team** | Team Rules (dashboard, if logged in)            | ❌                                           | ❌                                            | ❌                                                 |
-| **User** | `~/.cursor/cli-config.json` (no global prompt for CLI) | `~/.gemini/GEMINI.md`, `~/.gemini/settings.json`, `~/.gemini/policies/*.toml` | `~/.claude/CLAUDE.md`, `~/.claude/settings.json` | `~/.config/opencode/AGENTS.md`, `~/.config/opencode/opencode.json` |
-| Project (root) | AGENTS.md, CLAUDE.md, .cursor/rules/, .cursorrules | GEMINI.md, .gemini/GEMINI.md, AGENTS.md | CLAUDE.md, AGENTS.md, .claude/rules/, .claude/settings.json | AGENTS.md, .opencode/opencode.json |
-| Folder (any)   | AGENTS.md, CLAUDE.md                                   | GEMINI.md, .gemini/GEMINI.md, AGENTS.md | CLAUDE.md, AGENTS.md, .claude/rules/ | AGENTS.md                               |
-| **Tool** | Team Rules (dashboard-enforced)          | `GEMINI_SYSTEM_MD` env var (agent system prompt override) | ❌                                            | ❌                                                 |
+| Level | Cursor CLI | Gemini CLI | Claude Code | OpenCode |
+| --- | --- | --- | --- | --- |
+| **Team** | Team Rules (dashboard, if logged in) | ❌ | ❌ | ❌ |
+| **User** | `~/.cursor/cli-config.json` | `~/.gemini/GEMINI.md`, `~/.gemini/settings.json` | `~/.claude/CLAUDE.md`, `~/.claude/settings.json` | `~/.config/opencode/AGENTS.md`, `~/.config/opencode/opencode.json`, `~/.claude/CLAUDE.md` (can be deactivated) |
+| **Project (root)** | `AGENTS.md`, `.cursor/rules/`, `.cursorrules` *(legacy)* | `GEMINI.md`, `.gemini/settings.json`, `AGENTS.md` (via `settings.json` → `context.fileName`) | `CLAUDE.md`, `AGENTS.md`, `.claude/rules/`, `.claude/settings.json` | `AGENTS.md`, `.opencode/AGENTS.md`, `.opencode/opencode.json`, `CLAUDE.md` |
+| **Folder (any)** | `AGENTS.md` | `GEMINI.md`, `AGENTS.md` (via `settings.json` → `context.fileName`) | `CLAUDE.md`, `AGENTS.md` | `AGENTS.md`, `CLAUDE.md` |
+| **Tool** | Team Rules (dashboard-enforced) | `~/.gemini/policies/*.toml`, `GEMINI_SYSTEM_MD` env var (agent system prompt override) | ❌ | ❌ |
+
+> [Amp's customization options](amp%20customization.md) are arguably richer than for other agents. But importantly, Amp supports `AGENTS.md` at levels 2-4
 
 ## Open Topics
 
