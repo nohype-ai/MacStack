@@ -69,12 +69,20 @@ Custom instructions, rules and configurations can be injected into an agentic co
   * keep it up to date
   * make it as concise and dense as possible
   * etc.
+* Non-repo folders and non-codebase folders should also use `README.md` files as their entrypoint and overview. Agents know what a `README.md` is.
+* user-level agent settings (in contrast to prompts) are not only ok but also necessary (like for iCloud Drive folders which are not repos and cannot have their own agent settings). so an agent's permissions (what it is allowed or denied to always do) must be defined at user-level and anyway should truly apply across projects.
+
+| | Prompts | Permissions |
+|---|---|---|
+| **User level** | avoid | necessary |
+| **Project/folder level** | primary home | possible but redundant if user-level covers it |
 
 ## Open Topics
 
-* how do i generally allow non-destructive actions like reading, searching and fetching in every agent and backup/restore these settings? for example Cursor CLI asks for each fetch and search operation but offer no option like "always allow search". it only offers "always allow search on this specific website"
-* so what can/should we back up?
+* Cursor CLI asks permission for each fetch and search operation but offers no option like "always allow search". it only offers options like "always allow search on this specific website". can i manually configure the cursor cli at user-level, so read/fetch/search operations are always allowed?
+* how do i generally allow non-destructive actions like reading, searching and fetching in every agent and backup/restore these settings?
+* how different agents actually consider and combine the customizations on Level 3 and 4 makes a difference (tree walk up, bfs, replacing versus combining prompts etc.). how do we handle that? is there a good enough approach that works for all equally as expected?
 * does any of this not work or work differently when the project is NOT a git repository?
+* so what can/should we back up?
 * how do custom prompts impact speed and cost versus quality? when is it too much customization?
-* how different agents actually consider and combine the customizations on Level 4 makes a difference (tree walk up, bfs, replacing versus combining prompts etc.). how do we handle that? is there a good enough approach that works for all equally as expected?
 * spec-driven development?
