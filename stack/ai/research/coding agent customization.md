@@ -54,10 +54,24 @@ Custom instructions, rules and configurations can be injected into an agentic co
   * It would add latency, cost and prompt dillution to every single prompt.
   * It can not easily be version-managed together with a version managed folder, so agent behaviour would be decoupled from commits
 * True user-level infos (like user's name, language style preference, tooling, operating system) would need to be somehow injected via markdown (templates) at the project folder level. but this has relatively low impact and can be postponed.
+* `AGENTS.md` files should only contain what truly only applies to agents (like infos about the user). Almost nothing is truly agent-specific, for example, instructions on how to work with a project also apply to humans. So almost everything should remain in regular `README.md` files.
+  * This reduces redundancy and promotes well structured documentation.
+  * Also avoid including pointers to `README.md`, they would add ceremony without value. Agents are increasingly able to do contextual discovery and read relevant documentation.
+* So this whole agent customization thing is converging back to classic principles of just providing good old documentation. But agents do indeed make those principles more crucial than ever:
+  * make things explicit
+  * put docs where they actually apply and are needed
+  * structure texts well
+  * avoid redundancy
+  * give overview first
+  * link to related docs
+  * use precise (even if long) terms
+  * clarify used terminology
+  * keep it up to date
+  * make it as concise and dense as possible
+  * etc.
 
 ## Open Topics
 
-* how do we handle symlinking to markdown files within a git repo, when symlinks cannot hold relative paths
 * how do i generally allow non-destructive actions like reading, searching and fetching in every agent and backup/restore these settings? for example Cursor CLI asks for each fetch and search operation but offer no option like "always allow search". it only offers "always allow search on this specific website"
 * so what can/should we back up?
 * does any of this not work or work differently when the project is NOT a git repository?
