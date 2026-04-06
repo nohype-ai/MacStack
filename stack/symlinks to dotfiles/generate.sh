@@ -3,5 +3,5 @@
 print "👻 Generating symlinks to dotfiles ..."
 
 for filepath in "$HOME"/.[^.]*(D); do
-  ln -sf -- "$filepath" "${0:A:h}/${filepath:t}"
+  ln -sfh -- "$filepath" "${0:A:h}/${filepath:t}"
 done
