@@ -2,7 +2,9 @@
   "security": {
     "auth": {
       "selectedType": "oauth-personal"
-    }
+    },
+    "enablePermanentToolApproval": true,
+    "autoAddToPolicyByDefault": true
   },
   "model": {
     "name": "custom"
@@ -24,5 +26,8 @@
         }
       }
     }
+  },
+  "general": {
+    "preferredEditor": "zed"
   }
 }
