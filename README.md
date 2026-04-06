@@ -52,8 +52,6 @@ Without customizing anything, the resulting setup will be as follows.
 
 ## To Do
 
-* Settings updates for Gemini CLI and OpenCode are currently not idempotent as they just overwrite the existing json settings files. We could either work with templates that get merged into the target (as we had to do for Cursor CLI) or deactivate these updates by default via flag in macstack.json (as we did for the IDE settings updates). I sense we should always merge and even remove the necessity for the IDE settings update flag ...
-* Integrate knowledge base from cloud folder into this repo's /documentation folder and into my stack, dissolve the external knowledge base entirely since I never tap into it anymore
 * Separate MacStack as a universal system from user-specific setup configuration
   * let the mack command dynamically retrieve the actual path to the stack (~/.config/macstack ?, ask user?, look for example stack? allow pointing to stack repo on github? etc ...)
   * move stack definition to distinct repo
@@ -61,12 +59,15 @@ Without customizing anything, the resulting setup will be as follows.
   * install script (+ curl command on website)
   * distribute via Homebrew
   * command for creating a new stack as baseline from the current system
+* Settings updates for Gemini CLI and OpenCode are currently not idempotent as they just overwrite the existing json settings files. We could either work with templates that get merged into the target (as we had to do for Cursor CLI) or deactivate these updates by default via flag in macstack.json (as we did for the IDE settings updates). I sense we should always merge and even remove the necessity for the IDE settings update flag ...
+* At this point the basic behaviour/usage stands -> Make website viable!!!
+* Integrate knowledge base from cloud folder into this repo's /documentation folder and into my stack, dissolve the external knowledge base entirely since I never tap into it anymore
 * bring the other commands beyond `mack` from bin folder into `mack` and alias them, document the other commands
 * explore idea of a "macstack registry" where people can register and browse and copy stacks, also any personal stack definition could be anchored in a registry stack (point to that) as the baseline default, and the personal stack itself would only define overrides, similar to how user settings in an IDE override some things but use the defaults otherwise ...
 * [Setup default SSH key](documentation/feature_plans/ssh/) (for GitHub, GitLab etc.)
 * Review whether we should rather use mise for managing dev tools that require further version management and benefit from mise features. Apparently mise also offers some declarative capabilities for global tool managament (~/.config/mise/mise.toml ...)
 * The script for force adopting apps into Homebrew is essentially a PoC fix of our regular update procedure which apparently does not bring many casks properly into Homebrew if that software (mostly GUI apps) was already installed on the system outside of Homebrew. We should bring those checks into the regular update procedure.
 * Flutter and Dart (via fvm or mise)
-* System (and app-) settings (likely via Ansible?)
+* System (and app-) settings (likely via Ansible? App settings via [mackup](https://github.com/lra/mackup)?)
 * Feature requests:
    * integrate repo based password management
