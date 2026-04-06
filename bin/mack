@@ -45,6 +45,7 @@ case "${1:-}" in
             "$MAC_STACK_ROOT/stack/update.sh"
         fi
 
+        "$MAC_STACK_ROOT/scripts/update_ai_agent_settings.sh"
         "$MAC_STACK_ROOT/scripts/update-repos.sh"
 
         print "✅ Did update (set up) this Mac."

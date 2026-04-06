@@ -20,3 +20,7 @@ fi
 echo "🍺 Updating \`jq\` and \`check-jsonschema\` for reading json files ..."
 silent zsh -c '/opt/homebrew/bin/brew upgrade jq || /opt/homebrew/bin/brew install jq'
 silent zsh -c '/opt/homebrew/bin/brew upgrade check-jsonschema || /opt/homebrew/bin/brew install check-jsonschema'
+
+# Update `moreutils` to get `sponge` for merging json files
+echo "🍺 Updating \`moreutils\` to get \`sponge\` for merging json files ..."
+silent zsh -c '/opt/homebrew/bin/brew upgrade moreutils || /opt/homebrew/bin/brew install moreutils'

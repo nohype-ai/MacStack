@@ -13,3 +13,4 @@
 | [update.sh](update.sh) | `mack update` executes it |
 | [git/repos-folder-template/](git/repos-folder-template/) | A template for the content of the `git.repos_folder` defined in [macstack.json](macstack.json). Each folder in the template may contain a `git-repos.txt` listing URLs of intended repos in that folder. `mack update` will attempt to clone/sync your repos based on the template. |
 | [zed/](zed/) and [vscode/](vscode/) | Contain json files that will be restored during `mack update` if `"restore_ide_settings": true` in [macstack.json](macstack.json) |
+| [ai/cursor/](ai/cursor/) | Cursor CLI settings overrides that will be applied  to `~/.cursor/cli-config`. All settings the template does not define are preserved in the target. |
