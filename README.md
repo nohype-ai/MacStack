@@ -2,13 +2,13 @@
 
 ## What?
 
-Setup and update the tech stack on a Mac with one command, based on config as code:
+Setup and update the tech stack on a Mac with one command:
   * 🐚 Shell customizations (prompt, paths, functions, aliases, environment)
   * 🐙 Global git configuration
   * 📰 Fonts
   * ⌨️ Command line tools (like `brew`, `git`, `pyenv`, `python`, `claude-code`)
   * 🍏 Graphical apps (including Mac App Store apps)
-  * ⚙️ Settings of coding agents (Gemini CLI, OpenCode, Cursor CLI)
+  * ⚙️ Settings and permissions of AI agents (Gemini CLI, OpenCode, Cursor CLI)
   * ⚙️ Settings and keybindings for Zed and most VSCode based IDEs
   * 🧩 Extensions for VSCode based IDEs
   * 📂 git repositories (clone, sync, list issues)
