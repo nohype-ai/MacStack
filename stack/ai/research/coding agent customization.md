@@ -37,14 +37,14 @@ Custom instructions, rules and configurations can be injected into an agentic co
 | Level | Gemini CLI | OpenCode | Cursor CLI | Claude Code |
 | --- | --- | --- | --- | --- |
 | **Team** | ❌ | ❌ | Team Rules (if logged in) | ❌ |
-| **User** | `~/.gemini/settings.json` (⚠️4)<br>`~/.gemini/policies/*.toml`<br>`~/.gemini/GEMINI.md`<br>`AGENTS.md` (⚠️1) | `~/.config/opencode/opencode.json`<br>`~/.config/opencode/AGENTS.md`<br>`~/.claude/CLAUDE.md` (⚠️2) | `~/.cursor/cli-config.json`<br>(⚠️3) | `~/.claude/settings.json`<br>`~/.claude/CLAUDE.md` |
-| **Project (root)** | `.gemini/settings.json` (⚠️4)<br>`.gemini/policies/*.toml`<br>`GEMINI.md`<br>`AGENTS.md` (⚠️1) | `.opencode/opencode.json`<br>`.opencode/AGENTS.md`<br>`AGENTS.md`<br>`CLAUDE.md` (⚠️2) | `.cursor/rules/`<br>`.cursorrules` (legacy)<br>`AGENTS.md` | `.claude/settings.json`<br>`.claude/rules/`<br>`CLAUDE.md`<br>`AGENTS.md` |
-| **Folder (any)** | `GEMINI.md`<br>`AGENTS.md` (⚠️1) | `AGENTS.md`<br>`CLAUDE.md` (⚠️2) | `AGENTS.md` | `CLAUDE.md`<br>`AGENTS.md` |
+| **User** | `~/.gemini/settings.json` (⚠️4)<br>`~/.gemini/policies/*.toml`<br>`~/.gemini/GEMINI.md`<br>`AGENTS.md` (⚠️1) | `~/.config/opencode/opencode.json`<br>`~/.config/opencode/AGENTS.md`<br>`~/.claude/CLAUDE.md` (⚠️2) | `~/.cursor/cli-config.json` (⚠️3)<br>`~/.cursor/rules/*.md[c]` | `~/.claude/settings.json`<br>`~/.claude/CLAUDE.md` |
+| **Project (root)** | `.gemini/settings.json` (⚠️4)<br>`.gemini/policies/*.toml`<br>`GEMINI.md`<br>`AGENTS.md` (⚠️1) | `opencode.json`<br>`.opencode/AGENTS.md`<br>`AGENTS.md`<br>`CLAUDE.md` (⚠️2) | `.cursor/cli.json` (only permissions)<br>`.cursor/rules/*.md[c]`<br>`AGENTS.md`<br>`CLAUDE.md` | `.claude/settings.json`<br>`.claude/rules/`<br>`.claude/CLAUDE.md`<br>`CLAUDE.md`<br>`AGENTS.md` |
+| **Folder (any)** | `GEMINI.md`<br>`AGENTS.md` (⚠️1) | `AGENTS.md`<br>`CLAUDE.md` (⚠️2) | `AGENTS.md` | `.claude/CLAUDE.md`<br>`CLAUDE.md`<br>`AGENTS.md` |
 | **Tool** | `GEMINI_SYSTEM_MD` (agent system prompt override) | ❌ | Team Rules (enforced) | ❌ |
 
 * ⚠️1)  `AGENTS.md` should work if configured (`context.fileName` in respective `settings.json`), but currently buggy: https://github.com/google-gemini/gemini-cli/issues/19872
 * ⚠️2) Loading of Claude customizations can be deactivated and probably should
-* ⚠️3) Cursor CLI supports no custom user-level prompts at all, so no `AGENTS.md` support either
+* ⚠️3) contains semi sensitive information and cannot be backed up into a repo as is
 * ⚠️4) permissions in `settings.json` are being phased out in favor of recommended fine-granular policy engine in `policies/*.toml`
 * [Amp's customization options](amp%20customization.md) are arguably richer than for other agents. But importantly, Amp supports `AGENTS.md` at user- (`~/.config/amp/AGENTS.md`), project- and folder level.
 
