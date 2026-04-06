@@ -35,9 +35,9 @@ case "${1:-}" in
         load_stack_path
         print "🍏 Stack: $STACK"
 
-        # Set safe permissions for project directory
-        echo "🔒 Setting safe permissions for project directory ..."
-        chmod 700 "$MAC_STACK_ROOT" # Only owner can access project
+        # Set safe permissions for stack directory
+        echo "🔒 Setting safe permissions for stack directory ..."
+        chmod 700 "$STACK" # Only owner can access stack
 
         # General stack
         "$MAC_STACK_ROOT/symlinks to dotfiles/generate.sh"
