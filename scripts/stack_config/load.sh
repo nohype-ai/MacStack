@@ -3,7 +3,7 @@
 
 print "💻 Reading stack configuration from macstack.json ..."
 
-CONFIG="$MAC_STACK_ROOT/stack/macstack.json"
+CONFIG="$STACK/macstack.json"
 
 if [[ ! -f "$CONFIG" ]]; then
     echo "⚠️  Warning: Skipping basic configurations since this file does not exist:\n$CONFIG"

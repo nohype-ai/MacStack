@@ -5,7 +5,7 @@
 # We identify "incomplete/incorrect" installations by checking if `brew list --cask --versions <cask_name>` returns an exit code of 1. This indicates that while the app might exist on disk (e.g. in /Applications), Homebrew does not have a registered receipt or version metadata for it, meaning it cannot manage updates or uninstalls.
 
 # Prepare
-BREWFILE="$MAC_STACK_ROOT/stack/Brewfile"
+BREWFILE="$STACK/Brewfile"
 
 # Check if Brewfile exists
 if [ ! -f "$BREWFILE" ]; then

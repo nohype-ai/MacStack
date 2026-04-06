@@ -51,8 +51,8 @@ if [[ "${RESTORE_IDE_SETTINGS:-false}" == "true" ]]; then
 
     # 1️⃣ VSCode-based IDEs
 
-    settings="$MAC_STACK_ROOT/stack/vscode/settings.json"
-    keybindings="$MAC_STACK_ROOT/stack/vscode/keybindings.json"
+    settings="$STACK/vscode/settings.json"
+    keybindings="$STACK/vscode/keybindings.json"
 
     app_names=("Visual Studio Code" "Cursor" "Antigravity" "Kiro" "Windsurf" "VSCodium")
     app_support_folders=("Code" "Cursor" "Antigravity" "Kiro" "Windsurf" "VSCodium")
@@ -73,17 +73,17 @@ if [[ "${RESTORE_IDE_SETTINGS:-false}" == "true" ]]; then
 
     local zed_config_dir="$HOME/.config/zed"
 
-    if [[ -f "$MAC_STACK_ROOT/stack/zed/settings.json" ]]; then
+    if [[ -f "$STACK/zed/settings.json" ]]; then
         mkdir -p "$zed_config_dir"
-        cp "$MAC_STACK_ROOT/stack/zed/settings.json" "$zed_config_dir/settings.json"
+        cp "$STACK/zed/settings.json" "$zed_config_dir/settings.json"
     else
-        echo "⚠️  Warning: settings file is not in stack, so restoring it will be skipped:\n$MAC_STACK_ROOT/stack/zed/settings.json"
+        echo "⚠️  Warning: settings file is not in stack, so restoring it will be skipped:\n$STACK/zed/settings.json"
     fi
 
-    if [[ -f "$MAC_STACK_ROOT/stack/zed/keymap.json" ]]; then
+    if [[ -f "$STACK/zed/keymap.json" ]]; then
         mkdir -p "$zed_config_dir"
-        cp "$MAC_STACK_ROOT/stack/zed/keymap.json" "$zed_config_dir/keymap.json"
+        cp "$STACK/zed/keymap.json" "$zed_config_dir/keymap.json"
     else
-        echo "⚠️  Warning: keymap file is not in stack, so restoring it will be skipped:\n$MAC_STACK_ROOT/stack/zed/keymap.json"
+        echo "⚠️  Warning: keymap file is not in stack, so restoring it will be skipped:\n$STACK/zed/keymap.json"
     fi
 fi

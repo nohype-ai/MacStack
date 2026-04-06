@@ -31,9 +31,9 @@ case "${1:-}" in
         print_help
         ;;
     "update")
-        # Load path of active stack into MACSTACK_STACK_ROOT
+        # Load path of active stack into STACK
         load_stack_path
-        print "🍏 Stack: $MACSTACK_STACK_ROOT"
+        print "🍏 Stack: $STACK"
 
         # Set safe permissions for project directory
         echo "🔒 Setting safe permissions for project directory ..."
@@ -51,10 +51,10 @@ case "${1:-}" in
         "$MAC_STACK_ROOT/scripts/git/update_git_config.sh"
         "$MAC_STACK_ROOT/scripts/update_ide_settings.sh"
 
-        if [[ ! -f "$MAC_STACK_ROOT/stack/update.sh" ]]; then
-            print "⚠️  Warning: Skipping custom install step since script does not exist in stack:\n$MAC_STACK_ROOT/stack/update.sh"
+        if [[ ! -f "$STACK/update.sh" ]]; then
+            print "⚠️  Warning: Skipping custom install step since script does not exist in stack:\n$STACK/update.sh"
         else
-            "$MAC_STACK_ROOT/stack/update.sh"
+            "$STACK/update.sh"
         fi
 
         "$MAC_STACK_ROOT/scripts/update_ai_agent_settings.sh"
@@ -78,7 +78,7 @@ case "${1:-}" in
         ;;
     "config")
         load_stack_path --prompt
-        echo "Selected stack: $MACSTACK_STACK_ROOT"
+        echo "Selected stack: $STACK"
         ;;
     *)
         echo "🛑 Unknown command: <$1>"

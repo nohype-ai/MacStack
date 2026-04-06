@@ -4,7 +4,7 @@ set -e
 set -u
 
 MAC_STACK_ROOT=${0:A:h:h}
-ZED_BACKUP="$MAC_STACK_ROOT/stack/zed"
+ZED_BACKUP="$STACK/zed"
 
 mkdir -p "$ZED_BACKUP"
 cp -f ~/.config/zed/settings.json "$ZED_BACKUP/settings.json"

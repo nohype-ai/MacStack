@@ -11,7 +11,7 @@ if [[ -z "${GIT_REPOS_FOLDER:-}" ]]; then
 fi
 
 repos_folder=${~GIT_REPOS_FOLDER}
-repos_folder_template="$MAC_STACK_ROOT/stack/git/repos-folder-template"
+repos_folder_template="$STACK/git/repos-folder-template"
 
 if [[ ! -d "$repos_folder_template" ]]; then
     print "⚠️ Warning: Skipping sync of git repos since repos folder template does not exist in stack:\n$repos_folder_template"
