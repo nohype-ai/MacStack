@@ -14,14 +14,12 @@ load_stack_path() {
     STACK=$(jq -r '.stack_path // empty' "$MACSTACK_SETTINGS")
   fi
 
-  # Fall back to the current directory if no path is saved yet
+  # Prompt the user if no path is saved yet (prefill with cwd), or if --prompt was passed
   if [[ -z "$STACK" ]]; then
-    echo "No stack folder configured yet."
     STACK="$PWD"
-  fi
-
-  # Prompt the user to confirm or edit the path (always when --prompt, otherwise only when unset)
-  if [[ -z "$STACK" || "$force_prompt" == "--prompt" ]]; then
+    print "📁 Set the folder that defines your stack:"
+    vared -p "" STACK
+  elif [[ "$force_prompt" == "--prompt" ]]; then
     vared -p "Stack folder path: " STACK
   fi
 
