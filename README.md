@@ -53,10 +53,10 @@ Without customizing anything, the resulting setup will be as follows.
 ## To Do
 
 * Separate MacStack as a universal system from user-specific setup configuration
-  * let the mack command dynamically retrieve the actual path to the stack (~/.config/macstack ?, ask user?, look for example stack? allow pointing to stack repo on github? etc ...)
+  * make mack a self contained cli tool that could be distributed via download/install script: how do we bundle everything up? where does the tool actually live on a macOS machine?
+  * install script (+ curl command on website)
   * move stack definition to distinct repo
   * turn stack in this repo into reasonable example stack / illustrative stack template
-  * install script (+ curl command on website)
   * distribute via Homebrew
   * command for creating a new stack as baseline from the current system
 * Settings updates for Gemini CLI and OpenCode are currently not idempotent as they just overwrite the existing json settings files. We could either work with templates that get merged into the target (as we had to do for Cursor CLI) or deactivate these updates by default via flag in macstack.json (as we did for the IDE settings updates). I sense we should always merge and even remove the necessity for the IDE settings update flag ...
