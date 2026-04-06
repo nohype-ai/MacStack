@@ -8,6 +8,7 @@ Setup and update the tech stack on a Mac with one command, based on config as co
   * 📰 Fonts
   * ⌨️ Command line tools (like `brew`, `git`, `pyenv`, `python`, `claude-code`)
   * 🍏 Graphical apps (including Mac App Store apps)
+  * ⚙️ Settings of coding agents (Gemini CLI, OpenCode, Cursor CLI)
   * ⚙️ Settings and keybindings for Zed and most VSCode based IDEs
   * 🧩 Extensions for VSCode based IDEs
   * 📂 git repositories (clone, sync, list issues)
@@ -51,6 +52,7 @@ Without customizing anything, the resulting setup will be as follows.
 
 ## To Do
 
+* Settings updates for Gemini CLI and OpenCode are currently not idempotent as they just overwrite the existing json settings files. We could either work with templates that get merged into the target (as we had to do for Cursor CLI) or deactivate these updates by default via flag in macstack.json (as we did for the IDE settings updates). I sense we should always merge and even remove the necessity for the IDE settings update flag ...
 * Integrate knowledge base from cloud folder into this repo's /documentation folder and into my stack, dissolve the external knowledge base entirely since I never tap into it anymore
 * Separate MacStack as a universal system from user-specific setup configuration
   * let the mack command dynamically retrieve the actual path to the stack (~/.config/macstack ?, ask user?, look for example stack? allow pointing to stack repo on github? etc ...)

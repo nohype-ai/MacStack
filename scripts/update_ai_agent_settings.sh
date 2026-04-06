@@ -14,3 +14,16 @@ if [[ -f ~/.cursor/cli-config.json ]]; then
       "$template" | sponge ~/.cursor/cli-config.json
   fi
 fi
+
+# Update Gemini CLI settings
+if [[ -d ~/.gemini ]]; then
+  echo "⚙️  Updating Gemini CLI settings ..."
+  cp -r "$MAC_STACK_ROOT/stack/ai/gemini/policies" ~/.gemini/
+  cp "$MAC_STACK_ROOT/stack/ai/gemini/settings.json" ~/.gemini/
+fi
+
+# Update OpenCode settings
+if [[ -d ~/.config/opencode ]]; then
+  echo "⚙️  Updating OpenCode settings ..."
+  cp "$MAC_STACK_ROOT/stack/ai/opencode/opencode.json" ~/.config/opencode/
+fi
