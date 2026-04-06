@@ -5,7 +5,12 @@ if command -v jq &>/dev/null && [[ -f "$_macstack_settings" ]]; then
 fi
 unset _macstack_settings
 
-# Source user's shell customization from their stack
-if [[ -n "${STACK:-}" && -f "$STACK/zshrc.sh" ]]; then
-  source "$STACK/zshrc.sh"
+if [[ -n "${STACK:-}" ]]; then
+  # Make stack binaries available as commands
+  export PATH="$STACK/bin:$PATH"
+
+  # Source stack shell customization
+  if [[ -f "$STACK/zshrc.sh" ]]; then
+    source "$STACK/zshrc.sh"
+  fi
 fi
