@@ -53,9 +53,7 @@ Without customizing anything, the resulting setup will be as follows.
 ## To Do
 
 * Separate MacStack as a universal system from user-specific setup configuration
-  * make mack a self contained cli tool that could be distributed via download/install script: how do we bundle everything up? where does the tool actually live on a macOS machine?
   * install script (+ curl command on website)
-  * distribute via Homebrew
   * move stack definition to distinct repo
   * turn stack in this repo into reasonable example stack / illustrative stack template
   * command for creating a new stack as baseline from the current system
