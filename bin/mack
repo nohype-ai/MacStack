@@ -22,6 +22,7 @@ print_help() {
     echo "mack brew-clip     → delete Homebrew packages that are not in your stack's Brewfile, and clean up other stuff"
     echo "mack brew-force    → [normally not needed] force apps in /Applications into Homebrew management if they are in your stack's Brewfile"
     echo "mack backup-zed    → backup Zed settings.json and keymap.json to zed/ in your stack"
+    echo "mack shellenv      → print shell customizations for eval in ~/.zshrc"
     echo "mack config        → configure mack settings (e.g. stack folder path)"
 }
 
@@ -73,6 +74,10 @@ case "${1:-}" in
         ;;
     "backup-zed")
         "$MAC_STACK_ROOT/bin/backup-zed"
+        ;;
+    "shellenv")
+        cat "$MAC_STACK_ROOT/scripts/zshrc/content_macstack.sh"
+        cat "$MAC_STACK_ROOT/scripts/zshrc/content_stack.sh"
         ;;
     "config")
         load_stack_path --prompt

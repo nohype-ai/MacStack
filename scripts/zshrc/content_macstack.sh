@@ -1,8 +1,5 @@
-#!/usr/bin/env zsh
-
 # Add basic binary paths to PATH
 export PATH="$HOME/.local/bin:$PATH"       # XDG path for user-installed CLIs
-export PATH="$ROOT/bin:$PATH"              # MacStack binary path
 eval "$(/opt/homebrew/bin/brew shellenv)"  # Setup Homebrew
 
 # Alias for MacStack update process
