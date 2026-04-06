@@ -21,42 +21,40 @@
 # For the 2% of cases requiring more granular control (like selective
 # staging or complex branch operations), the standard Git commands can
 # still be used directly.
-gitty () {
-    changes=$(status --porcelain)
+changes=$(git status --porcelain)
 
-    if [ -z "$changes" ]; then
-        echo "🛑 No changes to commit"
-    else
-        if [ -z "$1" ]; then
-            # Generate commit message since none was provided
-            file_count=$(echo "$changes" | wc -l)
+if [ -z "$changes" ]; then
+    echo "🛑 No changes to commit"
+else
+    if [ -z "${1:-}" ]; then
+        # Generate commit message since none was provided
+        file_count=$(echo "$changes" | wc -l)
 
-            if [ "$file_count" -eq 1 ]; then
-                filepath=$(echo "$changes" | sed 's/^...//')
-                filename=$(basename "$filepath")
-                commit_msg="Edit file: $filename"
-            else
-                commit_msg="Edit $file_count files"
-            fi
+        if [ "$file_count" -eq 1 ]; then
+            filepath=$(echo "$changes" | sed 's/^...//')
+            filename=$(basename "$filepath")
+            commit_msg="Edit file: $filename"
         else
-            # Use provided commit message
-            commit_msg="$1"
+            commit_msg="Edit $file_count files"
         fi
-
-        # Stage, commit and push changes
-        add .
-        commit -m "$commit_msg"
-        push
-
-        # Give feedback
-        echo "🤪 https://www.urbandictionary.com/define.php?term=gitty"
-
-        remote_url=$(git remote get-url origin 2>/dev/null)
-        if [ -n "$remote_url" ]; then
-            echo "🐙 $remote_url"
-        fi
-
-        lastCommit=$(log --oneline -1)
-        echo "✅ Pushed $lastCommit"
+    else
+        # Use provided commit message
+        commit_msg="$1"
     fi
-}
+
+    # Stage, commit and push changes
+    git add .
+    git commit -m "$commit_msg"
+    git push
+
+    # Give feedback
+    echo "🤪 https://www.urbandictionary.com/define.php?term=gitty"
+
+    remote_url=$(git remote get-url origin 2>/dev/null)
+    if [ -n "$remote_url" ]; then
+        echo "🐙 $remote_url"
+    fi
+
+    lastCommit=$(git log --oneline -1)
+    echo "✅ Pushed $lastCommit"
+fi
