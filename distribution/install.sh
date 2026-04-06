@@ -6,26 +6,26 @@
 set -e  # Exit on any error
 set -u  # Treat unset variables as error
 
-echo "🍏 Installing MacStack ..."
-
 # Install Homebrew if not present
 if ! command -v brew >/dev/null 2>&1; then
     echo "🍺 Installing Homebrew ..."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-else
-    echo "🍺 Homebrew already installed, skipping."
 fi
 
 # Ensure Homebrew is in PATH (required when Homebrew was just installed)
 export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
 
-# Install mack via Homebrew
-echo "🍏 Installing mack ..."
-brew install macstack
-
-echo ""
-echo "✅ MacStack installed. Let's configure it."
-echo ""
+# Install or upgrade MacStack via Homebrew
+if brew list macstack &>/dev/null; then
+    echo "🍏 Upgrading MacStack ..."
+    brew tap nohype-ai/macstack
+    brew upgrade macstack
+else
+    echo "🍏 Installing MacStack ..."
+    brew tap nohype-ai/macstack
+    brew install macstack
+fi
 
 # Run first-time configuration to set the stack folder
+print "⚙️  Configuring MacStack ..."
 mack config
