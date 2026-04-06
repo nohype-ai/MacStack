@@ -13,6 +13,12 @@ if [[ -f ~/.cursor/cli-config.json ]]; then
       ~/.cursor/cli-config.json \
       "$template" | sponge ~/.cursor/cli-config.json
   fi
+
+  # Copy rules
+  rules_dir="$MAC_STACK_ROOT/stack/ai/cursor/rules"
+  if [[ -d "$rules_dir" ]]; then
+    cp -r "$rules_dir/." ~/.cursor/rules/
+  fi
 fi
 
 # Update Gemini CLI settings
