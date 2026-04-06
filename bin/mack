@@ -40,9 +40,12 @@ case "${1:-}" in
         echo "🔒 Setting safe permissions for stack directory ..."
         chmod 700 "$STACK" # Only owner can access stack
 
-        # General stack
+        # Update zshrc entry
         "$MAC_STACK_ROOT/scripts/zshrc/update.sh"
-        "$MAC_STACK_ROOT/scripts/homebrew/update_mac_stack.sh"
+
+        # Update Homebrew
+        print "🍺 Updating Homebrew ..."
+        silent brew update
 
         # Custom user stack
         source "$MAC_STACK_ROOT/scripts/stack_config/load.sh"
