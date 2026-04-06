@@ -10,9 +10,14 @@ ROOT="${DIR:h:h}"
 # Source the MacStack shell customization
 source "$ROOT/scripts/zshrc/content.sh"
 
-# Source the user's custom shell customization
-if [[ -f "$ROOT/stack/zshrc.sh" ]]; then
-  source "$ROOT/stack/zshrc.sh"
-else
-  echo "⚠️  Warning: Skipping stack-specific shell customization since script does not exist in stack:\n$ROOT/stack/zshrc.sh"
+# Read the stack path from settings (requires jq; skip silently if unavailable or not configured)
+_macstack_settings="$HOME/.config/macstack/settings.json"
+if command -v jq &>/dev/null && [[ -f "$_macstack_settings" ]]; then
+  STACK=$(jq -r '.stack_path // empty' "$_macstack_settings")
+fi
+unset _macstack_settings
+
+# Source the user's custom shell customization from their stack
+if [[ -n "${STACK:-}" && -f "$STACK/zshrc.sh" ]]; then
+  source "$STACK/zshrc.sh"
 fi
