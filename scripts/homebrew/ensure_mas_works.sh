@@ -10,7 +10,7 @@ echo "🍏 Ensuring App Store access (mas) works ..."
 
 if ! command -v mas >/dev/null 2>&1; then
     echo "🍏 Installing mas CLI ..."
-    silent /opt/homebrew/bin/brew install mas
+    silent brew install mas
 fi
 
 if ! mas list >/dev/null 2>&1; then

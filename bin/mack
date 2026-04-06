@@ -8,6 +8,9 @@ set -u                                      # Treat unset variables as error
 BINARY_PATH=${0:A:h}                        # Get binary (current-) path
 typeset -x MAC_STACK_ROOT=${BINARY_PATH:h}  # Get repo root path
 
+# Ensure Homebrew packages are immediately in PATH for this script and all scripts it calls — even when we just installed Homebrew for the first time
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
+
 # Function for printing help
 print_help() {
     echo "Valid calls are:"

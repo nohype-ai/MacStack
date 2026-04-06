@@ -9,7 +9,7 @@ set -u  # Treat unset variables as error
 # We use --greedy to force updates for casks with 'auto_updates true' (like Browsers, Cursor, Raycast) or 'version :latest' (like Apple Fonts). Without this flag, Homebrew ignores them. This ensures our stack actually stays up to date. While it may periodically trigger re-installs for 'latest' casks, it is efficient for versioned apps as they only download when a new numeric version is detected.
 if [[ "${SKIP_BREW_PACKAGE_UPDATES:-false}" != "true" ]]; then
     echo "🍺 Updating installed Homebrew packages ..."
-    /opt/homebrew/bin/brew upgrade --greedy
+    brew upgrade --greedy
 fi
 
 # Pre-flight `mas list` gate so Brewfile MAS installs don't fail mid-run.
@@ -19,12 +19,12 @@ fi
 echo "🍺 Installing missing Homebrew packages listed in Brewfile ..."
 brewfile="$MAC_STACK_ROOT/stack/Brewfile"
 if [[ -f "$brewfile" ]]; then
-    /opt/homebrew/bin/brew bundle install --no-upgrade --file "$brewfile"
+    brew bundle install --no-upgrade --file "$brewfile"
 else
     echo "⚠️  Warning: Skipping Brewfile installs since file does not exist in stack:\n$brewfile"
 fi
 
 # Clean up Homebrew: cache, old package versions, cask installers
 echo "🍺 Cleaning up Homebrew cache, old package versions, installers ..."
-silent /opt/homebrew/bin/brew cleanup
+silent brew cleanup
 silent find /opt/homebrew/Caskroom -type f \( -name "*.dmg" -o -name "*.pkg" -o -name "*.zip" \) -delete
