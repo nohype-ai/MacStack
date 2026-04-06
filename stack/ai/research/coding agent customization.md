@@ -4,7 +4,7 @@
 
 Custom instructions, rules and configurations can be injected into an agentic coding system at five levels, building a hierarchy of customizations, where the lower and more specific levels (higher numbers) take precedence.
 
-❗ These levels are supposed to help in practice so they mirror actual practical precedence order. Who is able or permitted to edit each customization is an entirely different dimension.
+❗ These levels are supposed to help in practice so they mirror actual practical precedence order. Who is able or permitted to edit each customization or where these customizations are stored are entirely different dimensions.
 
 1) Team Level:
    - default instructions or rules for all members of a team
@@ -23,24 +23,25 @@ Custom instructions, rules and configurations can be injected into an agentic co
 4) Folder Level:
    - Ideal for domain-specific rules (e.g., /api/ vs. /ui/)
 5) Tool Level:
-   - source of truth is inside the agent/tool itself (system prompt or enforced dashboard rules)
-   - last-resort policy enforcement (final safeguard)
+   - source of truth is conceptually with the agent/tool itself
+   - this may be implemented via system prompt, dashboard rules, config files etc.
+   - last-resort policy enforcement (final safeguard): customizations on this level overrule any customizations from levels 1 - 4
    - Examples:
      - Cursor Team Rules
        - Note: Cursor Team Rules can be used as soft team defaults (Level 1) or as unbreakable guardrails (Level 5)
      - Gemini CLI GEMINI_SYSTEM_MD (full system prompt override)
-       - though any user can override this while Cursor Team Rules may be gated by specific roles in the team. But the important thing here is that this system prompt has the power to overrule even folder-level prompts.
-     - `~/.gemini/policies/*.toml` can restrict shell commands no matter any customizations on levels 1 - 4
+       - Any user can override this while Cursor Team Rules may be gated by specific roles in the team. But the important thing here is that this system prompt has the power to overrule even folder-level prompts.
+     - `~/.gemini/policies/*.toml` actually overrule project-level policies. so `~/.gemini/policies/*.toml` represent the final safeguards of gemini CLI itself and not user preferences.
 
 ## Locations
 
 | Level | Gemini CLI | OpenCode | Cursor CLI | Claude Code |
 | --- | --- | --- | --- | --- |
 | **Team** | ❌ | ❌ | Team Rules (if logged in) | ❌ |
-| **User** | `~/.gemini/settings.json` (⚠️4)<br>`~/.gemini/policies/*.toml`<br>`~/.gemini/GEMINI.md`<br>`AGENTS.md` (⚠️1) | `~/.config/opencode/opencode.json`<br>`~/.config/opencode/AGENTS.md`<br>`~/.claude/CLAUDE.md` (⚠️2) | `~/.cursor/cli-config.json` (⚠️3)<br>`~/.cursor/rules/*.md[c]` (🛑5) | `~/.claude/settings.json`<br>`~/.claude/CLAUDE.md` |
+| **User** | `~/.gemini/settings.json` (⚠️4)<br>`~/.gemini/GEMINI.md`<br>`AGENTS.md` (⚠️1) | `~/.config/opencode/opencode.json`<br>`~/.config/opencode/AGENTS.md`<br>`~/.claude/CLAUDE.md` (⚠️2) | `~/.cursor/cli-config.json` (⚠️3)<br>`~/.cursor/rules/*.md[c]` (🛑5) | `~/.claude/settings.json`<br>`~/.claude/CLAUDE.md` |
 | **Project (root)** | `.gemini/settings.json` (⚠️4)<br>`.gemini/policies/*.toml`<br>`GEMINI.md`<br>`AGENTS.md` (⚠️1) | `opencode.json`<br>`.opencode/AGENTS.md`<br>`AGENTS.md`<br>`CLAUDE.md` (⚠️2) | `.cursor/cli.json` (only permissions)<br>`.cursor/rules/*.md[c]`<br>`AGENTS.md`<br>`CLAUDE.md` | `.claude/settings.json`<br>`.claude/rules/`<br>`.claude/CLAUDE.md`<br>`CLAUDE.md`<br>`AGENTS.md` |
 | **Folder (any)** | `GEMINI.md`<br>`AGENTS.md` (⚠️1) | `AGENTS.md`<br>`CLAUDE.md` (⚠️2) | `AGENTS.md` | `.claude/CLAUDE.md`<br>`CLAUDE.md`<br>`AGENTS.md` |
-| **Tool** | `GEMINI_SYSTEM_MD` (agent system prompt override) | ❌ | Team Rules (enforced) | ❌ |
+| **Tool** | `~/.gemini/policies/*.toml`<br>`GEMINI_SYSTEM_MD` (agent system prompt override) | ❌ | Team Rules (enforced) | ❌ |
 
 * ⚠️1)  `AGENTS.md` should work if configured (`context.fileName` in respective `settings.json`), but currently buggy: https://github.com/google-gemini/gemini-cli/issues/19872
 * ⚠️2) Loading of Claude customizations can be deactivated and probably should
@@ -78,11 +79,10 @@ Custom instructions, rules and configurations can be injected into an agentic co
 * Agent permissions:
   * cases where it makes sense to actually deny agent actions
     1) are local exceptions
-    2) cannot be covered with formal rules but require intelligence
+    2) can often be covered with formal rules but require intelligence
     3) can still manually be avoided with Plan/Ask mode
     4) Could still be reviewed and reverted in git repos
-  * ❗ -> best strategy: allow everything on a user-level and handle sensitive exceptions on a project/folder level via policies, documentation and AGENTS.md files.
-  * this prioritizes productivity a bit over total safety, and that's ok.
+  * ❗ → best strategy: allow everything on a user-level and handle sensitive exceptions on a project/folder level via policies, rules, documentation and AGENTS.md files. this prioritizes productivity a bit over total safety, and that's ok.
 
 | | Prompts | Permissions |
 |---|---|---|
