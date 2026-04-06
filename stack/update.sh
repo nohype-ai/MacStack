@@ -6,6 +6,9 @@
 set -e  # Exit on any error
 set -u  # Treat unset variables as error
 
+# Create symlink to dotfiles
+"$STACK/symlinks to dotfiles/generate.sh"
+
 # Update Rust (needed to compile some Python package dependencies)
 echo "🦀 Updating Rust ..."
 silent zsh -c 'brew upgrade rust || brew install rust'

@@ -11,7 +11,7 @@ typeset -x MAC_STACK_ROOT=${BINARY_PATH:h}  # Get repo root path
 # Ensure Homebrew packages are immediately in PATH for this script and all scripts it calls — even when we just installed Homebrew for the first time
 export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
 
-# Get function that retrieve stack path from settings or user input
+# Get function to retrieve stack path from settings or user input
 source "$MAC_STACK_ROOT/scripts/config/load_stack_path.sh"
 
 # Function for printing help
@@ -40,12 +40,10 @@ case "${1:-}" in
         chmod 700 "$STACK" # Only owner can access stack
 
         # General stack
-        "$MAC_STACK_ROOT/symlinks to dotfiles/generate.sh"
         "$MAC_STACK_ROOT/scripts/zshrc/update.sh"
         "$MAC_STACK_ROOT/scripts/homebrew/update_mac_stack.sh"
 
         # Custom user stack
-
         source "$MAC_STACK_ROOT/scripts/stack_config/load.sh"
         "$MAC_STACK_ROOT/scripts/homebrew/update_user_stack.sh"
         "$MAC_STACK_ROOT/scripts/git/update_git_config.sh"
