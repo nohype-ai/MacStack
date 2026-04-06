@@ -49,10 +49,10 @@ Custom instructions, rules and configurations can be injected into an agentic co
 * 🛑5) user-level rules are not supported for the CLI – only for the IDE
 * [Amp's customization options](amp%20customization.md) are arguably richer than for other agents. But importantly, Amp supports `AGENTS.md` at user- (`~/.config/amp/AGENTS.md`), project- and folder level.
 
-## First Conclusions
+## Conclusions
 
 * The `AGENTS.md` convention is the closest we can get to a cross-agent (agent-agnostic) way to guide agents.
-* We should probably largely ignore user-level prompt customization:
+* ❗ We can largely ignore user-level prompt customization:
   * `AGENTS.md` is not at all universally respected at the user level.
   * Hardly anything would truly add value across all projects and folders, in particular when coding agents are applied beyond coding.
   * It would add latency, cost and prompt dillution to every single prompt.
@@ -61,7 +61,7 @@ Custom instructions, rules and configurations can be injected into an agentic co
 * `AGENTS.md` files should only contain what truly only applies to agents (like infos about the user). Almost nothing is truly agent-specific, for example, instructions on how to work with a project also apply to humans. So almost everything should remain in regular `README.md` files.
   * This reduces redundancy and promotes well structured documentation.
   * Also avoid including pointers to `README.md`, they would add ceremony without value. Agents are increasingly able to do contextual discovery and read relevant documentation.
-* So this whole agent customization thing is converging back to classic principles of just providing good old documentation. But agents do indeed make those principles more crucial than ever:
+* ❗ This whole agent customization thing is converging back to classic principles of just providing good old documentation. But agents do indeed make those principles more crucial than ever:
   * make things explicit
   * put docs where they actually apply and are needed
   * structure texts well
@@ -73,29 +73,18 @@ Custom instructions, rules and configurations can be injected into an agentic co
   * keep it up to date
   * make it as concise and dense as possible
   * etc.
-* Non-repo folders and non-codebase folders should also use `README.md` files as their entrypoint and overview. Agents know what a `README.md` is.
-* user-level agent settings (in contrast to prompts) are not only ok but also necessary (like for iCloud Drive folders which are not repos and cannot have their own agent settings). so an agent's permissions (what it is allowed or denied to always do) must be defined at user-level and anyway should truly apply across projects.
-
-| | Prompts | Permissions |
-|---|---|---|
-| **User level** | avoid | necessary |
-| **Project/folder level** | primary home | possible but redundant if user-level covers it |
-
+* ❗ Non-repo folders and non-codebase folders should also use `README.md` files as their entrypoint and overview. Agents know what a `README.md` is.
+* ❗ user-level agent settings (in contrast to prompts) are not only ok but also necessary (like for iCloud Drive folders which are not repos and cannot have their own agent settings). so an agent's permissions (what it is allowed or denied to always do) must be defined at user-level and anyway should truly apply across projects.
 * Agent permissions:
   * cases where it makes sense to actually deny agent actions
     1) are local exceptions
     2) cannot be covered with formal rules but require intelligence
     3) can still manually be avoided with Plan/Ask mode
     4) Could still be reviewed and reverted in git repos
-  * -> best strategy: allow everything on a user-level and handle sensitive exceptions on a project/folder level via policies, documentation and AGENTS.md files.
+  * ❗ -> best strategy: allow everything on a user-level and handle sensitive exceptions on a project/folder level via policies, documentation and AGENTS.md files.
   * this prioritizes productivity a bit over total safety, and that's ok.
 
-## Open Topics
-
-* Cursor CLI asks permission for each fetch and search operation but offers no option like "always allow search". it only offers options like "always allow search on this specific website". can i manually configure the cursor cli at user-level, so read/fetch/search operations are always allowed?
-* how do i generally allow non-destructive actions like reading, searching and fetching in every agent and backup/restore these settings?
-* how different agents actually consider and combine the customizations on Level 3 and 4 makes a difference (tree walk up, bfs, replacing versus combining prompts etc.). how do we handle that? is there a good enough approach that works for all equally as expected?
-* does any of this not work or work differently when the project is NOT a git repository?
-* so what can/should we back up?
-* how do custom prompts impact speed and cost versus quality? when is it too much customization?
-* spec-driven development?
+| | Prompts | Permissions |
+|---|---|---|
+| **User level** | avoid | necessary |
+| **Project/folder level** | primary home | possible but redundant if user-level covers it |
