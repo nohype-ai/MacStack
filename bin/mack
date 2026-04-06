@@ -11,6 +11,36 @@ typeset -x MAC_STACK_ROOT=${BINARY_PATH:h}  # Get repo root path
 # Ensure Homebrew packages are immediately in PATH for this script and all scripts it calls — even when we just installed Homebrew for the first time
 export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
 
+MACSTACK_SETTINGS="$HOME/.config/macstack/settings.json"
+
+# Loads the stack folder path from settings into MACSTACK_STACK_ROOT, prompting the user if not set.
+# Pass --prompt to always show the prompt (e.g. for mack config to allow changing the path).
+# Saves the (confirmed or newly entered) path back to settings.
+load_stack_path() {
+  local force_prompt=${1:-false}
+  MACSTACK_STACK_ROOT=""
+
+  if [[ -f "$MACSTACK_SETTINGS" ]]; then
+    MACSTACK_STACK_ROOT=$(jq -r '.stack_path // empty' "$MACSTACK_SETTINGS")
+  fi
+
+  if [[ -z "$MACSTACK_STACK_ROOT" ]]; then
+    echo "No stack folder configured yet."
+    MACSTACK_STACK_ROOT="$PWD"
+  fi
+
+  if [[ -z "$MACSTACK_STACK_ROOT" || "$force_prompt" == "--prompt" ]]; then
+    vared -p "Stack folder path: " MACSTACK_STACK_ROOT
+  fi
+
+  mkdir -p "${MACSTACK_SETTINGS:h}"
+  [[ -f "$MACSTACK_SETTINGS" ]] || echo '{}' > "$MACSTACK_SETTINGS"
+
+  jq --arg p "$MACSTACK_STACK_ROOT" '. + {stack_path: $p}' "$MACSTACK_SETTINGS" | sponge "$MACSTACK_SETTINGS"
+
+  typeset -gx MACSTACK_STACK_ROOT
+}
+
 # Function for printing help
 print_help() {
     echo "Valid calls are:"
@@ -19,6 +49,7 @@ print_help() {
     echo "mack brew-clip     → delete Homebrew packages that are not in your stack's Brewfile, and clean up other stuff"
     echo "mack brew-force    → [normally not needed] force apps in /Applications into Homebrew management if they are in your stack's Brewfile"
     echo "mack backup-zed    → backup Zed settings.json and keymap.json to zed/ in your stack"
+    echo "mack config        → configure mack settings (e.g. stack folder path)"
 }
 
 # Switch by sub command
@@ -27,6 +58,10 @@ case "${1:-}" in
         print_help
         ;;
     "update")
+        # Load path of active stack into MACSTACK_STACK_ROOT
+        load_stack_path
+        print "🍏 Active stack: $MACSTACK_STACK_ROOT"
+
         # Set safe permissions for project directory
         echo "🔒 Setting safe permissions for project directory ..."
         chmod 700 "$MAC_STACK_ROOT" # Only owner can access project
@@ -37,6 +72,7 @@ case "${1:-}" in
         "$MAC_STACK_ROOT/scripts/homebrew/update_mac_stack.sh"
 
         # Custom user stack
+
         source "$MAC_STACK_ROOT/scripts/stack_config/load.sh"
         "$MAC_STACK_ROOT/scripts/homebrew/update_user_stack.sh"
         "$MAC_STACK_ROOT/scripts/git/update_git_config.sh"
@@ -66,6 +102,10 @@ case "${1:-}" in
         ;;
     "backup-zed")
         "$MAC_STACK_ROOT/bin/backup-zed"
+        ;;
+    "config")
+        load_stack_path --prompt
+        echo "Stack folder: $MACSTACK_STACK_ROOT"
         ;;
     *)
         echo "🛑 Unknown command: <$1>"
