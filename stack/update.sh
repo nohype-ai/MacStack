@@ -17,7 +17,7 @@ silent uv tool install --upgrade 'litellm[proxy]'
 
 # Update markitdown
 echo "📝 Updating markitdown ..."
-silent uv tool install --upgrade --force 'markitdown[all]'
+silent uv tool install --upgrade --force 'markitdown[pptx,docx,xlsx,xls,pdf,outlook]'
 
 # Fix Cursor CLI Issue
 echo "🩹 Fixing Cursor CLI issue ..."
