@@ -17,13 +17,20 @@
 
 5. Commit and push the updated formula to the `homebrew-macstack` repo. Users who already have the tap will get the update on their next `brew upgrade`.
 
-   > **Testing locally:** `brew update` skips taps that were recently cloned (cooldown). If `brew upgrade macstack` still shows the old version, force-pull the tap manually:
+6. Test MacStack Release
+   ```zsh
+   # Initial install
+   brew tap nohype-ai/macstack
+   brew install macstack
+   
+   # Upgrade
+   brew upgrade macstack
+   
+   # Check version
+   brew list --versions macstack
+   ```
+
+   > `brew upgrade` skips taps that were recently cloned (cooldown). If `brew upgrade macstack` still shows the old version, force-pull the tap manually:
    > ```bash
    > cd $(brew --repository nohype-ai/macstack) && git pull
    > ```
-
-6. To install via Homebrew:
-   ```zsh
-   brew tap nohype-ai/macstack
-   brew install macstack
-   ```
