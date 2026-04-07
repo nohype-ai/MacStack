@@ -63,6 +63,7 @@ Setup and update the tech stack on a Mac with one command, based on a custom sta
 * Make settings updates for Gemini CLI and OpenCode idempotent (like we had to do for Cursor CLI). They currently overwrite the existing json settings files.
 * Make IDE settings updates idempotent: merge instead of overwrite, remove related flag from macstack.json
 * At this point the basic behaviour/usage stands -> Make website viable!!!
+* Before doing any more Formula releases: Write script that does the whole release, given a version string!
 * command for creating a new stack (`mack init`) as baseline from the current system or from template or from a mixture where the template is only used for components that cannot be retrieved from- or are not present in the current system
   * If necessary, add reasonable example stack or illustrative stack template
 * Integrate knowledge base from cloud folder into this repo's /documentation folder and into my stack, dissolve the external knowledge base entirely since I never tap into it anymore
