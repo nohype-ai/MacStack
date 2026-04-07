@@ -2,7 +2,7 @@
 
 ## What?
 
-Setup and update the tech stack on a Mac with one command:
+Setup and update the tech stack on a Mac with one command, based on a custom stack config:
   * 🐚 Shell customizations (prompt, paths, functions, aliases, environment)
   * 🐙 Global git configuration
   * 📰 Fonts
