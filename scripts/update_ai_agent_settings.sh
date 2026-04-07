@@ -2,7 +2,7 @@
 
 # Update Cursor CLI settings
 if [[ -f ~/.cursor/cli-config.json ]]; then
-  echo "⚙️  Updating Cursor CLI settings ..."
+  echo "🤖 Updating Cursor CLI settings ..."
 
   template="$STACK/ai/cursor/cli-config_template.json"
 
@@ -23,13 +23,13 @@ fi
 
 # Update Gemini CLI settings
 if [[ -d ~/.gemini ]]; then
-  echo "⚙️  Updating Gemini CLI settings ..."
+  echo "🤖 Updating Gemini CLI settings ..."
   cp -r "$STACK/ai/gemini/policies" ~/.gemini/
   cp "$STACK/ai/gemini/settings.json" ~/.gemini/
 fi
 
 # Update OpenCode settings
 if [[ -d ~/.config/opencode ]]; then
-  echo "⚙️  Updating OpenCode settings ..."
+  echo "🤖 Updating OpenCode settings ..."
   cp "$STACK/ai/opencode/opencode.json" ~/.config/opencode/
 fi

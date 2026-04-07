@@ -8,7 +8,7 @@ Setup and update the tech stack on a Mac with one command, based on a custom sta
   * 📰 Fonts
   * ⌨️ Command line tools (like `brew`, `git`, `pyenv`, `python`, `claude-code`)
   * 🍏 Graphical apps (including Mac App Store apps)
-  * ⚙️ Settings and permissions of AI agents (Gemini CLI, OpenCode, Cursor CLI)
+  * 🤖 Settings and permissions of AI agents (Gemini CLI, OpenCode, Cursor CLI)
   * ⚙️ Settings and keybindings for Zed and most VSCode based IDEs
   * 🧩 Extensions for VSCode based IDEs
   * 📂 git repositories (clone, sync, list issues)
@@ -46,7 +46,7 @@ Setup and update the tech stack on a Mac with one command, based on a custom sta
 * ⚙️ Restore (overwrite) IDE settings and keybindings if `restore_ide_settings` is `true` in `stack/macstack.json`
     - `stack/zed`
     - `stack/vscode`: Applied to VS Code, Cursor, Antigravity, Kiro, Windsurf and VSCodium
-* ⚙️ Restore AI Agent configurations
+* 🤖 Restore AI Agent configurations
     - `stack/ai/cursor`: settings, rules
     - `stack/ai/gemini`: settings, policies
     - `stack/ai/opencode`: settings
