@@ -25,29 +25,34 @@ Setup and update the tech stack on a Mac with one command:
    
 > Note: Whether you've just installed macOS and need to set up this new machine or want to repeatedly update your established machine, `mack update` is idempotent and works for both cases. That means it's safe to use and only overwrites things you define in your stack. It preserves everything else – even individual pre-existing entries in dotfiles.
 
-## Exact Default Setup
+## The Update Process
 
-Without customizing anything, the resulting setup will be as follows.
-
-🧼 Note: All included software (already installed or not) will get **UPDATED TO ITS LATEST VERSION**.
-
-1. `brew` (Homebrew itself)
-2. `brew` packages that were already installed
-3. [`Brewfile`](stack/Brewfile) contents (all software it declares)
-   - 🎯 this is the central and largest part of the software stack
-4. `brew` system cleaned up
-   - deleted old package versions and cache
-5. `~/.zshrc` loads (sources) various shell customizations.
-   - [`zshrc.sh`](stack/zshrc.sh): Your indiviual part of the shell customization
-6. `mack` is available system-wide, offering several commands, including:
+### 1. What `mack update` Always Does
+1. Update Homebrew itself
+2. Update Homebrew packages that were already installed
+3. Clean up Homebrew system: delete old package versions and cache
+4. Ensure `~/.zshrc` loads (sources) the MacStack shell customizations
+5. Ensure a `~/.gitignore_global` exists
+6. Set necessary global git settings plus some basic best-practice ones in `~/.gitconfig`.
+7. Make `mack` command available system-wide, offering several commands, including:
    - `mack update` (or just `update`): trigger this whole update process
-   - `mack help` (or just `mack`): show all available `mack` commands 
-7. `~/.gitconfig` (global git config)
-   - necessary parameters plus some basic best-practice ones
-   - other pre-existing parameters are preserved
-   - default `~/.gitignore_global` created if none existed yet
-8. Further installations specific to your stack in [`update.sh`](stack/update.sh)
-9. IDE settings restored (overwritten) from backup if `restore_ide_settings` is set `true` in [`macstack.json`](stack/macstack.json) file.
+   - `mack help` (or just `mack`): show all available `mack` commands
+
+### 2. What `mack update` Does Based On Your Stack
+1. `~/.gitconfig`: Set personal global git settings if defined in `stack/macstack.json`
+2. `stack/Brewfile`: Update all declared software. This is the central and largest part of your stack.
+3. `stack/zshrc.sh`: Ensure it gets sourced from `~/.zshrc`, as it contains your shell customization.
+4. `stack/update.sh`: Run it, as it's your custom update step.
+5. Restore (overwrite) IDE settings and keybindings if `restore_ide_settings` is `true` in `stack/macstack.json`.
+    - `stack/zed`
+    - `stack/vscode`: Applied to VS Code, Cursor, Antigravity, Kiro, Windsurf and VSCodium
+6. Restore AI Agent configurations
+    - `stack/ai/cursor`: settings, rules
+    - `stack/ai/gemini`: settings, policies
+    - `stack/ai/opencode`: settings
+7. `stack/git/repos-folder-template`: Clone/sync repos based on the template, then report which repos need manual attention.
+    - Template for the content of `git.repos_folder` defined in `macstack.json`.
+    - Each folder in the template may contain a `git-repos.txt` listing URLs of intended repos in that folder.
 
 ## To Do
 
