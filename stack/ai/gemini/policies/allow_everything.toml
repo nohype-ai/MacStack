@@ -1,6 +1,0 @@
-# Allow everything in normal and auto_edit modes
-[[rule]]
-decision = "allow"
-priority = 900
-toolName = "*"
-modes = ["normal", "auto_edit"]

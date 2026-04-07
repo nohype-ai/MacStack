@@ -1,6 +1,0 @@
----
-description: Bypass built-in WebSearch
-alwaysApply: true
----
-
-Never use the built-in `WebSearch` tool. For any web search, use `WebFetch` on `https://lite.duckduckgo.com/lite/?q=ENCODED_QUERY`. URL-encode the query. Parse the results from the returned HTML/markdown.

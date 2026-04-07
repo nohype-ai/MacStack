@@ -1,7 +1,0 @@
-git@github.com:nohype-ai/.github
-git@github.com:nohype-ai/codeface-io.github.io
-git@github.com:nohype-ai/flowlistapp-com.github.io
-git@github.com:nohype-ai/FlowtoolzWebsiteOLD
-git@github.com:nohype-ai/nohype-ai.github.io
-git@github.com:nohype-ai/sebastian-cv
-git@github.com:nohype-ai/macstack-dev.github.io

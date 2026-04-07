@@ -1,4 +1,0 @@
-git@github.com:nohype-ai/CheatSheets
-git@github.com:nohype-ai/MacStack
-git@github.com:nohype-ai/homebrew-macstack
-git@github.com:nohype-ai/NohypeAIStack
