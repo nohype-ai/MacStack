@@ -28,7 +28,7 @@
 To get nice ligatures in code:
 
 * Install [Fira Code](https://fonts.google.com/specimen/Fira+Code)
-* Use it in Xcode, VSCode, Terminal, iTerm2 etc.
+* Use it in Xcode, VS Code, Terminal, iTerm2 etc.
 * in iTerm2:
   * Settings / Profile / your profile / Text / Font
   * Also check the checkbox "Use ligatures" and select font weight medium
@@ -63,5 +63,3 @@ One of the oldest and most ridiculous bugs in Apple software is that Mail rules 
 * ⏎
 * ⌫
 * ↑ ↓ ← →
-
-

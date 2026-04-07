@@ -9,8 +9,8 @@ Setup and update the tech stack on a Mac with one command, based on a custom sta
   * ⌨️ Command line tools (like `brew`, `git`, `pyenv`, `python`, `claude-code`)
   * 🍏 Graphical apps (including Mac App Store apps)
   * 🤖 Settings and permissions of AI agents (Gemini CLI, OpenCode, Cursor CLI)
-  * ⚙️ Settings and keybindings for Zed and most VSCode based IDEs
-  * 🧩 Extensions for VSCode based IDEs
+  * ⚙️ Settings and keybindings for Zed and most VS Code based IDEs
+  * 🧩 Extensions for VS Code based IDEs
   * 📂 git repositories (clone, sync, list issues)
   
 ## How?

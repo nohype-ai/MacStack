@@ -49,7 +49,7 @@ restore_ide_settings() {
 # Update IDE settings and keybindings (restoring by overwriting)
 if [[ "${RESTORE_IDE_SETTINGS:-false}" == "true" ]]; then
 
-    # 1️⃣ VSCode-based IDEs
+    # 1️⃣ VS Code based IDEs
 
     settings="$STACK/vscode/settings.json"
     keybindings="$STACK/vscode/keybindings.json"
