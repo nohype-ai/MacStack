@@ -1,5 +1,2 @@
 # Keep for safety even though MacStack does not use an .env anymore
 .env
-
-# Ignore the symlinks that MacStack auto generates locally
-stack/symlinks to dotfiles/.*
