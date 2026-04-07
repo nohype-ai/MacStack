@@ -40,7 +40,11 @@ Setup and update the tech stack on a Mac with one command, based on a custom sta
 
 ### 2. What `mack update` Does Based On Your Stack
 * 🐚 Ensure your shell customization in `stack/zshrc.sh` gets sourced from `~/.zshrc`
-* 🍺 Ensure all Homebrew packages declared in `stack/Brewfile` are installed, this is the central and largest part of your stack
+* 🍺 Ensure all Homebrew packages declared in `stack/Brewfile` are installed
+    - 📰 Fonts
+    - ⌨️ Command line tools
+    - 🍏 Mac App Store apps
+    - 🧩 VS Code extensions
 * 🐙 Set personal global git settings in `~/.gitconfig` if defined in `stack/macstack.json`
 * 📜 Run your custom update step: `stack/update.sh`
 * ⚙️ Restore (overwrite) IDE settings and keybindings if `restore_ide_settings` is `true` in `stack/macstack.json`
