@@ -28,31 +28,31 @@ Setup and update the tech stack on a Mac with one command:
 ## The Update Process
 
 ### 1. What `mack update` Always Does
-1. Update Homebrew itself
-2. Update Homebrew packages that were already installed
-3. Clean up Homebrew system: delete old package versions and cache
-4. Ensure `~/.zshrc` loads (sources) the MacStack shell customizations
-5. Ensure a `~/.gitignore_global` exists
-6. Set necessary global git settings plus some basic best-practice ones in `~/.gitconfig`.
-7. Make `mack` command available system-wide, offering several commands, including:
+* 🐚 Ensure `~/.zshrc` loads (sources) the MacStack shell customizations
+* 🍺 Update Homebrew itself
+* 🍺 Update Homebrew packages that were already installed
+* 🍺 Clean up Homebrew system: delete old package versions and cache
+* 🐙 Ensure a `~/.gitignore_global` exists
+* 🐙 Set necessary global git settings plus some basic best-practice ones in `~/.gitconfig`.
+* 🍏 Make `mack` command available system-wide, offering several subcommands, including:
    - `mack update` (or just `update`): trigger this whole update process
    - `mack help` (or just `mack`): show all available `mack` commands
 
 ### 2. What `mack update` Does Based On Your Stack
-1. `~/.gitconfig`: Set personal global git settings if defined in `stack/macstack.json`
-2. `stack/Brewfile`: Update all declared software. This is the central and largest part of your stack.
-3. `stack/zshrc.sh`: Ensure it gets sourced from `~/.zshrc`, as it contains your shell customization.
-4. `stack/update.sh`: Run it, as it's your custom update step.
-5. Restore (overwrite) IDE settings and keybindings if `restore_ide_settings` is `true` in `stack/macstack.json`.
+* 🐚 Ensure your shell customization in `stack/zshrc.sh` gets sourced from `~/.zshrc`
+* 🍺 Update all Homebrew packages declared in `stack/Brewfile`, this is the central and largest part of your stack
+* 🐙 Set personal global git settings in `~/.gitconfig` if defined in `stack/macstack.json`
+* 📜 Run your custom update step: `stack/update.sh`
+* ⚙️ Restore (overwrite) IDE settings and keybindings if `restore_ide_settings` is `true` in `stack/macstack.json`
     - `stack/zed`
     - `stack/vscode`: Applied to VS Code, Cursor, Antigravity, Kiro, Windsurf and VSCodium
-6. Restore AI Agent configurations
+* ⚙️ Restore AI Agent configurations
     - `stack/ai/cursor`: settings, rules
     - `stack/ai/gemini`: settings, policies
     - `stack/ai/opencode`: settings
-7. `stack/git/repos-folder-template`: Clone/sync repos based on the template, then report which repos need manual attention.
-    - Template for the content of `git.repos_folder` defined in `macstack.json`.
-    - Each folder in the template may contain a `git-repos.txt` listing URLs of intended repos in that folder.
+* 📁 Clone/sync git repos based on `stack/git/repos-folder-template`, then report which repos need manual attention
+    - Template defines content of this folder: `git.repos_folder` defined in `macstack.json`
+    - Each folder in the template may contain a `git-repos.txt` listing URLs of intended repos in that folder
 
 ## To Do
 
