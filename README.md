@@ -17,12 +17,13 @@ Setup and update the tech stack on a Mac with one command:
 
 On a fresh system that may not even have GitHub authentication configured:
 
-1. Make sure your [iCloud account is set up](https://support.apple.com/en-us/102314), so that Mac App Store apps can be installed automatically
-2. [Download this repository](https://github.com/nohype-ai/MacStack/archive/refs/heads/master.zip)
-3. Customize any of the components in of your [stack/](stack/)
-4. Apply your config by running `bin/mack update`.
-
-After you've run `bin/mack update` once you can now trigger repeated updates via the global `mack update` command (or just `update`).
+1. Ensure your [iCloud account is set up](https://support.apple.com/en-us/102314), so MacStack can work with Mac App Store apps
+2. Install and configure (also installs Homebrew if absent):
+    ```bash
+    curl -fsSL https://macstack.dev/install.sh | zsh
+    ```
+3. Configure any of the components of your stack. An example stack is [here](stack/)
+4. Apply your stack configuration by running `mack update` or simply `update`
    
 It's irrelevant whether you've just installed macOS and need to set up this new machine or whether you want to repeatedly update your established machine. The update script is idempotent and works for both cases. That means MacStack is safe to use and does not overwrite or delete things it does not define in its stack – not even any entries in pre-existing dot files.
 
