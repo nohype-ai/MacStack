@@ -15,8 +15,6 @@ Setup and update the tech stack on a Mac with one command:
   
 ## How?
 
-On a fresh system that may not even have GitHub authentication configured:
-
 1. Install and configure MacStack (also installs Homebrew if absent):
     ```bash
     curl -fsSL https://macstack.dev/install.sh | zsh
