@@ -60,10 +60,11 @@ Setup and update the tech stack on a Mac with one command, based on a custom sta
 
 ## To Do
 
-* Settings updates for Gemini CLI and OpenCode are currently not idempotent as they just overwrite the existing json settings files. We could either work with templates that get merged into the target (as we had to do for Cursor CLI) or deactivate these updates by default via flag in macstack.json (as we did for the IDE settings updates). I sense we should always merge and even remove the necessity for the IDE settings update flag ...
-* Add reasonable example stack / illustrative stack template
-* command for creating a new stack (`mack init`) as baseline from the current system or from template or from a mixture where the template is only used for components that cannot be retrieved from- or are not present in the current system
+* Make settings updates for Gemini CLI and OpenCode idempotent (like we had to do for Cursor CLI). They currently overwrite the existing json settings files.
+* Make IDE settings updates idempotent: merge instead of overwrite, remove related flag from macstack.json
 * At this point the basic behaviour/usage stands -> Make website viable!!!
+* command for creating a new stack (`mack init`) as baseline from the current system or from template or from a mixture where the template is only used for components that cannot be retrieved from- or are not present in the current system
+  * If necessary, add reasonable example stack or illustrative stack template
 * Integrate knowledge base from cloud folder into this repo's /documentation folder and into my stack, dissolve the external knowledge base entirely since I never tap into it anymore
 * bring the other commands beyond `mack` from bin folder into `mack` and alias them, document the other commands
 * explore idea of a "macstack registry" where people can register and browse and copy stacks, also any personal stack definition could be anchored in a registry stack (point to that) as the baseline default, and the personal stack itself would only define overrides, similar to how user settings in an IDE override some things but use the defaults otherwise ...
