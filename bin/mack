@@ -66,16 +66,20 @@ case "${1:-}" in
         print "💡 Best relaunch your shell or run 'source ~/.zshrc'"
         ;;
     "update-repos")
+        load_stack_path
         source "$MAC_STACK_ROOT/scripts/stack_config/load.sh"
         "$MAC_STACK_ROOT/scripts/update-repos.sh"
         ;;
     "brew-clip")
+        load_stack_path
         "$MAC_STACK_ROOT/scripts/homebrew/brew-clip.sh"
         ;;
     "brew-force")
+        load_stack_path
         "$MAC_STACK_ROOT/scripts/homebrew/brew-force.sh"
         ;;
     "backup-zed")
+        load_stack_path
         "$MAC_STACK_ROOT/bin/backup-zed"
         ;;
     "shellenv")
