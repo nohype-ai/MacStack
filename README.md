@@ -54,7 +54,6 @@ Without customizing anything, the resulting setup will be as follows.
 ## To Do
 
 * Separate MacStack as a universal system from user-specific setup configuration
-  * install script (+ curl command on website)
   * move stack definition to distinct repo
   * turn stack in this repo into reasonable example stack / illustrative stack template
   * command for creating a new stack as baseline from the current system
