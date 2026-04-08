@@ -60,7 +60,7 @@ Setup and update the tech stack on your Mac with one command, based on your stac
 
 ## To Do
 
-* Make IDE settings updates idempotent: merge instead of overwrite, remove related flag from macstack.json
+* Make IDE settings updates idempotent: merge instead of overwrite, remove related flag from expected macstack.json and therefor also from `scripts/stack_config/macstack.schema.json`. we do not want the user to configure the flag but instead ensure our update only overwrites what the sources in the user's stack have configured. central script for the implementation is `scripts/update_ide_settings.sh`. if possible, reuse `scripts/lib/merge_json.sh`.
 * At this point the basic behaviour/usage stands -> Make website viable!!!
 * Before doing any more Formula releases: Write script that does the whole release, given a version string!
 * command for creating a new stack (`mack init`) as baseline from the current system or from template or from a mixture where the template is only used for components that cannot be retrieved from- or are not present in the current system
