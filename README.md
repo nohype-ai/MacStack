@@ -60,7 +60,6 @@ Setup and update the tech stack on your Mac with one command, based on your stac
 
 ## To Do
 
-* Make settings updates for Gemini CLI and OpenCode idempotent (like we had to do for Cursor CLI using `sponge`). They currently overwrite the existing json settings files. the central script for this task is `scripts/update_ai_agent_settings.sh`. we can assume `jq` ans `sponge` are available since they are dependencies of this project. since we will often merge a json file into another one and have already done so, it would be best to have a function that does that and just takes the update json and the target json. it would also be good to have 3 simple tests that test this function.
 * Make IDE settings updates idempotent: merge instead of overwrite, remove related flag from macstack.json
 * At this point the basic behaviour/usage stands -> Make website viable!!!
 * Before doing any more Formula releases: Write script that does the whole release, given a version string!

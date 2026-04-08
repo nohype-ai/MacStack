@@ -1,5 +1,7 @@
 #!/usr/bin/env zsh
 
+source "${0:A:h}/lib/merge_json.sh"
+
 # Update Cursor CLI settings
 if [[ -f ~/.cursor/cli-config.json ]]; then
   echo "🤖 Updating Cursor CLI settings ..."
@@ -9,12 +11,9 @@ if [[ -f ~/.cursor/cli-config.json ]]; then
   if [[ ! -f "$template" ]]; then
     echo "⚠️ Warning: Skipping Cursor CLI settings update, since template file does not exist in stack:\n$template"
   else
-    jq -s '.[0] * .[1]' \
-      ~/.cursor/cli-config.json \
-      "$template" | sponge ~/.cursor/cli-config.json
+    merge_json "$template" ~/.cursor/cli-config.json
   fi
 
-  # Copy rules
   rules_dir="$STACK/ai/coding/cursor/rules"
   if [[ -d "$rules_dir" ]]; then
     cp -r "$rules_dir/." ~/.cursor/rules/
@@ -25,11 +24,29 @@ fi
 if [[ -d ~/.gemini ]]; then
   echo "🤖 Updating Gemini CLI settings ..."
   cp -r "$STACK/ai/coding/gemini/policies" ~/.gemini/
-  cp "$STACK/ai/coding/gemini/settings.json" ~/.gemini/
+
+  settings_template="$STACK/ai/coding/gemini/settings.json"
+  if [[ ! -f "$settings_template" ]]; then
+    echo "⚠️ Warning: Skipping Gemini CLI settings update, since template file does not exist in stack:\n$settings_template"
+  else
+    if [[ ! -f ~/.gemini/settings.json ]]; then
+      echo '{}' > ~/.gemini/settings.json
+    fi
+    merge_json "$settings_template" ~/.gemini/settings.json
+  fi
 fi
 
 # Update OpenCode settings
 if [[ -d ~/.config/opencode ]]; then
   echo "🤖 Updating OpenCode settings ..."
-  cp "$STACK/ai/coding/opencode/opencode.json" ~/.config/opencode/
+
+  settings_template="$STACK/ai/coding/opencode/opencode.json"
+  if [[ ! -f "$settings_template" ]]; then
+    echo "⚠️ Warning: Skipping OpenCode settings update, since template file does not exist in stack:\n$settings_template"
+  else
+    if [[ ! -f ~/.config/opencode/opencode.json ]]; then
+      echo '{}' > ~/.config/opencode/opencode.json
+    fi
+    merge_json "$settings_template" ~/.config/opencode/opencode.json
+  fi
 fi
