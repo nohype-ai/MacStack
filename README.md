@@ -47,13 +47,23 @@ Setup and update the tech stack on your Mac with one command, based on your stac
     - 🧩 VS Code extensions
 * 🐙 Set personal global git settings in `~/.gitconfig` if defined in `stack/macstack.json`
 * 📜 Run your custom update step: `stack/update.sh`
-* ⚙️ Merge IDE settings and keybindings from your stack into the existing ones
-    - `stack/zed`
-    - `stack/vscode`: Applied to VS Code, Cursor, Antigravity, Kiro, Windsurf and VSCodium
-* 🤖 Restore AI Agent configurations
-    - `stack/ai/coding/cursor`: settings, rules
-    - `stack/ai/coding/gemini`: settings, policies
-    - `stack/ai/coding/opencode`: settings
+* ⚙️ Update IDE settings and keyboard shortcuts
+  * Zed
+    - `stack/zed/settings.json`
+    - `stack/zed/keymap.json`
+  * VS Code, Cursor, Antigravity, Kiro, Windsurf, VSCodium
+    - `stack/vscode/settings.json`
+    - `stack/vscode/keybindings.json`
+* 🤖 Update AI Agent configurations
+  * Cursor CLI, Cursor IDE
+    - `stack/ai/coding/cursor/cli-config_template.json`
+      - ⚠️ Don't simply copy your whole `~/.cursor/cli-config.json` here since that contains semi-sensitive infos
+    - `stack/ai/coding/cursor/rules/*`
+  * Gemini CLI
+    - `stack/ai/coding/gemini/settings.json`
+    - `stack/ai/coding/gemini/policies/*`
+  * OpenCode, OpenCode Desktop
+    - `stack/ai/coding/opencode/opencode.json`
 * 📁 Clone/sync git repos based on `stack/git/repos-folder-template`, then report which repos need manual attention
     - Template defines content of this folder: `git.repos_folder` defined in `macstack.json`
     - Each folder in the template may contain a `git-repos.txt` listing URLs of intended repos in that folder
