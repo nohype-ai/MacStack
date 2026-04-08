@@ -9,6 +9,8 @@
 # 4) Cask installers. This disables offline reinstalls (virtually never needed) but frees up a lot of disk space.
 
 # Prepare
+set -e  # Exit on any error
+set -u  # Treat unset variables as error
 BREWFILE_PATH="$STACK/Brewfile"
 
 # Ask for confirmation
