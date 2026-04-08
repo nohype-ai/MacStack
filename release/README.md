@@ -2,8 +2,19 @@
 
 ## Release via Script
 
+Release a new patch version:
 ```zsh
-./release.sh <new version>
+./release.sh patch
+```
+
+Release a new minor version:
+```zsh
+./release.sh minor
+```
+
+Release a new major version:
+```zsh
+./release.sh major
 ```
 
 ## Release Manually

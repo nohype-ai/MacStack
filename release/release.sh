@@ -1,10 +1,12 @@
 #!/usr/bin/env zsh
 set -euo pipefail
 
-# Usage: ./release.sh <version>
-# Example: ./release.sh v0.2.0
+# Usage: ./release.sh <major|minor|patch>
+# Example: ./release.sh patch   (v0.1.2 -> v0.1.3)
+#          ./release.sh minor   (v0.1.2 -> v0.2.0)
+#          ./release.sh major   (v0.1.2 -> v1.0.0)
 #
-# Automates the MacStack release process (steps 1-5 from release.md):
+# Automates the MacStack release process (steps 1-6 from release.md):
 #   1. Tag and push the release in the MacStack repo
 #   2. Wait for GitHub to make the tarball available, then compute its sha256
 #   3. Generate the Homebrew formula from the template with version and sha256
@@ -17,21 +19,34 @@ FORMULA_REPO="$MACSTACK_DIR/../homebrew-macstack"
 TEMPLATE="$FORMULA_REPO/Formula/macstack_template.rb"
 FORMULA="$FORMULA_REPO/Formula/macstack.rb"
 
-VERSION="${1:-}"
-if [[ -z "$VERSION" ]]; then
-    echo "Usage: $0 <version>"
-    echo "Example: $0 v0.2.0"
+BUMP="${1:-}"
+if [[ "$BUMP" != "major" && "$BUMP" != "minor" && "$BUMP" != "patch" ]]; then
+    echo "Usage: $0 <major|minor|patch>"
+    echo "Example: $0 patch"
     exit 1
 fi
 
-# Normalize: prepend "v" if missing
-[[ "$VERSION" != v* ]] && VERSION="v$VERSION"
-
-# Validate semver format (vX.Y.Z)
-if [[ ! "$VERSION" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
-    echo "Error: Version must be in semver format: vX.Y.Z (e.g. v0.2.0)"
+# Determine latest version from git tags
+LATEST=$(git -C "$MACSTACK_DIR" tag --sort=-v:refname | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' | head -1)
+if [[ -z "$LATEST" ]]; then
+    echo "Error: No existing version tags found."
     exit 1
 fi
+
+MAJOR=$(echo "$LATEST" | sed 's/^v//' | cut -d. -f1)
+MINOR=$(echo "$LATEST" | sed 's/^v//' | cut -d. -f2)
+PATCH=$(echo "$LATEST" | sed 's/^v//' | cut -d. -f3)
+
+case "$BUMP" in
+    major) MAJOR=$((MAJOR + 1)); MINOR=0; PATCH=0 ;;
+    minor) MINOR=$((MINOR + 1)); PATCH=0 ;;
+    patch) PATCH=$((PATCH + 1)) ;;
+esac
+
+VERSION="v${MAJOR}.${MINOR}.${PATCH}"
+echo "Latest version: $LATEST"
+echo "New version:    $VERSION"
+echo ""
 
 # Verify the formula repo exists
 if [[ ! -d "$FORMULA_REPO" ]]; then
