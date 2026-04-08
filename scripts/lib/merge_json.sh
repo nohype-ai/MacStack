@@ -6,7 +6,14 @@
 # The result is written back to <target_json> in-place via sponge.
 # Usage: merge_json <update_json> <target_json>
 merge_json() {
-  local update_json="$1"
-  local target_json="$2"
-  jq -s '.[0] * .[1]' "$target_json" "$update_json" | sponge "$target_json"
+    # Capture arguments
+    local update_json="$1"
+    local target_json="$2"
+
+    # Create empty target json file if the target file does not exist
+    if [[ ! -f "$target_json" ]]; then
+        echo '{}' > "$target_json"
+    fi
+
+    jq -s '.[0] * .[1]' "$target_json" "$update_json" | sponge "$target_json"
 }
