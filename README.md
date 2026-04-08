@@ -25,9 +25,9 @@ Setup and update the tech stack on your Mac with one command, based on your stac
    
 > Note: Whether you've just installed macOS and need to set up this new machine or want to repeatedly update your established machine, `mack update` is idempotent and works for both cases. That means it's safe to use and only overwrites things you define in your stack. It preserves everything else – even individual pre-existing entries in dotfiles.
 
-## The Update Process
+## What `mack update` All Does
 
-### 1. What `mack update` Always Does
+### Generally
 * 🐚 Ensure `~/.zshrc` loads (sources) the MacStack shell customizations
 * 🍺 Update Homebrew itself
 * 🍺 Update Homebrew packages that were already installed
@@ -38,33 +38,37 @@ Setup and update the tech stack on your Mac with one command, based on your stac
    - `mack update` (or just `update`): trigger this whole update process
    - `mack help` (or just `mack`): show all available `mack` commands
 
-### 2. What `mack update` Does Based On Your Stack
-* 🐚 Ensure your shell customization in `stack/zshrc.sh` gets sourced from `~/.zshrc`
-* 🍺 Ensure all Homebrew packages declared in `stack/Brewfile` are installed
+### Based On Your Stack
+Here is what `mack update` does wherever it finds the respective inputs in your stack configuration folder.
+
+**All these configuration files and folders in your stack are optional**. You can add what you want when you want it:
+* ⚙️ `macstack.json`: Load the contained basic configuration options, based on [this JSON schema](scripts/stack_config/macstack.schema.json)
+* 🐚 `bin/`: Add it to `PATH` so you can place your custom commands there (scripts, binaries)
+* 🐚 `zshrc.sh`: Ensure it gets sourced from `~/.zshrc` to apply your shell customizations
+* 🍺 `Brewfile`: Ensure all declared Homebrew packages are installed
     - 📰 Fonts
     - ⌨️ Command line tools
     - 🍏 Mac App Store apps
     - 🧩 VS Code extensions
-* 🐙 Set personal global git settings in `~/.gitconfig` if defined in `stack/macstack.json`
-* 📜 Run your custom update step: `stack/update.sh`
-* ⚙️ Update IDE settings and keyboard shortcuts
-  * Zed
-    - `stack/zed/settings.json`
-    - `stack/zed/keymap.json`
-  * VS Code, Cursor, Antigravity, Kiro, Windsurf, VSCodium
-    - `stack/vscode/settings.json`
-    - `stack/vscode/keybindings.json`
-* 🤖 Update AI Agent configurations
+* 🐙 `macstack.json`: Apply the contained personal global git settings to `~/.gitconfig`
+* 📜 `update.sh`: Run this custom update step
+* ⚙️ `zed/*`: Update configuration of Zed
+  * `zed/settings.json`
+  * `zed/keymap.json`
+* ⚙️ `vscode/*`: Update configuration of VS Code, Cursor, Antigravity, Kiro, Windsurf, VSCodium
+  * `vscode/settings.json`
+  * `vscode/keybindings.json`
+* 🤖 `ai/coding/*`: Update AI coding agent configurations
   * Cursor CLI, Cursor IDE
-    - `stack/ai/coding/cursor/cli-config_template.json`
+    - `ai/coding/cursor/cli-config_template.json`
       - ⚠️ Don't simply copy your whole `~/.cursor/cli-config.json` here since that contains semi-sensitive infos
-    - `stack/ai/coding/cursor/rules/*`
+    - `ai/coding/cursor/rules/*`
   * Gemini CLI
-    - `stack/ai/coding/gemini/settings.json`
-    - `stack/ai/coding/gemini/policies/*`
+    - `ai/coding/gemini/settings.json`
+    - `ai/coding/gemini/policies/*`
   * OpenCode, OpenCode Desktop
-    - `stack/ai/coding/opencode/opencode.json`
-* 📁 Clone/sync git repos based on `stack/git/repos-folder-template`, then report which repos need manual attention
+    - `ai/coding/opencode/opencode.json`
+* 📁 `git/repos-folder-template`: Clone/sync git repos based on this template, then report which repos need manual attention
     - Template defines content of this folder: `git.repos_folder` defined in `macstack.json`
     - Each folder in the template may contain a `git-repos.txt` listing URLs of intended repos in that folder
 
