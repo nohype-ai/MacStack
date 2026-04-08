@@ -51,9 +51,9 @@ Setup and update the tech stack on your Mac with one command, based on your stac
     - `stack/zed`
     - `stack/vscode`: Applied to VS Code, Cursor, Antigravity, Kiro, Windsurf and VSCodium
 * 🤖 Restore AI Agent configurations
-    - `stack/ai/cursor`: settings, rules
-    - `stack/ai/gemini`: settings, policies
-    - `stack/ai/opencode`: settings
+    - `stack/ai/coding/cursor`: settings, rules
+    - `stack/ai/coding/gemini`: settings, policies
+    - `stack/ai/coding/opencode`: settings
 * 📁 Clone/sync git repos based on `stack/git/repos-folder-template`, then report which repos need manual attention
     - Template defines content of this folder: `git.repos_folder` defined in `macstack.json`
     - Each folder in the template may contain a `git-repos.txt` listing URLs of intended repos in that folder
