@@ -70,8 +70,14 @@ Setup and update the tech stack on your Mac with one command, based on your stac
 
 ## To Do
 
+* Create a script that does the whole release (up to step 5), given a version string.
+  * The release is currently documented in `MacStack/release/release.md`.
+  * put the script into `MacStack/release/`.
+  * assume that the formula repo is in `MacStack/../homebrew-macstack/` (sibling folder of MacStack itself).
+  * in the new script, document each step with a clear comment.
+  * if you think the sha256 creation has to wait a moment so GitHub has a chance to actually create the release tarball, then let the script wait a moment.
+  * How to insert the sha256 value and version string into the `macstack.rb` file: There is also a `macstack_template.rb` which contains the strings "<SHA256-PLACEHOLDER>" and "<VERSION-PLACEHOLDER>". just overwrite `macstack.rb` with a copy of the template in which the placeholders have been replaced.
 * At this point the basic behaviour/usage stands -> Make website viable!!!
-* Before doing any more Formula releases: Write script that does the whole release, given a version string!
 * command for creating a new stack (`mack init`) as baseline from the current system or from template or from a mixture where the template is only used for components that cannot be retrieved from- or are not present in the current system
   * If necessary, add reasonable example stack or illustrative stack template
 * Integrate knowledge base from cloud folder into this repo's /documentation folder and into my stack, dissolve the external knowledge base entirely since I never tap into it anymore
