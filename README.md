@@ -74,6 +74,7 @@ Here is what `mack update` does wherever it finds the respective inputs in your 
 
 ## To Do
 
+* MacStack itself must be excluded from brew-clip
 * At this point the basic behaviour/usage stands -> Make website viable!!!
 * command for creating a new stack (`mack init`) as baseline from the current system or from template or from a mixture where the template is only used for components that cannot be retrieved from- or are not present in the current system
   * If necessary, add reasonable example stack or illustrative stack template
