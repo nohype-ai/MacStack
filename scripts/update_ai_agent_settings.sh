@@ -1,5 +1,8 @@
 #!/usr/bin/env zsh
 
+set -e  # Exit on any error
+set -u  # Treat unset variables as error
+
 # Load merge_json function
 source "${0:A:h}/lib/merge_json.sh"
 
