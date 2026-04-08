@@ -14,6 +14,9 @@ HISTSIZE=10000  # allow in-memory history for current session
 SAVEHIST=0      # don't save any commands to ~/.zsh_history
 unset HISTFILE  # remove history file variable entirely
 
+# Alias for quick editing via `e my_file`
+alias e='open -e'
+
 # prints paths in $PATH variable as readable list
 paths() { print -l $path }
 
