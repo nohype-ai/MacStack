@@ -23,7 +23,7 @@ Setup and update the tech stack on your Mac with one command, based on your stac
 3. If your stack includes Mac App Store apps, [connect your iCloud account](https://support.apple.com/en-us/102314)
 4. Apply your stack configuration by running `mack update` or simply `update`
    
-> Note: Whether you've just installed macOS and need to set up this new machine or want to repeatedly update your established machine, `mack update` is idempotent and works for both cases. That means it's safe to use and only overwrites things you define in your stack. It preserves everything else – even individual pre-existing entries in dotfiles.
+> Note: Whether you want to set up a fresh Mac or want to repeatedly update your established Mac, `mack update` is idempotent and works for both cases. That means it's safe to use and only overwrites things you define in your stack. It preserves everything else – even individual pre-existing entries in dotfiles.
 
 ## What `mack update` All Does
 
