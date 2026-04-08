@@ -1,13 +1,13 @@
 #!/usr/bin/env zsh
-# This script installs/updates software outside the homebrew stack
 
 set -e  # Exit on any error
 set -u  # Treat unset variables as error
 
+source "${0:A:h}/lib/merge_json.sh"
+
 # Check if an app of a given name exists
 app_exists() {
     local app_name="$1"
-    # Automatically append .app if not already present
     [[ "$app_name" != *.app ]] && app_name="${app_name}.app"
 
     # First, check common installation directories (fast, no indexing needed)
@@ -20,70 +20,64 @@ app_exists() {
     mdfind "kMDItemKind == 'Application' && kMDItemFSName == '$app_name'" 2>/dev/null | grep -q .
 }
 
-# Restore settings and keybindings of a VS Code type IDE
-restore_ide_settings() {
+# Merge a stack JSON file into a target JSON file (creating target if absent)
+merge_ide_json() {
+    local stack_file="$1"
+    local target_file="$2"
+    local label="$3"
+
+    if [[ ! -f "$stack_file" ]]; then
+        echo "⚠️  Warning: $label update will be skipped since file is not in stack:\n$stack_file"
+        return
+    fi
+
+    if [[ ! -f "$target_file" ]]; then
+        echo '{}' > "$target_file"
+    fi
+
+    merge_json "$stack_file" "$target_file"
+}
+
+# Update settings and keybindings of a VS Code based IDE
+update_vscode_ide() {
     local app_name="$1"
     local app_support_folder="$2"
     local settings_file="$3"
     local keybindings_file="$4"
 
     if app_exists "$app_name"; then
-        echo "⚙️  Restoring settings and keybindings for $app_name ..."
+        echo "⚙️  Updating settings and keybindings for $app_name ..."
         local user_settings_dir="$HOME/Library/Application Support/$app_support_folder/User"
         mkdir -p "$user_settings_dir"
 
-        if [[ -f "$settings_file" ]]; then
-            cp "$settings_file" "$user_settings_dir/settings.json"
-        else
-            echo "⚠️  Warning: settings file is not in stack, so restoring it will be skipped:\n$settings_file"
-        fi
-
-        if [[ -f "$keybindings_file" ]]; then
-            cp "$keybindings_file" "$user_settings_dir/keybindings.json"
-        else
-            echo "⚠️  Warning: keybindings file is not in stack, so restoring it will be skipped:\n$keybindings_file"
-        fi
+        merge_ide_json "$settings_file" "$user_settings_dir/settings.json" "settings"
+        merge_ide_json "$keybindings_file" "$user_settings_dir/keybindings.json" "keybindings"
     fi
 }
 
-# Update IDE settings and keybindings (restoring by overwriting)
-if [[ "${RESTORE_IDE_SETTINGS:-false}" == "true" ]]; then
+# 1️⃣ VS Code based IDEs
 
-    # 1️⃣ VS Code based IDEs
+settings="$STACK/vscode/settings.json"
+keybindings="$STACK/vscode/keybindings.json"
 
-    settings="$STACK/vscode/settings.json"
-    keybindings="$STACK/vscode/keybindings.json"
+app_names=("Visual Studio Code" "Cursor" "Antigravity" "Kiro" "Windsurf" "VSCodium")
+app_support_folders=("Code" "Cursor" "Antigravity" "Kiro" "Windsurf" "VSCodium")
 
-    app_names=("Visual Studio Code" "Cursor" "Antigravity" "Kiro" "Windsurf" "VSCodium")
-    app_support_folders=("Code" "Cursor" "Antigravity" "Kiro" "Windsurf" "VSCodium")
+number_of_apps=${#app_names[@]}
 
-    number_of_apps=${#app_names[@]}
+for ((i=1; i<=number_of_apps; i++)); do
+    update_vscode_ide \
+        "${app_names[$i]}" \
+        "${app_support_folders[$i]}" \
+        "$settings" \
+        "$keybindings"
+done
 
-    for ((i=1; i<=number_of_apps; i++)); do
-        restore_ide_settings \
-            "${app_names[$i]}" \
-            "${app_support_folders[$i]}" \
-            "$settings" \
-            "$keybindings"
-    done
+# 2️⃣ Zed
 
-    # 2️⃣ Zed
-    #
-    print "⚙️  Restoring settings and keymap for Zed ..."
+zed_config_dir="$HOME/.config/zed"
+mkdir -p "$zed_config_dir"
 
-    local zed_config_dir="$HOME/.config/zed"
-
-    if [[ -f "$STACK/zed/settings.json" ]]; then
-        mkdir -p "$zed_config_dir"
-        cp "$STACK/zed/settings.json" "$zed_config_dir/settings.json"
-    else
-        echo "⚠️  Warning: settings file is not in stack, so restoring it will be skipped:\n$STACK/zed/settings.json"
-    fi
-
-    if [[ -f "$STACK/zed/keymap.json" ]]; then
-        mkdir -p "$zed_config_dir"
-        cp "$STACK/zed/keymap.json" "$zed_config_dir/keymap.json"
-    else
-        echo "⚠️  Warning: keymap file is not in stack, so restoring it will be skipped:\n$STACK/zed/keymap.json"
-    fi
-fi
+echo "⚙️  Updating settings and keymap for Zed ..."
+merge_ide_json "$STACK/zed/settings.json" "$zed_config_dir/settings.json" "settings"
+merge_ide_json "$STACK/zed/keymap.json" "$zed_config_dir/keymap.json" "keymap"

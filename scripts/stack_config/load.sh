@@ -28,5 +28,4 @@ GIT_USER_EMAIL=$(jq -r '.git.user_email // empty' "$CONFIG")
 GIT_CORE_EDITOR=$(jq -r '.git.core_editor // empty' "$CONFIG")
 GIT_REPOS_FOLDER=$(jq -r '.repos.folder // empty' "$CONFIG")
 SKIP_BREW_PACKAGE_UPDATES=$(jq -r '.flags.skip_brew_updates // empty' "$CONFIG")
-RESTORE_IDE_SETTINGS=$(jq -r '.flags.restore_ide_settings // empty' "$CONFIG")
 set +a # Turn off auto-export

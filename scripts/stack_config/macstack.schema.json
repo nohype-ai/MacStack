@@ -25,11 +25,10 @@
     },
     "flags": {
       "type": "object",
-      "required": ["skip_brew_updates", "restore_ide_settings"],
+      "required": ["skip_brew_updates"],
       "additionalProperties": false,
       "properties": {
-        "skip_brew_updates": { "type": "boolean" },
-        "restore_ide_settings": { "type": "boolean" }
+        "skip_brew_updates": { "type": "boolean" }
       }
     }
   }
