@@ -1,7 +1,5 @@
 # MacStack
 
-## What?
-
 Setup and update the tech stack on your Mac with one command, based on your stack configuration:
   * 🐚 Shell customizations (prompt, paths, functions, aliases, environment)
   * 🐙 Global git configuration
@@ -13,7 +11,7 @@ Setup and update the tech stack on your Mac with one command, based on your stac
   * 🧩 Extensions for VS Code based IDEs
   * 📂 git repositories (clone, sync, list issues)
   
-## How?
+## Get Started
 
 1. Install and configure MacStack (also installs Homebrew if absent):
     ```bash
