@@ -28,7 +28,9 @@ load_stack_path() {
   [[ -f "$MACSTACK_SETTINGS" ]] || echo '{}' > "$MACSTACK_SETTINGS"
 
   # Persist the path into settings without overwriting other entries
-  jq --arg p "$STACK" '. + {stack_path: $p}' "$MACSTACK_SETTINGS" | sponge "$MACSTACK_SETTINGS"
+  local updated
+  updated=$(jq --arg p "$STACK" '. + {stack_path: $p}' "$MACSTACK_SETTINGS")
+  printf '%s\n' "$updated" > "$MACSTACK_SETTINGS"
 
   # Export so all child processes inherit the value
   typeset -gx STACK

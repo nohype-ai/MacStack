@@ -4,7 +4,7 @@ set -e  # Exit on any error
 set -u  # Treat unset variables as error
 
 # Load merge_json function
-source "${0:A:h}/lib/merge_json.sh"
+source "${0:A:h}/json-merge/merge_json.sh"
 
 # Merge a stack JSON file into a target JSON file
 merge_ide_json() {

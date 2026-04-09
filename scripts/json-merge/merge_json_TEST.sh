@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
-# Tests for the merge_json function defined in scripts/lib/json_utils.sh.
-# Requires: jq, sponge (moreutils)
+# Tests for the merge_json function defined in scripts/json-merge/merge_json.sh.
+# Requires: jq, node, perl
 
 source "${0:A:h}/merge_json.sh"
 
@@ -107,7 +107,7 @@ printf '[
   {"context":"Editor","bindings":{"cmd-k":"foo"},},
 ]' > "$tmpdir/update.json"
 merge_json "$tmpdir/update.json" "$tmpdir/target.json"
-result=$(jq 'length' "$tmpdir/target.json")
+result=$(_strip_jsonc < "$tmpdir/target.json" | jq 'length')
 assert_eq "JSONC update still deduplicates against clean target" "1" "$result"
 
 # Test 10: VS Code keybindings — exact duplicate is not repeated

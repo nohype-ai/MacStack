@@ -81,14 +81,14 @@ Note: the Homebrew formula lives in a **separate repository** (`homebrew-macstac
 not in this repo. Rollout step 7 targets that repo.
 
 The formula currently depends on `jq`, `moreutils`, and `check-jsonschema`. After
-this change, `moreutils` (sponge) **cannot** be removed yet — `scripts/config/load_stack_path.sh`
-calls `sponge` directly (line 31) for a purpose unrelated to `merge_json`. `jq` is
-also still needed for reading `macstack.json` from the user's stack.
+this change, `moreutils` can be **removed** — the only remaining use of `sponge`
+(in `scripts/config/load_stack_path.sh`) was replaced with a temp variable and a
+plain redirect. `jq` is still needed for reading config files throughout the codebase.
 
 ### comment-json (vendored)
 
 `comment-json` is a lightweight npm package (MIT license). **Vendor it** as a single
-bundled `.js` file inside `scripts/lib/vendor/`. This avoids any `npm install` step
+bundled `.js` file inside `scripts/json-merge/vendor/`. This avoids any `npm install` step
 at install time or runtime. To produce the vendored bundle:
 
 ```bash
@@ -98,7 +98,7 @@ npm install comment-json esbuild
 echo "module.exports = require('comment-json')" > _entry.js
 
 npx esbuild _entry.js --bundle --platform=node \
-  --outfile=scripts/lib/vendor/comment-json.bundle.js
+  --outfile=scripts/json-merge/vendor/comment-json.bundle.js
 
 rm _entry.js
 ```
@@ -121,7 +121,7 @@ stripping that `strip_jsonc.pl` currently performs, with no behavioral differenc
 ### License compliance
 
 `comment-json` uses the MIT License. Include the license text at
-`scripts/lib/vendor/comment-json.LICENSE`. MIT requires only that the copyright
+`scripts/json-merge/vendor/comment-json.LICENSE`. MIT requires only that the copyright
 notice and license text are preserved alongside the vendored code. Check transitive
 dependencies for their licenses as well (expected to also be MIT) and include them
 in the same file.
@@ -132,23 +132,23 @@ in the same file.
 
 | File | Purpose |
 |------|---------|
-| `scripts/lib/merge_jsonc.js` | Node.js script: deep merge with comment preservation |
-| `scripts/lib/vendor/comment-json.bundle.js` | Vendored comment-json library (single file) |
-| `scripts/lib/vendor/comment-json.LICENSE` | MIT license(s) for comment-json and its dependencies |
+| `scripts/json-merge/merge_jsonc.js` | Node.js script: deep merge with comment preservation |
+| `scripts/json-merge/vendor/comment-json.bundle.js` | Vendored comment-json library (single file) |
+| `scripts/json-merge/vendor/comment-json.LICENSE` | MIT license(s) for comment-json and its dependencies |
 
 ### Files to modify
 
 | File | Change |
 |------|--------|
-| `scripts/lib/merge_json.sh` | Replace jq pipeline with call to `node merge_jsonc.js` |
-| `scripts/lib/merge_json_TEST.sh` | Update value assertions + add comment tests (TDD: add first, then implement) |
+| `scripts/json-merge/merge_json.sh` | Replace jq pipeline with call to `node merge_jsonc.js` |
+| `scripts/json-merge/merge_json_TEST.sh` | Update value assertions + add comment tests (TDD: add first, then implement) |
 | `homebrew-macstack` repo | Add `depends_on "node"` to the formula |
 
 ### Files potentially removable
 
 | File | Condition |
 |------|-----------|
-| `scripts/lib/strip_jsonc.pl` | Safe to remove once `merge_json_TEST.sh` no longer sources it for value assertions (see Testing section) |
+| `scripts/json-merge/strip_jsonc.pl` | Safe to remove once `merge_json_TEST.sh` no longer sources it for value assertions (see Testing section) |
 
 ### Callers (unchanged interface)
 
@@ -262,7 +262,7 @@ merge_json() {
 
 All merge logic, JSONC parsing, empty/missing file handling, and the deep merge
 algorithm move into `merge_jsonc.js`. The `_strip_jsonc` helper, `_JQ_DEEP_MERGE`
-jq function, and sponge dependency are no longer needed in this file.
+jq function, and sponge are no longer needed.
 
 ## merge_jsonc.js sketch
 
@@ -451,15 +451,57 @@ Target: `{ // keep this\n "a": 1, "b": 2 }`
 Update: `{"b": 99}`
 Assert: `// keep this` is present (it's on "a", which update doesn't touch), b is 99.
 
+## Work log
+
+### 2026-04-09 — Implementation complete
+
+**Tests added (TDD red phase)**
+- Added tests 20–27 to `merge_json_TEST.sh` covering: target comments preserved,
+  idempotent re-merge, array file comments, inline comments, update→target transfer,
+  update replaces target on conflict, target-only key comments undisturbed, and
+  comments from both sides on different keys (test 27, added after initial review).
+- Added `assert_contains` and `assert_not_contains` helpers to the test file.
+- Added `_strip_comments_for_jq` helper (delegates to `_strip_jsonc` / `strip_jsonc.pl`)
+  for value assertions on files that may contain JSONC after merging.
+- Fixed test 9: its `jq 'length'` assertion now strips comments first, because the
+  new implementation transfers the update's `// a comment` into the target — which is
+  correct behaviour but broke the raw-jq assertion.
+
+**Vendoring**
+- Installed `comment-json` v4.6.2 and `esbuild` into a temp directory.
+- Bundled via `esbuild _entry.js --bundle --platform=node` into
+  `scripts/json-merge/vendor/comment-json.bundle.js` (350 KB).
+- Created `scripts/json-merge/vendor/comment-json.LICENSE` with MIT licenses for
+  `comment-json`, `array-timsort`, and the BSD-2-Clause license for `esprima`.
+
+**Implementation**
+- Created `scripts/json-merge/merge_jsonc.js`: Node.js deep-merge script with comment
+  preservation via `comment-json`. Key details:
+  - All helpers and `const` declarations precede the main execution block to avoid
+    TDZ errors (initial version had `PROP_PREFIXES` defined after the call site).
+  - Array merge follows the jq order exactly: **(target entries NOT in update) +
+    (all of update)** — not "keep all target then append update-new", which would
+    have broken test 12's ordering expectation.
+  - `copyPropSymbols` copies all five property-level comment Symbols per key.
+  - Container-level Symbols (before-all, after-all, etc.) copied from target first,
+    then update overwrites — so update wins on overlap.
+  - Arrays built as `CommentArray` instances to preserve Symbol metadata through
+    `stringify`.
+- Replaced `merge_json.sh` with a thin wrapper that calls `node merge_jsonc.js`.
+  `_STRIP_JSONC` and `_strip_jsonc` are kept because `merge_json_TEST.sh` uses them
+  for value assertions in the new comment tests.
+
+**Result**: 48/48 assertions pass across all 27 tests.
+
 ## Rollout
 
 1. **Add tests** (TDD red phase): add tests 20–26 to `merge_json_TEST.sh`
 2. **Confirm they fail**: run the test suite, verify tests 1–19 pass and 20–26 fail
-3. **Vendor comment-json**: create `scripts/lib/vendor/` with the bundled library
+3. **Vendor comment-json**: create `scripts/json-merge/vendor/` with the bundled library
    and its MIT license file (use the esbuild entry-point approach described above)
 4. **Implement merge_jsonc.js**: the Node.js merge script (~80–100 lines)
 5. **Update merge_json.sh**: replace the jq pipeline with the `node` call
 6. **Confirm all tests pass** (TDD green phase): run the full suite, all 26+ pass
 7. **Update the Homebrew formula** (separate repo): add `depends_on "node"`;
-   leave `jq` and `moreutils` in place (both are still used elsewhere)
+   remove `moreutils`; leave `jq` (still used for reading config files)
 8. **Release**: tag a new version per the existing release process
