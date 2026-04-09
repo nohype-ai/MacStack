@@ -8,7 +8,7 @@
 
 # MacStack
 
-Setup and update the tech stack on your Mac with one command, based on your stack configuration:
+Setup and update the tech stack on a Mac with one command, based on your stack configuration:
   * 🐚 Shell customizations (prompt, paths, functions, aliases, environment)
   * 🐙 Global git configuration
   * 📰 Fonts
