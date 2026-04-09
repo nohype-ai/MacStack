@@ -11,7 +11,7 @@
 # Prepare
 set -e  # Exit on any error
 set -u  # Treat unset variables as error
-BREWFILE_PATH="$STACK/Brewfile"
+BREWFILE_PATH="$(${0:h}/get_brewfile.sh)"
 
 # Ask for confirmation
 echo "⚠️  This will uninstall all brew packages that are not declared in this Brewfile:\n   file://${BREWFILE_PATH// /%20}"

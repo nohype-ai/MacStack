@@ -17,7 +17,7 @@ fi
 
 # Install additional packages declared in Brewfile
 echo "🍺 Installing missing Homebrew packages listed in Brewfile ..."
-brewfile="$STACK/Brewfile"
+brewfile="$(${0:h}/get_brewfile.sh)"
 if [[ -f "$brewfile" ]]; then
     brew bundle install --no-upgrade --file "$brewfile"
 else

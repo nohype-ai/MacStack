@@ -7,11 +7,11 @@
 # Prepare
 set -e  # Exit on any error
 set -u  # Treat unset variables as error
-BREWFILE="$STACK/Brewfile"
+BREWFILE="$(${0:h}/get_brewfile.sh)"
 
 # Check if Brewfile exists
 if [ ! -f "$BREWFILE" ]; then
-    echo "❌ Error: Brewfile not found at $BREWFILE"
+    echo "🛑 Error: Brewfile not found at $BREWFILE"
     exit 1
 fi
 
