@@ -79,6 +79,7 @@ Here is what `mack update` does wherever it finds the respective inputs in your 
 * command for creating a new stack (`mack init`) as baseline from the current system or from template or from a mixture where the template is only used for components that cannot be retrieved from- or are not present in the current system
   * If necessary, add reasonable example stack or illustrative stack template
 * Integrate knowledge base from cloud folder into this repo's /documentation folder and into my stack, dissolve the external knowledge base entirely since I never tap into it anymore
+* Review what should move from Nohype AI stack into MacStack itself. For example right now, macstack is an entry in the Nohype AI Brewfile, shouldn't macstack keep itself alive? there are also other elements in the Nohype AI stack that are general enough or even essential to MacStack.
 * bring the other commands beyond `mack` from bin folder into `mack` and alias them, document the other commands
 * explore idea of a "macstack registry" where people can register and browse and copy stacks, also any personal stack definition could be anchored in a registry stack (point to that) as the baseline default, and the personal stack itself would only define overrides, similar to how user settings in an IDE override some things but use the defaults otherwise ...
 * [Setup default SSH key](documentation/feature_plans/ssh/) (for GitHub, GitLab etc.)
