@@ -328,6 +328,26 @@ assert_contains "update comment transfers alongside target comment" "// update n
 assert_eq "target key a is preserved" "1" "$result_a"
 assert_eq "update key c is added" "3" "$result_c"
 
+# Test 28: File header comment from update transfers to target array file
+echo "Test 28: file header comment from update transfers to target array file"
+printf '[{"a": 1}]' > "$tmpdir/target.json"
+printf '// File header from update\n[{"b": 2}]' > "$tmpdir/update.json"
+merge_json "$tmpdir/update.json" "$tmpdir/target.json"
+raw=$(cat "$tmpdir/target.json")
+result_len=$(_strip_comments_for_jq < "$tmpdir/target.json" | jq 'length')
+assert_contains "file header comment from update transfers to array target" "// File header from update" "$raw"
+assert_eq "array entries are still merged correctly" "2" "$result_len"
+
+# Test 29: Multi-line file header comment from update transfers to target array file
+echo "Test 29: multi-line file header comment from update transfers to target array file"
+printf '[{"a": 1}]' > "$tmpdir/target.json"
+printf '// Line one of header\n// Line two of header\n// Line three of header\n[{"b": 2}]' > "$tmpdir/update.json"
+merge_json "$tmpdir/update.json" "$tmpdir/target.json"
+raw=$(cat "$tmpdir/target.json")
+assert_contains "first header line transfers" "// Line one of header" "$raw"
+assert_contains "second header line transfers" "// Line two of header" "$raw"
+assert_contains "third header line transfers" "// Line three of header" "$raw"
+
 echo ""
 echo "Results: $pass passed, $fail failed"
 [[ $fail -eq 0 ]]

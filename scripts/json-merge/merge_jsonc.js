@@ -30,8 +30,9 @@ function deepMerge(target, update) {
         const targetOnly = target.filter(t => !update.some(u => dataEqual(u, t)));
         const result = new CommentArray();
 
-        // Copy array-level container Symbols from target (before-all, after-all, etc.)
+        // Copy container Symbols (before-all, after-all, etc.): target first, update wins.
         for (const sym of Object.getOwnPropertySymbols(target)) result[sym] = target[sym];
+        for (const sym of Object.getOwnPropertySymbols(update)) result[sym] = update[sym];
 
         for (let i = 0; i < targetOnly.length; i++) {
             const origIdx = target.indexOf(targetOnly[i]);
