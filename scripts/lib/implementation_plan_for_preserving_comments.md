@@ -73,14 +73,17 @@ another, also copy its associated Symbol properties.
 
 ### Node.js (new brew dependency)
 
-Add `depends_on "node"` to the Homebrew formula template
-(`homebrew-macstack/Formula/macstack_template.rb`). This makes Node.js a first-class
-dependency managed by Homebrew, installed automatically when a user runs
+Add `depends_on "node"` to the Homebrew formula template. This makes Node.js a
+first-class dependency managed by Homebrew, installed automatically when a user runs
 `brew install macstack`. No manual setup step required.
 
+Note: the Homebrew formula lives in a **separate repository** (`homebrew-macstack`),
+not in this repo. Rollout step 7 targets that repo.
+
 The formula currently depends on `jq`, `moreutils`, and `check-jsonschema`. After
-this change, `moreutils` (sponge) dependencies can be **removed** if
-no other scripts use them, since the Node.js script replaces it. `jq` on the other hand is likely still needed for reading macstack.json from the user's stack.
+this change, `moreutils` (sponge) **cannot** be removed yet — `scripts/config/load_stack_path.sh`
+calls `sponge` directly (line 31) for a purpose unrelated to `merge_json`. `jq` is
+also still needed for reading `macstack.json` from the user's stack.
 
 ### comment-json (vendored)
 
@@ -89,15 +92,31 @@ bundled `.js` file inside `scripts/lib/vendor/`. This avoids any `npm install` s
 at install time or runtime. To produce the vendored bundle:
 
 ```bash
-npm install comment-json
-npx esbuild --bundle --platform=node \
-  --outfile=scripts/lib/vendor/comment-json.bundle.js \
-  -e "module.exports = require('comment-json')"
+npm install comment-json esbuild
+
+# Create a minimal entry point
+echo "module.exports = require('comment-json')" > _entry.js
+
+npx esbuild _entry.js --bundle --platform=node \
+  --outfile=scripts/lib/vendor/comment-json.bundle.js
+
+rm _entry.js
 ```
+
+The `-e` flag does not exist in esbuild; an entry point file must be passed as a
+positional argument. The snippet above creates a throwaway `_entry.js` for this
+purpose.
 
 This produces a single self-contained file with `comment-json` and its
 (few, small) transitive dependencies inlined. No `node_modules` directory needed
 at runtime.
+
+### Trailing commas
+
+`comment-json`'s `parse()` **does** support trailing commas natively — they are
+silently accepted and dropped on re-stringify. This replaces the trailing-comma
+stripping that `strip_jsonc.pl` currently performs, with no behavioral difference.
+(Confirmed in the `comment-json` README under "Special Cases about Trailing Comma".)
 
 ### License compliance
 
@@ -122,14 +141,14 @@ in the same file.
 | File | Change |
 |------|--------|
 | `scripts/lib/merge_json.sh` | Replace jq pipeline with call to `node merge_jsonc.js` |
-| `scripts/lib/merge_json_TEST.sh` | Add comment tests (TDD: add first, then implement) |
-| `homebrew-macstack/Formula/macstack_template.rb` | Add `depends_on "node"` |
+| `scripts/lib/merge_json_TEST.sh` | Update value assertions + add comment tests (TDD: add first, then implement) |
+| `homebrew-macstack` repo | Add `depends_on "node"` to the formula |
 
 ### Files potentially removable
 
 | File | Condition |
 |------|-----------|
-| `scripts/lib/strip_jsonc.pl` | If no other script uses it; Node.js handles JSONC natively |
+| `scripts/lib/strip_jsonc.pl` | Safe to remove once `merge_json_TEST.sh` no longer sources it for value assertions (see Testing section) |
 
 ### Callers (unchanged interface)
 
@@ -153,15 +172,53 @@ These files call `merge_json` and require **no changes** — the function signat
 1. `parse(targetText)` → JavaScript object with comments as Symbol properties
 2. `parse(updateText)` → JavaScript object with comments as Symbol properties
 3. Deep merge the two objects:
-   - **Objects**: iterate keys (including Symbol-keyed comment properties).
-     For keys in both: recurse. For keys only in update: copy (with comments).
-     For keys only in target: keep (with comments). Update wins on scalar conflicts.
+   - **Objects**: iterate keys using `Object.keys()` (regular string keys only).
+     For keys in both: recurse. For keys only in update: copy value and copy all
+     five property-level comment Symbols (`before:k`, `after-prop:k`,
+     `after-colon:k`, `after-value:k`, `after:k`).
+     For keys only in target: keep as-is (value and comments untouched).
+     Update wins on scalar conflicts.
+   - Copy non-property container-level Symbols (`before-all`, `after-all`,
+     `before`, `after`) from update to merged result.
    - **Arrays**: set-union by deep equality. When comparing elements for equality,
-     strip Symbol properties (compare data only, not comments). Target-only entries
-     keep their comments. Update-only entries bring their comments.
+     compare data only (use `parse(stringify(el))` or `JSON.stringify` on a
+     comment-stripped copy). Target-only entries keep their comments.
+     Update-only entries bring their comments. Arrays must be built as
+     `CommentArray` instances (not plain arrays) to preserve comment metadata
+     through stringify.
    - **Scalars**: update wins.
 4. `stringify(merged, null, 2)` → JSONC text with comments from both sides
 5. Write to target file
+
+### Symbol convention reference
+
+`comment-json` uses nine Symbol keys to represent comment positions. The five
+**property-level** ones (keyed by property name or array index) must be copied
+when moving/keeping a key:
+
+| Symbol | Meaning |
+|--------|---------|
+| `Symbol.for('before:k')` | Comments before the key, after the previous `,` or `{`/`[` |
+| `Symbol.for('after-prop:k')` | Comments after the key, before `:` |
+| `Symbol.for('after-colon:k')` | Comments after `:`, before the value |
+| `Symbol.for('after-value:k')` | Comments after the value, before `,` or `}`/`]` |
+| `Symbol.for('after:k')` | Comments after `,` (or after last value) |
+
+The four **non-property** ones (container or document level):
+
+| Symbol | Meaning |
+|--------|---------|
+| `Symbol.for('before-all')` | Comments before the entire document |
+| `Symbol.for('after-all')` | Comments after the entire document |
+| `Symbol.for('before')` | Inside an empty object/array |
+| `Symbol.for('after')` | At the inner end of an object/array (stringify only) |
+
+The library's `assign(target, source)` (called with no `keys` argument) copies all
+properties **and** all Symbols in one call. It is the right tool when moving an
+entire key from update into the merged object. For the recursive case (key exists
+in both and values are recursed into), `assign` is not used — instead recursion
+handles the value and the property-level Symbols must be copied manually from
+update's object onto the result for that key.
 
 ### What happens to comments in each case
 
@@ -169,7 +226,7 @@ These files call `merge_json` and require **no changes** — the function signat
 |----------|-----------------|
 | Key exists only in target | Target's comments preserved |
 | Key exists only in update | Update's comments transfer to target |
-| Key exists in both (update wins) | Update's comments replace target's comments |
+| Key exists in both (update wins on scalars) | Update's comments replace target's comments for that key |
 | Array element only in target | Target's comments preserved |
 | Array element only in update | Update's comments transfer |
 | Array element is duplicate | Deduplicated; existing copy's comments kept |
@@ -205,12 +262,12 @@ merge_json() {
 
 All merge logic, JSONC parsing, empty/missing file handling, and the deep merge
 algorithm move into `merge_jsonc.js`. The `_strip_jsonc` helper, `_JQ_DEEP_MERGE`
-jq function, and sponge dependency are no longer needed.
+jq function, and sponge dependency are no longer needed in this file.
 
 ## merge_jsonc.js sketch
 
 ```javascript
-const { parse, stringify, assign } = require('./vendor/comment-json.bundle.js');
+const { parse, stringify, CommentArray } = require('./vendor/comment-json.bundle.js');
 const fs = require('fs');
 
 const updateFile = process.argv[2];
@@ -234,16 +291,79 @@ if (targetObj == null) {
 const merged = deepMerge(targetObj, updateObj);
 fs.writeFileSync(targetFile, stringify(merged, null, 2) + '\n');
 
+// Property-level Symbol prefixes that comment-json attaches per key
+const PROP_PREFIXES = ['before', 'after-prop', 'after-colon', 'after-value', 'after'];
+
+function copyPropSymbols(src, dst, key) {
+    for (const prefix of PROP_PREFIXES) {
+        const sym = Symbol.for(`${prefix}:${key}`);
+        if (src[sym] !== undefined) dst[sym] = src[sym];
+    }
+}
+
+function dataEqual(a, b) {
+    // Deep equality ignoring Symbol properties (compare data only)
+    return JSON.stringify(parse(stringify(a), null, true)) ===
+           JSON.stringify(parse(stringify(b), null, true));
+}
+
 function deepMerge(target, update) {
-    // Both objects → recursive key merge with Symbol (comment) preservation
-    // Both arrays → set-union by deep data equality
-    // Otherwise → update wins
-    // ... (~40–60 lines implementing the same logic as _JQ_DEEP_MERGE)
+    if (Array.isArray(target) && Array.isArray(update)) {
+        // Set-union: keep target entries, append update entries not already present
+        const result = new CommentArray(...target);
+        for (let i = 0; i < update.length; i++) {
+            if (!target.some(t => dataEqual(t, update[i]))) {
+                result.push(update[i]);
+                // Copy array-item Symbols from update for the new entry
+                const newIdx = result.length - 1;
+                copyPropSymbols(update, result, i);
+            }
+        }
+        return result;
+    }
+
+    if (isObject(target) && isObject(update)) {
+        const result = {};
+        // Copy non-property container Symbols from update (before-all, after-all, etc.)
+        for (const sym of Object.getOwnPropertySymbols(update)) {
+            result[sym] = update[sym];
+        }
+        // Merge keys: target first (preserving order), then new-from-update
+        const targetKeys = Object.keys(target);
+        const updateKeys = Object.keys(update);
+        const allKeys = [...targetKeys, ...updateKeys.filter(k => !targetKeys.includes(k))];
+        for (const key of allKeys) {
+            const inTarget = Object.prototype.hasOwnProperty.call(target, key);
+            const inUpdate = Object.prototype.hasOwnProperty.call(update, key);
+            if (inTarget && inUpdate) {
+                result[key] = deepMerge(target[key], update[key]);
+                copyPropSymbols(update, result, key); // update's comments win
+            } else if (inUpdate) {
+                result[key] = update[key];
+                copyPropSymbols(update, result, key);
+            } else {
+                result[key] = target[key];
+                copyPropSymbols(target, result, key);
+            }
+        }
+        return result;
+    }
+
+    // Scalar: update wins
+    return update;
+}
+
+function isObject(v) {
+    return v !== null && typeof v === 'object' && !Array.isArray(v);
 }
 ```
 
-The deep merge function mirrors the current jq `deep_merge` exactly, with the
-addition of copying Symbol-keyed properties (comments) alongside regular keys.
+Note: `assign` from `comment-json` is **not** used in the merge sketch above.
+It is a convenience for bulk-copying all properties + Symbols from one object to
+another (like `Object.assign` but Symbol-aware), which is useful for the
+all-new-key case but doesn't help with the recursive per-key merge. Importing it
+is harmless but unnecessary; the sketch handles Symbol copying directly with
+`copyPropSymbols`.
 
 ## Testing (TDD)
 
@@ -255,26 +375,41 @@ implementation (confirming that comments are indeed stripped today). Then implem
 the Node.js script and confirm all tests pass — both the new comment tests and all
 19 existing tests.
 
-### Asserting comments in tests
+### Impact on existing tests (tests 1–19)
 
-Since the target file now contains JSONC (not clean JSON), value assertions need
-to strip comments before piping to `jq`. The existing `_strip_jsonc` helper (or an
-inline perl one-liner) can be used for this. Comment assertions use `grep` on the
-raw file content:
+The new implementation writes JSONC to the target file. Tests 1–19 all use
+comment-free update files, so comments will never appear in the target for those
+tests. Their `jq -c .` assertions are safe — `jq` accepts valid JSON, and a
+comment-free JSONC file is valid JSON.
+
+The one test that uses a commented update file is **test 9**, which has a
+`// a comment` in the update. Under the new implementation the target will receive
+that comment. Test 9 currently asserts only the array length (via `jq 'length'`),
+not the raw file content, so it remains correct. No changes to tests 1–19 are
+required.
+
+### Asserting comments in new tests
+
+Comment assertions use `grep` on the raw file content. Value assertions that need
+`jq` on a file that might contain comments should pipe through `_strip_jsonc` first
+(the helper remains available in `merge_json.sh` after the transition if kept, or
+an inline perl one-liner can be used). In practice, new comment tests can keep
+value assertions separate from comment assertions:
 
 ```zsh
-# Assert a comment is present
-grep -q '// User preference' "$tmpdir/target.json"
+# Assert a comment is present in the raw file
+grep -q '// user pref' "$tmpdir/target.json"
 
-# Assert a value (strip comments first, then use jq)
-result=$(_strip_jsonc < "$tmpdir/target.json" | jq -r '.fontSize')
+# Assert a value (the file may have comments, so strip first)
+result=$(perl -pe 's|("(?:[^"\\]|\\.)*")|$1|g; s|//[^\n]*||g' \
+    < "$tmpdir/target.json" | jq -r '.fontSize')
 assert_eq "fontSize is updated" "16" "$result"
 ```
 
 ### New test cases
 
-All existing tests (1–19) remain and must keep passing. They validate merge
-correctness. The new tests validate comment handling:
+All existing tests (1–19) remain and must keep passing. The new tests validate
+comment handling:
 
 **Test 20: Comments in target are preserved when merging new values**
 
@@ -321,10 +456,10 @@ Assert: `// keep this` is present (it's on "a", which update doesn't touch), b i
 1. **Add tests** (TDD red phase): add tests 20–26 to `merge_json_TEST.sh`
 2. **Confirm they fail**: run the test suite, verify tests 1–19 pass and 20–26 fail
 3. **Vendor comment-json**: create `scripts/lib/vendor/` with the bundled library
-   and its MIT license file
-4. **Implement merge_jsonc.js**: the Node.js merge script (~60–80 lines)
+   and its MIT license file (use the esbuild entry-point approach described above)
+4. **Implement merge_jsonc.js**: the Node.js merge script (~80–100 lines)
 5. **Update merge_json.sh**: replace the jq pipeline with the `node` call
 6. **Confirm all tests pass** (TDD green phase): run the full suite, all 26+ pass
-7. **Update the Homebrew formula**: add `depends_on "node"`, evaluate whether `jq`
-   and `moreutils` can be removed
+7. **Update the Homebrew formula** (separate repo): add `depends_on "node"`;
+   leave `jq` and `moreutils` in place (both are still used elsewhere)
 8. **Release**: tag a new version per the existing release process
