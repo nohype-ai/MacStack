@@ -1,3 +1,9 @@
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="documentation/MacStack/icon/icon-brand.svg">
+  <source media="(prefers-color-scheme: light)" srcset="documentation/MacStack/icon/icon-black.svg">
+  <img src="documentation/MacStack/icon/icon.svg" alt="MacStack" width="200">
+</picture>
+
 # MacStack
 
 Setup and update the tech stack on your Mac with one command, based on your stack configuration:
