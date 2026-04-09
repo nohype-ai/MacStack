@@ -15,9 +15,9 @@ set -euo pipefail
 #   6. Update local installation of MacStack to the newly released version
 
 MACSTACK_DIR="$(cd "$(dirname "$0")/.." && pwd)"
-FORMULA_REPO="$MACSTACK_DIR/../homebrew-tap"
-TEMPLATE="$FORMULA_REPO/Formula/macstack_template.rb"
-FORMULA="$FORMULA_REPO/Formula/macstack.rb"
+TAP_REPO="$MACSTACK_DIR/../homebrew-tap"
+TEMPLATE="$TAP_REPO/Formula/macstack_template.rb"
+FORMULA="$TAP_REPO/Formula/macstack.rb"
 
 BUMP="${1:-}"
 if [[ "$BUMP" != "major" && "$BUMP" != "minor" && "$BUMP" != "patch" ]]; then
@@ -49,8 +49,8 @@ echo "New version:    $VERSION"
 echo ""
 
 # Verify the formula repo exists
-if [[ ! -d "$FORMULA_REPO" ]]; then
-    echo "Error: Formula repo not found at $FORMULA_REPO"
+if [[ ! -d "$TAP_REPO" ]]; then
+    echo "Error: Formula repo not found at $TAP_REPO"
     echo "Expected homebrew-tap as a sibling folder of MacStack."
     exit 1
 fi
@@ -110,7 +110,7 @@ echo ""
 
 # Step 4: Commit the updated formula in the homebrew-tap repo
 echo "Step 4: Committing formula update ..."
-cd "$FORMULA_REPO"
+cd "$TAP_REPO"
 git add Formula/macstack.rb
 git commit -m "Bump macstack to $VERSION"
 echo "  Committed."
@@ -127,6 +127,6 @@ echo "=== Release $VERSION complete! ==="
 # Step 6: Update local MacStack
 echo ""
 echo "Step 6: Updating local MacStack ..."
-cd "$(brew --repository nohype-ai/macstack)" && git pull
+cd "$(brew --repository nohype-ai/tap)" && git pull
 brew upgrade macstack
 echo "This version of MacStack is now installed: $(brew list --versions macstack)"

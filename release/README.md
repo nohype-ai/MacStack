@@ -39,11 +39,10 @@ Release a new major version:
 6. Test MacStack Release
    ```zsh
    # Initial install
-   brew tap nohype-ai/macstack
-   brew install macstack
+   brew install nohype-ai/tap/macstack
    
    # force tap update after new release
-   cd $(brew --repository nohype-ai/macstack) && git pull
+   cd $(brew --repository nohype-ai/tap) && git pull
    
    # Upgrade
    brew upgrade macstack

@@ -56,7 +56,7 @@ MacStack occupies a genuine gap between three established categories:
 
 ### Homebrew Distribution
 
-MacStack will be distributed as a Homebrew formula — initially via a custom tap (`brew tap nohype-ai/macstack`), with the goal of graduating to Homebrew core once adoption justifies it. The AI configuration management angle is sufficiently novel to differentiate from existing tools in core.
+MacStack will be distributed as a Homebrew formula — initially via a custom tap (`brew tap nohype-ai/tap`), with the goal of graduating to Homebrew core once adoption justifies it. The AI configuration management angle is sufficiently novel to differentiate from existing tools in core.
 
 ### Stack Registry
 
