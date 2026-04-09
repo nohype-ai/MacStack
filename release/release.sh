@@ -10,12 +10,12 @@ set -euo pipefail
 #   1. Tag and push the release in the MacStack repo
 #   2. Wait for GitHub to make the tarball available, then compute its sha256
 #   3. Generate the Homebrew formula from the template with version and sha256
-#   4. Commit the updated formula in the homebrew-macstack repo
+#   4. Commit the updated formula in the homebrew-tap repo
 #   5. Push the formula repo so users get the update on their next `brew upgrade`
 #   6. Update local installation of MacStack to the newly released version
 
 MACSTACK_DIR="$(cd "$(dirname "$0")/.." && pwd)"
-FORMULA_REPO="$MACSTACK_DIR/../homebrew-macstack"
+FORMULA_REPO="$MACSTACK_DIR/../homebrew-tap"
 TEMPLATE="$FORMULA_REPO/Formula/macstack_template.rb"
 FORMULA="$FORMULA_REPO/Formula/macstack.rb"
 
@@ -51,7 +51,7 @@ echo ""
 # Verify the formula repo exists
 if [[ ! -d "$FORMULA_REPO" ]]; then
     echo "Error: Formula repo not found at $FORMULA_REPO"
-    echo "Expected homebrew-macstack as a sibling folder of MacStack."
+    echo "Expected homebrew-tap as a sibling folder of MacStack."
     exit 1
 fi
 
@@ -108,7 +108,7 @@ sed -e "s|<VERSION-PLACEHOLDER>|${VERSION}|g" \
 echo "  Formula written to $FORMULA"
 echo ""
 
-# Step 4: Commit the updated formula in the homebrew-macstack repo
+# Step 4: Commit the updated formula in the homebrew-tap repo
 echo "Step 4: Committing formula update ..."
 cd "$FORMULA_REPO"
 git add Formula/macstack.rb
@@ -117,7 +117,7 @@ echo "  Committed."
 echo ""
 
 # Step 5: Push the formula repo
-echo "Step 5: Pushing homebrew-macstack ..."
+echo "Step 5: Pushing homebrew-tap ..."
 git push
 echo "  Pushed."
 echo ""

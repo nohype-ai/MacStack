@@ -77,7 +77,7 @@ Add `depends_on "node"` to the Homebrew formula template. This makes Node.js a
 first-class dependency managed by Homebrew, installed automatically when a user runs
 `brew install macstack`. No manual setup step required.
 
-Note: the Homebrew formula lives in a **separate repository** (`homebrew-macstack`),
+Note: the Homebrew formula lives in a **separate repository** (`homebrew-tap`),
 not in this repo. Rollout step 7 targets that repo.
 
 The formula currently depends on `jq`, `moreutils`, and `check-jsonschema`. After
@@ -142,7 +142,7 @@ in the same file.
 |------|--------|
 | `scripts/json-merge/merge_json.sh` | Replace jq pipeline with call to `node merge_jsonc.js` |
 | `scripts/json-merge/merge_json_TEST.sh` | Update value assertions + add comment tests (TDD: add first, then implement) |
-| `homebrew-macstack` repo | Add `depends_on "node"` to the formula |
+| `homebrew-tap` repo | Add `depends_on "node"` to the formula |
 
 ### Files potentially removable
 

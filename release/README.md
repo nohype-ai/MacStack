@@ -30,11 +30,11 @@ Release a new major version:
    curl -sL https://github.com/nohype-ai/MacStack/archive/refs/tags/v0.1.1.tar.gz | shasum -a 256
    ```
 
-3. Paste the hash into `homebrew-macstack/Formula/macstack.rb` as the `sha256` value.
+3. Paste the hash into `homebrew-tap/Formula/macstack.rb` as the `sha256` value.
 
-4. Bump the version in `homebrew-macstack/Formula/macstack.rb`: Update the version wherever it's referenced (at least in the URL) to the new version number (e.g. `v0.1.1`).
+4. Bump the version in `homebrew-tap/Formula/macstack.rb`: Update the version wherever it's referenced (at least in the URL) to the new version number (e.g. `v0.1.1`).
 
-5. Commit and push the updated formula to the `homebrew-macstack` repo. Users who already have the tap will get the update on their next `brew upgrade`.
+5. Commit and push the updated formula to the `homebrew-tap` repo. Users who already have the tap will get the update on their next `brew upgrade`.
 
 6. Test MacStack Release
    ```zsh
