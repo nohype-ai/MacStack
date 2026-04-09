@@ -23,7 +23,7 @@ Setup and update the tech stack on your Mac with one command, based on your stac
    
 > Note: Whether you want to set up a fresh Mac or want to repeatedly update your established Mac, `mack update` is idempotent and works for both cases. That means it's safe to use and only overwrites things you define in your stack. It preserves everything else – even individual pre-existing entries in dotfiles.
 
-## What `mack update` All Does
+## What Does `mack update` Do?
 
 ### Generally
 * 🐚 Ensure `~/.zshrc` loads (sources) the MacStack shell customizations
