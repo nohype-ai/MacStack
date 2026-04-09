@@ -1,8 +1,10 @@
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="documentation/MacStack/icon/icon-brand.svg">
-  <source media="(prefers-color-scheme: light)" srcset="documentation/MacStack/icon/icon-black.svg">
-  <img src="documentation/MacStack/icon/icon.svg" alt="MacStack" width="200">
-</picture>
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="documentation/MacStack/icon/icon-brand.svg">
+    <source media="(prefers-color-scheme: light)" srcset="documentation/MacStack/icon/icon-black.svg">
+    <img src="documentation/MacStack/icon/icon.svg" alt="MacStack" width="200">
+  </picture>
+</p>
 
 # MacStack
 
