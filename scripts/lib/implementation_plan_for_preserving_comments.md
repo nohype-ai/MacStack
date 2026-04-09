@@ -18,12 +18,13 @@ deployed config on the next `mack update`.
 The stack is the source of truth. The typical user workflow is:
 
 1. Tweak settings in an app (which may have vendor comments)
-2. Copy the settings file to the stack as a backup
-3. Run `mack update` to deploy the stack
+2. Copy the settings file to the stack as a backup, overwriting the old backup.
+3. Run `mack update` to deploy the stack (merge the backup into the target)
 
-If comments only survive in the target but don't transfer from the update (stack),
-then comments in the stack become dead documentation — they exist in the repo but
-never appear where the user actually reads the file. Comments must be first-class
+If comments are preserved in the target but don't transfer from the update (stack) to the target,
+then comments in the stack could really be used as editable documentation since they will be replaced anyway next time the user replaces them with the backup from the actual software settings (the target), but those would then not have the changed comments from the stack. so comments effectively flow in a cycle between stack and target. they get merged into the target and then backed up to (replacing) the stack.
+
+Comments must be first-class
 data that flows through the merge like any other element.
 
 ## Key Insight: `comment-json`
@@ -78,8 +79,8 @@ dependency managed by Homebrew, installed automatically when a user runs
 `brew install macstack`. No manual setup step required.
 
 The formula currently depends on `jq`, `moreutils`, and `check-jsonschema`. After
-this change, the `jq` and `moreutils` (sponge) dependencies can be **removed** if
-no other scripts use them, since the Node.js script replaces both.
+this change, `moreutils` (sponge) dependencies can be **removed** if
+no other scripts use them, since the Node.js script replaces it. `jq` on the other hand is likely still needed for reading macstack.json from the user's stack.
 
 ### comment-json (vendored)
 
