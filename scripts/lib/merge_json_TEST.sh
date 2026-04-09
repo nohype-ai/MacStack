@@ -202,6 +202,132 @@ result_b=$(jq '.b' "$tmpdir/target.json")
 assert_eq "null from update wins" "null" "$result_a"
 assert_eq "other key preserved" "2" "$result_b"
 
+# Helper: strip JSONC comments and trailing commas so jq can parse the output.
+# Used in comment tests where the target file may contain JSONC after merging.
+_strip_comments_for_jq() {
+    perl "$_STRIP_JSONC"
+}
+
+assert_contains() {
+    local description="$1"
+    local needle="$2"
+    local haystack="$3"
+    if [[ "$haystack" == *"$needle"* ]]; then
+        echo "  ✅ $description"
+        (( pass++ ))
+    else
+        echo "  ❌ $description"
+        echo "     expected to contain: $needle"
+        echo "     actual content:      $haystack"
+        (( fail++ ))
+    fi
+}
+
+assert_not_contains() {
+    local description="$1"
+    local needle="$2"
+    local haystack="$3"
+    if [[ "$haystack" != *"$needle"* ]]; then
+        echo "  ✅ $description"
+        (( pass++ ))
+    else
+        echo "  ❌ $description"
+        echo "     expected NOT to contain: $needle"
+        echo "     actual content:          $haystack"
+        (( fail++ ))
+    fi
+}
+
+# Test 20: Comments in target are preserved when merging new values
+echo "Test 20: target comments are preserved when update adds/changes values"
+printf '{\n  // user pref\n  "theme": "dark",\n  "fontSize": 14\n}' > "$tmpdir/target.json"
+printf '{"fontSize": 16}' > "$tmpdir/update.json"
+merge_json "$tmpdir/update.json" "$tmpdir/target.json"
+raw=$(cat "$tmpdir/target.json")
+result_theme=$(_strip_comments_for_jq < "$tmpdir/target.json" | jq -r '.theme')
+result_size=$(_strip_comments_for_jq < "$tmpdir/target.json" | jq -r '.fontSize')
+assert_contains "target comment is preserved" "// user pref" "$raw"
+assert_eq "theme (target-only key) is preserved" "dark" "$result_theme"
+assert_eq "fontSize (conflicting key) is updated" "16" "$result_size"
+
+# Test 21: Comments in target survive idempotent re-merge
+echo "Test 21: target comments survive repeated merges"
+printf '{\n  // user pref\n  "theme": "dark",\n  "fontSize": 14\n}' > "$tmpdir/target.json"
+printf '{"fontSize": 16}' > "$tmpdir/update.json"
+merge_json "$tmpdir/update.json" "$tmpdir/target.json"
+merge_json "$tmpdir/update.json" "$tmpdir/target.json"
+merge_json "$tmpdir/update.json" "$tmpdir/target.json"
+raw=$(cat "$tmpdir/target.json")
+result_size=$(_strip_comments_for_jq < "$tmpdir/target.json" | jq -r '.fontSize')
+assert_contains "target comment survives 3 merges" "// user pref" "$raw"
+assert_eq "fontSize is stable after 3 merges" "16" "$result_size"
+
+# Test 22: Comments in target array file are preserved
+echo "Test 22: comments in target array file are preserved"
+printf '[\n  // Markdown binding\n  {"context":"Editor","bindings":{"cmd-p":"preview"}}\n]' > "$tmpdir/target.json"
+printf '[{"context":"Terminal","bindings":{"cmd-k":"clear"}}]' > "$tmpdir/update.json"
+merge_json "$tmpdir/update.json" "$tmpdir/target.json"
+raw=$(cat "$tmpdir/target.json")
+result_len=$(_strip_comments_for_jq < "$tmpdir/target.json" | jq 'length')
+assert_contains "array comment is preserved" "// Markdown binding" "$raw"
+assert_eq "both array entries are present" "2" "$result_len"
+
+# Test 23: Inline comments on the same line as a value are preserved
+echo "Test 23: inline end-of-line comments are preserved"
+printf '{\n  "timeout": 30, // seconds\n  "retries": 3\n}' > "$tmpdir/target.json"
+printf '{"retries": 5}' > "$tmpdir/update.json"
+merge_json "$tmpdir/update.json" "$tmpdir/target.json"
+raw=$(cat "$tmpdir/target.json")
+result_retries=$(_strip_comments_for_jq < "$tmpdir/target.json" | jq -r '.retries')
+assert_contains "inline comment is preserved" "// seconds" "$raw"
+assert_eq "retries is updated" "5" "$result_retries"
+
+# Test 24: Comments from update transfer to target
+echo "Test 24: comments from update transfer to target"
+printf '{"a": 1}' > "$tmpdir/target.json"
+printf '{\n  // important note\n  "b": 2\n}' > "$tmpdir/update.json"
+merge_json "$tmpdir/update.json" "$tmpdir/target.json"
+raw=$(cat "$tmpdir/target.json")
+result_a=$(_strip_comments_for_jq < "$tmpdir/target.json" | jq -r '.a')
+result_b=$(_strip_comments_for_jq < "$tmpdir/target.json" | jq -r '.b')
+assert_contains "update comment transfers to target" "// important note" "$raw"
+assert_eq "original target key is preserved" "1" "$result_a"
+assert_eq "update key is added" "2" "$result_b"
+
+# Test 25: Comments from update replace target comments on conflicting keys
+echo "Test 25: update comments replace target comments on conflicting keys"
+printf '{\n  // old note\n  "key": "old"\n}' > "$tmpdir/target.json"
+printf '{\n  // new note\n  "key": "new"\n}' > "$tmpdir/update.json"
+merge_json "$tmpdir/update.json" "$tmpdir/target.json"
+raw=$(cat "$tmpdir/target.json")
+result_key=$(_strip_comments_for_jq < "$tmpdir/target.json" | jq -r '.key')
+assert_contains "update comment is present" "// new note" "$raw"
+assert_not_contains "old target comment is gone" "// old note" "$raw"
+assert_eq "update value wins" "new" "$result_key"
+
+# Test 26: Comments on target-only keys are undisturbed when update touches other keys
+echo "Test 26: comments on target-only keys are undisturbed"
+printf '{\n  // keep this\n  "a": 1,\n  "b": 2\n}' > "$tmpdir/target.json"
+printf '{"b": 99}' > "$tmpdir/update.json"
+merge_json "$tmpdir/update.json" "$tmpdir/target.json"
+raw=$(cat "$tmpdir/target.json")
+result_b=$(_strip_comments_for_jq < "$tmpdir/target.json" | jq -r '.b')
+assert_contains "comment on target-only key is undisturbed" "// keep this" "$raw"
+assert_eq "updated key has new value" "99" "$result_b"
+
+# Test 27: Comments from both target and update survive when on different keys
+echo "Test 27: comments from both sides survive when on different keys"
+printf '{\n  // target note\n  "a": 1,\n  "b": 2\n}' > "$tmpdir/target.json"
+printf '{\n  // update note\n  "c": 3\n}' > "$tmpdir/update.json"
+merge_json "$tmpdir/update.json" "$tmpdir/target.json"
+raw=$(cat "$tmpdir/target.json")
+result_a=$(_strip_comments_for_jq < "$tmpdir/target.json" | jq -r '.a')
+result_c=$(_strip_comments_for_jq < "$tmpdir/target.json" | jq -r '.c')
+assert_contains "target comment survives alongside update comment" "// target note" "$raw"
+assert_contains "update comment transfers alongside target comment" "// update note" "$raw"
+assert_eq "target key a is preserved" "1" "$result_a"
+assert_eq "update key c is added" "3" "$result_c"
+
 echo ""
 echo "Results: $pass passed, $fail failed"
 [[ $fail -eq 0 ]]
