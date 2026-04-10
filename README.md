@@ -23,7 +23,7 @@ Setup and update the tech stack on a Mac with one command, based on your stack c
 
 1. Install and configure MacStack (also installs Homebrew if absent):
     ```bash
-    curl -fsSL https://macstack.dev/install.sh | zsh
+    curl -fsSL https://macstack.dev/setup.sh | zsh
     ```
 2. Configure your stack in your chosen stack folder. An example is the [Nohype AI Stack](https://github.com/nohype-ai/NohypeAIStack/tree/main/stack)
 3. If your stack includes Mac App Store apps, [connect your iCloud account](https://support.apple.com/en-us/102314)
