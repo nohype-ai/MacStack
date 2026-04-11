@@ -3,5 +3,6 @@
   "showInlineTitle": false,
   "defaultViewMode": "preview",
   "useMarkdownLinks": true,
-  "showUnsupportedFiles": false
+  "showUnsupportedFiles": false,
+  "spellcheck": false
 }

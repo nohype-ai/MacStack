@@ -1,0 +1,25 @@
+{
+  "items": [
+    {
+      "type": "file",
+      "ctime": 1775948339302,
+      "path": "README.md"
+    },
+    {
+      "type": "file",
+      "ctime": 1775948288452,
+      "path": "documentation/MacStack/Test Canvas.canvas"
+    },
+    {
+      "type": "file",
+      "ctime": 1775948365685,
+      "path": "documentation/README.md",
+      "title": "Documentation"
+    },
+    {
+      "type": "file",
+      "ctime": 1775948502169,
+      "path": "documentation/MacStack/philosophy.md"
+    }
+  ]
+}
