@@ -1,2 +1,6 @@
 # Keep for safety even though MacStack does not use an .env anymore
 .env
+
+# Obsidian: User's current UI state
+.obsidian/graph.json
+.obsidian/workspace.json
