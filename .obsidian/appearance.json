@@ -7,6 +7,7 @@
   "textFontFamily": "SF Pro Text",
   "monospaceFontFamily": "SF Mono",
   "baseFontSizeAction": true,
-  "baseFontSize": 16,
-  "nativeMenus": false
+  "baseFontSize": 14,
+  "nativeMenus": false,
+  "cssTheme": "Minimal"
 }
