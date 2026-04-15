@@ -30,10 +30,8 @@ kanban-plugin: board
 
 
 
-
-
 %% kanban:settings
 ```
-{"kanban-plugin":"board","list-collapse":[false,false,true],"show-checkboxes":false,"new-card-insertion-method":"prepend","full-list-lane-width":true,"show-relative-date":true,"lane-width":500,"tag-colors":[{"tagKey":"#bug","color":"rgba(255, 255, 255, 1)","backgroundColor":"rgba(183, 0, 0, 1)"}]}
+{"kanban-plugin":"board","list-collapse":[false,false,false],"show-checkboxes":false,"new-card-insertion-method":"prepend","full-list-lane-width":true,"show-relative-date":true,"lane-width":500,"tag-colors":[{"tagKey":"#bug","color":"rgba(255, 255, 255, 1)","backgroundColor":"rgba(183, 0, 0, 1)"}],"metadata-keys":[{"metadataKey":"assignee","label":"Assigned to","shouldHideLabel":false,"containsMarkdown":false}],"inline-metadata-position":"footer","new-note-folder":"tasks","move-tags":true}
 ```
 %%
