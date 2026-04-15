@@ -4,5 +4,7 @@
   "defaultViewMode": "preview",
   "useMarkdownLinks": true,
   "showUnsupportedFiles": false,
-  "spellcheck": false
+  "spellcheck": false,
+  "alwaysUpdateLinks": true,
+  "newLinkFormat": "relative"
 }
