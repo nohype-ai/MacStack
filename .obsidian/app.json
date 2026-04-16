@@ -6,5 +6,6 @@
   "showUnsupportedFiles": false,
   "spellcheck": false,
   "alwaysUpdateLinks": true,
-  "newLinkFormat": "relative"
+  "newLinkFormat": "relative",
+  "livePreview": false
 }
