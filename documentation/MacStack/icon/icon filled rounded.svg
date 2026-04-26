@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
+  <!-- Background with rounded corners -->
+  <rect width="300" height="300" fill="#000000" rx="60"/>
+
+  <!-- Block 1: filled, slanted -->
+  <g transform="translate(71.33,218.11) skewX(-30.0) translate(-71.33,-218.11)">
+    <rect x="46" y="81.89" width="50.67" height="136.22" fill="#00ffc3"/>
+  </g>
+
+  <!-- Block 2: filled, slanted -->
+  <g transform="translate(150,218.11) skewX(-30.0) translate(-150,-218.11)">
+    <rect x="124.67" y="81.89" width="50.67" height="136.22" fill="#00ffc3"/>
+  </g>
+
+  <!-- Block 3: equilateral triangle -->
+  <polygon points="203.33,218.11 254,218.11 228.67,174.23" fill="#00ffc3"/>
+</svg>
