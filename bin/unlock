@@ -40,7 +40,9 @@ fi
 
 # Decrypt files
 echo "🔓 Unlocking repository..."
-if transcrypt -c aes-256-cbc -p "$password"; then
+# -y skips transcrypt's interactive "configuration will be saved" step, which
+# otherwise echoes the password to the terminal (see transcrypt confirm_configuration).
+if transcrypt -y -c aes-256-cbc -p "$password"; then
     echo "✅ Working directory now shows decrypted content."
 else
     echo "❌ Failed to unlock the repository."
