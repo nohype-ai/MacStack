@@ -11,6 +11,9 @@ typeset -x MAC_STACK_ROOT=${BINARY_PATH:h}  # Get repo root path
 # Ensure Homebrew packages are immediately in PATH for this script and all scripts it calls — even when we just installed Homebrew for the first time
 export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
 
+# Enable Homebrew on macOS pre-releases / betas
+export HOMEBREW_DEVELOPER=1
+
 # Get function to retrieve stack path from settings or user input
 source "$MAC_STACK_ROOT/scripts/config/load_stack_path.sh"
 
@@ -45,7 +48,10 @@ case "${1:-}" in
 
         # Update Homebrew
         print "🍺 Updating Homebrew ..."
-        silent brew update
+        if ! output=$(brew update 2>&1); then
+            echo "$output"
+            echo "⚠️ Homebrew update failed, but let's try to continue ..."
+        fi
 
         # Custom user stack
         source "$MAC_STACK_ROOT/scripts/stack_config/load.sh"
