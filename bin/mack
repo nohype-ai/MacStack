@@ -86,7 +86,7 @@ case "${1:-}" in
         ;;
     "backup-zed")
         load_stack_path
-        "$MAC_STACK_ROOT/bin/backup-zed"
+        "$MAC_STACK_ROOT/scripts/backup-zed.sh"
         ;;
     "shellenv")
         cat "$MAC_STACK_ROOT/scripts/zshrc/content_macstack.sh"
