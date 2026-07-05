@@ -1,6 +1,11 @@
 #!/usr/bin/env zsh
 set -euo pipefail
 
+# Auto-confirm Homebrew's "Do you want to proceed?" upgrade prompt
+# Equivalent to passing `--no-ask` / `-y` to `brew upgrade`.
+# See `man brew` (Environment section) → HOMEBREW_NO_ASK.
+export HOMEBREW_NO_ASK=1
+
 # Usage: ./release.sh <major|minor|patch>
 # Example: ./release.sh patch   (v0.1.2 -> v0.1.3)
 #          ./release.sh minor   (v0.1.2 -> v0.2.0)
