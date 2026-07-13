@@ -132,6 +132,11 @@ echo "=== Release $VERSION complete! ==="
 # Step 6: Update local MacStack
 echo ""
 echo "Step 6: Updating local MacStack ..."
+
+# Trust the Nohype AI Homebrew Tap and the MacStack formula
+brew trust nohype-ai/tap
+brew trust --formula nohype-ai/tap/macstack
+
 cd "$(brew --repository nohype-ai/tap)" && git pull
 brew upgrade macstack
 echo "This version of MacStack is now installed: $(brew list --versions macstack)"
