@@ -134,8 +134,7 @@ echo ""
 echo "Step 6: Updating local MacStack ..."
 
 # Trust the Nohype AI Homebrew Tap and the MacStack formula
-brew trust nohype-ai/tap
-brew trust --formula nohype-ai/tap/macstack
+"$MACSTACK_DIR/scripts/homebrew/trust_macstack_tap.sh"
 
 cd "$(brew --repository nohype-ai/tap)" && git pull
 brew upgrade macstack
