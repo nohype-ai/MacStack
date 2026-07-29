@@ -10,7 +10,7 @@ set -u  # Treat unset variables as error
 # See `man brew` (Environment section) → HOMEBREW_NO_ASK.
 export HOMEBREW_NO_ASK=1
 
-# Trust is normally done earlier by `mack`; keep a local call for direct script use.
+# Third-party formula must be trusted before upgrade/bundle can load it.
 "${0:h}/trust_macstack_tap.sh"
 
 # Update pre-existing Homebrew packages (even outside Brewfile)

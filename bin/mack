@@ -17,17 +17,6 @@ export HOMEBREW_DEVELOPER=1
 # Get function to retrieve stack path from settings or user input
 source "$MAC_STACK_ROOT/scripts/config/load_stack_path.sh"
 
-# Trust the MacStack tap/formula before any brew/sub-script that needs it.
-# Must run before stack config load (check-jsonschema) and before brew-clip.
-trust_macstack_tap() {
-    "$MAC_STACK_ROOT/scripts/homebrew/trust_macstack_tap.sh"
-}
-
-# Re-install macstack if its runtime deps were stripped (idempotent).
-ensure_macstack_formula() {
-    "$MAC_STACK_ROOT/scripts/homebrew/ensure_macstack_formula.sh"
-}
-
 # Function for printing help
 print_help() {
     echo "Valid calls are:"
@@ -64,10 +53,6 @@ case "${1:-}" in
             echo "⚠️ Homebrew update failed, but let's try to continue ..."
         fi
 
-        # Trust + restore formula deps before schema validation and Brewfile work
-        trust_macstack_tap
-        ensure_macstack_formula
-
         # Custom user stack
         source "$MAC_STACK_ROOT/scripts/stack_config/load.sh"
         "$MAC_STACK_ROOT/scripts/homebrew/update_user_stack.sh"
@@ -88,20 +73,15 @@ case "${1:-}" in
         ;;
     "update-repos")
         load_stack_path
-        trust_macstack_tap
-        ensure_macstack_formula
         source "$MAC_STACK_ROOT/scripts/stack_config/load.sh"
         "$MAC_STACK_ROOT/scripts/update-repos.sh"
         ;;
     "brew-clip")
         load_stack_path
-        # brew-clip.sh also trusts + repairs; do trust early for a clearer failure path
-        trust_macstack_tap
         "$MAC_STACK_ROOT/scripts/homebrew/brew-clip.sh"
         ;;
     "brew-force")
         load_stack_path
-        trust_macstack_tap
         "$MAC_STACK_ROOT/scripts/homebrew/brew-force.sh"
         ;;
     "backup-zed")

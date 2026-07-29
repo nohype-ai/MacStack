@@ -11,8 +11,7 @@
 # Prepare
 set -e  # Exit on any error
 set -u  # Treat unset variables as error
-SCRIPT_DIR="${0:h}"
-BREWFILE_PATH="$("$SCRIPT_DIR/get_brewfile.sh")"
+BREWFILE_PATH="$(${0:h}/get_brewfile.sh)"
 
 # Ask for confirmation
 echo "⚠️  This will uninstall all brew packages that are not declared in this Brewfile:\n   file://${BREWFILE_PATH// /%20}"
@@ -21,9 +20,9 @@ if [[ "$response" != [yY] ]]; then
     exit 0
 fi
 
-# Trust before cleanup so brew bundle can load nohype-ai/tap/macstack and keep its
-# runtime deps (check-jsonschema, node, jq, …) as "used" by a Brewfile package.
-"$SCRIPT_DIR/trust_macstack_tap.sh"
+# Loadable formula graph is required so cleanup keeps runtime deps of Brewfile
+# packages from third-party taps (e.g. check-jsonschema via macstack).
+"${0:h}/trust_macstack_tap.sh"
 
 # Proceed with uninstallations
 echo "🧹 Uninstalling ..."
@@ -31,9 +30,4 @@ brew bundle cleanup --force --zap --file "$BREWFILE_PATH" # (1)
 brew autoremove # (2)
 brew cleanup # (3)
 find /opt/homebrew/Caskroom -type f \( -name "*.dmg" -o -name "*.pkg" -o -name "*.zip" \) -delete # (4)
-
-# Defense in depth: if trust was missing or cleanup still stripped macstack deps,
-# re-install the formula so mack keeps working after clip.
-"$SCRIPT_DIR/ensure_macstack_formula.sh"
-
 echo "✅ Did uninstall all brew packages that are not declared in the Brewfile"
