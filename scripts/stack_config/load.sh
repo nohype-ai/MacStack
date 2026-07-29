@@ -17,6 +17,13 @@ fi
 
 SCHEMA="$MAC_STACK_ROOT/scripts/stack_config/macstack.schema.json"
 
+if ! command -v check-jsonschema &>/dev/null; then
+    echo "🛑 Error: Skipping basic configurations since check-jsonschema is not installed."
+    echo "   It is a dependency of the macstack formula. Restore with:"
+    echo "   brew trust nohype-ai/tap && brew install nohype-ai/tap/macstack"
+    return 0
+fi
+
 if ! silent check-jsonschema --schemafile "$SCHEMA" "$CONFIG"; then
     echo "🛑 Error: Skipping basic configurations since macstack.json does not match its declared schema:\n$CONFIG\nRun 'check-jsonschema --schemafile $SCHEMA $CONFIG' for details."
     return 0
