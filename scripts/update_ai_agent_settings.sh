@@ -60,3 +60,16 @@ if [[ -d ~/.config/opencode ]]; then
     merge_json "$settings_template" ~/.config/opencode/opencode.json
   fi
 fi
+
+# Update Grok Build settings
+if [[ -d ~/.grok ]]; then
+  echo "🤖 Updating Grok Build settings ..."
+
+  # Update ~/.grok/AGENTS.md
+  agents_template="$STACK/ai/coding/grok/AGENTS.md"
+  if [[ ! -f "$agents_template" ]]; then
+    echo "⚠️ Warning: Skipping update of ~/.grok/AGENTS.md, since template file does not exist in stack:\n$agents_template"
+  else
+    cp "$agents_template" ~/.grok/AGENTS.md
+  fi
+fi
