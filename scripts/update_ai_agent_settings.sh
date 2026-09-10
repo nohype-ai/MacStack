@@ -72,4 +72,12 @@ if [[ -d ~/.grok ]]; then
   else
     cp "$agents_template" ~/.grok/AGENTS.md
   fi
+
+  # Update ~/.grok/config.toml (overwrite — no TOML merge yet)
+  config_template="$STACK/ai/coding/grok/config.toml"
+  if [[ ! -f "$config_template" ]]; then
+    echo "⚠️ Warning: Skipping update of ~/.grok/config.toml, since template file does not exist in stack:\n$config_template"
+  else
+    cp "$config_template" ~/.grok/config.toml
+  fi
 fi

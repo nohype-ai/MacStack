@@ -14,7 +14,7 @@ Setup and update the tech stack on a Mac with one command, based on your stack c
   * 📰 Fonts
   * ⌨️ Command line tools (like `brew`, `git`, `pyenv`, `python`, `claude-code`)
   * 🍏 Graphical apps (including Mac App Store apps)
-  * 🤖 Settings and permissions of AI agents (Gemini CLI, OpenCode, Cursor CLI)
+  * 🤖 Settings and permissions of AI agents (Grok Build, Gemini CLI, OpenCode, Cursor CLI)
   * ⚙️ Settings and keybindings for Zed and most VS Code based IDEs
   * 🧩 Extensions for VS Code based IDEs
   * 📂 git repositories (clone, sync, list issues)
@@ -75,7 +75,8 @@ Here is what `mack update` does wherever it finds the respective inputs in your 
   * OpenCode, OpenCode Desktop
     - `ai/coding/opencode/opencode.json`
   * Grok Build
-    - `ai/coding/grok/AGENTS.md`
+    - `ai/coding/grok/AGENTS.md` (overwrites `~/.grok/AGENTS.md`)
+    - `ai/coding/grok/config.toml` (overwrites `~/.grok/config.toml`; no TOML merge yet)
 * 📁 `git/repos-folder-template`: Clone/sync git repos based on this template, then report which repos need manual attention
     - Template defines content of this folder: `git.repos_folder` defined in `macstack.json`
     - Each folder in the template may contain a `git-repos.txt` listing URLs of intended repos in that folder
