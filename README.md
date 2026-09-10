@@ -74,9 +74,19 @@ Here is what `mack update` does wherever it finds the respective inputs in your 
     - `ai/coding/gemini/policies/*`
   * OpenCode, OpenCode Desktop
     - `ai/coding/opencode/opencode.json`
-  * Grok Build
-    - `ai/coding/grok/AGENTS.md` (overwrites `~/.grok/AGENTS.md`)
-    - `ai/coding/grok/config.toml` (overwrites `~/.grok/config.toml`; no TOML merge yet)
+  * Grok Build (each item is optional; copied to `~/.grok/` if present, overwrite, no merge)
+    - `ai/coding/grok/AGENTS.md`
+    - `ai/coding/grok/config.toml`
+    - `ai/coding/grok/pager.toml`
+    - `ai/coding/grok/sandbox.toml`
+    - `ai/coding/grok/rules/`
+    - `ai/coding/grok/hooks/`
+    - `ai/coding/grok/skills/`
+    - `ai/coding/grok/commands/`
+    - `ai/coding/grok/plugins/`
+    - `ai/coding/grok/workflows/`
+    - `ai/coding/grok/agents/`
+    - `ai/coding/grok/personas/`
 * 📁 `git/repos-folder-template`: Clone/sync git repos based on this template, then report which repos need manual attention
     - Template defines content of this folder: `git.repos_folder` defined in `macstack.json`
     - Each folder in the template may contain a `git-repos.txt` listing URLs of intended repos in that folder

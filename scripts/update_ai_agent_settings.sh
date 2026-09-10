@@ -62,22 +62,35 @@ if [[ -d ~/.config/opencode ]]; then
 fi
 
 # Update Grok Build settings
+# Copy each stack item that exists. Files overwrite; directory contents are copied
+# (no merge). Stack-only docs like README.md are not copied. `.gitkeep` is skipped.
 if [[ -d ~/.grok ]]; then
   echo "🤖 Updating Grok Build settings ..."
 
-  # Update ~/.grok/AGENTS.md
-  agents_template="$STACK/ai/coding/grok/AGENTS.md"
-  if [[ ! -f "$agents_template" ]]; then
-    echo "⚠️ Warning: Skipping update of ~/.grok/AGENTS.md, since template file does not exist in stack:\n$agents_template"
+  grok_stack="$STACK/ai/coding/grok"
+  if [[ ! -d "$grok_stack" ]]; then
+    echo "⚠️ Warning: Skipping update of ~/.grok/*, since template directory does not exist in stack:\n$grok_stack"
   else
-    cp "$agents_template" ~/.grok/AGENTS.md
-  fi
+    copy_grok_stack_item() {
+      local name="$1"
+      local src="$grok_stack/$name"
+      local dest="$HOME/.grok/$name"
+      if [[ -f "$src" ]]; then
+        cp "$src" "$dest"
+      elif [[ -d "$src" ]]; then
+        mkdir -p "$dest"
+        cp -R "$src/." "$dest/"
+        rm -f "$dest/.gitkeep"
+      fi
+    }
 
-  # Update ~/.grok/config.toml (overwrite — no TOML merge yet)
-  config_template="$STACK/ai/coding/grok/config.toml"
-  if [[ ! -f "$config_template" ]]; then
-    echo "⚠️ Warning: Skipping update of ~/.grok/config.toml, since template file does not exist in stack:\n$config_template"
-  else
-    cp "$config_template" ~/.grok/config.toml
+    for grok_item in \
+      AGENTS.md config.toml pager.toml sandbox.toml \
+      rules hooks skills commands plugins workflows agents personas
+    do
+      copy_grok_stack_item "$grok_item"
+    done
+    unset -f copy_grok_stack_item
+    unset grok_item
   fi
 fi
