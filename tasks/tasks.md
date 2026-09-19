@@ -6,11 +6,11 @@ kanban-plugin: board
 
 ## In Progress
 
-- [ ] Pick more low hanging fruits for the website. See website repo.
-
+- integrate SuperKeys properly. it is currently in the NohypeAIStack repo. SuperKeys should separate the tool itself from the config file and place the tool in its own repo and the config file into the NohypeAIStack MackStack folder, the config file must become officially supported input to MacStack. MackStack brew formula should then also just depend on the SuperKeys formula.
 
 ## Backlog
 
+- [ ] Pick more low hanging fruits for the website. See website repo.
 - [ ] MacStack itself must be excluded from brew-clip #bug
 - [ ] The script for force adopting apps into Homebrew is essentially a PoC fix of our regular update procedure which apparently does not bring many casks properly into Homebrew if that software (mostly GUI apps) was already installed on the system outside of Homebrew. We should bring those checks into the regular update procedure. #bug
 - [ ] Review what should move from Nohype AI stack into MacStack itself. For example right now, macstack is an entry in the Nohype AI Brewfile, shouldn't macstack keep itself alive? there are also other elements in the Nohype AI stack that are general enough or even essential to MacStack.
