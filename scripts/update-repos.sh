@@ -80,6 +80,8 @@ for item in "$repos_folder_template"/**/*(N); do
 
                             if [[ -z "$upstream" ]]; then
                                 record_issue "⚠️  No remote tracking branch"
+                            elif ! git -C "$repo_folder" fetch 2>&1; then
+                                record_issue "🛑 Fetch failed"
                             else
                                 rev_list_output=$(git -C "$repo_folder" rev-list --left-right --count HEAD...@{upstream} 2>/dev/null)
 
