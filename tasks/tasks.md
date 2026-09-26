@@ -7,6 +7,7 @@ kanban-plugin: board
 ## In Progress
 
 - integrate SuperKeys properly. it is currently in the NohypeAIStack repo. SuperKeys should separate the tool itself from the config file and place the tool in its own repo and the config file into the NohypeAIStack MackStack folder, the config file must become officially supported input to MacStack. MackStack brew formula should then also just depend on the SuperKeys formula.
+- [Support Brave Browser](brave%20support.md)
 
 ## Backlog
 
